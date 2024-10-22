@@ -1,4 +1,4 @@
-import Inicio from './routes/inicio/inicio'
+import Inicio from '../routes/home/home.jsx'
 import './App.css'
 
 function App() {
