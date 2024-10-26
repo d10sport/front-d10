@@ -3,9 +3,9 @@ import { Outlet, Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <>
-      <nav>
-        <ul>
+    <div className='fixed top-0 left-0 right-0'>
+      <nav className='w-full'>
+        <ul className='flex w-full gap-8 justify-between'>
           <li>
             <Link to={`/about-us`}>Quienes somos</Link>
           </li>
@@ -18,6 +18,6 @@ export default function Header() {
           <Outlet/>
         </ul>
       </nav>
-    </>
+    </div>
   );
 }
