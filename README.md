@@ -10,3 +10,7 @@ Currently, two official plugins are available:
 
 ## 3d to Component
 npx gltfjsx scene.gltf
+
+
+## Node -V
+Using version 20.18.0
