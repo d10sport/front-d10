@@ -1,0 +1,346 @@
+/* Home */
+
+/* Seccion nav */
+
+.nav {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 3rem;
+  background-color: #0000007e;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 40px;
+  color: white;
+}
+
+.logo {
+  max-width: 40px;
+}
+
+.list__nav {
+  display: flex;
+  width: 30%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.login__nav {
+  color: #2d8fdf;
+  font-weight: bold;
+  width: 80px;
+  height: 80%;
+  border-radius: 8px;
+  border: 2px solid #2d8fdf;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.login__nav:hover {
+  cursor: pointer;
+}
+
+/* Seccion Home */
+
+.home {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  background-image: url(../../assets/img/fondo2.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-left: 20px;
+}
+
+.title__home {
+  font-size: 128px;
+  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.text__color__white {
+  color: white;
+}
+
+/* Sponsors */
+
+.sponsors {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 8rem;
+  justify-content: space-around;
+  align-items: center;
+  background: url(../../assets/img/fondo-vector.png) no-repeat center, #141414;
+  background-size: cover;
+}
+
+.brush__sponsors {
+  position: relative;
+  width: 120px;
+}
+
+.upimg__sponsors {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  top: 0;
+  left: 0;
+}
+
+.team__sponsors {
+  width: 80px;
+}
+
+/* Commercial */
+
+.commercial {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.video__commercial {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Collection */
+
+/* Seccion Colección */
+
+.coleccion {
+  width: 100%;
+  height: 44rem;
+  background-color: #191919;
+}
+
+.container__coleccion {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.close__space {
+  padding: 0px 35%;
+}
+
+.big__space {
+  height: 85%;
+}
+
+.mid__space {
+  height: 70%;
+}
+
+.small__space {
+  height: 15%;
+}
+
+.list__coleccion {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: end;
+  list-style: none;
+  color: white;
+}
+
+.items__coleccion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8%;
+  border-bottom: 1px solid white;
+}
+
+.item--disable {
+  color: rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.selection__coleccion {
+  width: 80px;
+  height: 2px;
+  background-color: white;
+}
+
+.selection--disable {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+/* Seccion Noticias */
+
+.news {
+  width: 100%;
+  height: 40rem;
+  background-color: #141414;
+}
+
+.container__news {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+.btn__news {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: white;
+  border: 2px solid #202020;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.btn__news:hover {
+  cursor: pointer;
+}
+
+.btn__news--enable {
+  background-color: #202020;
+}
+
+.card__news {
+  width: 280px;
+  height: 400px;
+  background-color: #191919;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.img__news {
+  width: 100%;
+}
+
+/* D10+ */
+
+.academy {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: url(../../assets/img/fondo-vector.png) center, #191919;
+  background-size: contain;
+}
+
+.fondo__academy {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../assets/img/academy.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+
+.title__academy {
+  color: white;
+  font-size: 128px;
+  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.text__academy {
+  color: #2d8fdf;
+  text-decoration: underline;
+  font-size: 48px;
+}
+
+.space__right {
+  padding-left: 120px;
+}
+
+.space__center {
+  padding-top: 20px;
+  padding-left: 260px;
+}
+
+/* Footer 1*/
+
+.footer__info {
+  display: flex;
+  width: 100%;
+  height: 20rem;
+  background-color: #141414;
+  color: white;
+}
+
+.contact__footer {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input__footer {
+  width: 250px;
+  height: 40px;
+  padding: 16px;
+  background-color: transparent;
+  border: 2px solid #262626;
+  border-radius: 12px;
+}
+
+/* Seccion Services */
+
+.services__footer {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.list__footer {
+  list-style: none;
+}
+
+.text-list__footer {
+  color: #999999;
+}
+
+/* Footer 2 */
+
+.footer__copyright {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  background-color: #191919;
+  color: white;
+}
+
+.copy__footer {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 200px;
+}
+
+.redes__footer {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 380px;
+}
