@@ -2,14 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-  --primary-100: #FFFFFF;
+  --primary-100: #ffffff;
   --primary-200: #e0e0e0;
   --primary-300: #9b9b9b;
-  --accent-100: #7F7F7F;
+  --accent-100: #7f7f7f;
   --accent-200: #ffffff;
-  --text-100: #FFFFFF;
+  --text-100: #ffffff;
   --text-200: #777777;
   --bg-100: #000000;
   --bg-200: #161616;
@@ -17,15 +16,18 @@
   --bg-400: #3d3c3d;
 }
 
-body {
-  height: 100dvh;
-  width: 100%;
-}
-
 #root {
   height: 100%;
 }
 
-a {
-  color: var(--accent-100)
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Urbanist", sans-serif;
+}
+
+body {
+  height: 100dvh;
+  width: 100%;
 }
