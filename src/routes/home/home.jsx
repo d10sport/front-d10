@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import { Link } from "react-router-dom";
 import './home.css';
 import logo from '../../assets/icons/logo.png';
 
@@ -31,7 +32,11 @@ export default function Home() {
       <nav className="nav">
         <img src={logo} alt="logo D10" className="logo" />
         <ul className="list__nav">
-          <li className="items__nav">Quienes somos</li>
+          <li className="items__nav">
+            <Link to={'/about-us'}>
+              Quienes somos
+            </Link>
+          </li>
           <li className="items__nav">Servicios</li>
           <li className="items__nav">contactanos</li>
         </ul>
