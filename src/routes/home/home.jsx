@@ -1,6 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
 import './home.css';
+
+import fondo from '../../assets/img/fondo2.jpg';
+
 import logo from '../../assets/icons/logo.png';
 
 import brush from '../../assets/icons/brush.png';
@@ -33,22 +36,38 @@ export default function Home() {
         <img src={logo} alt="logo D10" className="logo" />
         <ul className="list__nav">
           <li className="items__nav">
-            <Link to={'/about-us'}>
+            <Link to={'/about-us'} className="a-linear__nav">
               Quienes somos
             </Link>
           </li>
-          <li className="items__nav">Servicios</li>
-          <li className="items__nav">contactanos</li>
+          <li className="items__nav">
+            <Link to={'/services'} className="a-linear__nav">
+              Servicios
+            </Link>
+          </li>
+          <li className="items__nav">
+            <Link to={'/contact'} className="a-linear__nav">
+              Contactanos
+            </Link>
+          </li>
         </ul>
-        <button className="login__nav">Login</button>
+        <button className="login__nav">D10+</button>
       </nav>
 
-      <header className="home">
-        <h1 className="title__home">D10</h1>
-        <h1 className="title__home text__color__white">Viste</h1>
-        <h1 className="title__home text__color__white">tu pasión,</h1>
-        <h1 className="title__home text__color__white">entrena tu talento</h1>
-      </header>
+      <section className="home">
+        {/* <img src={fondo} alt="Fondo" className="img-fondo__home"/> */}
+        <div className="img-container__home">
+          <img src={fondo} alt="Descripción de la imagen" className="img-fondo__home" />
+          <div className="blur-overlay__home"></div>
+        </div>
+
+        <div className="container__home">
+          <h1 className="title__home">D10</h1>
+          <h1 className="title__home text__color__white">Viste</h1>
+          <h1 className="title__home text__color__white">tu pasión,</h1>
+          <h1 className="title__home text__color__white">entrena tu talento</h1>
+        </div>
+      </section>
 
       {/* <!-- Sponsors Section --> */}
 
