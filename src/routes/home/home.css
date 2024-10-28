@@ -309,41 +309,6 @@
   display: flex;
   width: 100%;
   height: 100%;
-  background: url(../../assets/img/fondo-vector.png) center, #191919;
-  background-size: contain;
-}
-
-.fondo__academy {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  background-image: url(../../assets/img/academy.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 50%;
-}
-
-.title__academy {
-  color: white;
-  font-size: 128px;
-  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
-}
-
-.text__academy {
-  color: #9eff00;
-  text-decoration: underline;
-  font-size: 48px;
-}
-
-.space__right {
-  padding-left: 120px;
-}
-
-.space__center {
-  padding-top: 20px;
-  padding-left: 260px;
 }
 
 /* Footer 1*/
