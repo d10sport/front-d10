@@ -6,7 +6,7 @@ import fondo from '../../assets/img/fondo2.jpg';
 
 import logo from '../../assets/icons/logo.png';
 
-import brush from '../../assets/icons/brush.png';
+// import brush from '../../assets/icons/brush.png';
 import team1 from '../../assets/icons/team1.png';
 import team2 from '../../assets/icons/team2.png';
 import team3 from '../../assets/icons/team3.png';
@@ -21,7 +21,7 @@ import item3 from '../../assets/img/items3.png';
 import item4 from '../../assets/img/items4.png';
 import item5 from '../../assets/img/items5.png';
 
-import news1 from '../../assets/img/news1.png';
+// import news1 from '../../assets/img/news1.png';
 
 import icon1 from '../../assets/icons/icon1.png';
 import icon2 from '../../assets/icons/icon2.png';
@@ -75,21 +75,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <!-- Sponsors Section --> */}
+      {/* <!-- About us Section --> */}
 
-      <section className="sponsors">
-        <img src={brush} alt="paint brush" className="brush__sponsors" />
-        <img src={brush} alt="paint brush" className="brush__sponsors" />
-        <img src={brush} alt="paint brush" className="brush__sponsors" />
-        <img src={brush} alt="paint brush" className="brush__sponsors" />
-        <img src={brush} alt="paint brush" className="brush__sponsors" />
-        <div className="upimg__sponsors">
-          <img src={team1} alt="logo team" className="team__sponsors" />
-          <img src={team2} alt="logo team" className="team__sponsors" />
-          <img src={team3} alt="logo team" className="team__sponsors" />
-          <img src={team4} alt="logo team" className="team__sponsors" />
-          <img src={team5} alt="logo team" className="team__sponsors" />
-        </div>
+      <section className="about">
+        <h1 className="title__about">Quienes somos</h1>
+        <p className="text__about">
+        En D10 vivimos y respiramos fútbol. Somos una organización comprometida
+        con el desarrollo de talentos en el fútbol, desde los primeros pasos
+        hasta alcanzar su máximo potencial. Donde puedan forjar no solo sus
+        habilidades en el campo, sino también su carácter y amor por el deporte.
+        </p>
+        <a href="#" className="btn__about">SABER MÁS</a>
       </section>
 
       {/* <!-- Commercial Section --> */}
@@ -132,56 +128,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* News Section */}
+
       <section className="news">
-        <div className="container__news small__space">
-          <p className="text__news">1 of 60</p>
-          <p className="text__news">Noticias de coleccion 2024</p>
-          <div className="btn-grp__news">
-            <button className="btn__news">←</button>
-            <button className="btn__news btn__news--enable">→</button>
-          </div>
+        <div className="container__news">
+          <h1 className="title__news">Noticia</h1>
+          <h2 className="subtitle__news">Campeones año 2024</h2>
+          <p className="text__news">
+          A chic and fully-furnished 2-bedroom apartment with <br />
+          panoramic city views... Read More
+          </p>
+          <a href="#" className="link__news">Ver más</a>
         </div>
-        <div className="container__news big__space">
-          <div className="card__news">
-            <img src={news1} alt="img noticia" className="img__news" />
-            <h1>Noticia año 20XX</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
-              accusantium hic reprehenderit
-            </p>
-          </div>
-          <div className="card__news">
-            <img src={news1} alt="img noticia" className="img__news" />
-            <h1>Noticia año 20XX</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
-              accusantium hic reprehenderit
-            </p>
-          </div>
-          <div className="card__news">
-            <img src={news1} alt="img noticia" className="img__news" />
-            <h1>Noticia año 20XX</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
-              accusantium hic reprehenderit
-            </p>
-          </div>
-          <div className="card__news">
-            <img src={news1} alt="img noticia" className="img__news" />
-            <h1>Noticia año 20XX</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
-              accusantium hic reprehenderit
-            </p>
-          </div>
-          <div className="card__news">
-            <img src={news1} alt="img noticia" className="img__news" />
-            <h1>Noticia año 20XX</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
-              accusantium hic reprehenderit
-            </p>
-          </div>
+      </section>
+
+      {/* Sponsors Section */}
+
+      <section className="sponsors">
+        <h1 className="title__sponsors">Apoya tu selección</h1>
+        <div className="container__sponsors">
+          <img src={team1} alt="Imagen de sponsors" className="img__sponsors" />
+          <img src={team2} alt="Imagen de sponsors" className="img__sponsors" />
+          <img src={team3} alt="Imagen de sponsors" className="img__sponsors" />
+          <img src={team4} alt="Imagen de sponsors" className="img__sponsors" />
+          <img src={team5} alt="Imagen de sponsors" className="img__sponsors" />
         </div>
       </section>
 
