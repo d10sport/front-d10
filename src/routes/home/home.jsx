@@ -205,46 +205,48 @@ export default function Home() {
       {/* <!-- Footer Section --> */}
 
       <footer className="footer__info">
-        <div className="contact__footer">
-          <h1>D10</h1>
+      <div className="contact__footer">
+        <div className="container-contact__footer">
+          <h1 className="title__footer">D10</h1>
           <input
             type="text"
             placeholder="Enter Your Email"
             className="input__footer"
           />
         </div>
-        <div className="services__footer">
-          <ul className="list__footer">
-            <p className="text-list__footer">Home</p>
-            <li className="item-list__footer">Hero Section</li>
-            <li className="item-list__footer">Features</li>
-            <li className="item-list__footer">Properties</li>
-            <li className="item-list__footer">Testimonials</li>
-            <li className="item-list__footer">FAQ's</li>
-          </ul>
-          <ul className="list__footer">
-            <p className="text-list__footer">About</p>
-            <li className="item-list__footer">Our Story</li>
-            <li className="item-list__footer">Our Works</li>
-            <li className="item-list__footer">How it Works</li>
-            <li className="item-list__footer">Our Team</li>
-            <li className="item-list__footer">Our Client</li>
-          </ul>
-          <ul className="list__footer">
-            <p className="text-list__footer">Services</p>
-            <li className="item-list__footer">Valuation Mastery</li>
-            <li className="item-list__footer">Strategic Marketing</li>
-            <li className="item-list__footer">Negotiation Wizardry</li>
-            <li className="item-list__footer">Closing Success</li>
-            <li className="item-list__footer">Property Management</li>
-          </ul>
-          <ul className="list__footer">
-            <p className="text-list__footer">Contact</p>
-            <li className="item-list__footer">Contact Form</li>
-            <li className="item-list__footer">Our Offices</li>
-          </ul>
-        </div>
-      </footer>
+      </div>
+      <div className="services__footer">
+        <ul className="list__footer">
+          <p className="text-list__footer">Home</p>
+          <li className="item-list__footer">Hero Section</li>
+          <li className="item-list__footer">Features</li>
+          <li className="item-list__footer">Properties</li>
+          <li className="item-list__footer">Testimonials</li>
+          <li className="item-list__footer">FAQ's</li>
+        </ul>
+        <ul className="list__footer">
+          <p className="text-list__footer">About</p>
+          <li className="item-list__footer">Our Story</li>
+          <li className="item-list__footer">Our Works</li>
+          <li className="item-list__footer">How it Works</li>
+          <li className="item-list__footer">Our Team</li>
+          <li className="item-list__footer">Our Client</li>
+        </ul>
+        <ul className="list__footer">
+          <p className="text-list__footer">Services</p>
+          <li className="item-list__footer">Valuation Mastery</li>
+          <li className="item-list__footer">Strategic Marketing</li>
+          <li className="item-list__footer">Negotiation Wizardry</li>
+          <li className="item-list__footer">Closing Success</li>
+          <li className="item-list__footer">Property Management</li>
+        </ul>
+        <ul className="list__footer">
+          <p className="text-list__footer">Contact</p>
+          <li className="item-list__footer">Contact Form</li>
+          <li className="item-list__footer">Our Offices</li>
+        </ul>
+      </div>
+    </footer>
 
       <footer className="footer__copyright">
         <div className="copy__footer">

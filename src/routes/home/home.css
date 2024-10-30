@@ -3,7 +3,7 @@
 /* Seccion nav */
 
 .nav {
-  position: sticky;
+  position: fixed;
   display: flex;
   width: 100%;
   height: 5rem;
@@ -16,12 +16,12 @@
   top: 0;
   left: 0;
 
-  animation: enhance-header linear both;
+  animation: scroll-animation linear both;
   animation-timeline: scroll(root block);
-  animation-range: 0 200px;
+  animation-range: 0 400px;
 }
 
-@keyframes enhance-header {
+@keyframes scroll-animation {
   to {
     background-color: #0000006c;
   }
@@ -207,7 +207,6 @@
   height: 100%;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 .video__commercial {
@@ -399,12 +398,21 @@
   height: 100%;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+}
+
+.container-contact__footer {
+  width: 50%;
+  height: 50%;
+}
+
+.title__footer {
+  font-size: 40px;
 }
 
 .input__footer {
   width: 250px;
   height: 40px;
+  margin-top: 12px;
   padding: 16px;
   background-color: transparent;
   border: 2px solid #262626;
