@@ -29,7 +29,7 @@ import icon3 from '../../assets/icons/icon3.png';
 import icon4 from '../../assets/icons/icon4.png';
 
 import { Environment, OrbitControls } from '@react-three/drei';
-import fondoD10 from './../../assets/img/fondo_color_d10+.png'
+import fondoD10 from './../../assets/img/Noise.png'
 import ModelBalon3d from '../../utils/model3D/Balon3d';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
@@ -159,47 +159,41 @@ export default function Home() {
 
       <section className="academy">
         <div id='section-d10_academy' className='relative h-full w-full bg-black flex flex-col justify-center items-center '>
-          <div className='w-full h-full grid place-content-center justify-center z-30 text-white'>
-            {/* Imagen */}
-            <div className='top-40 left-[25%] z-10 w-auto h-auto object-cover' src={fondoD10} >
-              <img className='relative object-cover w-fit' src={fondoD10} />
-            </div>
 
+          {/* Imagen fondo */}
+          <div className='top-0 left-0 right-0 bottom-0 z-10 absolute'>
+            <img className='relative object-cover w-full h-full' src={fondoD10} />
+          </div>
+
+          <div className='w-full h-full grid place-content-center justify-center z-30'>
             {/* 3D Model */}
-            <div className='section_model_3d absolute left-4 z-20 top-[6.5rem] w-[60%] h-[31rem]'>
+            <div className='section_model_3d absolute z-20 w-[60%] h-full'>
               <Canvas className='w-fit h-full'>
                 <ambientLight />
                 <OrbitControls enableZoom={false} autoRotate={true} enableRotate={false} autoRotateSpeed={1.5} />
                 <Suspense fallback={null}>
-                  <ModelBalon3d position={[0, -2.5, 0]} scale={2.8} />
+                  <ModelBalon3d position={[0, -2.2, 0]} scale={2.3} />
                 </Suspense>
                 <Environment preset="sunset" />
               </Canvas>
             </div>
 
             {/* Texto */}
-            <div className='absolute top-1/3 mt-5 left-1/3  transform -translate-y-1/2 flex flex-col z-20 items-center justify-center'>
-              <h1 className='text-8xl font-bold text-[#FFC702] mb-4'>D10 +</h1>
+            <div className='select-none absolute top-1/3 mt-5 left-1/3  transform -translate-y-1/2 flex flex-col z-20 items-center justify-center'>
+              <h1 className='text-9xl font-black text-[#FFC702] mb-4'>D10 +</h1>
             </div>
 
             {/* Texto */}
-            <div className='absolute top-1/2 left-1/2 mt-10 transform -translate-x-1/2 -translate-y-1/2 flex flex-col z-20 items-center justify-center'>
-              <h1 className='text-8xl font-bold text-[#FFC702] mb-4'>Academy</h1>
+            <div className='select-none absolute top-1/2 left-2/3 mt-6 transform -translate-x-1/2 -translate-y-1/2 flex flex-col z-20 items-center justify-center'>
+              <h1 className='text-9xl font-black text-[#FFC702] mb-4'>Academy</h1>
             </div>
 
             {/* Ingresa ahora */}
-            <div className='w-full text-center'>
-              <Link to="/services" className='text-[#FFC702] underline text-3xl font-bold'>Ingresa ahora</Link>
+            <div className='relative top-2/3 mt-40 text-center z-40'>
+              <Link to="/services" className='text-[#FFC702] underline text-4xl font-bold'>Ingresa ahora</Link>
             </div>
           </div>
         </div>
-        {/* <div className="fondo__academy">
-          <div className="container-text__academy">
-            <h1 className="title__academy">D10+</h1>
-            <h1 className="title__academy space__right">ACADEMY</h1>
-            <p className="text__academy space__center">Ingresa Ahora</p>
-          </div>
-        </div> */}
       </section>
 
       {/* <!-- Footer Section --> */}
