@@ -1,7 +1,5 @@
-function singIn() {
+export default function SingIn() {
   return (
     <div>sing-in</div>
   )
 }
-
-export default singIn
