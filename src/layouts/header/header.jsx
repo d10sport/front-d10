@@ -1,23 +1,29 @@
-import { Outlet, Link } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import { LogoHeader } from "../../utils/icons/icons";
 
 export default function Header() {
   return (
-    <div className='fixed top-0 left-0 right-0'>
-      <nav className='w-full'>
-        <ul className='flex w-full gap-8 justify-between'>
-          <li>
-            <Link to={`/about-us`}>Quienes somos</Link>
-          </li>
-          <li>
-            <Link to={`/services`}>Servicios</Link>
-          </li>
-          <li>
-            <Link to={`/contact`}>Contactanos</Link>
-          </li>
-          <Outlet/>
-        </ul>
-      </nav>
-    </div>
+    <nav className="nav">
+      <LogoHeader />
+      <ul className="list__nav">
+        <li className="items__nav">
+          <Link to={'/about-us'} className="a-linear__nav">
+            Quienes somos
+          </Link>
+        </li>
+        <li className="items__nav">
+          <Link to={'/services'} className="a-linear__nav">
+            Servicios
+          </Link>
+        </li>
+        <li className="items__nav">
+          <Link to={'/contact'} className="a-linear__nav">
+            Contactanos
+          </Link>
+        </li>
+      </ul>
+      <button className="login__nav">D10+</button>
+    </nav>
+
   );
 }
