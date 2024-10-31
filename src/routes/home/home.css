@@ -155,7 +155,8 @@
 }
 
 .title__home {
-  font-size: 128px;
+  font-size: 150px;
+  font-weight: bold;
   text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
   padding-left: 80px;
 }

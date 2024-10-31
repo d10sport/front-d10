@@ -1,8 +1,10 @@
+import Header from '../../layouts/header/header'
 import './about-us.css'
 
 export default function AboutUs() {
   return (
     <div>
+      <Header/>
       <section className="section">
       <h1 className="title__section">Conócenos</h1>
       <h2 className="subtitle__section">Misión:</h2>

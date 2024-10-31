@@ -3,11 +3,14 @@ import icon1 from '../../assets/icons/icon1.png';
 import icon2 from '../../assets/icons/icon2.png';
 import icon3 from '../../assets/icons/icon3.png';
 import icon4 from '../../assets/icons/icon4.png';
+import { Link } from 'react-router-dom';
 
 
 function LogoHeader() {
   return (
-    <img src={logo} alt="logo D10" className="logo" />
+    <Link to={'/'} >
+      <img src={logo} alt="logo D10" className="logo" />
+    </Link>
   )
 }
 
