@@ -157,13 +157,19 @@
 /* Seccion About us */
 
 .about {
+  position: relative;
   display: flex;
   width: 100%;
-  height: 20rem;
+  height: 35rem;
+}
+
+.content__about {
+  position: relative;
+  display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  background-color: black;
+  z-index: 1;
 }
 
 .title__about {
