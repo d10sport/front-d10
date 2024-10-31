@@ -3,8 +3,9 @@ import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1,
 import { Icon1, Icon2, Icon3, Icon4 } from '../../utils/icons/icons.jsx'
 import { Environment, OrbitControls } from '@react-three/drei';
 import { VideoHome } from "../../utils/videos/videos.jsx";
-import ModelBalon3d from '../../utils/model3D/Balon3d';
+import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
 import Header from "../../layouts/header/header.jsx";
+import SplineModel from '../spline/spline.jsx';
 import { Canvas } from '@react-three/fiber';
 import { Link } from "react-router-dom";
 import { Suspense } from 'react';
@@ -15,6 +16,9 @@ export default function Home() {
     <>
       {/* <!-- Header Section --> */}
       <Header />
+
+      {/* Frames iniciales */}
+      <SplineModel />
 
       {/* <!-- Home Section --> */}
       <section className="home">
@@ -91,18 +95,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sponsors Section */}
-      <section className="sponsors">
-        <h1 className="title__sponsors">Apoya tu selección</h1>
-        <div className="container__sponsors">
-          <Team1 />
-          <Team2 />
-          <Team3 />
-          <Team4 />
-          <Team5 />
-        </div>
-      </section>
-
       {/* <!-- D10+ Academy Section --> */}
       <section className="academy">
         <div id='section-d10_academy' className='relative h-full w-full bg-black flex flex-col justify-center items-center '>
@@ -140,6 +132,18 @@ export default function Home() {
               <Link to="/services" className='text-[#FFC702] underline text-4xl font-bold'>Ingresa ahora</Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Sponsors Section */}
+      <section className="sponsors">
+        <h1 className="title__sponsors">Apoya tu selección</h1>
+        <div className="container__sponsors">
+          <Team1 />
+          <Team2 />
+          <Team3 />
+          <Team4 />
+          <Team5 />
         </div>
       </section>
 

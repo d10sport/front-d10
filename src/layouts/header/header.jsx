@@ -21,6 +21,11 @@ export default function Header() {
             Contactanos
           </Link>
         </li>
+        <li className="items__nav">
+          <Link to={'/spline'} className="a-linear__nav">
+            Spline
+          </Link>
+        </li>
       </ul>
       <button className="login__nav">D10+</button>
     </nav>

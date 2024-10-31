@@ -1,0 +1,42 @@
+.full-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 1s ease;
+  /* Cambia la duración de 1s para ajustar la velocidad de la transición */
+  z-index: 5;
+}
+
+.full-screen.active {
+  opacity: 1;
+  z-index: 10;
+}
+
+.title {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font-size: 150px;
+  color: white;
+  font-weight: bold;
+  transition: transform 1s ease;
+  z-index: 20;
+  transform: translate(-50%, -50%);
+}
+
+.title.init {
+  color: black;
+}
+
+.title.move-left {
+  transform: translate(-365%, -130%);
+  z-index: 100;
+  color: white;
+}
