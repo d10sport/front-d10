@@ -4,7 +4,6 @@ import ModelBalonGlass from '../../utils/model3D/BalonGlass.jsx';
 import ModelBalonShell from '../../utils/model3D/BalonShell.jsx';
 import { Environment, OrbitControls } from '@react-three/drei';
 import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
-import Header from '../../layouts/header/header';
 import Spline from '@splinetool/react-spline';
 import { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
@@ -17,17 +16,25 @@ export default function SplineModel() {
   const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
+    document.body.classList.add('overflow-hidden');
+    document.getElementById('nav_header').classList.add('hidden');
     const timers = [
-      setTimeout(() => setShowModel(2), 3500),
-      setTimeout(() => setShowModel(3), 4000),
-      setTimeout(() => setShowModel(4), 4500),
-      setTimeout(() => setShowModel(5), 5000),
-      setTimeout(() => setShowModel(6), 5500),
+      // setTimeout(() => setShowModel(2), 4500),
+      // setTimeout(() => setShowModel(3), 5000),
+      // setTimeout(() => setShowModel(4), 5500),
       setTimeout(() => {
+        setShowModel(5);
         setMoveTitle(true);
-      }, 7000),
+      }, 3500),
+      // setTimeout(() => setShowModel(6), 6500),
+      // setTimeout(() => {
+      //   setMoveTitle(true);
+      // }, 7500),
       setTimeout(() => {
         setShowModel(0);
+        document.body.classList.remove('overflow-hidden');
+        document.getElementById('nav_header').classList.remove('hidden');
+        window.scrollTo(0, 0);
       }, 8000),
       setTimeout(() => {
         setIsFinished(true);
@@ -38,13 +45,12 @@ export default function SplineModel() {
   }, []);
 
   return (
-    <section className={`bg-[#121316] h-screen w-full ${ moveTitle && showModel === 0 ? 'hidden' : '' }`}>
-      <Header />
+    <section className={`bg-[#121316] h-screen w-full ${moveTitle && showModel === 0 ? 'hidden' : ''}`}>
       {/* Título en el centro */}
-      {!isFinished && <h1 className={`title ${moveTitle ? 'move-left init' : ''}`}>D10</h1>}
+      {!moveTitle && <h1 className={`title`}>D10</h1>}
 
       {/* Balon Particles Model */}
-      {!isFinished && showModel === 1 && (
+      {!isFinished && showModel === 5 && (
         <div className="full-screen active">
           <div className="w-full h-full">
             <Spline onSplineMouseUp={false} style={{ clipPath: 'polygon(0 0, 100% 0, 100% 90%, 0 90%)' }} scene="https://prod.spline.design/t5PufU61ncZuOixv/scene.splinecode" />
@@ -95,13 +101,13 @@ export default function SplineModel() {
       )}
 
       {/* Balon Glass Model */}
-      {!isFinished && showModel === 5 && (
+      {!isFinished && showModel === 1 && (
         <div className="full-screen active">
           <Canvas className="w-full h-full">
             <ambientLight />
             <OrbitControls enableZoom={false} autoRotate={false} enableRotate={false} />
             <Suspense fallback={null}>
-              <ModelBalonGlass position={[0, 0, -70]} scale={1.0} />
+              <ModelBalonGlass position={[0, 0, -60]} scale={1.0} />
             </Suspense>
             <Environment preset="sunset" />
           </Canvas>
