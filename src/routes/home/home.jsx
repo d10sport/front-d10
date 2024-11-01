@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1, Team2, Team3, Team4, Team5, Item1, Item2, Item3, Item4, Item5 } from '../../utils/imgs/imgs.jsx'
-import { Icon1, Icon2, Icon3, Icon4 } from '../../utils/icons/icons.jsx'
+import { Icon1, Icon2, Icon3, Icon4, Wpp } from '../../utils/icons/icons.jsx'
 import { Environment, OrbitControls } from '@react-three/drei';
 import { VideoHome } from "../../utils/videos/videos.jsx";
 import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
@@ -20,6 +20,12 @@ export default function Home() {
 
       {/* Frames iniciales */}
       <SplineModel />
+
+      <div className="wpp">
+        <a href="https://wa.me/Numero" target='_blank'>
+          <Wpp />
+        </a>
+      </div>
 
       {/* <!-- Home Section --> */}
       <section className="home">
@@ -138,7 +144,7 @@ export default function Home() {
 
       {/* Sponsors Section */}
       <section className="sponsors">
-        <h1 className="title__sponsors">Apoya tu selección</h1>
+        <h1 className="title__sponsors">Partners de Éxito</h1>
         <div className="container__sponsors">
           <Team1 />
           <Team2 />

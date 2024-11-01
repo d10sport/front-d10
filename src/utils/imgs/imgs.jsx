@@ -34,32 +34,32 @@ function BackgroundHomeD10Academy() {
 
 function Item1() {
   return (
-    <img src={item1} alt="Modelo" />
+    <img src={item1} alt="Modelo" className='model__coleccion disabled-model__colleccion big-padding__colleccion '/>
   )
 }
 
 function Item2() {
   return (
-    <img src={item2} alt="Modelo" />
+    <img src={item2} alt="Modelo" className='model__coleccion disabled-model__colleccion small-padding__colleccion'/>
   )
 }
 
 function Item3() {
   return (
-    <img src={item3} alt="Modelo" />
+    <img src={item3} alt="Modelo" className='model__coleccion'/>
   )
 }
 
 
 function Item4() {
   return (
-    <img src={item4} alt="Modelo" />
+    <img src={item4} alt="Modelo" className='model__coleccion disabled-model__colleccion small-padding__colleccion'/>
   )
 }
 
 function Item5() {
   return (
-    <img src={item5} alt="Modelo" />
+    <img src={item5} alt="Modelo" className='model__coleccion disabled-model__colleccion big-padding__colleccion '/>
   )
 }
 
