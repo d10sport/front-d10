@@ -38,22 +38,47 @@
 }
 
 .login__nav {
-  color: #ffc702;
-  font-weight: bold;
+  color: #000;
+  font-weight: 800;
   width: 80px;
-  height: 60%;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
-  border: 2px solid #ffc702;
+  border: 2px solid #000;
   background-color: rgba(255, 255, 255, 0);
-  transition: 2s all ease;
+  transition: 2.s all ease;
+
+  animation: scroll-animation-login linear both;
+  animation-timeline: scroll(root block);
+  animation-range: 0 100px;
 }
+
+@keyframes scroll-animation-login {
+  to {
+    border: 2px solid #fff;
+    color: #fff;
+  }
+}
+
 
 .login__nav:hover {
   cursor: pointer;
   color: #000;
   background-color: #ffc702;
+  border: 2px solid #000;
   transition: 0.4s;
+
+  animation: scroll-animation-login-hover  linear both;
+  animation-timeline: scroll(root block);
+  animation-range: 0 100px;
 }
+
+@keyframes scroll-animation-login-hover {
+  to {
+    color: #000;
+    border: 2px solid #ffc702;
+  }
+}
+
 
 .a-linear__nav {
   position: relative;
