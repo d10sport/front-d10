@@ -12,6 +12,7 @@ import { Suspense } from 'react';
 import './home.css';
 
 export default function Home() {
+
   return (
     <>
       {/* <!-- Header Section --> */}
@@ -28,10 +29,10 @@ export default function Home() {
         </div>
 
         <div className="container__home">
-          <h1 className="title__home txt-big__home">D10</h1>
-          <h1 className="title__home text__color__white txt-small__home">Viste</h1>
-          <h1 className="title__home text__color__white txt-small__home">tu pasión,</h1>
-          <h1 className="title__home text__color__white txt-small__home">entrena tu talento</h1>
+          <h1 className="title__home">D10</h1>
+          <h1 className="title__home slogan text__color__white">Viste</h1>
+          <h1 className="title__home slogan text__color__white">tu pasión,</h1>
+          <h1 className="title__home slogan text__color__white">entrena tu talento</h1>
         </div>
       </section>
 
