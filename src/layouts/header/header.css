@@ -15,12 +15,12 @@
 
   animation: scroll-animation linear both;
   animation-timeline: scroll(root block);
-  animation-range: 0 100px;
+  animation-range: 0 292px;
 }
 
 @keyframes scroll-animation {
   to {
-    background-color: #000;
+    background: url(../../assets/img/fondo_home_d10_academy.png), #000;
   }
 }
 
@@ -83,7 +83,7 @@
 .a-linear__nav {
   position: relative;
   text-decoration: none;
-  color: #000;
+  color: #ffc702;
   font-weight: 800;
 
   animation: scroll-animation-a linear both;
@@ -103,8 +103,8 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 1px;
-  background: #000;
+  height: 2px;
+  background: #ffc702;
   font-weight: 800;
   transform: scaleX(0);
   transform-origin: right center;
@@ -120,7 +120,6 @@
     background: #fff;
   }
 }
-
 
 .a-linear__nav:hover::after {
   transform: scaleX(1);
