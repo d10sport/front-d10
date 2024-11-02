@@ -32,4 +32,4 @@ export default function ModelBalonGlass(props) {
   )
 }
 
-useGLTF.preload('/balonGlass.gltf')
+// useGLTF.preload('/balonGlass.gltf')
