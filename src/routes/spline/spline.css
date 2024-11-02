@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 110vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,11 +20,8 @@
 
 .div_title_logo {
   position: fixed;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  top: 53%;
-  left: 50%;
+  top: calc(55% - 128px);
+  left: calc(53% - 128px);
   font-size: 128px;
   color: white;
   font-weight: bold;
@@ -41,13 +38,13 @@
   display: flex;
   height: 100%;
   position: fixed;
-  width: 30%;
   bottom: 0;
-  top: 40px;
+  top: 10px;
   left: 0;
   z-index: 15;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .title {
@@ -75,4 +72,38 @@
 
 .section_spline {
   background-image: url('../../assets/img/fondo_home_d10_academy.png');
+}
+
+
+/* Animación de entrada suave */
+.fade-in {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: fadeIn 1.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animación de desvanecimiento */
+.fade-out {
+  opacity: 1;
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Ajustes para el logo y el título */
+.div_img,
+.div_title_logo {
+  transition: opacity 1s ease, transform 1s ease;
 }
