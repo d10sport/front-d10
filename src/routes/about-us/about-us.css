@@ -1,11 +1,11 @@
-.about {
+.aboutus {
   display: flex;
   width: 100%;
   height: 100%;
   flex-direction: column;
 }
 
-.cntr-txt__about {
+.cntr-txt__aboutus {
   display: flex;
   width: 100%;
   height: 24rem;
@@ -16,22 +16,22 @@
   background-color: black;
 }
 
-.title-1__about {
+.title-1__aboutus {
   color: #ffc700;
   font-size: 100px;
 }
 
-.title-2__about {
+.title-2__aboutus {
   color: white;
   font-size: 64px;
 }
 
-.title-3__about {
+.title-3__aboutus {
   color: #ffc700;
   font-size: 48px;
 }
 
-.text__about {
+.text__aboutus {
   color: white;
   font-size: 24px;
 }
@@ -40,7 +40,7 @@
   padding: 0px 280px 20px 280px;
 }
 
-.cntr-central__about {
+.cntr-central__aboutus {
   display: flex;
   width: 100%;
   height: 48rem;
@@ -49,7 +49,7 @@
   background-image: url(../../assets/img/fondo_about_central.png);
 }
 
-.central-cntr__about {
+.central-cntr__aboutus {
   display: flex;
   width: 40%;
   height: 80%;
@@ -59,7 +59,7 @@
   flex-direction: column;
 }
 
-.cntr-img__about {
+.cntr-img__aboutus {
   display: flex;
   width: 100%;
   height: 40rem;
@@ -68,15 +68,15 @@
   text-align: start;
 }
 
-.img-bg-left__about {
+.img-bg-left__aboutus {
   background-image: url(../../assets/img/fondo_about_side_left.png);
 }
 
-.img-bg-right__about {
+.img-bg-right__aboutus {
   background-image: url(../../assets/img/fondo_about_side_right.png);
 }
 
-.cntr-side__about {
+.cntr-side__aboutus {
   display: flex;
   width: 50%;
   height: 100%;
@@ -85,7 +85,7 @@
   padding: 0px 100px;
 }
 
-.cntr-empty__about {
+.cntr-empty__aboutus {
   display: flex;
   width: 50%;
   height: 100%;
@@ -94,7 +94,7 @@
   padding: 0px 100px;
 }
 
-.sponsors__about {
+.sponsors__aboutus {
   display: flex;
   width: 100%;
   height: 12rem;
@@ -103,6 +103,6 @@
   background-color: black;
 }
 
-.img__about {
+.img__aboutus {
   width: 8%;
 }

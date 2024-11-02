@@ -7,10 +7,10 @@ export default function AboutUs() {
   return (
     <>
       <Header/>
-      <section className="about">
-        <div className="cntr-txt__about">
-          <h1 className="title-1__about">Conócenos</h1>
-          <p className="text__about padding-cntr-txt__space">
+      <section className="aboutus">
+        <div className="cntr-txt__aboutus">
+          <h1 className="title-1__aboutus">Conócenos</h1>
+          <p className="text__aboutus padding-cntr-txt__space">
             En D10 vivimos y respiramos fútbol. Somos una organización
             comprometida con el desarrollo de talentos en el fútbol, desde los
             primeros pasos hasta alcanzar su máximo potencial. Donde puedan forjar
@@ -19,15 +19,15 @@ export default function AboutUs() {
           </p>
         </div>
 
-        <div className="cntr-central__about">
-          <div className="central-cntr__about">
-            <h2 className="title-2__about">
+        <div className="cntr-central__aboutus">
+          <div className="central-cntr__aboutus">
+            <h2 className="title-2__aboutus">
               Nuestro Fundador
               <br />
               David Urrego
             </h2>
-            <h3 className="title-3__about">Empresario</h3>
-            <p className="text__about">
+            <h3 className="title-3__aboutus">Empresario</h3>
+            <p className="text__aboutus">
               David Urrego, fundador de D10, es un joven de 32 años con una pasión
               por el fútbol y el desarrollo juvenil. En su experiencia como
               Futbolista y hoy Orientador de jugadores, ha guiado chicos
@@ -39,9 +39,9 @@ export default function AboutUs() {
           </div>
         </div>
 
-        <div className="cntr-txt__about">
-          <h3 className="title-3__about">Objetivos:</h3>
-          <p className="text__about padding-cntr-txt__space">
+        <div className="cntr-txt__aboutus">
+          <h3 className="title-3__aboutus">Objetivos:</h3>
+          <p className="text__aboutus padding-cntr-txt__space">
             Nuestro principal objetivo es entrar fuerte en el mercado deportivo
             vistiendo como mínimo un equipo en cada ciudad de Colombia,
             inicialmente tenemos como primera meta realizar 10 convenios los
@@ -55,11 +55,11 @@ export default function AboutUs() {
           </p>
         </div>
 
-        <div className="cntr-img__about img-bg-right__about">
-          <div className="cntr-empty__about"></div>
-          <div className="cntr-side__about">
-            <h3 className="title-3__about">Misión:</h3>
-            <p className="text__about">
+        <div className="cntr-img__aboutus img-bg-right__aboutus">
+          <div className="cntr-empty__aboutus"></div>
+          <div className="cntr-side__aboutus">
+            <h3 className="title-3__aboutus">Misión:</h3>
+            <p className="text__aboutus">
               Nuestra misión en D10 es inspirar y potenciar el rendimiento de
               atletas y entusiastas del deporte a través de prendas de alta
               calidad que fusionan diseño innovador, funcionalidad excepcional y
@@ -77,18 +77,18 @@ export default function AboutUs() {
           </div>
         </div>
 
-        <div className="sponsors__about">
-          <img src={logoTeams} alt="Image Sponsor" className="img__about" />
-          <img src={logoTeams} alt="Image Sponsor" className="img__about" />
-          <img src={logoTeams} alt="Image Sponsor" className="img__about" />
-          <img src={logoTeams} alt="Image Sponsor" className="img__about" />
-          <img src={logoTeams} alt="Image Sponsor" className="img__about" />
+        <div className="sponsors__aboutus">
+          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
+          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
+          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
+          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
+          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
         </div>
 
-        <div className="cntr-img__about img-bg-left__about">
-          <div className="cntr-side__about">
-            <h3 className="title-3__about">Vision:</h3>
-            <p className="text__about">
+        <div className="cntr-img__aboutus img-bg-left__aboutus">
+          <div className="cntr-side__aboutus">
+            <h3 className="title-3__aboutus">Vision:</h3>
+            <p className="text__aboutus">
               D10 tiene como visión, por medio de una marca de ropa deportiva,
               tener un proyecto social auto sostenible que llegará a todos los
               rincones de Colombia que se respire fútbol, donde todas las escuelas
@@ -109,7 +109,7 @@ export default function AboutUs() {
               prendas deportivas de vanguardia.
             </p>
           </div>
-          <div className="cntr-empty__about"></div>
+          <div className="cntr-empty__aboutus"></div>
         </div>
       </section>
 
