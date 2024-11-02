@@ -3,6 +3,7 @@ import icon1 from '../../assets/icons/icon1.png';
 import icon2 from '../../assets/icons/icon2.png';
 import icon3 from '../../assets/icons/icon3.png';
 import icon4 from '../../assets/icons/icon4.png';
+import wpp from '../../assets/icons/wppLogo.png';
 import { Link } from 'react-router-dom';
 
 
@@ -40,11 +41,18 @@ function Icon4() {
   )
 }
 
+function Wpp() {
+  return (
+    <img src={wpp} alt="WhatsApp Logo" className='img__wpp'/>
+  )
+}
+
 
 export {
   LogoHeader,
   Icon1,
   Icon2,
   Icon3,
-  Icon4
+  Icon4,
+  Wpp
 }
