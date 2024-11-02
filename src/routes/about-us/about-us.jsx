@@ -7,7 +7,6 @@ export default function AboutUs() {
   return (
     <>
       <Header/>
-      
       <section className="about">
         <div className="cntr-txt__about">
           <h1 className="title-1__about">Conócenos</h1>
