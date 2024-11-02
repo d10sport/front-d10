@@ -24,4 +24,4 @@ export default function ModelBalon3d(props) {
   )
 }
 
-useGLTF.preload('/balon3d.gltf')
+// useGLTF.preload('/balon3d.gltf')

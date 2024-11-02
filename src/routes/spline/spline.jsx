@@ -2,7 +2,6 @@ import ModelBalonGlass from '../../utils/model3D/BalonGlass.jsx';
 import { Environment, OrbitControls } from '@react-three/drei';
 import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
 import logo from '../../assets/img/logo.jpg'
-import Spline from '@splinetool/react-spline';
 import { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
@@ -20,13 +19,16 @@ export default function SplineModel() {
       setTimeout(() => {
         setShowModel(0);
         setMoveTitle(true);
-      }, 2500),
+      }, 3000),
       setTimeout(() => {
         setIsFinished(true);
+      }, 3500),
+      setTimeout(() => {
         document.body.classList.remove('overflow-hidden');
         document.getElementById('nav_header').classList.remove('hidden');
+        document.querySelector('.wpp').classList.add('remove');
         window.scrollTo(0, 0);
-      }, 4500),
+      }, 3500),
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -46,18 +48,9 @@ export default function SplineModel() {
         </>
       )}
 
-      {/* Balon Particles Model */}
-      {!isFinished && showModel === 0 && (
-        <div className="full-screen active">
-          <div className="w-full h-[120%]">
-            <Spline onSplineMouseUp={false} style={{ clipPath: 'polygon(0 0, 100% 0, 100% 90%, 0 90%)' }} scene="https://prod.spline.design/t5PufU61ncZuOixv/scene.splinecode" />
-          </div>
-        </div>
-      )}
-
       {/* Balon Glass Model */}
       {!isFinished && showModel === 1 && (
-        <div className="full-screen active">
+        <div id='model_glass' className="full-screen active">
           <Canvas className="w-full h-full canvas">
             <ambientLight />
             <OrbitControls enableZoom={false} autoRotate={false} enableRotate={false} />

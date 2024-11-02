@@ -21,7 +21,7 @@ export default function Home() {
       {/* Frames iniciales */}
       <SplineModel />
 
-      <div className="wpp">
+      <div className="wpp hidden">
         <a href="https://wa.me/Numero" target='_blank'>
           <Wpp />
         </a>
