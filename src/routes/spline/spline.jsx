@@ -1,7 +1,7 @@
 import ModelBalonGlass from '../../utils/model3D/BalonGlass.jsx';
 import { Environment, OrbitControls } from '@react-three/drei';
 import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
-import logo from '../../assets/img/logo.jpg'
+import logo from '../../assets/img/logo.jpg';
 import { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
@@ -22,13 +22,13 @@ export default function SplineModel() {
       }, 3000),
       setTimeout(() => {
         setIsFinished(true);
-      }, 3500),
+      }, 4500),
       setTimeout(() => {
         document.body.classList.remove('overflow-hidden');
         document.getElementById('nav_header').classList.remove('hidden');
         document.querySelector('.wpp').classList.add('remove');
         window.scrollTo(0, 0);
-      }, 3500),
+      }, 4800),
     ];
 
     return () => timers.forEach(clearTimeout);

@@ -1,16 +1,15 @@
-import Header from '../../layouts/header/header'
-import './about-us.css'
-
+import HeaderPage from '../../layouts/header_pages/header_page'
 import logoTeams from '../../assets/icons/logo_teams.png'
+import './about-us.css'
 
 export default function AboutUs() {
   return (
     <>
-      <Header/>
+      <HeaderPage/>
       <section className="aboutus">
         <div className="cntr-txt__aboutus">
           <h1 className="title-1__aboutus">Conócenos</h1>
-          <p className="text__aboutus padding-cntr-txt__space">
+          <p className="text__aboutus padding-cntr-txt__space text-lg ">
             En D10 vivimos y respiramos fútbol. Somos una organización
             comprometida con el desarrollo de talentos en el fútbol, desde los
             primeros pasos hasta alcanzar su máximo potencial. Donde puedan forjar
