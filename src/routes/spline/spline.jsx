@@ -28,21 +28,22 @@ export default function SplineModel() {
         document.getElementById('nav_header').classList.remove('hidden');
         document.querySelector('.wpp').classList.remove('hidden');
         window.scrollTo(0, 0);
-      }, 4500),
+      }, 4000),
     ];
 
     return () => timers.forEach(clearTimeout);
   }, []);
 
   return (
-    <section className={`h-screen w-full ${isFinished ? 'hidden' : ''}`}>
+    // <section className={`h-screen w-full ${isFinished ? 'hidden' : ''}`}>
+    <section className={`h-screen w-full select-none ${isFinished ? 'hidden fade-out' : ''}`}>
       {/* Título en el centro */}
       {!moveTitle && (
         <>
-          <div className='div_img'>
+          <div className='div_img fade-in'>
             <img src={logo} alt="logo D10" />
           </div>
-          <div className='div_title_logo'>
+          <div className='div_title_logo fade-in'>
             <h1 className='title'>D10</h1>
           </div>
         </>
@@ -50,8 +51,8 @@ export default function SplineModel() {
 
       {/* Balon Glass Model */}
       {!isFinished && showModel === 1 && (
-        <div id='model_glass' className="full-screen active">
-          <Canvas className="w-full h-full canvas">
+        <div id='model_glass' className="full-screen active animate-jump-in">
+          <Canvas className="w-full h-[105%;] canvas">
             <ambientLight />
             <OrbitControls enableZoom={false} autoRotate={false} enableRotate={false} />
             <Suspense fallback={null}>
