@@ -7,10 +7,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  background-image: url('../../assets/img/fondo_home_d10_academy.png');
   opacity: 0;
   transition: opacity 1s ease;
-  /* Cambia la duración de 1s para ajustar la velocidad de la transición */
   z-index: 5;
 }
 
@@ -39,12 +38,16 @@
 }
 
 .div_img {
+  display: flex;
   height: 100%;
   position: fixed;
   width: 30%;
-  top: 23%;
+  bottom: 0;
+  top: 40px;
   left: 0;
   z-index: 15;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
@@ -68,4 +71,8 @@
 
 .canvas {
   opacity: 0.5;
+}
+
+.section_spline {
+  background-image: url('../../assets/img/fondo_home_d10_academy.png');
 }

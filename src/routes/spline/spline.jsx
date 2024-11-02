@@ -1,7 +1,7 @@
 import ModelBalonGlass from '../../utils/model3D/BalonGlass.jsx';
 import { Environment, OrbitControls } from '@react-three/drei';
 import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
-import logo from '../../assets/img/logo.jpg';
+import logo from '../../assets/img/logo_sin_fondo.png';
 import { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
@@ -19,23 +19,23 @@ export default function SplineModel() {
       setTimeout(() => {
         setShowModel(0);
         setMoveTitle(true);
-      }, 3000),
+      }, 3500),
       setTimeout(() => {
         setIsFinished(true);
-      }, 4500),
+      }, 4000),
       setTimeout(() => {
         document.body.classList.remove('overflow-hidden');
         document.getElementById('nav_header').classList.remove('hidden');
         document.querySelector('.wpp').classList.remove('hidden');
         window.scrollTo(0, 0);
-      }, 4800),
+      }, 4500),
     ];
 
     return () => timers.forEach(clearTimeout);
   }, []);
 
   return (
-    <section className={`bg-[#121316] h-screen w-full ${isFinished ? 'hidden' : ''}`}>
+    <section className={`h-screen w-full ${isFinished ? 'hidden' : ''}`}>
       {/* Título en el centro */}
       {!moveTitle && (
         <>
