@@ -26,7 +26,7 @@ export default function SplineModel() {
       setTimeout(() => {
         document.body.classList.remove('overflow-hidden');
         document.getElementById('nav_header').classList.remove('hidden');
-        document.querySelector('.wpp').classList.add('remove');
+        document.querySelector('.wpp').classList.remove('hidden');
         window.scrollTo(0, 0);
       }, 4800),
     ];
