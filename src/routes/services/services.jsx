@@ -1,7 +1,10 @@
-export default function Services() {
+import HeaderPage from '../../layouts/header_pages/header_page'
+import './services.css'
 
+export default function Services() {
   return (
     <div className="services">
+      <HeaderPage />
       <h1>Services</h1>
       <p>Here are some of the services we offer:</p>
       <ul>

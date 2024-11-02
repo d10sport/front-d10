@@ -67,7 +67,7 @@
   border: 2px solid #000;
   transition: 0.4s;
 
-  animation: scroll-animation-login-hover  linear both;
+  animation: scroll-animation-login-hover linear both;
   animation-timeline: scroll(root block);
   animation-range: 0 100px;
 }
@@ -76,8 +76,7 @@
   to {
     color: #000;
     border: 2px solid #ffc702;
-  background-color: #ffc702;
-
+    background-color: #ffc702;
   }
 }
 
