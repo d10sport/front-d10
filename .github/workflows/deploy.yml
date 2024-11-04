@@ -24,11 +24,17 @@ jobs:
             # Navega al directorio del proyecto
             cd /var/www/frontend
 
-            # Elimina todo el contenido del directorio
-            rm -rf *
+            # Elimina todos los archivos, incluyendo ocultos
+            rm -rf /var/www/frontend/* /var/www/frontend/.*
 
             # Clona el repositorio
             git clone https://github.com/d10sport/front-d10-sport.git .
+
+            # Verifica que el clon haya sido exitoso
+            if [ ! -f package.json ]; then
+              echo "Error: El clon del repositorio falló o no contiene package.json"
+              exit 1
+            fi
 
             # Instala las dependencias y construye el proyecto
             npm install
