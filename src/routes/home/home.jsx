@@ -98,7 +98,7 @@ export default function Home() {
             A chic and fully-furnished 2-bedroom apartment with <br />
             panoramic city views... Read More
           </p>
-          <a href="#" className="link__news">Ver más</a>
+          <Link to={'/collections'} className="link__news">Ver más</Link>
         </div>
       </section>
 
