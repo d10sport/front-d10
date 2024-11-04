@@ -1,6 +1,6 @@
 import ModelBalonGlass from '../../utils/model3D/BalonGlass.jsx';
 import { Environment, OrbitControls } from '@react-three/drei';
-import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
+// import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
 import logo from '../../assets/img/logo_sin_fondo.png';
 import { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
@@ -8,35 +8,31 @@ import { Suspense } from 'react';
 import './spline.css';
 
 export default function SplineModel() {
-  const [showModel, setShowModel] = useState(1);
-  const [moveTitle, setMoveTitle] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const [moveTitle, setMoveTitle] = useState(false);
 
   useEffect(() => {
     document.body.classList.add('overflow-hidden');
     document.getElementById('nav_header').classList.add('hidden');
-    const timers = [
-      setTimeout(() => {
-        setShowModel(0);
-        setMoveTitle(true);
-      }, 3500),
-      setTimeout(() => {
-        setIsFinished(true);
-      }, 4000),
-      setTimeout(() => {
-        document.body.classList.remove('overflow-hidden');
-        document.getElementById('nav_header').classList.remove('hidden');
-        document.querySelector('.wpp').classList.remove('hidden');
-        window.scrollTo(0, 0);
-      }, 4000),
-    ];
 
-    return () => timers.forEach(clearTimeout);
+    setTimeout(() => {
+      setMoveTitle(true);
+    }, 1800);
+
+    setTimeout(() => {
+      document.body.classList.remove('overflow-hidden');
+      document.getElementById('nav_header').classList.remove('hidden');
+      document.querySelector('.wpp').classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }, 1900);
+
+    setTimeout(() => {
+      setIsFinished(true);
+    }, 2000);
   }, []);
 
   return (
-    // <section className={`h-screen w-full ${isFinished ? 'hidden' : ''}`}>
-    <section className={`h-screen w-full select-none ${isFinished ? 'hidden fade-out' : ''}`}>
+    <section id='section_spline' className={`h-screen w-full select-none ${isFinished ? 'hidden' : ''}`}>
       {/* Título en el centro */}
       {!moveTitle && (
         <>
@@ -50,7 +46,7 @@ export default function SplineModel() {
       )}
 
       {/* Balon Glass Model */}
-      {!isFinished && showModel === 1 && (
+      {!isFinished && (
         <div id='model_glass' className="full-screen active animate-jump-in">
           <Canvas className="w-full h-[105%;] canvas">
             <ambientLight />
@@ -64,7 +60,7 @@ export default function SplineModel() {
       )}
 
       {/* Balon 3D Model */}
-      {!isFinished && showModel === 6 && (
+      {/* {!isFinished && (
         <div className="full-screen active">
           <Canvas className="w-full h-full">
             <ambientLight />
@@ -75,7 +71,7 @@ export default function SplineModel() {
             <Environment preset="sunset" />
           </Canvas>
         </div>
-      )}
+      )} */}
     </section>
   );
 }
