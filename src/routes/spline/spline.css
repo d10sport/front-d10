@@ -107,3 +107,7 @@
 .div_title_logo {
   transition: opacity 1s ease, transform 1s ease;
 }
+
+.select-none {
+  transition: opacity 1s ease, transform 0.5s ease;
+}
