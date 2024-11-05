@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { LogoHeader } from "../../utils/icons/icons";
-import './header_page.css';
+import './header-page.css';
 
 export default function HeaderPage() {
   return (
