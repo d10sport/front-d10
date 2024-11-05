@@ -1,9 +1,9 @@
-import logo from '../../assets/icons/logo.png';
-import icon1 from '../../assets/icons/icon1.png';
-import icon2 from '../../assets/icons/icon2.png';
-import icon3 from '../../assets/icons/icon3.png';
-import icon4 from '../../assets/icons/icon4.png';
-import wpp from '../../assets/icons/wppLogo.png';
+import logo from '../../assets/icons/logo_company.png';
+import icon1 from '../../assets/icons/icon_fb.png';
+import icon2 from '../../assets/icons/icon_in.png';
+import icon3 from '../../assets/icons/icon_x.png';
+import icon4 from '../../assets/icons/icon_yt.png';
+import wpp from '../../assets/icons/logo_wpp.png';
 import { Link } from 'react-router-dom';
 
 

@@ -1,5 +1,5 @@
-import HeaderPage from '../../layouts/header-pages/header-page'
-import logoTeams from '../../assets/icons/logo_teams.png'
+import HeaderPage from '../../layouts/header_pages/header_page'
+import logoTeams from '../../assets/icons/logo_teams_general.png'
 import './about-us.css'
 
 export default function AboutUs() {
@@ -8,7 +8,7 @@ export default function AboutUs() {
       <HeaderPage/>
       <section className="aboutus">
         <div className="cntr-txt__aboutus">
-          <h1 className="title-1__aboutus">Conócenos</h1>
+          <h1 className="title-1__aboutus text-8xl">Conócenos</h1>
           <p className="text__aboutus padding-cntr-txt__space text-lg ">
             En D10 vivimos y respiramos fútbol. Somos una organización
             comprometida con el desarrollo de talentos en el fútbol, desde los
@@ -20,12 +20,12 @@ export default function AboutUs() {
 
         <div className="cntr-central__aboutus">
           <div className="central-cntr__aboutus">
-            <h2 className="title-2__aboutus">
+            <h2 className="title-2__aboutus text-6xl">
               Nuestro Fundador
               <br />
               David Urrego
             </h2>
-            <h3 className="title-3__aboutus">Empresario</h3>
+            <h3 className="title-3__aboutus text-5xl">Empresario</h3>
             <p className="text__aboutus">
               David Urrego, fundador de D10, es un joven de 32 años con una pasión
               por el fútbol y el desarrollo juvenil. En su experiencia como
