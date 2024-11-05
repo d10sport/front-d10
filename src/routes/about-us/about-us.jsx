@@ -1,11 +1,11 @@
-import HeaderPage from '../../layouts/header_pages/header_page'
-import logoTeams from '../../assets/icons/logo_teams.png'
+import HeaderPage from '../../layouts/header-pages/header-page.jsx'
+import logoTeams from '../../assets/icons/logo_teams_general.png'
 import './about-us.css'
 
 export default function AboutUs() {
   return (
     <>
-      <HeaderPage/>
+      <HeaderPage />
       <section className="aboutus">
         <div className="cntr-txt__aboutus">
           <h1 className="title-1__aboutus text-8xl">Conócenos</h1>
