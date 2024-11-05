@@ -1,4 +1,4 @@
-import HeaderPage from '../../layouts/header_pages/header_page'
+import HeaderPage from '../../layouts/header-pages/header-page'
 import logoTeams from '../../assets/icons/logo_teams.png'
 import './about-us.css'
 
