@@ -35,10 +35,10 @@ export default function Home() {
         </div>
 
         <div className="container__home">
-          <h1 className="title__home">D10</h1>
-          <h1 className="title__home slogan text__color__white">Viste</h1>
-          <h1 className="title__home slogan text__color__white">tu pasión,</h1>
-          <h1 className="title__home slogan text__color__white">entrena tu talento</h1>
+          <h1 className="title__home text-8xl">D10</h1>
+          <h1 className="title__home text__color__white text-6xl">Viste</h1>
+          <h1 className="title__home text__color__white text-6xl">tu pasión,</h1>
+          <h1 className="title__home text__color__white text-6xl">entrena tu talento</h1>
         </div>
       </section>
 
@@ -53,7 +53,7 @@ export default function Home() {
             hasta alcanzar su máximo potencial. Donde puedan forjar no solo sus
             habilidades en el campo, sino también su carácter y amor por el deporte.
           </p>
-          <a href="#" className="btn__about">SABER MÁS</a>
+          <a href="#" className="btn__about text-2xl">SABER MÁS</a>
         </div>
       </section>
 
@@ -66,11 +66,11 @@ export default function Home() {
       <section className="coleccion">
         <div className="container__coleccion small__space">
           <ul className="list__coleccion">
-            <li className="items__coleccion item--disable">Coleccion 20XX</li>
-            <li className="items__coleccion item--disable">Coleccion 20XX</li>
-            <li className="items__coleccion">Coleccion 20XX</li>
-            <li className="items__coleccion item--disable">Coleccion 20XX</li>
-            <li className="items__coleccion item--disable">Coleccion 20XX</li>
+            <li className="items__coleccion item--disable text-2xl">Coleccion 20XX</li>
+            <li className="items__coleccion item--disable text-2xl">Coleccion 20XX</li>
+            <li className="items__coleccion text-2xl">Coleccion 20XX</li>
+            <li className="items__coleccion item--disable text-2xl">Coleccion 20XX</li>
+            <li className="items__coleccion item--disable text-2xl">Coleccion 20XX</li>
           </ul>
         </div>
         <div className="container__coleccion mid__space">
@@ -92,13 +92,13 @@ export default function Home() {
       {/* News Section */}
       <section className="news">
         <div className="container__news">
-          <h1 className="title__news">Noticia</h1>
-          <h2 className="subtitle__news">Campeones año 2024</h2>
-          <p className="text__news">
+          <h1 className="title__news text-2xl">Noticia</h1>
+          <h2 className="subtitle__news text-2xl">Campeones año 2024</h2>
+          <p className="text__news text-lg">
             A chic and fully-furnished 2-bedroom apartment with <br />
             panoramic city views... Read More
           </p>
-          <Link to={'/collections'} className="link__news">Ver más</Link>
+          <Link to={'/collections'} className="link__news text-xl">Ver más</Link>
         </div>
       </section>
 
@@ -144,7 +144,7 @@ export default function Home() {
 
       {/* Sponsors Section */}
       <section className="sponsors">
-        <h1 className="title__sponsors">Partners de Éxito</h1>
+        <h1 className="title__sponsors text-4xl">Partners de Éxito</h1>
         <div className="container__sponsors">
           <Team1 />
           <Team2 />
@@ -158,7 +158,7 @@ export default function Home() {
       <footer className="footer__info">
         <div className="contact__footer">
           <div className="container-contact__footer">
-            <h1 className="title__footer">D10</h1>
+            <h1 className="title__footer text-4xl">D10</h1>
             <input
               type="text"
               placeholder="Enter Your Email"

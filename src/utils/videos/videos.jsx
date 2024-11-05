@@ -1,4 +1,4 @@
-import video from '../../assets/video/ford-commercial.mp4';
+import video from '../../assets/video/ford_commercial.mp4';
 
 function VideoHome() {
   return (

@@ -17,7 +17,7 @@ export default function SingIn() {
             <label className="label__login">Contraseña</label>
             <input type="text" placeholder="Password" className="input__login" />
             <a href="" className="link__login">Forgot Password?</a>
-            <input type="button" value="Iniciar Sesión" className="btn__login" />
+            <input type="button" value="Iniciar Sesión" className="btn__login text-base" />
           </form>
           <p className="text__login">
           ¿No tienes una cuenta? <a href="#" className="link-2__login">Regístrate ahora</a>

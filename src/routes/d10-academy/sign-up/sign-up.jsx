@@ -20,7 +20,7 @@ export default function SignUp() {
             placeholder="Confirm Password"
             className="input__login"
           />
-            <input type="button" value="Registrarse" className="btn__login" />
+            <input type="button" value="Registrarse" className="btn__login text-base" />
           </form>
           <p className="text__login">
           ¿Ya tienes una cuenta? <a href="#" className="link__login">Iniciar sesión</a>
