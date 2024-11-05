@@ -135,7 +135,7 @@ export default function Home() {
             </div>
 
             {/* Ingresa ahora */}
-            <div className='relative top-2/3 mt-40 text-center z-40'>
+            <div className='relative select-none top-2/3 mt-40 text-center z-40'>
               <Link to="/services" className='text-[#FFC702] underline text-4xl font-bold'>Ingresa ahora</Link>
             </div>
           </div>

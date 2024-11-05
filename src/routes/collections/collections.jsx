@@ -1,4 +1,4 @@
-import HeaderPage from '../../layouts/header_pages/header_page'
+import HeaderPage from '../../layouts/header-pages/header-page'
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from 'react'
 import './collections.css'
