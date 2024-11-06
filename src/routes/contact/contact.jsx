@@ -1,4 +1,7 @@
 import HeaderPage from '../../layouts/header-pages/header-page'
+import icon_fb_color from '../../assets/icons/icon_fb_color.png';
+import icon_ig_color from '../../assets/icons/icon_ig_color.png';
+import icon_wpp_color from '../../assets/icons/icon_wpp_color.png';
 import './contact.css'
 
 export default function Contact() {
@@ -46,16 +49,20 @@ export default function Contact() {
             <p className="text__contact text-base">Escríbenos por otros medios</p>
             <div className="redes__contact">
               <img
-                src="wppicon.png"
+                src={icon_wpp_color}
                 alt="WhatsApp"
                 className="img-redes__contact"
               />
               <img
-                src="igicon.png"
+                src={icon_ig_color}
                 alt="Instagram"
                 className="img-redes__contact"
               />
-              <img src="fbicon.png" alt="Facebook" className="img-redes__contact" />
+              <img 
+                src={icon_fb_color} 
+                alt="Facebook" 
+                className="img-redes__contact" 
+              />
             </div>
           </div>
         </div>
