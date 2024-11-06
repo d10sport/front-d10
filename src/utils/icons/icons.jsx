@@ -4,6 +4,9 @@ import icon2 from '../../assets/icons/icon_in.png';
 import icon3 from '../../assets/icons/icon_x.png';
 import icon4 from '../../assets/icons/icon_yt.png';
 import wpp from '../../assets/icons/logo_wpp.png';
+import icon_fb_color from '../../assets/icons/icon_fb_color.png';
+import icon_ig_color from '../../assets/icons/icon_ig_color.png';
+import icon_wpp_color from '../../assets/icons/icon_wpp_color.png';
 import { Link } from 'react-router-dom';
 
 
@@ -47,6 +50,24 @@ function Wpp() {
   )
 }
 
+function IconFbColor() {
+  return (
+    <img src={icon_fb_color} alt="WhatsApp Logo" className='img__wpp'/>
+  )
+}
+
+function IconIgColor() {
+  return (
+    <img src={icon_ig_color} alt="WhatsApp Logo" className='img__wpp'/>
+  )
+}
+
+function IconWppColor() {
+  return (
+    <img src={icon_wpp_color} alt="WhatsApp Logo" className='img__wpp'/>
+  )
+}
+
 
 export {
   LogoHeader,
@@ -54,5 +75,8 @@ export {
   Icon2,
   Icon3,
   Icon4,
-  Wpp
+  Wpp,
+  IconFbColor,
+  IconIgColor,
+  IconWppColor
 }

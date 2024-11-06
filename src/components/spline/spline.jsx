@@ -17,18 +17,18 @@ export default function SplineModel() {
 
     setTimeout(() => {
       setMoveTitle(true);
-    }, 1800);
+    }, 1000);
 
     setTimeout(() => {
       document.body.classList.remove('overflow-hidden');
       document.getElementById('nav_header').classList.remove('hidden');
       document.querySelector('.wpp').classList.remove('hidden');
       window.scrollTo(0, 0);
-    }, 1900);
+    }, 2500);
 
     setTimeout(() => {
       setIsFinished(true);
-    }, 2000);
+    }, 2600);
   }, []);
 
   return (

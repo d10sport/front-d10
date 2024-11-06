@@ -1,11 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1, Team2, Team3, Team4, Team5, Item1, Item2, Item3, Item4, Item5 } from '../../utils/imgs/imgs.jsx'
+import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1, Team2, Team3, Team4, Team5 } from '../../utils/imgs/imgs.jsx'
 import { Icon1, Icon2, Icon3, Icon4, Wpp } from '../../utils/icons/icons.jsx'
 import { Environment, OrbitControls } from '@react-three/drei';
 import { VideoHome } from "../../utils/videos/videos.jsx";
 import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
 import Header from "../../layouts/header/header.jsx";
-import SplineModel from '../spline/spline.jsx';
+import SplineModel from '../../components/spline/spline.jsx';
+import Carousel from "../../layouts/carousel/carousel.jsx";
 import { Canvas } from '@react-three/fiber';
 import { Link } from "react-router-dom";
 import { Suspense } from 'react';
@@ -63,31 +64,8 @@ export default function Home() {
       </section>
 
       {/* <!-- Collection Section --> */}
-      <section className="coleccion">
-        <div className="container__coleccion small__space">
-          <ul className="list__coleccion">
-            <li className="items__coleccion item--disable text-2xl">Coleccion 20XX</li>
-            <li className="items__coleccion item--disable text-2xl">Coleccion 20XX</li>
-            <li className="items__coleccion text-2xl">Coleccion 20XX</li>
-            <li className="items__coleccion item--disable text-2xl">Coleccion 20XX</li>
-            <li className="items__coleccion item--disable text-2xl">Coleccion 20XX</li>
-          </ul>
-        </div>
-        <div className="container__coleccion mid__space">
-          <Item1 />
-          <Item2 />
-          <Item3 />
-          <Item4 />
-          <Item5 />
-        </div>
-        <div className="container__coleccion small__space close__space">
-          <span className="selection__coleccion selection--disable"></span>
-          <span className="selection__coleccion selection--disable"></span>
-          <span className="selection__coleccion"></span>
-          <span className="selection__coleccion selection--disable"></span>
-          <span className="selection__coleccion selection--disable"></span>
-        </div>
-      </section>
+
+      <Carousel />
 
       {/* News Section */}
       <section className="news">
@@ -204,11 +182,13 @@ export default function Home() {
           <p>©2024 D10. All Rights Reserved.</p>
           <p>Terms & Conditions</p>
         </div>
-        <div className="redes__footer">
-          <Icon1 />
-          <Icon2 />
-          <Icon3 />
-          <Icon4 />
+        <div className="ctnr-redes__footer">
+          <div className="redes__footer">
+            <Icon1 />
+            <Icon2 />
+            <Icon3 />
+            <Icon4 />
+          </div>
         </div>
       </footer>
     </>
