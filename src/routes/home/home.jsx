@@ -6,7 +6,7 @@ import { VideoHome } from "../../utils/videos/videos.jsx";
 import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
 import Header from "../../layouts/header/header.jsx";
 import SplineModel from '../../components/spline/spline.jsx';
-import Carousel from "../../layouts/carousel/carousel.jsx";
+import Carousel from "../../components/carousel/carousel.jsx";
 import { Canvas } from '@react-three/fiber';
 import { Link } from "react-router-dom";
 import { Suspense } from 'react';
