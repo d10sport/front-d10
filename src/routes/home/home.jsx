@@ -1,11 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1, Team2, Team3, Team4, Team5, Item1, Item2, Item3, Item4, Item5 } from '../../utils/imgs/imgs.jsx'
+import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1, Team2, Team3, Team4, Team5 } from '../../utils/imgs/imgs.jsx'
 import { Icon1, Icon2, Icon3, Icon4, Wpp } from '../../utils/icons/icons.jsx'
 import { Environment, OrbitControls } from '@react-three/drei';
 import { VideoHome } from "../../utils/videos/videos.jsx";
 import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
 import Header from "../../layouts/header/header.jsx";
 import SplineModel from '../../components/spline/spline.jsx';
+import Carousel from "../../layouts/carousel/carousel.jsx";
 import { Canvas } from '@react-three/fiber';
 import { Link } from "react-router-dom";
 import { Suspense } from 'react';
@@ -35,10 +36,10 @@ export default function Home() {
         </div>
 
         <div className="container__home">
-          <h1 className="title__home">D10</h1>
-          <h1 className="title__home slogan text__color__white">Viste</h1>
-          <h1 className="title__home slogan text__color__white">tu pasión,</h1>
-          <h1 className="title__home slogan text__color__white">entrena tu talento</h1>
+          <h1 className="title__home text-8xl">D10</h1>
+          <h1 className="title__home text__color__white text-6xl">Viste</h1>
+          <h1 className="title__home text__color__white text-6xl">tu pasión,</h1>
+          <h1 className="title__home text__color__white text-6xl">entrena tu talento</h1>
         </div>
       </section>
 
@@ -53,7 +54,7 @@ export default function Home() {
             hasta alcanzar su máximo potencial. Donde puedan forjar no solo sus
             habilidades en el campo, sino también su carácter y amor por el deporte.
           </p>
-          <a href="#" className="btn__about">SABER MÁS</a>
+          <a href="#" className="btn__about text-2xl">SABER MÁS</a>
         </div>
       </section>
 
@@ -63,42 +64,19 @@ export default function Home() {
       </section>
 
       {/* <!-- Collection Section --> */}
-      <section className="coleccion">
-        <div className="container__coleccion small__space">
-          <ul className="list__coleccion">
-            <li className="items__coleccion item--disable">Coleccion 20XX</li>
-            <li className="items__coleccion item--disable">Coleccion 20XX</li>
-            <li className="items__coleccion">Coleccion 20XX</li>
-            <li className="items__coleccion item--disable">Coleccion 20XX</li>
-            <li className="items__coleccion item--disable">Coleccion 20XX</li>
-          </ul>
-        </div>
-        <div className="container__coleccion mid__space">
-          <Item1 />
-          <Item2 />
-          <Item3 />
-          <Item4 />
-          <Item5 />
-        </div>
-        <div className="container__coleccion small__space close__space">
-          <span className="selection__coleccion selection--disable"></span>
-          <span className="selection__coleccion selection--disable"></span>
-          <span className="selection__coleccion"></span>
-          <span className="selection__coleccion selection--disable"></span>
-          <span className="selection__coleccion selection--disable"></span>
-        </div>
-      </section>
+
+      <Carousel />
 
       {/* News Section */}
       <section className="news">
         <div className="container__news">
-          <h1 className="title__news">Noticia</h1>
-          <h2 className="subtitle__news">Campeones año 2024</h2>
-          <p className="text__news">
+          <h1 className="title__news text-2xl">Noticia</h1>
+          <h2 className="subtitle__news text-2xl">Campeones año 2024</h2>
+          <p className="text__news text-lg">
             A chic and fully-furnished 2-bedroom apartment with <br />
             panoramic city views... Read More
           </p>
-          <Link to={'/collections'} className="link__news">Ver más</Link>
+          <Link to={'/collections'} className="link__news text-xl">Ver más</Link>
         </div>
       </section>
 
@@ -144,7 +122,7 @@ export default function Home() {
 
       {/* Sponsors Section */}
       <section className="sponsors">
-        <h1 className="title__sponsors">Partners de Éxito</h1>
+        <h1 className="title__sponsors text-4xl">Partners de Éxito</h1>
         <div className="container__sponsors">
           <Team1 />
           <Team2 />
@@ -158,7 +136,7 @@ export default function Home() {
       <footer className="footer__info">
         <div className="contact__footer">
           <div className="container-contact__footer">
-            <h1 className="title__footer">D10</h1>
+            <h1 className="title__footer text-4xl">D10</h1>
             <input
               type="text"
               placeholder="Enter Your Email"
@@ -204,11 +182,13 @@ export default function Home() {
           <p>©2024 D10. All Rights Reserved.</p>
           <p>Terms & Conditions</p>
         </div>
-        <div className="redes__footer">
-          <Icon1 />
-          <Icon2 />
-          <Icon3 />
-          <Icon4 />
+        <div className="ctnr-redes__footer">
+          <div className="redes__footer">
+            <Icon1 />
+            <Icon2 />
+            <Icon3 />
+            <Icon4 />
+          </div>
         </div>
       </footer>
     </>
