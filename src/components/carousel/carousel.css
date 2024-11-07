@@ -16,6 +16,7 @@
   color: #ffc702;
   font-size: 1.5rem;
   border-bottom: 1px solid #ffc702;
+  cursor: pointer;
 }
 
 .subtitulo.active {
@@ -46,6 +47,7 @@
   object-fit: cover;
   z-index: -1;
   border-radius: 15px;
+  cursor: grab;
 }
 
 .carousel .indicators .indicator-item {

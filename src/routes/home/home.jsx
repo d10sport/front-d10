@@ -45,8 +45,8 @@ export default function Home() {
         <div className="container__home">
           <h1 className="title__home text-8xl">D10</h1>
           <h1 className="title__home text__color__white text-6xl text-white">Viste</h1>
-          <h1 className="title__home text__color__white text-6xl">tu pasión,</h1>
-          <h1 className="title__home text__color__white text-6xl">entrena tu talento</h1>
+          <h1 className="title__home text__color__white text-6xl text-white">tu pasión,</h1>
+          <h1 className="title__home text__color__white text-6xl text-white">entrena tu talento</h1>
         </div>
       </section>
 
