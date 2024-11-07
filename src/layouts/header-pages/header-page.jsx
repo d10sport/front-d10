@@ -8,7 +8,7 @@ export default function HeaderPage() {
       <LogoHeader />
       <ul className="list__nav_page">
         <li className="items__nav">
-          <Link to={'/about-us'} className="a-linear__nav_page text-sm">
+          <Link to={'/about-us'} className="a-linear__nav_page text-sm text-[#fff]">
             Quienes somos
           </Link>
         </li>
@@ -23,7 +23,7 @@ export default function HeaderPage() {
           </Link>
         </li>
       </ul>
-      <button className="login__nav text-sm"><a target="_blank" href="https://academia.d10plus.com">D10+</a></button>
+      <button className="login__nav_page text-sm text-white hover:text-[#000] hover:bg-[#ffc702]"><a target="_blank" href="https://academia.d10plus.com">D10+</a></button>
     </nav>
 
   );
