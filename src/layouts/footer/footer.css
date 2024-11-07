@@ -1,0 +1,84 @@
+/* Footer 1*/
+
+.footer__info {
+  display: flex;
+  width: 100%;
+  height: 20rem;
+  background-color: #141414;
+  color: white;
+}
+
+.contact__footer {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-contact__footer {
+  width: 50%;
+  height: 50%;
+}
+
+.input__footer {
+  width: 250px;
+  height: 40px;
+  margin-top: 12px;
+  padding: 16px;
+  background-color: transparent;
+  border: 2px solid #262626;
+  border-radius: 12px;
+}
+
+/* Seccion Services */
+
+.services__footer {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.list__footer {
+  list-style: none;
+}
+
+.text-list__footer {
+  color: #999999;
+}
+
+/* Footer 2 */
+
+.footer__copyright {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  background-color: #191919;
+  color: white;
+}
+
+.copy__footer {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ctnr-redes__footer {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  /* padding: 0px 380px; */
+}
+
+.redes__footer {
+  display: flex;
+  width: 20%;
+  height: 30%;
+  justify-content: space-around;
+}
