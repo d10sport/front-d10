@@ -32,7 +32,7 @@ export default function SplineModel() {
   }, []);
 
   return (
-    <section id='section_spline' className={`h-screen w-full select-none ${isFinished ? 'hidden' : ''}`}>
+    <section id='section_spline' className={`h-screen w-full select-none relative z-50 ${isFinished ? 'hidden' : ''}`}>
       {/* Título en el centro */}
       {!moveTitle && (
         <>
