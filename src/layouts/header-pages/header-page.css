@@ -29,7 +29,6 @@
 .login__nav_page {
   font-weight: 800;
   border: 2px solid #fff;
-  color: #fff;
   width: 80px;
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -40,16 +39,13 @@
 .login__nav_page:hover {
   cursor: pointer;
   transition: 0.4s;
-  color: #000;
   border: 2px solid #ffc702;
-  background-color: #ffc702;
 }
 
 
 .a-linear__nav_page {
   position: relative;
   text-decoration: none;
-  color: #fff;
   font-weight: 800;
 }
 
