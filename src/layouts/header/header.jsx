@@ -23,7 +23,7 @@ export default function Header() {
           </Link>
         </li>
       </ul>
-      <button className="login__nav text-sm">D10+</button>
+      <button className="login__nav text-sm"><a target="_blank" href="https://academia.d10plus.com">D10+</a></button>
     </nav>
 
   );
