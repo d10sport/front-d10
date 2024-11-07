@@ -35,7 +35,7 @@ export default function Collections() {
   // }
 
   return (
-    <div className='bg-black'>
+    <>
       <HeaderPage />
       <div className='h-full w-full py-8 px-12'>
         <div className='w-full'>
@@ -148,6 +148,6 @@ export default function Collections() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
