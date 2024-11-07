@@ -7,7 +7,7 @@ export default function Footer() {
       <>
       {/* <!-- Footer Section --> */}
 
-        <footer className="footer__copyright">
+        <footer className="footer__copyright text-white bg-[#191919]">
             <div className="copy__footer">
                 <p>©2024 D10. All Rights Reserved.</p>
                 <p>Terms & Conditions</p>
@@ -22,7 +22,7 @@ export default function Footer() {
             </div>
         </footer>
 
-        <footer className="footer__info">
+        <footer className="footer__info text-white bg-[#141414]">
             <div className="contact__footer">
                 <div className="container-contact__footer">
                     <h1 className="title__footer text-4xl">D10</h1>
@@ -35,7 +35,7 @@ export default function Footer() {
             </div>
             <div className="services__footer">
                 <ul className="list__footer">
-                    <p className="text-list__footer">Home</p>
+                    <p className="text-list__footer text-[#999999]">Home</p>
                     <li className="item-list__footer">Hero Section</li>
                     <li className="item-list__footer">Features</li>
                     <li className="item-list__footer">Properties</li>
@@ -43,7 +43,7 @@ export default function Footer() {
                     <li className="item-list__footer">FAQ's</li>
                 </ul>
                 <ul className="list__footer">
-                    <p className="text-list__footer">About</p>
+                    <p className="text-list__footer text-[#999999]">About</p>
                     <li className="item-list__footer">Our Story</li>
                     <li className="item-list__footer">Our Works</li>
                     <li className="item-list__footer">How it Works</li>
@@ -51,7 +51,7 @@ export default function Footer() {
                     <li className="item-list__footer">Our Client</li>
                 </ul>
                 <ul className="list__footer">
-                    <p className="text-list__footer">Services</p>
+                    <p className="text-list__footer text-[#999999]">Services</p>
                     <li className="item-list__footer">Valuation Mastery</li>
                     <li className="item-list__footer">Strategic Marketing</li>
                     <li className="item-list__footer">Negotiation Wizardry</li>
@@ -59,7 +59,7 @@ export default function Footer() {
                     <li className="item-list__footer">Property Management</li>
                 </ul>
                 <ul className="list__footer">
-                    <p className="text-list__footer">Contact</p>
+                    <p className=" text-[#999999]">Contact</p>
                     <li className="item-list__footer">Contact Form</li>
                     <li className="item-list__footer">Our Offices</li>
                 </ul>

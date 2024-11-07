@@ -8,22 +8,22 @@ export default function Header() {
       <LogoHeader />
       <ul className="list__nav">
         <li className="items__nav">
-          <Link to={'/about-us'} className="a-linear__nav text-sm">
+          <Link to={'/about-us'} className="a-linear__nav text-sm text-[#000]">
             Quienes somos
           </Link>
         </li>
         <li className="items__nav">
-          <Link to={'/services'} className="a-linear__nav text-sm">
+          <Link to={'/services'} className="a-linear__nav text-sm text-[#000]">
             Servicios
           </Link>
         </li>
         <li className="items__nav">
-          <Link to={'/contact'} className="a-linear__nav text-sm">
+          <Link to={'/contact'} className="a-linear__nav text-sm text-[#000]">
             Contactanos
           </Link>
         </li>
       </ul>
-      <button className="login__nav text-sm">D10+</button>
+      <button className="login__nav text-sm text-[#000] hover:text-white bg-[#000]">D10+</button>
     </nav>
 
   );

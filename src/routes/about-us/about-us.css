@@ -12,23 +12,6 @@
   align-items: center;
   text-align: center;
   flex-direction: column;
-  background-color: black;
-}
-
-.title-1__aboutus {
-  color: #ffc700;
-}
-
-.title-2__aboutus {
-  color: white;
-}
-
-.title-3__aboutus {
-  color: #ffc700;
-}
-
-.text__aboutus {
-  color: white;
 }
 
 .padding-cntr-txt__space {
@@ -95,7 +78,6 @@
   height: 12rem;
   justify-content: space-around;
   align-items: center;
-  background-color: black;
 }
 
 .img__aboutus {

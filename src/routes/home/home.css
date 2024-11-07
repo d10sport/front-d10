@@ -92,10 +92,6 @@
   padding-left: 40px;
 }
 
-.text__color__white {
-  color: white;
-}
-
 /* Seccion About us */
 
 .about {
@@ -115,14 +111,9 @@
   z-index: 1;
 }
 
-.title__about {
-  color: #ffc700;
-}
-
 .text__about {
   width: 100%;
   height: fit-content;
-  color: white;
   text-align: center;
   padding: 0px 260px;
 }
@@ -133,15 +124,12 @@
   height: 4rem;
   justify-content: center;
   align-items: center;
-  color: #ffc700;
   border: 1px solid #ffc700;
   border-radius: 12px;
   text-decoration: none;
 }
 
 .btn__about:hover {
-  color: white;
-  background-color: #ffc700;
   transition: 0.4s;
 }
 
@@ -169,7 +157,6 @@
   height: 20rem;
   justify-content: center;
   align-items: center;
-  background-color: black;
 }
 
 .container__news {
@@ -184,16 +171,7 @@
   box-shadow: -4px 0px 0px 0 #ffc702, 4px 0px 0px 0 #ffc702;
 }
 
-.title__news {
-  color: #ffc702;
-}
-
-.subtitle__news {
-  color: white;
-}
-
 .text__news {
-  color: #999999;
   text-align: center;
 }
 
@@ -203,15 +181,12 @@
   height: 40px;
   justify-content: center;
   align-items: center;
-  color: #ffc702;
   border: 2px solid #ffc702;
   border-radius: 12px;
   text-decoration: none;
 }
 
 .link__news:hover {
-  color: white;
-  background-color: #ffc702;
   transition: 0.4s;
 }
 
@@ -224,7 +199,6 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: black;
 }
 
 .title__sponsors {
@@ -233,7 +207,6 @@
   height: 25%;
   justify-content: center;
   align-items: center;
-  color: white;
 }
 
 .container__sponsors {

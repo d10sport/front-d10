@@ -7,9 +7,9 @@ export default function AboutUs() {
     <>
       <HeaderPage />
       <section className="aboutus">
-        <div className="cntr-txt__aboutus">
-          <h1 className="title-1__aboutus text-8xl">Conócenos</h1>
-          <p className="text__aboutus padding-cntr-txt__space text-lg ">
+        <div className="cntr-txt__aboutus bg-black">
+          <h1 className="title-1__aboutus text-8xl text-[#ffc702]">Conócenos</h1>
+          <p className="text__aboutus padding-cntr-txt__space text-lg text-white">
             En D10 vivimos y respiramos fútbol. Somos una organización
             comprometida con el desarrollo de talentos en el fútbol, desde los
             primeros pasos hasta alcanzar su máximo potencial. Donde puedan forjar
@@ -20,13 +20,13 @@ export default function AboutUs() {
 
         <div className="cntr-central__aboutus">
           <div className="central-cntr__aboutus">
-            <h2 className="title-2__aboutus text-6xl">
+            <h2 className="title-2__aboutus text-6xl text-white">
               Nuestro Fundador
               <br />
               David Urrego
             </h2>
-            <h3 className="title-3__aboutus text-5xl">Empresario</h3>
-            <p className="text__aboutus">
+            <h3 className="title-3__aboutus text-5xl text-[#ffc702]">Empresario</h3>
+            <p className="text__aboutus text-white">
               David Urrego, fundador de D10, es un joven de 32 años con una pasión
               por el fútbol y el desarrollo juvenil. En su experiencia como
               Futbolista y hoy Orientador de jugadores, ha guiado chicos
@@ -38,9 +38,9 @@ export default function AboutUs() {
           </div>
         </div>
 
-        <div className="cntr-txt__aboutus">
-          <h3 className="title-3__aboutus">Objetivos:</h3>
-          <p className="text__aboutus padding-cntr-txt__space">
+        <div className="cntr-txt__aboutus bg-black">
+          <h3 className="title-3__aboutus text-[#ffc702]">Objetivos:</h3>
+          <p className="text__aboutus padding-cntr-txt__space text-white">
             Nuestro principal objetivo es entrar fuerte en el mercado deportivo
             vistiendo como mínimo un equipo en cada ciudad de Colombia,
             inicialmente tenemos como primera meta realizar 10 convenios los
@@ -57,8 +57,8 @@ export default function AboutUs() {
         <div className="cntr-img__aboutus img-bg-right__aboutus">
           <div className="cntr-empty__aboutus"></div>
           <div className="cntr-side__aboutus">
-            <h3 className="title-3__aboutus">Misión:</h3>
-            <p className="text__aboutus">
+            <h3 className="title-3__aboutus text-[#ffc702]">Misión:</h3>
+            <p className="text__aboutus text-white">
               Nuestra misión en D10 es inspirar y potenciar el rendimiento de
               atletas y entusiastas del deporte a través de prendas de alta
               calidad que fusionan diseño innovador, funcionalidad excepcional y
@@ -76,7 +76,7 @@ export default function AboutUs() {
           </div>
         </div>
 
-        <div className="sponsors__aboutus">
+        <div className="sponsors__aboutus bg-black">
           <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
           <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
           <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
@@ -86,8 +86,8 @@ export default function AboutUs() {
 
         <div className="cntr-img__aboutus img-bg-left__aboutus">
           <div className="cntr-side__aboutus">
-            <h3 className="title-3__aboutus">Vision:</h3>
-            <p className="text__aboutus">
+            <h3 className="title-3__aboutus text-[#ffc702]">Vision:</h3>
+            <p className="text__aboutus text-white">
               D10 tiene como visión, por medio de una marca de ropa deportiva,
               tener un proyecto social auto sostenible que llegará a todos los
               rincones de Colombia que se respire fútbol, donde todas las escuelas

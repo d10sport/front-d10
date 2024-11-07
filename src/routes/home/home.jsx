@@ -37,7 +37,7 @@ export default function Home() {
 
         <div className="container__home">
           <h1 className="title__home text-8xl">D10</h1>
-          <h1 className="title__home text__color__white text-6xl">Viste</h1>
+          <h1 className="title__home text__color__white text-6xl text-white">Viste</h1>
           <h1 className="title__home text__color__white text-6xl">tu pasión,</h1>
           <h1 className="title__home text__color__white text-6xl">entrena tu talento</h1>
         </div>
@@ -47,14 +47,14 @@ export default function Home() {
       <section className="about">
         <BackgroundAboutUsHome />
         <div className='content__about'>
-          <h1 className="title__about text-4xl">Quienes somos</h1>
-          <p className="text__about text-xl">
+          <h1 className="title__about text-4xl text-[#ffc702]">Quienes somos</h1>
+          <p className="text__about text-xl title-white">
             En D10 vivimos y respiramos fútbol. Somos una organización comprometida
             con el desarrollo de talentos en el fútbol, desde los primeros pasos
             hasta alcanzar su máximo potencial. Donde puedan forjar no solo sus
             habilidades en el campo, sino también su carácter y amor por el deporte.
           </p>
-          <a href="#" className="btn__about text-2xl">SABER MÁS</a>
+          <a href="#" className="btn__about text-2xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">SABER MÁS</a>
         </div>
       </section>
 
@@ -68,15 +68,15 @@ export default function Home() {
       <Carousel />
 
       {/* News Section */}
-      <section className="news">
+      <section className="news bg-black">
         <div className="container__news">
-          <h1 className="title__news text-2xl">Noticia</h1>
-          <h2 className="subtitle__news text-2xl">Campeones año 2024</h2>
-          <p className="text__news text-lg">
+          <h1 className="title__news text-2xl text-[#ffc702]">Noticia</h1>
+          <h2 className="subtitle__news text-2xl text-white">Campeones año 2024</h2>
+          <p className="text__news text-lg text-[#999999]">
             A chic and fully-furnished 2-bedroom apartment with <br />
             panoramic city views... Read More
           </p>
-          <Link to={'/collections'} className="link__news text-xl">Ver más</Link>
+          <Link to={'/collections'} className="link__news text-xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">Ver más</Link>
         </div>
       </section>
 
@@ -121,8 +121,8 @@ export default function Home() {
       </section>
 
       {/* Sponsors Section */}
-      <section className="sponsors">
-        <h1 className="title__sponsors text-4xl">Partners de Éxito</h1>
+      <section className="sponsors bg-black">
+        <h1 className="title__sponsors text-4xl text-white">Partners de Éxito</h1>
         <div className="container__sponsors">
           <Team1 />
           <Team2 />
