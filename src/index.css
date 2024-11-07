@@ -13,10 +13,6 @@
   --bg-300: #FFFFFF;
 }
 
-#root {
-  height: 100%;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -25,12 +21,17 @@
 }
 
 html {
-  height: 100vh;
+  height: 100%;
 }
 
 body {
+  background: #000000;
   height: 100%;
   width: 100%;
+}
+
+#root {
+  height: 100%;
 }
 
 .text_100 {
@@ -75,12 +76,14 @@ body {
   transition: 2s all ease;
 }
 
-.btn_yellow:hover {
+.btn_yellow:hover,
+.btn_yellow:focus,
+.btn_yellow:active {
   cursor: pointer;
   transition: 0.4s;
   color: #000;
   border: 2px solid #FFC702;
-  background-color: #FFC702;
+  background-color: #FFC702 !important;
 }
 
 .btn_yellow_active {
@@ -97,9 +100,12 @@ body {
   transition: 1s all ease;
 }
 
-.btn_yellow_active:hover {
+.btn_yellow_active:hover,
+.btn_yellow_active:focus,
+.btn_yellow_active:active {
   cursor: pointer;
   opacity: 0.5;
   transform: scale(1.1);
+  background-color: #FFC702;
 }
 

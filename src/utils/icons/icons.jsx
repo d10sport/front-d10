@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 function LogoHeader() {
   return (
-    <Link to={'/'} >
+    <Link className='select-none' to={'/'} >
       <img src={logo} alt="logo D10" className="logo" />
     </Link>
   )

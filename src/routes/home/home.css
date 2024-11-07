@@ -193,9 +193,9 @@
 /* Sponsors */
 
 .sponsors {
+  margin: 2rem 0;
   display: flex;
   width: 100%;
-  height: 12rem;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -212,13 +212,35 @@
 .container__sponsors {
   display: flex;
   width: 100%;
-  height: 75%;
   justify-content: space-around;
   align-items: center;
 }
 
 .img__sponsors {
   max-width: 80px;
+}
+
+/* Carrusel Sponsors */
+
+.swiper-wrapper {
+ height: 10rem;
+ margin-bottom: 1rem;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+  background: #FFFFFF;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: #FFC702 !important;
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem
 }
 
 /* D10+ */

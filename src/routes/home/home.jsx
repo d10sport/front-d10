@@ -1,15 +1,22 @@
 import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1, Team2, Team3, Team4, Team5 } from '../../utils/imgs/imgs.jsx'
 import { Wpp } from '../../utils/icons/icons.jsx'
 import { Environment, OrbitControls } from '@react-three/drei';
-import { VideoHome } from "../../utils/videos/videos.jsx";
+import Carousel from "../../components/carousel/carousel.jsx";
+import SplineModel from '../../components/spline/spline.jsx';
 import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
+import { VideoHome } from "../../utils/videos/videos.jsx";
+import { Autoplay, Pagination } from 'swiper/modules';
 import Header from "../../layouts/header/header.jsx";
 import Footer from "../../layouts/footer/footer.jsx";
-import SplineModel from '../../components/spline/spline.jsx';
-import Carousel from "../../layouts/carousel/carousel.jsx";
 import { Canvas } from '@react-three/fiber';
 import { Link } from "react-router-dom";
 import { Suspense } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css'; // Importar los estilos básicos de Swiper
+import 'swiper/css/navigation'; // Importar estilos específicos si usas navegación
+import 'swiper/css/pagination'; // Importar estilos específicos si usas paginación
+
+// Importar módulos adicionales si necesitas
 import './home.css';
 
 export default function Home() {
@@ -114,7 +121,7 @@ export default function Home() {
 
             {/* Ingresa ahora */}
             <div className='relative select-none top-2/3 mt-40 text-center z-40'>
-              <Link to="/services" className='text-[#FFC702] underline text-4xl font-bold'>Ingresa ahora</Link>
+              <a href="https://academia.d10plus.com/" target='_blank' className='text-[#FFC702] underline text-4xl font-bold'>Ingresa ahora</a>
             </div>
           </div>
         </div>
@@ -124,11 +131,47 @@ export default function Home() {
       <section className="sponsors bg-black">
         <h1 className="title__sponsors text-4xl text-white">Partners de Éxito</h1>
         <div className="container__sponsors">
-          <Team1 />
-          <Team2 />
-          <Team3 />
-          <Team4 />
-          <Team5 />
+          <Swiper className='w-full flex py-8 my-4 justify-center items-center'
+            modules={[Pagination, Autoplay]}
+            spaceBetween={20}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            slidesPerView={4}
+            pagination={{ clickable: true }}
+          >
+            <SwiperSlide>
+              <Team1 />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Team2 />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Team3 />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Team4 />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Team5 />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Team1 />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Team2 />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Team3 />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Team4 />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Team5 />
+            </SwiperSlide>
+          </Swiper>
         </div>
       </section>
 
