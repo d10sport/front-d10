@@ -1,59 +1,56 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { Link } from "react-router-dom";
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
-import './carousel.css';
+import './carousel-news.css';
 
-import Item1 from '../../assets/img/photo_carousel_item1.png';
-import Item2 from '../../assets/img/photo_carousel_item2.png';
-import Item3 from '../../assets/img/photo_carousel_item3.png';
-import Item4 from '../../assets/img/photo_carousel_item4.png';
-import Item5 from '../../assets/img/photo_carousel_item5.png';
+const items = [
+    { year: 2022, btn:"Ver más"},
+    { year: 2023, btn:"Ver más"},
+    { year: 2024, btn:"Ver más"},
+    { year: 2025, btn:"Ver más"},
+    { year: 2026, btn:"Ver más"},
+    
+  ];
 
+export default function CarouselNews() {
+  const carouselRef = useRef(null);
 
-export default function Carousel() {
   useEffect(() => {
-    const elementosCarousel = document.querySelectorAll('.carousel');
-    M.Carousel.init(elementosCarousel, {
-      duration: 150,
-      dist: -80,
-      shift: 5,
-      padding: 5,
-      numVisible: 5,
-      indicators: true,
-      noWrap: false
-    });
+    if (carouselRef.current) {
+      M.Carousel.init(carouselRef.current, {
+        duration: 150,
+        dist: 0,
+        shift: 5,
+        padding: 5,
+        numVisible: 1,
+        indicators: false,
+        noWrap: false,
+      });
+    }
   }, []);
 
   return (
-        <section className="collection">
-            <div className="container">
-                <div className="carousel">
-                    <div className="carousel-item">
-                        <h2 className="subtitulo">Colección 2022</h2>
-                        <img src={Item1} alt="Item 1" />
+    <>
+    
+    <section className="news bg-black">
+        <div className="container__news">
+            <div className="carousel" ref={carouselRef}>
+                {items.map((item, index) => (
+                    <div key={index} className="carousel-item" style={{  }}>
+                        <h1 className="title__news text-2xl text-[#ffc702]">Noticia</h1>
+                        <h2 className="subtitle__news text-2xl text-white">Campeones año {item.year}</h2>
+                        <p className="text__news text-lg text-[#999999]">
+                        A chic and fully-furnished 2-bedroom apartment with <br />
+                        panoramic city views... Read More
+                        </p>
+                        <Link to={'/collections'} className="link__news text-xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">{item.btn}</Link>
                     </div>
-
-                    <div className="carousel-item">
-                        <h2 className="subtitulo">Colección 2023</h2>
-                        <img src={Item2} alt="Item 2" />
-                    </div>
-
-                    <div className="carousel-item">
-                        <h2 className="subtitulo">Colección 2024</h2>
-                        <img src={Item3} alt="Item 3" />
-                    </div>
-
-                    <div className="carousel-item">
-                        <h2 className="subtitulo">Colección 2025</h2>
-                        <img src={Item4} alt="Item 4" />
-                    </div>
-
-                    <div className="carousel-item">
-                        <h2 className="subtitulo">Colección 2026</h2>
-                        <img src={Item5} alt="Item 5" />
-                    </div>
-                </div>
+                ))}
             </div>
-        </section>
+        </div>
+    </section>
+    
+    </>
   );
 }
