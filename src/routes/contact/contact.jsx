@@ -1,4 +1,4 @@
-import HeaderPage from '../../layouts/header-pages/header-page'
+import HeaderPage from '../../layouts/header-pages/header-page';
 import icon_fb_color from '../../assets/icons/icon_fb_color.png';
 import icon_ig_color from '../../assets/icons/icon_ig_color.png';
 import icon_wpp_color from '../../assets/icons/icon_wpp_color.png';
