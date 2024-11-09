@@ -56,7 +56,7 @@ export default function Home() {
         <BackgroundAboutUsHome />
         <div className='content__about'>
           <h1 className="title__about text-4xl text-[#ffc702]">Quienes somos</h1>
-          <p className="text__about text-xl title-white">
+          <p className="text__about text-xl text-white">
             En D10 vivimos y respiramos fútbol. Somos una organización comprometida
             con el desarrollo de talentos en el fútbol, desde los primeros pasos
             hasta alcanzar su máximo potencial. Donde puedan forjar no solo sus
