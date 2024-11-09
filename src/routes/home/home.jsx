@@ -2,7 +2,6 @@ import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1,
 import { Wpp } from '../../utils/icons/icons.jsx'
 import { Environment, OrbitControls } from '@react-three/drei';
 import Carousel from "../../components/carousel/carousel.jsx";
-import CarouselNews from "../../components/carousel-news/carousel-news.jsx";
 import SplineModel from '../../components/spline/spline.jsx';
 import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
 import { VideoHome } from "../../utils/videos/videos.jsx";
@@ -10,7 +9,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import Header from "../../layouts/header/header.jsx";
 import Footer from "../../layouts/footer/footer.jsx";
 import { Canvas } from '@react-three/fiber';
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Suspense } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'; // Importar los estilos básicos de Swiper
@@ -77,19 +76,17 @@ export default function Home() {
 
       {/* News Section */}
 
-      {/* <section className="news bg-black">
-        <div className="container__news">
-          <h1 className="title__news text-2xl text-[#ffc702]">Noticia</h1>
-          <h2 className="subtitle__news text-2xl text-white">Campeones año 2024</h2>
-          <p className="text__news text-lg text-[#999999]">
+      <section className="news__banner bg-black">
+        <div className="container__news__banner">
+          <h1 className="title__news__banner text-2xl text-[#ffc702]">Noticia</h1>
+          <h2 className="subtitle__news__banner text-2xl text-white">Campeones año 2024</h2>
+          <p className="text__news__banner text-lg text-[#999999]">
             A chic and fully-furnished 2-bedroom apartment with <br />
             panoramic city views... Read More
           </p>
-          <Link to={'/collections'} className="link__news text-xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">Ver más</Link>
+          <Link to={'/news'} className="link__news__banner text-xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">Ver más</Link>
         </div>
-      </section> */}
-
-      <CarouselNews />
+      </section>
 
       {/* <!-- D10+ Academy Section --> */}
       <section className="academy">

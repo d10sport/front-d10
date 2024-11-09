@@ -181,7 +181,7 @@
 
 /* Seccion Noticias */
 
-.news {
+.news__banner {
   display: flex;
   width: 100%;
   height: 20rem;
@@ -189,7 +189,7 @@
   align-items: center;
 }
 
-.container__news {
+.container__news__banner {
   display: flex;
   width: 80%;
   height: 80%;
@@ -201,11 +201,11 @@
   box-shadow: -4px 0px 0px 0 #ffc702, 4px 0px 0px 0 #ffc702;
 }
 
-.text__news {
+.text__news__banner {
   text-align: center;
 }
 
-.link__news {
+.link__news__banner {
   display: flex;
   width: 128px;
   height: 40px;
@@ -216,7 +216,7 @@
   text-decoration: none;
 }
 
-.link__news:hover {
+.link__news__banner:hover {
   transition: 0.4s;
 }
 
