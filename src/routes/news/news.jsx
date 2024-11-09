@@ -1,3 +1,5 @@
+import HeaderPage from '../../layouts/header-pages/header-page.jsx';
+import Footer from "../../layouts/footer/footer.jsx";
 import cover from '../../assets/img/cover_example_news.png';
 import './news.css';
 
@@ -20,6 +22,9 @@ export default function News() {
 
   return (
     <>
+
+    <HeaderPage />
+
       <div className="container__news">
         <main className="news">
           <section className="section__news">
@@ -38,13 +43,18 @@ export default function News() {
           </section>
         </main>
         <aside className="date">
-          <h1 className="title__date">2024</h1>
-          <h1 className="title__date">2025</h1>
-          <h1 className="title__date">2026</h1>
-          <h1 className="title__date">2027</h1>
-          <h1 className="title__date">2028</h1>
+          <ul className="cntr__date">
+            <li className="title__date">2024</li>
+            <li className="title__date">2025</li>
+            <li className="title__date">2026</li>
+            <li className="title__date">2027</li>
+            <li className="title__date">2028</li>
+          </ul>
         </aside>
       </div>
+
+      <Footer />
+
     </>
   );
 }
