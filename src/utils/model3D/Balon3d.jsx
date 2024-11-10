@@ -11,7 +11,7 @@ Title: Realistic Soccer Ball
 import { useGLTF } from '@react-three/drei'
 
 export default function ModelBalon3d(props) {
-  const { nodes, materials } = useGLTF('/balon3d.gltf')
+  const { nodes, materials } = useGLTF('/models/balon3d.gltf')
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>
