@@ -101,5 +101,27 @@
 }
 
 .months__list.expand {
-  max-height: 200px; /* Ajusta según el espacio que ocupan los meses */
+  max-height: 200px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px 20px 0px;
+}
+
+.page-button {
+  background-color: transparent;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.page-button.active {
+  background-color: #ffc802;
+  color: black;
+  font-weight: bold;
 }
