@@ -60,13 +60,11 @@ export default function News() {
                 <div onClick={() => toggleYear(year)} className="title__date">
                   {year}
                 </div>
-                {expandedYear === year && (
-                  <ul className="months__list">
-                    {months.map((month) => (
-                      <li key={month} className="month__item">{month}</li>
-                    ))}
-                  </ul>
-                )}
+                <ul className={`months__list ${expandedYear === year ? 'expand' : ''}`}>
+                  {expandedYear === year && months.map((month) => (
+                    <li key={month} className="month__item">{month}</li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ul>
