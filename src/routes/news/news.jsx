@@ -1,9 +1,18 @@
+import { useState } from 'react';
 import HeaderPage from '../../layouts/header-pages/header-page.jsx';
 import Footer from "../../layouts/footer/footer.jsx";
 import cover from '../../assets/img/cover_example_news.png';
 import './news.css';
 
 export default function News() {
+  const [expandedYear, setExpandedYear] = useState(null);
+
+  const years = [2024, 2025, 2026, 2027, 2028];
+  const months = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
+
   const newsData = [
     {
       title: "Title text notice 1",
@@ -12,19 +21,20 @@ export default function News() {
       image: cover,
     },
     {
-        title: "Title text notice 1",
-        description: "Description text to the notice for after fill 1",
-        date: "Date 1",
-        image: cover,
+      title: "Title text notice 1",
+      description: "Description text to the notice for after fill 1",
+      date: "Date 1",
+      image: cover,
     },
-    
   ];
+
+  const toggleYear = (year) => {
+    setExpandedYear(expandedYear === year ? null : year);
+  };
 
   return (
     <>
-
-    <HeaderPage />
-
+      <HeaderPage />
       <div className="container__news">
         <main className="news">
           <section className="section__news">
@@ -42,19 +52,27 @@ export default function News() {
             ))}
           </section>
         </main>
+        
         <aside className="date">
           <ul className="cntr__date">
-            <li className="title__date">2024</li>
-            <li className="title__date">2025</li>
-            <li className="title__date">2026</li>
-            <li className="title__date">2027</li>
-            <li className="title__date">2028</li>
+            {years.map((year) => (
+              <li key={year}>
+                <div onClick={() => toggleYear(year)} className="title__date">
+                  {year}
+                </div>
+                {expandedYear === year && (
+                  <ul className="months__list">
+                    {months.map((month) => (
+                      <li key={month} className="month__item">{month}</li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
           </ul>
         </aside>
       </div>
-
       <Footer />
-
     </>
   );
 }

@@ -70,15 +70,29 @@
 .cntr__date {
   width: 100%;
   height: 100%;
+  list-style-type: none;
+  padding: 0;
 }
 
 .title__date {
   color: #ffc802;
   font-size: 32px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 5px 0;
 }
 
 .title__date:hover {
   color: white;
   cursor: pointer;
   transition: 0.4s;
+}
+
+.months__list {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.month__item {
+  margin: 2px 0;
 }
