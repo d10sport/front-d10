@@ -28,60 +28,6 @@ export default function News() {
       date: "Date 1",
       image: cover,
     },
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "Date 1",
-      image: cover,
-    },
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "Date 1",
-      image: cover,
-    },
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "Date 1",
-      image: cover,
-    },
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "Date 1",
-      image: cover,
-    },
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "Date 1",
-      image: cover,
-    },
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "Date 1",
-      image: cover,
-    },
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "Date 1",
-      image: cover,
-    },
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "Date 1",
-      image: cover,
-    },
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "Date 1",
-      image: cover,
-    },
     // Añade más datos aquí
   ];
 
