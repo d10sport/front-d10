@@ -65,6 +65,7 @@
   height: 100%;
   padding: 2rem 0px 0px 4rem;
   border-left: 1px solid white;
+  user-select: none;
 }
 
 .cntr__date {
@@ -98,6 +99,12 @@
 
 .month__item {
   margin: 2px 0;
+}
+
+.month__item:hover {
+  color: #ffc802;
+  cursor: pointer;
+  transition: 0.4s;
 }
 
 .months__list.expand {
