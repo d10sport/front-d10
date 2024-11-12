@@ -41,6 +41,14 @@
   height: 500px;
 }
 
+.carousel .carousel-item.active {
+  background: radial-gradient(
+    circle,
+    rgba(255, 199, 2, 1) -10%,
+    rgba(0, 0, 0, 0) 60%
+  );
+}
+
 .carousel .carousel-item img {
   width: 70%;
   height: 70%;
