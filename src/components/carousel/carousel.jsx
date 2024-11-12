@@ -20,7 +20,7 @@ const items = [
 export default function Carousel() {
   useEffect(() => {
     const elementosCarousel = document.querySelectorAll('.carousel');
-    M.Carousel.init(elementosCarousel, {
+    const instance = M.Carousel.init(elementosCarousel, {
       duration: 150,
       dist: -80,
       shift: 5,
@@ -28,7 +28,17 @@ export default function Carousel() {
       numVisible: 5,
       indicators: true,
       noWrap: false
-    });
+    })[0];
+
+    
+    const autoPlay = setInterval(() => {
+      instance.next();
+    }, 3000);
+
+    
+    return () => {
+      clearInterval(autoPlay);
+    };
   }, []);
 
   return (
