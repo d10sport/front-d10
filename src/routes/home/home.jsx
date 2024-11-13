@@ -43,10 +43,10 @@ export default function Home() {
         </div>
 
         <div className="container__home">
-          <h1 className="title__home text-8xl">D10</h1>
-          <h1 className="title__home text__color__white text-6xl text-white">Viste</h1>
-          <h1 className="title__home text__color__white text-6xl text-white">tu pasión,</h1>
-          <h1 className="title__home text__color__white text-6xl text-white">entrena tu talento</h1>
+          <h1 className="title__home text-black text-8xl">D10</h1>
+          <h1 className="title__home text-6xl">Viste</h1>
+          <h1 className="title__home text-6xl">tu pasión,</h1>
+          <h1 className="title__home text-6xl">entrena tu talento</h1>
         </div>
       </section>
 
@@ -61,7 +61,11 @@ export default function Home() {
             hasta alcanzar su máximo potencial. Donde puedan forjar no solo sus
             habilidades en el campo, sino también su carácter y amor por el deporte.
           </p>
-          <a href="#" className="btn__about text-2xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">SABER MÁS</a>
+          
+          <Link to={'/about-us'} className="btn__about text-2xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">
+            SABER MÁS
+          </Link>
+
         </div>
       </section>
 
@@ -81,7 +85,7 @@ export default function Home() {
           <h1 className="title__news__banner text-2xl text-[#ffc702]">Seccion de Noticias</h1>
           <h2 className="subtitle__news__banner text-2xl text-white">Noticias del año 20XX</h2>
           <p className="text__news__banner text-lg text-[#999999]">
-            Aquí podrás darle clic para ver las noticias <br />
+            Dale clic aquí para ver las noticias <br />
             más relevantes del año 20XX
           </p>
           <Link to={'/news'} className="link__news__banner text-xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">Ver más</Link>
