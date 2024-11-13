@@ -44,7 +44,7 @@
 .carousel .carousel-item.active {
   background: radial-gradient(
     circle,
-    rgba(255, 199, 2, 1) -10%,
+    rgba(255, 199, 2, 1) -40%,
     rgba(0, 0, 0, 0) 60%
   );
 }
