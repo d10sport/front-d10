@@ -22,7 +22,7 @@ export default function News() {
     setSelectedMonth(currentMonth);
   }, [currentYear, currentMonth]);
 
-  const years = [2024, 2025, 2026, 2027, 2028];
+  const years = [2024, 2025];
   const months = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
@@ -38,9 +38,10 @@ export default function News() {
     {
       title: "Title text notice 2",
       description: "Description text to the notice for after fill 2",
-      date: "2027-7",
+      date: "2024-11",
       image: cover,
     },
+    
     // Añade más datos aquí
   ];
 
