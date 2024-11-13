@@ -85,7 +85,7 @@ export default function Home() {
           <h1 className="title__news__banner text-2xl text-[#ffc702]">Seccion de Noticias</h1>
           <h2 className="subtitle__news__banner text-2xl text-white">Noticias del año 20XX</h2>
           <p className="text__news__banner text-lg text-[#999999]">
-            Aquí podrás darle clic para ver las noticias <br />
+            Dale clic aquí para ver las noticias <br />
             más relevantes del año 20XX
           </p>
           <Link to={'/news'} className="link__news__banner text-xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">Ver más</Link>
