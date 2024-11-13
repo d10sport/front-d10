@@ -61,7 +61,11 @@ export default function Home() {
             hasta alcanzar su máximo potencial. Donde puedan forjar no solo sus
             habilidades en el campo, sino también su carácter y amor por el deporte.
           </p>
-          <a href="#" className="btn__about text-2xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">SABER MÁS</a>
+          
+          <Link to={'/about-us'} className="btn__about text-2xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">
+            SABER MÁS
+          </Link>
+
         </div>
       </section>
 

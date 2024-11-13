@@ -5,6 +5,11 @@ import cover from '../../assets/img/cover_example_news.png';
 import './news.css';
 
 export default function News() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const [expandedYear, setExpandedYear] = useState(null);
