@@ -14,8 +14,8 @@ export default function Services() {
       </div>
       <div className='w-full grid items-center gap-52 mb-12 py-10'>
         <section id='first_services' className='w-full h-96'>
-          <div className='flex justify-between w-full'>
-            <aside className='relative w-1/2 bg-transparent'>
+          <div className='flex justify-between w-full h-full'>
+            <aside className='relative w-1/2 bg-transparent h-full'>
               <div className='absolute left-36 top-0 z-10 grid gap-4'>
                 <span className='text-xl text_300'>Servicios de vestuario</span>
                 <h2 className='text-white text-3xl'>Indumentaria deportiva</h2>
@@ -40,8 +40,8 @@ export default function Services() {
                 </aside>
               </div>
             </aside>
-            <aside className='relative w-1/2'>
-              <div className='absolute h-full'>
+            <aside className='relative w-1/2 h-full right-30'>
+              <div className='absolute'>
                 <img className='rounded-3xl object-cover' src={img1_services} alt="img" />
               </div>
             </aside>
@@ -50,8 +50,8 @@ export default function Services() {
 
 
         <section id='second_services' className='w-full h-96'>
-          <div className='flex justify-between w-full'>
-            <aside className='relative w-1/2'>
+          <div className='flex justify-between w-full h-full'>
+            <aside className='relative w-1/2 h-full'>
               <div className='absolute right-0'>
                 <img className='rounded-3xl object-cover' src={img2_services} alt="img" />
               </div>
@@ -81,13 +81,13 @@ export default function Services() {
         </section>
 
         <section id='third_services' className='w-full h-96 mb-14'>
-          <div className='flex justify-between w-full'>
-            <aside className='relative  h-full w-1/2 bg-transparent'>
-              <div className='absolute left-36 top-0 z-10 grid gap-4'>
+          <div className='flex justify-between w-full h-full px-8'>
+            <aside className='relative h-full w-1/2 bg-transparent'>
+              <div className='absolute left-20 top-0 z-10 grid gap-4'>
                 <span className='text-xl text_300'>Servicios de capacitación</span>
                 <h2 className='text-white text-3xl'>Scouting y capacitación</h2>
               </div>
-              <div className='absolute top-24 -right-36 z-10 rounded-3xl w-full h-64'>
+              <div className='absolute top-24 -right-20 z-10 rounded-3xl w-full h-64'>
                 <aside className='relative h-full w-full'>
                   <div className='absolute top-0 left-0 flex p-4 justify-center flex-col h-full items-center'>
                     <span className='relative text-pretty text-xl inset-0.5 text-white font-medium rounded-xl w-full z-40'>
@@ -105,9 +105,9 @@ export default function Services() {
                 </aside>
               </div>
             </aside>
-            <aside className='relative w-1/2'>
-              <div className='absolute'>
-                <img className='rounded-3xl object-cover' src={img3_services} alt="img" />
+            <aside className='relative w-1/2 h-full'>
+              <div className='absolute w-full right-24'>
+                <img className='rounded-3xl w-full h-full object-cover' src={img3_services} alt="img" />
               </div>
             </aside>
           </div>

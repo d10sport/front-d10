@@ -5,6 +5,11 @@ import cover from '../../assets/img/cover_example_news.png';
 import './news.css';
 
 export default function News() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const [expandedYear, setExpandedYear] = useState(null);
@@ -22,7 +27,7 @@ export default function News() {
     setSelectedMonth(currentMonth);
   }, [currentYear, currentMonth]);
 
-  const years = [2024, 2025, 2026, 2027, 2028];
+  const years = [2024, 2025];
   const months = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
@@ -38,9 +43,70 @@ export default function News() {
     {
       title: "Title text notice 2",
       description: "Description text to the notice for after fill 2",
-      date: "2027-7",
+      date: "2024-11",
       image: cover,
     },
+    {
+      title: "Title text notice 2",
+      description: "Description text to the notice for after fill 2",
+      date: "2024-11",
+      image: cover,
+    },
+    {
+      title: "Title text notice 2",
+      description: "Description text to the notice for after fill 2",
+      date: "2024-11",
+      image: cover,
+    },
+    {
+      title: "Title text notice 2",
+      description: "Description text to the notice for after fill 2",
+      date: "2024-11",
+      image: cover,
+    },
+    {
+      title: "Title text notice 2",
+      description: "Description text to the notice for after fill 2",
+      date: "2024-11",
+      image: cover,
+    },
+    {
+      title: "Title text notice 2",
+      description: "Description text to the notice for after fill 2",
+      date: "2024-11",
+      image: cover,
+    },
+    {
+      title: "Title text notice 2",
+      description: "Description text to the notice for after fill 2",
+      date: "2024-11",
+      image: cover,
+    },
+    {
+      title: "Title text notice 2",
+      description: "Description text to the notice for after fill 2",
+      date: "2024-11",
+      image: cover,
+    },
+    {
+      title: "Title text notice 2",
+      description: "Description text to the notice for after fill 2",
+      date: "2024-11",
+      image: cover,
+    },
+    {
+      title: "Title text notice 2",
+      description: "Description text to the notice for after fill 2",
+      date: "2024-11",
+      image: cover,
+    },
+    {
+      title: "Title text notice 2",
+      description: "Description text to the notice for after fill 2",
+      date: "2024-11",
+      image: cover,
+    },
+    
     // Añade más datos aquí
   ];
 
@@ -55,9 +121,14 @@ export default function News() {
 
   const totalPages = Math.ceil(filteredNews.length / itemsPerPage);
 
-  const filteredData = newsData.filter((item) =>
-    item.date.startsWith(`${selectedYear}-${selectedMonth}`)
-  );
+  const filteredData = newsData.filter((item) => {
+    const [year, month] = item.date.split('-');
+    return (
+      parseInt(year) === selectedYear && 
+      (selectedMonth === null || parseInt(month) === selectedMonth)
+    );
+  });
+  
   
   const currentData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
@@ -67,9 +138,10 @@ export default function News() {
   const toggleYear = (year) => {
     setExpandedYear(expandedYear === year ? null : year);
     setSelectedYear(year);
-    setSelectedMonth(null); // Resetear mes al seleccionar un año
+    setSelectedMonth(null); // Reiniciar el mes para mostrar todas las noticias del año
     setCurrentPage(1); // Reiniciar a la primera página
   };
+  
 
   const selectMonth = (monthIndex) => {
     setSelectedMonth(monthIndex + 1); // Mes en formato numérico
@@ -85,21 +157,6 @@ export default function News() {
       <HeaderPage />
       <div className="container__news">
         <main className="news">
-          <section className="section__news">
-            {currentData.map((item, index) => (
-              <article className="article__news" key={index}>
-                <div className="cntr-text__news">
-                  <h1 className="title__news">{item.title}</h1>
-                  <p className="text__news">{item.description}</p>
-                  <p className="date__news">{item.date}</p>
-                </div>
-                <div className="cntr-img__news">
-                  <img src={item.image} alt="img" className="img__news" />
-                </div>
-              </article>
-            ))}
-          </section>
-
           <section className="section__news">
             {filteredData.length > 0 ? (
             currentData.map((item, index) => (
@@ -118,7 +175,6 @@ export default function News() {
               <p className="no-news-message text-8xl">No hay noticias</p> // Mensaje si no hay datos
             )}
           </section>
-
 
           {/* Paginación */}
           {totalPages > 1 && (

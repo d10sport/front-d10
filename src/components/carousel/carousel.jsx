@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import 'materialize-css/dist/css/materialize.min.css';
+// import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
 import './carousel.css';
 
