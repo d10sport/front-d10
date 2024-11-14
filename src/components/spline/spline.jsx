@@ -7,8 +7,20 @@ import './spline.css';
 export default function SplineModel() {
   const [isFinished, setIsFinished] = useState(false);
   const [moveTitle, setMoveTitle] = useState(false);
+  const [mostrarAnimacion, setMostrarAnimacion] = useState(true);  // Estado para manejar si mostrar la animación
 
   useEffect(() => {
+    // Verifica si la animación ya ha sido vista
+    const animacionVista = localStorage.getItem('animacionVista');
+
+    if (!animacionVista) {
+      // Si no ha sido vista, guarda el estado en localStorage
+      localStorage.setItem('animacionVista', 'true');
+    } else {
+      // Si ya ha sido vista, no muestra la animación
+      setMostrarAnimacion(false);
+    }
+
     document.body.classList.add('overflow-hidden');
     document.getElementById('nav_header').classList.add('hidden');
 
@@ -20,6 +32,11 @@ export default function SplineModel() {
       setIsFinished(true);
     }, 3000);
   }, []);
+
+  // Si no se debe mostrar la animación, oculta la sección
+  if (!mostrarAnimacion) {
+    return null;
+  }
 
   return (
     <section id='section_spline' className={`h-screen w-full select-none relative z-50 ${isFinished ? 'hidden' : ''}`}>
