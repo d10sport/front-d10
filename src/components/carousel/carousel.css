@@ -1,6 +1,6 @@
 /* Todo lo que viene de Materialize */
 
-/* .carousel {
+.carousel {
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -79,7 +79,7 @@
 .carousel.scrolling .carousel-item .materialboxed,
 .carousel .carousel-item:not(.active) .materialboxed {
   pointer-events: none;
-} */
+}
 
 
 /* Diseños propios */
