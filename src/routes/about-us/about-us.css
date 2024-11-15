@@ -25,6 +25,9 @@
   justify-content: center;
   align-items: center;
   background-image: url(../../assets/img/fondo_about_central.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .central-cntr__aboutus {
