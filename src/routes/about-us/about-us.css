@@ -87,6 +87,30 @@
   width: 8%;
 }
 
+@media (min-width: 1153px) {
+  .cntr-img__aboutus {
+    height: fit-content;
+  }
+
+  .cntr-side__aboutus {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1152px) {
+  .cntr-img__aboutus {
+    height: fit-content;
+  }
+
+  .cntr-side__aboutus {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+  }
+}
+
 @media (max-width: 768px) {
   .cntr-txt__aboutus {
     padding: 0px 40px;
