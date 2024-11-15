@@ -27,7 +27,6 @@ export default function News() {
     setSelectedMonth(currentMonth);
   }, [currentYear, currentMonth]);
 
-  const years = [2024, 2025];
   const months = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
@@ -37,7 +36,7 @@ export default function News() {
     {
       title: "Title text notice 1",
       description: "Description text to the notice for after fill 1",
-      date: "2024-1",
+      date: "2024-01",
       image: cover,
     },
     {
@@ -104,11 +103,19 @@ export default function News() {
       title: "Title text notice 2",
       description: "Description text to the notice for after fill 2",
       date: "2024-11",
+      image: cover,
+    },
+    {
+      title: "Title text notice 1",
+      description: "Description text to the notice for after fill 1",
+      date: "2026-12",
       image: cover,
     },
     
     // Añade más datos aquí
   ];
+
+  const years = Array.from(new Set(newsData.map(item => parseInt(item.date.split('-')[0])))).sort();
 
   // Filtrar noticias según el año y el mes seleccionados
   const filteredNews = newsData.filter(item => {
