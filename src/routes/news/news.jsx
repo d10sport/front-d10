@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import HeaderPage from '../../layouts/header-pages/header-page.jsx';
-import Footer from "../../layouts/footer/footer.jsx";
+import Footer from '../../layouts/footer/footer.jsx';
 import cover from '../../assets/img/cover_example_news.png';
 import './news.css';
 
@@ -111,14 +111,21 @@ export default function News() {
       date: "2026-12",
       image: cover,
     },
-    
-    // Añade más datos aquí
   ];
 
-  const years = Array.from(new Set(newsData.map(item => parseInt(item.date.split('-')[0])))).sort();
+  const formatNewsData = (data) => {
+    return data.map(item => ({
+      ...item,
+      date: item.date.slice(0, 7), // Mantener solo "AAAA-MM"
+    }));
+  };
+
+  const filteredNewsData = formatNewsData(newsData);
+
+  const years = Array.from(new Set(filteredNewsData.map(item => parseInt(item.date.split('-')[0])))).sort();
 
   // Filtrar noticias según el año y el mes seleccionados
-  const filteredNews = newsData.filter(item => {
+  const filteredData = filteredNewsData.filter(item => {
     const [year, month] = item.date.split('-');
     return (
       (!selectedYear || selectedYear === parseInt(year)) &&
@@ -126,17 +133,8 @@ export default function News() {
     );
   });
 
-  const totalPages = Math.ceil(filteredNews.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
-  const filteredData = newsData.filter((item) => {
-    const [year, month] = item.date.split('-');
-    return (
-      parseInt(year) === selectedYear && 
-      (selectedMonth === null || parseInt(month) === selectedMonth)
-    );
-  });
-  
-  
   const currentData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -148,7 +146,6 @@ export default function News() {
     setSelectedMonth(null); // Reiniciar el mes para mostrar todas las noticias del año
     setCurrentPage(1); // Reiniciar a la primera página
   };
-  
 
   const selectMonth = (monthIndex) => {
     setSelectedMonth(monthIndex + 1); // Mes en formato numérico
