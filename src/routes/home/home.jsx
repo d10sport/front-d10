@@ -125,7 +125,7 @@ export default function Home() {
 
             {/* Ingresa ahora */}
             <div className='relative select-none top-2/3 mt-40 text-center z-40'>
-              <a href="https://academia.d10plus.com/" target='_blank' className='text-[#FFC702] underline text-4xl font-bold'>Ingresa ahora</a>
+              <a href="https://academia.d10mas.com/" target='_blank' className='text-[#FFC702] underline text-4xl font-bold'>Ingresa ahora</a>
             </div>
           </div>
         </div>

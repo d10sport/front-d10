@@ -23,7 +23,7 @@ export default function Header() {
           </Link>
         </li>
       </ul>
-      <button className="login__nav text-sm text-[#fff] hover:text-white bg-[#000]"><a target="_blank" href="https://academia.d10plus.com">D10+</a></button>
+      <button className="login__nav text-sm text-[#fff] hover:text-white bg-[#000]"><a target="_blank" href="https://academia.d10mas.com">D10+</a></button>
     </nav>
 
   );
