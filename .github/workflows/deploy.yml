@@ -22,10 +22,10 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} << 'EOF'
             # Navega al directorio del proyecto
-            cd /var/www/frontend
+            cd /var/www/html/d10/landing
 
             # Elimina todos los archivos, incluyendo ocultos
-            rm -rf /var/www/frontend/* /var/www/frontend/.*
+            rm -rf /var/www/html/d10/landing/* /var/www/html/d10/landing/.*
 
             # Clona el repositorio
             git clone https://github.com/d10sport/front-d10-sport.git .
