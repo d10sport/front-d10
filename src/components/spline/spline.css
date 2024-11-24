@@ -20,8 +20,8 @@
 
 .div_title_logo {
   position: fixed;
-  top: calc(55% - 128px);
-  left: calc(53% - 128px);
+  top: calc(55% - 135px);
+  left: calc(53% - 40px);
   font-size: 128px;
   color: white;
   font-weight: bold;
@@ -39,8 +39,8 @@
   height: 100%;
   position: fixed;
   bottom: 0;
-  top: 0px;
-  left: 20%;
+  top: 15px;
+  left: 24%;
   z-index: 15;
   align-items: center;
   justify-content: center;

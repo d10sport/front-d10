@@ -1,26 +1,15 @@
-/* eslint-disable no-unused-vars */
-import logo from '@assets/img/logo_sin_fondo.png'
-import fondo from '@assets/img/fondo_home_d10_academy.png'
+import ModelBalonGlass from '../../utils/model3D/BalonGlass.jsx';
+import { Environment, OrbitControls } from '@react-three/drei';
+import logo from '../../assets/img/logo_sin_fondo.png';
 import { useEffect, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
 import './spline.css';
 
 export default function SplineModel() {
   const [isFinished, setIsFinished] = useState(false);
-  const [moveTitle, setMoveTitle] = useState(false);
-  const [mostrarAnimacion, setMostrarAnimacion] = useState(true);  // Estado para manejar si mostrar la animación
 
   useEffect(() => {
-    // Verifica si la animación ya ha sido vista
-    const animacionVista = localStorage.getItem('animacionVista');
-
-    if (!animacionVista) {
-      // Si no ha sido vista, guarda el estado en localStorage
-      localStorage.setItem('animacionVista', 'true');
-    } else {
-      // Si ya ha sido vista, no muestra la animación
-      setMostrarAnimacion(false);
-    }
-
     document.body.classList.add('overflow-hidden');
     document.getElementById('nav_header').classList.add('hidden');
 
@@ -29,21 +18,16 @@ export default function SplineModel() {
       document.getElementById('nav_header').classList.remove('hidden');
       document.querySelector('.wpp').classList.remove('hidden');
       window.scrollTo(0, 0);
-      setIsFinished(true);
-    }, 3000);
-  }, []);
+    }, 3500);
 
-  // Si no se debe mostrar la animación, oculta la sección
-  if (!mostrarAnimacion) {
-    return null;
-  }
+    setTimeout(() => {
+      setIsFinished(true);
+    }, 3600);
+  }, []);
 
   return (
     <section id='section_spline' className={`h-screen w-full select-none relative z-50 ${isFinished ? 'hidden' : ''}`}>
-      <div className='absolute top-0 left-0'>
-        <img src={fondo} className='w-screen h-screen object-cover' alt="fondo" />
-      </div>
-      {!moveTitle && (
+      {/* Título en el centro */}
         <>
           <div className='div_img fade-in'>
             <img src={logo} alt="logo D10" />
@@ -52,6 +36,19 @@ export default function SplineModel() {
             <h1 className='title'>D10</h1>
           </div>
         </>
+
+      {/* Balon Glass Model */}
+      {!isFinished && (
+        <div id='model_glass' className="full-screen active animate-jump-in">
+          <Canvas className="w-full h-[105%;] canvas">
+            <ambientLight />
+            <OrbitControls enableZoom={false} autoRotate={false} enableRotate={false} />
+            <Suspense fallback={null}>
+              <ModelBalonGlass position={[0, 0, -60]} scale={1.2} />
+            </Suspense>
+            <Environment preset="sunset" />
+          </Canvas>
+        </div>
       )}
     </section>
   );
