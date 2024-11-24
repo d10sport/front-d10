@@ -3,8 +3,7 @@ import { Wpp } from '../../utils/icons/icons.jsx'
 import { Environment, OrbitControls } from '@react-three/drei';
 import Carousel from "../../components/carousel/carousel.jsx";
 import SplineModel from '../../components/spline/spline.jsx';
-import ModelBalon3d from '../../utils/model3D/Balon3d.jsx';
-import { VideoHome } from "../../utils/videos/videos.jsx";
+import ModelBalonGlass from '../../utils/model3D/BalonGlass.jsx';import { VideoHome } from "../../utils/videos/videos.jsx";
 import { Autoplay, Pagination } from 'swiper/modules';
 import Header from "../../layouts/header/header.jsx";
 import Footer from "../../layouts/footer/footer.jsx";
@@ -61,7 +60,7 @@ export default function Home() {
             hasta alcanzar su máximo potencial. Donde puedan forjar no solo sus
             habilidades en el campo, sino también su carácter y amor por el deporte.
           </p>
-          
+
           <Link to={'/about-us'} className="btn__about text-2xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">
             SABER MÁS
           </Link>
@@ -106,9 +105,9 @@ export default function Home() {
             <div className='section_model_3d absolute z-20 w-[60%] h-full'>
               <Canvas className='w-fit h-full'>
                 <ambientLight />
-                <OrbitControls enableZoom={false} autoRotate={true} enableRotate={false} autoRotateSpeed={1.5} />
+                <OrbitControls enableZoom={false} autoRotate={false} enableRotate={false}  />
                 <Suspense fallback={null}>
-                  <ModelBalon3d position={[0, -2.2, 0]} scale={2.3} />
+                  <ModelBalonGlass position={[0, 0, 0]} scale={0.1} />
                 </Suspense>
                 <Environment preset="sunset" />
               </Canvas>

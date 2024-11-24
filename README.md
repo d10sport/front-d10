@@ -9,6 +9,9 @@ Currently, two official plugins are available:
 
 
 ## 3d to Component
+
+cd public
+
 npx gltfjsx scene.gltf
 
 

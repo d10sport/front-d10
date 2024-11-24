@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import fondoHomeD10Academy from '../../assets/img/fondo_home_d10_academy.png';
 import HeaderPage from '../../layouts/header-pages/header-page'
 import img1_services from '../../assets/img/img1_services.png'
@@ -6,6 +7,10 @@ import img3_services from '../../assets/img/img3_services.png'
 import './services.css'
 
 export default function Services() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <HeaderPage />

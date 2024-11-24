@@ -6,6 +6,7 @@ import Contact from '../contact/contact.jsx'
 import News from '../news/news.jsx'
 import ErrorPage from './error.jsx'
 import Home from "../home/home.jsx"
+import SingIn from '../admin/sign-in/sing-in.jsx'
 
 export default function Router() {
   return (
@@ -16,6 +17,7 @@ export default function Router() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/collections" element={<Collections />} />
       <Route path="/news" element={<News />} />
+      <Route path="/admin/sign-in" element={<SingIn />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   )
