@@ -11,14 +11,15 @@ import { Canvas } from '@react-three/fiber';
 import { Link } from "react-router-dom";
 import { Suspense } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css'; // Importar los estilos básicos de Swiper
-import 'swiper/css/navigation'; // Importar estilos específicos si usas navegación
-import 'swiper/css/pagination'; // Importar estilos específicos si usas paginación
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 // Importar módulos adicionales si necesitas
 import './home.css';
 
 export default function Home() {
+  var urlAcademy = `https://academia.${window.location.host}/`
 
   return (
     <>
@@ -125,7 +126,7 @@ export default function Home() {
 
             {/* Ingresa ahora */}
             <div className='relative select-none top-2/3 mt-40 text-center z-40'>
-              <a href="https://academia.d10mas.com/" target='_blank' className='text-[#FFC702] underline text-4xl font-bold'>Ingresa ahora</a>
+              <a href={urlAcademy} target='_blank' className='text-[#FFC702] underline text-4xl font-bold'>Ingresa ahora</a>
             </div>
           </div>
         </div>
