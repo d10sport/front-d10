@@ -107,7 +107,7 @@ export default function Home() {
                 <ambientLight />
                 <OrbitControls enableZoom={false} autoRotate={false} enableRotate={false}  />
                 <Suspense fallback={null}>
-                  <ModelBalonGlass position={[0, 0, 0]} scale={0.1} />
+                  <ModelBalonGlass position={[0, 0, -1]} scale={0.1} />
                 </Suspense>
                 <Environment preset="sunset" />
               </Canvas>
