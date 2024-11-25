@@ -1,14 +1,14 @@
-import HeaderPage from '../../layouts/header-pages/header-page';
-import icon_fb_color from '../../assets/icons/icon_fb_color.png';
-import icon_ig_color from '../../assets/icons/icon_ig_color.png';
-import icon_wpp_color from '../../assets/icons/icon_wpp_color.png';
+import icon_wpp_color from '@assets/icons/icon_wpp_color.png';
+import icon_fb_color from '@assets/icons/icon_fb_color.png';
+import icon_ig_color from '@assets/icons/icon_ig_color.png';
+import HeaderPage from '@layouts/header-pages/header-page';
 import './contact.css'
 
 export default function Contact() {
   return (
     <>
       <HeaderPage />
-      
+
       <section className="contact">
       <h1 className="title__contact text-8xl text-[#ffc702]">Contactanos</h1>
       <div className="card-form__contact bg-black">

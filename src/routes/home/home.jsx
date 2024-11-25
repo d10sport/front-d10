@@ -1,20 +1,20 @@
-import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1, Team2, Team3, Team4, Team5 } from '../../utils/imgs/imgs.jsx'
-import { Wpp } from '../../utils/icons/icons.jsx'
+import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1, Team2, Team3, Team4, Team5 } from '@utils/imgs/imgs.jsx'
 import { Environment, OrbitControls } from '@react-three/drei';
-import Carousel from "../../components/carousel/carousel.jsx";
-import SplineModel from '../../components/spline/spline.jsx';
-import ModelBalonGlass from '../../utils/model3D/BalonGlass.jsx';
-import { VideoHome } from "../../utils/videos/videos.jsx";
+import ModelBalonGlass from '@utils/model3D/BalonGlass.jsx';
+import Carousel from "@components/carousel/carousel.jsx";
+import SplineModel from '@components/spline/spline.jsx';
 import { Autoplay, Pagination } from 'swiper/modules';
-import Header from "../../layouts/header/header.jsx";
-import Footer from "../../layouts/footer/footer.jsx";
+import { VideoHome } from "@utils/videos/videos.jsx";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Header from "@layouts/header/header.jsx";
+import Footer from "@layouts/footer/footer.jsx";
+import { Wpp } from '@utils/icons/icons.jsx';
 import { Canvas } from '@react-three/fiber';
 import { Link } from "react-router-dom";
 import { Suspense } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css';
 
 // Importar módulos adicionales si necesitas
 import './home.css';
