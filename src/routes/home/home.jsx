@@ -3,7 +3,8 @@ import { Wpp } from '../../utils/icons/icons.jsx'
 import { Environment, OrbitControls } from '@react-three/drei';
 import Carousel from "../../components/carousel/carousel.jsx";
 import SplineModel from '../../components/spline/spline.jsx';
-import ModelBalonGlass from '../../utils/model3D/BalonGlass.jsx';import { VideoHome } from "../../utils/videos/videos.jsx";
+import ModelBalonGlass from '../../utils/model3D/BalonGlass.jsx';
+import { VideoHome } from "../../utils/videos/videos.jsx";
 import { Autoplay, Pagination } from 'swiper/modules';
 import Header from "../../layouts/header/header.jsx";
 import Footer from "../../layouts/footer/footer.jsx";
