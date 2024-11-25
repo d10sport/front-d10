@@ -1,7 +1,7 @@
+import HeaderPage from '@layouts/header-pages/header-page.jsx';
+import cover from '@assets/img/cover_example_news.png';
+import Footer from '@layouts/footer/footer.jsx';
 import { useState, useEffect } from 'react';
-import HeaderPage from '../../layouts/header-pages/header-page.jsx';
-import Footer from '../../layouts/footer/footer.jsx';
-import cover from '../../assets/img/cover_example_news.png';
 import './news.css';
 
 export default function News() {

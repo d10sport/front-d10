@@ -1,5 +1,5 @@
-import HeaderPage from '../../layouts/header-pages/header-page.jsx'
-import logoTeams from '../../assets/icons/logo_teams_general.png'
+import HeaderPage from '@layouts/header-pages/header-page.jsx'
+import logoTeams from '@assets/icons/logo_teams_general.png'
 import { useEffect } from 'react'
 import './about-us.css'
 

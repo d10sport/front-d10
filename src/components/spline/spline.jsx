@@ -1,6 +1,6 @@
-import ModelBalonGlass from '../../utils/model3D/BalonGlass.jsx';
 import { Environment, OrbitControls } from '@react-three/drei';
-import logo from '../../assets/img/logo_sin_fondo.png';
+import ModelBalonGlass from '@utils/model3D/BalonGlass.jsx';
+import logo from '@assets/img/logo_sin_fondo.png';
 import { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';

@@ -1,16 +1,16 @@
-import fondoHome from '../../assets/img/bg_home_example.jpg';
-import fondoHomeAboutUs from '../../assets/img/fondo_home_about.png';
-import fondoHomeD10Academy from '../../assets/img/fondo_home_d10_academy.png';
-import team1 from '../../assets/icons/logo_team_col.png';
-import team2 from '../../assets/icons/logo_team_mad.png';
-import team3 from '../../assets/icons/logo_team_par.png';
-import team4 from '../../assets/icons/logo_team_fra.png';
-import team5 from '../../assets/icons/logo_team_ar.png';
-import item1 from '../../assets/img/photo_carousel_item1.png';
-import item2 from '../../assets/img/photo_carousel_item2.png';
-import item3 from '../../assets/img/photo_carousel_item3.png';
-import item4 from '../../assets/img/photo_carousel_item4.png';
-import item5 from '../../assets/img/photo_carousel_item5.png';
+import fondoHomeD10Academy from '@assets/img/fondo_home_d10_academy.png'
+import fondoHomeAboutUs from '@assets/img/fondo_home_about.png'
+import item1 from '@assets/img/photo_carousel_item1.png'
+import item2 from '@assets/img/photo_carousel_item2.png'
+import item3 from '@assets/img/photo_carousel_item3.png'
+import item4 from '@assets/img/photo_carousel_item4.png'
+import item5 from '@assets/img/photo_carousel_item5.png'
+import fondoHome from '@assets/img/bg_home_example.jpg'
+import team1 from '@assets/icons/logo_team_col.png'
+import team2 from '@assets/icons/logo_team_mad.png'
+import team3 from '@assets/icons/logo_team_par.png'
+import team4 from '@assets/icons/logo_team_fra.png'
+import team5 from '@assets/icons/logo_team_ar.png'
 
 
 

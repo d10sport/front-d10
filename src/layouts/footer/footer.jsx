@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Icon1, Icon2, Icon3, Icon4} from '../../utils/icons/icons.jsx'
+import { Icon1, Icon2, Icon3, Icon4} from '@utils/icons/icons.jsx'
 import './footer.css';
 
 export default function Footer() {

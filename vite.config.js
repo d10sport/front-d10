@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import path from 'path';
 import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from 'vite'
+import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,7 +12,9 @@ export default defineConfig({
       '@components': path.resolve(__dirname, 'src/components'),
       '@pages': path.resolve(__dirname, 'src/routes'),
       '@layouts': path.resolve(__dirname, 'src/layouts'),
-      '@utils': path.resolve(__dirname, 'src/utils')
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@routes': path.resolve(__dirname, 'src/routes'),
+      '@ui': path.resolve(__dirname, 'src/ui'),
     },
   },
 })
