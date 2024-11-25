@@ -1,24 +1,26 @@
-import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1, Team2, Team3, Team4, Team5 } from '../../utils/imgs/imgs.jsx'
-import { Wpp } from '../../utils/icons/icons.jsx'
+import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1, Team2, Team3, Team4, Team5 } from '@utils/imgs/imgs.jsx'
 import { Environment, OrbitControls } from '@react-three/drei';
-import Carousel from "../../components/carousel/carousel.jsx";
-import SplineModel from '../../components/spline/spline.jsx';
-import ModelBalonGlass from '../../utils/model3D/BalonGlass.jsx';import { VideoHome } from "../../utils/videos/videos.jsx";
+import ModelBalonGlass from '@utils/model3D/BalonGlass.jsx';
+import Carousel from "@components/carousel/carousel.jsx";
+import SplineModel from '@components/spline/spline.jsx';
 import { Autoplay, Pagination } from 'swiper/modules';
-import Header from "../../layouts/header/header.jsx";
-import Footer from "../../layouts/footer/footer.jsx";
+import { VideoHome } from "@utils/videos/videos.jsx";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Header from "@layouts/header/header.jsx";
+import Footer from "@layouts/footer/footer.jsx";
+import { Wpp } from '@utils/icons/icons.jsx';
 import { Canvas } from '@react-three/fiber';
 import { Link } from "react-router-dom";
 import { Suspense } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css'; // Importar los estilos básicos de Swiper
-import 'swiper/css/navigation'; // Importar estilos específicos si usas navegación
-import 'swiper/css/pagination'; // Importar estilos específicos si usas paginación
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css';
 
 // Importar módulos adicionales si necesitas
 import './home.css';
 
 export default function Home() {
+  var urlAcademy = `https://academia.${window.location.host}/`
 
   return (
     <>
@@ -107,7 +109,7 @@ export default function Home() {
                 <ambientLight />
                 <OrbitControls enableZoom={false} autoRotate={false} enableRotate={false}  />
                 <Suspense fallback={null}>
-                  <ModelBalonGlass position={[0, 0, 0]} scale={0.1} />
+                  <ModelBalonGlass position={[0, 0, -1]} scale={0.1} />
                 </Suspense>
                 <Environment preset="sunset" />
               </Canvas>
@@ -125,7 +127,7 @@ export default function Home() {
 
             {/* Ingresa ahora */}
             <div className='relative select-none top-2/3 mt-40 text-center z-40'>
-              <a href="https://academia.d10mas.com/" target='_blank' className='text-[#FFC702] underline text-4xl font-bold'>Ingresa ahora</a>
+              <a href={urlAcademy} target='_blank' className='text-[#FFC702] underline text-4xl font-bold'>Ingresa ahora</a>
             </div>
           </div>
         </div>

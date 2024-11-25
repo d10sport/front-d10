@@ -1,12 +1,18 @@
-import Collections from '../collections/collections.jsx'
+import { AdminCollections } from '@ui/admin/collections/collections.jsx'
+import { AdminServices } from '@ui/admin/services/services.jsx'
+import { AdminAboutUs } from '@ui/admin/about-us/about-us.jsx'
+import Collections from '@routes/collections/collections.jsx'
+import { AdminContact } from '@ui/admin/contact/contact.jsx'
+import Services from '@routes/services/services.jsx'
+import AboutUs from '@routes/about-us/about-us.jsx'
+import { AdminHome } from '@ui/admin/home/home.jsx'
+import { AdminNews } from '@ui/admin/news/news.jsx'
+import Contact from '@routes/contact/contact.jsx'
 import { Route, Routes } from "react-router-dom"
-import Services from '../services/services.jsx'
-import AboutUs from '../about-us/about-us.jsx'
-import Contact from '../contact/contact.jsx'
-import News from '../news/news.jsx'
+import SingIn from '@ui/sign-in/sing-in.jsx'
+import Home from '@routes/home/home.jsx'
+import News from '@routes/news/news.jsx'
 import ErrorPage from './error.jsx'
-import Home from "../home/home.jsx"
-import SingIn from '../admin/sign-in/sing-in.jsx'
 
 export default function Router() {
   return (
@@ -18,6 +24,12 @@ export default function Router() {
       <Route path="/collections" element={<Collections />} />
       <Route path="/news" element={<News />} />
       <Route path="/admin/sign-in" element={<SingIn />} />
+      <Route path="/admin/dashboard/home" element={<AdminHome />} />
+      <Route path="/admin/dashboard/about-us" element={<AdminAboutUs />} />
+      <Route path="/admin/dashboard/services" element={<AdminServices />} />
+      <Route path="/admin/dashboard/contact" element={<AdminContact />} />
+      <Route path="/admin/dashboard/collections" element={<AdminCollections />} />
+      <Route path="/admin/dashboard/news" element={<AdminNews />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   )
