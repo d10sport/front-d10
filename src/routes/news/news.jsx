@@ -195,7 +195,6 @@ export default function News() {
             </div>
           )}
         </main>
-        
         <aside className="date">
           <ul className="cntr__date">
             {years.map((year) => (
