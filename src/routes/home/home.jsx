@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1, Team2, Team3, Team4, Team5 } from '@utils/imgs/imgs.jsx'
 import { Environment, OrbitControls } from '@react-three/drei';
 import ModelBalonGlass from '@utils/model3D/BalonGlass.jsx';
@@ -11,7 +12,8 @@ import Footer from "@layouts/footer/footer.jsx";
 import { Wpp } from '@utils/icons/icons.jsx';
 import { Canvas } from '@react-three/fiber';
 import { Link } from "react-router-dom";
-import { Suspense } from 'react';
+import axios from 'axios';
+import { Suspense, useEffect } from 'react';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css';
@@ -20,7 +22,22 @@ import 'swiper/css';
 import './home.css';
 
 export default function Home() {
-  var urlAcademy = `https://academia.${window.location.host}/`
+  var urlAcademy = `https://academia.${window.location.host}/`;
+  var urlApi = import.meta.env.VITE_API_URL;
+
+  function getNews() {
+    axios.get(`${urlApi}landing/g/home`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  useEffect(() => {
+    getNews();
+  }, []);
 
   return (
     <>
