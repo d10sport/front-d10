@@ -2,9 +2,32 @@ import icon_wpp_color from '@assets/icons/icon_wpp_color.png';
 import icon_fb_color from '@assets/icons/icon_fb_color.png';
 import icon_ig_color from '@assets/icons/icon_ig_color.png';
 import HeaderPage from '@layouts/header-pages/header-page';
+// import axios from 'axios';
+// import { useEffect } from "react";
 import './contact.css'
 
 export default function Contact() {
+
+    // Inicio de la conexión
+
+    // var urlApi = import.meta.env.VITE_API_URL;
+
+    // function getNews() {
+    //   axios.get(`${urlApi}landing/g/`)
+    //     .then((response) => {
+    //       console.log(response.data);
+    //     })
+    //     .catch((error) => {
+    //       console.error(error);
+    //     });
+    // }
+  
+    // useEffect(() => {
+    //   getNews();
+    // }, []);
+  
+  // Fin de la conexión
+
   return (
     <>
       <HeaderPage />

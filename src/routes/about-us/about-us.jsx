@@ -1,11 +1,28 @@
 import HeaderPage from '@layouts/header-pages/header-page.jsx'
 import logoTeams from '@assets/icons/logo_teams_general.png'
 import { useEffect } from 'react'
+import axios from 'axios';
 import './about-us.css'
 
 export default function AboutUs() {
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  var urlApi = import.meta.env.VITE_API_URL;
+
+  function getNews() {
+    axios.get(`${urlApi}landing/g/aboutus`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  useEffect(() => {
+    getNews();
   }, []);
 
   return (

@@ -4,6 +4,7 @@ import HeaderPage from '../../layouts/header-pages/header-page'
 import img1_services from '../../assets/img/img1_services.png'
 import img2_services from '../../assets/img/img2_services.png'
 import img3_services from '../../assets/img/img3_services.png'
+import axios from 'axios';
 import './services.css'
 
 export default function Services() {
@@ -11,6 +12,26 @@ export default function Services() {
     window.scrollTo(0, 0);
   }, []);
 
+  // Inicio de la conexión
+
+  var urlApi = import.meta.env.VITE_API_URL;
+
+  function getNews() {
+    axios.get(`${urlApi}landing/g/services`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  useEffect(() => {
+    getNews();
+  }, []);
+
+// Fin de la conexión
+  
   return (
     <>
       <HeaderPage />
