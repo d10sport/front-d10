@@ -2,6 +2,7 @@ import HeaderPage from '@layouts/header-pages/header-page.jsx';
 import cover from '@assets/img/cover_example_news.png';
 import Footer from '@layouts/footer/footer.jsx';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import './news.css';
 
 export default function News() {
@@ -155,6 +156,26 @@ export default function News() {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+
+    // Inicio de la conexión
+
+    var urlApi = import.meta.env.VITE_API_URL;
+
+    function getNews() {
+      axios.get(`${urlApi}landing/g/news`)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  
+    useEffect(() => {
+      getNews();
+    }, []);
+  
+  // Fin de la conexión
 
   return (
     <>
