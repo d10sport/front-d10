@@ -2,6 +2,7 @@ import HeaderPage from "../../layouts/header-pages/header-page";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import M from "materialize-css";
+import axios from 'axios';
 import "./collections.css";
 
 export default function Collections() {
@@ -44,6 +45,26 @@ export default function Collections() {
   const onSelectItem2023 = (id) => {
     setSelectedId2(id);
   };
+
+  // Inicio de la conexión
+
+  var urlApi = import.meta.env.VITE_API_URL;
+
+  function getNews() {
+    axios.get(`${urlApi}landing/g/collections`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  useEffect(() => {
+    getNews();
+  }, []);
+
+// Fin de la conexión
 
   return (
     <>
