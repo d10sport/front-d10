@@ -13,7 +13,7 @@ import { Wpp } from '@utils/icons/icons.jsx';
 import { Canvas } from '@react-three/fiber';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css';
@@ -22,13 +22,70 @@ import 'swiper/css';
 import './home.css';
 
 export default function Home() {
-  var urlAcademy = `https://academia.${window.location.host}/`;
   var urlApi = import.meta.env.VITE_API_URL;
+  var apiKey = import.meta.env.VITE_API_KEY;
 
-  function getNews() {
-    axios.get(`${urlApi}landing/g/home`)
+  const [sectionOne, setSectionOne] = useState({
+    slogan: '',
+    company: '',
+    bg_photo: ''
+  });
+
+  const [sectionTwo, setSectionTwo] = useState({
+    title: '',
+    description: '',
+    bg_photo: ''
+  });
+
+  const [sectionFour, setSectioFour] = useState({
+    collection: [{
+      title: '',
+      photo: ''
+    }],
+    news: {
+      h1: '',
+      title: '',
+      description: '',
+      link: ''
+    }
+  });
+
+  const [sectionThree, setSectionThree] = useState({
+    video: ''
+  });
+
+  const [sectionFive, setSectionFive] = useState({
+    title_1: '',
+    title_2: '',
+    text_link: '',
+    link: '',
+    bg_photo: ''
+  })
+
+  const [sectionSix, setSectionSix] = useState({
+    tile: '',
+    photos: {
+      icon1: '',
+      icon2: '',
+      icon3: '',
+    }
+  })
+
+  function getDateHome() {
+    axios.get(`${urlApi}landing/g/home`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': apiKey
+      }
+    })
       .then((response) => {
-        console.log(response.data);
+        setSectionOne(response.data[0].section_one);
+        setSectionTwo(response.data[0].section_two);
+        setSectionThree(response.data[0].section_three);
+        setSectioFour(response.data[0].section_four);
+        setSectionFive(response.data[0].section_five);
+        setSectionSix(response.data[0].section_six);
+        console.log(response.data[0]);
       })
       .catch((error) => {
         console.error(error);
@@ -36,7 +93,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    getNews();
+    getDateHome();
   }, []);
 
   return (
@@ -61,10 +118,10 @@ export default function Home() {
         </div>
 
         <div className="container__home">
-          <h1 className="title__home text-black text-8xl">D10</h1>
-          <h1 className="title__home text-6xl">Viste</h1>
-          <h1 className="title__home text-6xl">tu pasión,</h1>
-          <h1 className="title__home text-6xl">entrena tu talento</h1>
+          <h1 className="title__home text-black text-8xl select-none">{sectionOne.company}</h1>
+          <h1 className="title__home text-6xl select-none">{sectionOne.slogan}</h1>
+          <h1 className="title__home text-6xl select-none">tu pasión,</h1>
+          <h1 className="title__home text-6xl select-none">entrena tu talento</h1>
         </div>
       </section>
 
@@ -72,47 +129,40 @@ export default function Home() {
       <section className="about">
         <BackgroundAboutUsHome />
         <div className='content__about'>
-          <h1 className="title__about text-4xl text-[#ffc702]">Quienes somos</h1>
-          <p className="text__about text-xl text-white">
-            En D10 vivimos y respiramos fútbol. Somos una organización comprometida
-            con el desarrollo de talentos en el fútbol, desde los primeros pasos
-            hasta alcanzar su máximo potencial. Donde puedan forjar no solo sus
-            habilidades en el campo, sino también su carácter y amor por el deporte.
+          <h1 className="text-4xl text-[#ffc702] select-none">{sectionTwo.title}</h1>
+          <p className="text__about text-2xl text-white select-none">
+            {sectionTwo.description}
           </p>
-
-          <Link to={'/about-us'} className="btn__about text-2xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">
-            SABER MÁS
+          <Link to={'/about-us'} className="btn__about text-xl text-[#ffc702] hover:text-black hover:bg-[#ffc702]">
+            Saber más
           </Link>
-
         </div>
       </section>
 
       {/* <!-- Commercial Section --> */}
       <section className="commercial">
-        <VideoHome />
+        <VideoHome url={sectionThree.video} />
       </section>
 
       {/* <!-- Collection Section --> */}
-
-      <Carousel />
+      <Carousel collections={sectionFour.collection} />
 
       {/* News Section */}
 
       <section className="news__banner bg-black">
         <div className="container__news__banner">
-          <h1 className="title__news__banner text-2xl text-[#ffc702]">Seccion de Noticias</h1>
-          <h2 className="subtitle__news__banner text-2xl text-white">Noticias del año 20XX</h2>
-          <p className="text__news__banner text-lg text-[#999999]">
-            Dale clic aquí para ver las noticias <br />
-            más relevantes del año 20XX
+          <h1 className="title__news__banner text-2xl text-[#ffc702] select-none">Seccion de Noticias</h1>
+          <h2 className="subtitle__news__banner text-2xl text-white select-none">{sectionFour.news.title}</h2>
+          <p className="text__news__banner text-lg text-[#999999] select-none">
+            {sectionFour.news.description}
           </p>
-          <Link to={'/news'} className="link__news__banner text-xl text-[#ffc702] hover:text-white hover:bg-[#ffc702]">Ver más</Link>
+          <Link to={'/news'} className="link__news__banner text-xl text-[#ffc702] hover:text-black hover:bg-[#ffc702]">Ver más</Link>
         </div>
       </section>
 
       {/* <!-- D10+ Academy Section --> */}
       <section className="academy">
-        <div id='section-d10_academy' className='relative h-full w-full bg-black flex flex-col justify-center items-center '>
+        <div id='section-d10_academy' className='relative h-full w-full bg-black flex flex-col justify-center items-center'>
 
           {/* Imagen fondo */}
           <div className='top-0 left-0 right-0 bottom-0 z-10 absolute'>
@@ -124,7 +174,7 @@ export default function Home() {
             <div className='section_model_3d absolute z-20 w-[60%] h-full'>
               <Canvas className='w-fit h-full'>
                 <ambientLight />
-                <OrbitControls enableZoom={false} autoRotate={false} enableRotate={false}  />
+                <OrbitControls enableZoom={false} autoRotate={false} enableRotate={false} />
                 <Suspense fallback={null}>
                   <ModelBalonGlass position={[0, 0, -1]} scale={0.1} />
                 </Suspense>
@@ -134,17 +184,17 @@ export default function Home() {
 
             {/* Texto */}
             <div className='select-none absolute top-1/3 mt-5 left-1/3  transform -translate-y-1/2 flex flex-col z-20 items-center justify-center'>
-              <h1 className='text-9xl font-black text-[#FFC702] mb-4'>D10 +</h1>
+              <h1 className='text-9xl font-black text-[#FFC702] mb-4 select-none'>{sectionFive.title_1}</h1>
             </div>
 
             {/* Texto */}
             <div className='select-none absolute top-1/2 left-2/3 mt-6 transform -translate-x-1/2 -translate-y-1/2 flex flex-col z-20 items-center justify-center'>
-              <h1 className='text-9xl font-black text-[#FFC702] mb-4'>Academy</h1>
+              <h1 className='text-9xl font-black text-[#FFC702] mb-4 select-none'>{sectionFive.title_2}</h1>
             </div>
 
             {/* Ingresa ahora */}
             <div className='relative select-none top-2/3 mt-40 text-center z-40'>
-              <a href={urlAcademy} target='_blank' className='text-[#FFC702] underline text-4xl font-bold'>Ingresa ahora</a>
+              <a href={sectionFive.link} target='_blank' className='text-[#FFC702] underline text-4xl font-bold select-none'>{sectionFive.text_link}</a>
             </div>
           </div>
         </div>
@@ -152,7 +202,7 @@ export default function Home() {
 
       {/* Sponsors Section */}
       <section className="sponsors bg-black">
-        <h1 className="title__sponsors text-4xl text-white">Partners de Éxito</h1>
+        <h1 className="title__sponsors text-4xl text-white select-none">{sectionSix.tile}</h1>
         <div className="container__sponsors">
           <Swiper className='w-full flex py-8 my-4 justify-center items-center'
             modules={[Pagination, Autoplay]}
