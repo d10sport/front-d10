@@ -135,7 +135,7 @@
 .content__about {
   position: relative;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   z-index: 1;
@@ -145,16 +145,18 @@
   width: 100%;
   height: fit-content;
   text-align: center;
+  line-height: 2.0;
   padding: 0px 260px;
 }
 
 .btn__about {
   display: flex;
-  width: 20rem;
-  height: 4rem;
+  width: 140px;
+  height: 50px;
+  font-weight: 600;
   justify-content: center;
   align-items: center;
-  border: 1px solid #ffc700;
+  border: 2px solid #ffc702;
   border-radius: 12px;
   text-decoration: none;
 }
@@ -202,10 +204,12 @@
 }
 
 .text__news__banner {
+  width: 320px;
   text-align: center;
 }
 
 .link__news__banner {
+  font-weight: 600;
   display: flex;
   width: 128px;
   height: 40px;
