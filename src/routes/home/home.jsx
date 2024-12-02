@@ -1,12 +1,11 @@
 /* eslint-disable no-undef */
-import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy, Team1, Team2, Team3, Team4, Team5 } from '@utils/imgs/imgs.jsx'
+import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy } from '@utils/imgs/imgs.jsx'
+import CarouselCollections from '@components/carousel-collections/carousel-collections';
+import CarouselSponsors from '@components/carrusel-sponsors/carousel-sponsors';
 import { Environment, OrbitControls } from '@react-three/drei';
 import ModelBalonGlass from '@utils/model3D/BalonGlass.jsx';
-import Carousel from "@components/carousel/carousel.jsx";
 import SplineModel from '@components/spline/spline.jsx';
-import { Autoplay, Pagination } from 'swiper/modules';
 import { VideoHome } from "@utils/videos/videos.jsx";
-import { Swiper, SwiperSlide } from 'swiper/react';
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
 import { Wpp } from '@utils/icons/icons.jsx';
@@ -17,8 +16,6 @@ import { Suspense, useEffect, useState } from 'react';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css';
-
-// Importar módulos adicionales si necesitas
 import './home.css';
 
 export default function Home() {
@@ -64,11 +61,9 @@ export default function Home() {
 
   const [sectionSix, setSectionSix] = useState({
     tile: '',
-    photos: {
-      icon1: '',
-      icon2: '',
-      icon3: '',
-    }
+    icons: [
+      { icon: ''}
+    ]
   })
 
   function getDateHome() {
@@ -79,6 +74,7 @@ export default function Home() {
       }
     })
       .then((response) => {
+        debugger
         setSectionOne(response.data[0].section_one);
         setSectionTwo(response.data[0].section_two);
         setSectionThree(response.data[0].section_three);
@@ -145,7 +141,7 @@ export default function Home() {
       </section>
 
       {/* <!-- Collection Section --> */}
-      <Carousel collections={sectionFour.collection} />
+      <CarouselCollections collections={sectionFour.collection} />
 
       {/* News Section */}
 
@@ -204,47 +200,7 @@ export default function Home() {
       <section className="sponsors bg-black">
         <h1 className="title__sponsors text-4xl text-white select-none">{sectionSix.tile}</h1>
         <div className="container__sponsors">
-          <Swiper className='w-full flex py-8 my-4 justify-center items-center'
-            modules={[Pagination, Autoplay]}
-            spaceBetween={20}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            slidesPerView={4}
-            pagination={{ clickable: true }}
-          >
-            <SwiperSlide>
-              <Team1 />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Team2 />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Team3 />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Team4 />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Team5 />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Team1 />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Team2 />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Team3 />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Team4 />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Team5 />
-            </SwiperSlide>
-          </Swiper>
+          <CarouselSponsors sponsors={sectionSix.icons} />
         </div>
       </section>
 

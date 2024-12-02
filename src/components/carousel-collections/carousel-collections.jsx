@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
 import M from "materialize-css";
-import "./carousel.css";
+import "./carousel-collections.css";
 
 import item1 from "../../assets/img/photo_carousel_item1.png";
 // import item2 from "../../assets/img/photo_carousel_item2.png";
@@ -9,11 +9,10 @@ import item1 from "../../assets/img/photo_carousel_item1.png";
 // import item4 from "../../assets/img/photo_carousel_item4.png";
 // import item5 from "../../assets/img/photo_carousel_item5.png";
 
-export default function Carousel({ collections }) {
+export default function CarouselCollections({ collections }) {
   const [items, setItems] = useState(collections);
   const refCarousel = useRef(null);
 
-  // Sincronizar estado si `collections` cambia
   useEffect(() => {
     setItems(collections);
   }, [collections]);
