@@ -12,6 +12,7 @@ export default function News() {
 
   const [months, setMonths] = useState([]);
   const [newsData, setNewsData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,21 +30,6 @@ export default function News() {
     setSelectedYear(currentYear);
     setSelectedMonth(currentMonth);
   }, [currentYear, currentMonth]);
-
-  // const months = [
-  //   "Enero",
-  //   "Febrero",
-  //   "Marzo",
-  //   "Abril",
-  //   "Mayo",
-  //   "Junio",
-  //   "Julio",
-  //   "Agosto",
-  //   "Septiembre",
-  //   "Octubre",
-  //   "Noviembre",
-  //   "Diciembre",
-  // ];
 
   // Inicio de la conexión
 
@@ -64,11 +50,13 @@ export default function News() {
           image: value.image,
         }));
 
-        setNewsData(formattedNews); // Actualizar el estado de las noticias
+        setNewsData(formattedNews); // Actualizar las noticias
         setMonths(months); // Actualizar los meses
+        setLoading(false); // Indicar que la carga ha terminado
       })
       .catch((error) => {
         console.error(error);
+        setLoading(false); // Terminar la carga incluso si hay error
       });
   }
 
@@ -77,27 +65,6 @@ export default function News() {
   }, []);
 
   // Fin de la conexión
-
-  // const newsData = [
-  //   {
-  //     title: "Title text notice 1",
-  //     description: "Description text to the notice for after fill 1",
-  //     date: "2024-01",
-  //     image: cover,
-  //   },
-  //   {
-  //     title: "Title text notice 2",
-  //     description: "Description text to the notice for after fill 2",
-  //     date: "2024-02",
-  //     image: cover,
-  //   },
-  //   {
-  //     title: "Title text notice 1",
-  //     description: "Description text to the notice for after fill 1",
-  //     date: "2026-03",
-  //     image: cover,
-  //   },
-  // ];
 
   const formatNewsData = (data) => {
     return data.map((item) => ({
@@ -146,74 +113,83 @@ export default function News() {
 
   return (
     <>
-      <HeaderPage />
-      <div className="container__news">
-        <main className="news">
-          <section className="section__news">
-            {filteredData.length > 0 ? (
-              currentData.map((item, index) => (
-                <article className="article__news" key={index}>
-                  <div className="cntr-text__news">
-                    <h1 className="title__news">{item.title}</h1>
-                    <p className="text__news">{item.description}</p>
-                    <p className="date__news">{item.date}</p>
-                  </div>
-                  <div className="cntr-img__news">
-                    <img src={item.image} alt="img" className="img__news" />
-                  </div>
-                </article>
-              ))
-            ) : (
-              <p className="no-news-message text-8xl">No hay noticias</p> // Mensaje si no hay datos
-            )}
-          </section>
+      {loading ? (
+        <div className="loading">Cargando...</div> // Aquí puedes agregar un spinner o diseño atractivo
+      ) : (
+        <>
+          <HeaderPage />
+          <div className="container__news">
+            <main className="news">
+              <section className="section__news">
+                {filteredData.length > 0 ? (
+                  currentData.map((item, index) => (
+                    <article className="article__news" key={index}>
+                      <div className="cntr-text__news">
+                        <h1 className="title__news">{item.title}</h1>
+                        <p className="text__news">{item.description}</p>
+                        <p className="date__news">{item.date}</p>
+                      </div>
+                      <div className="cntr-img__news">
+                        <img src={item.image} alt="img" className="img__news" />
+                      </div>
+                    </article>
+                  ))
+                ) : (
+                  <p className="no-news-message text-8xl">No hay noticias</p> // Mensaje si no hay datos
+                )}
+              </section>
 
-          {/* Paginación */}
-          {totalPages > 1 && (
-            <div className="pagination">
-              {Array.from({ length: totalPages }, (_, i) => (
-                <button
-                  key={i + 1}
-                  onClick={() => handlePageChange(i + 1)}
-                  className={`page-button ${
-                    currentPage === i + 1 ? "active" : ""
-                  }`}
-                >
-                  {i + 1}
-                </button>
-              ))}
-            </div>
-          )}
-        </main>
-        <aside className="date">
-          <ul className="cntr__date">
-            {years.map((year) => (
-              <li key={year}>
-                <div onClick={() => toggleYear(year)} className="title__date">
-                  {year}
+              {/* Paginación */}
+              {totalPages > 1 && (
+                <div className="pagination">
+                  {Array.from({ length: totalPages }, (_, i) => (
+                    <button
+                      key={i + 1}
+                      onClick={() => handlePageChange(i + 1)}
+                      className={`page-button ${
+                        currentPage === i + 1 ? "active" : ""
+                      }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
                 </div>
-                <ul
-                  className={`months__list ${
-                    expandedYear === year ? "expand" : ""
-                  }`}
-                >
-                  {expandedYear === year &&
-                    months.map((month, index) => (
-                      <li
-                        key={month}
-                        className="month__item"
-                        onClick={() => selectMonth(index)}
-                      >
-                        {month}
-                      </li>
-                    ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
-        </aside>
-      </div>
-      <Footer />
+              )}
+            </main>
+            <aside className="date">
+              <ul className="cntr__date">
+                {years.map((year) => (
+                  <li key={year}>
+                    <div
+                      onClick={() => toggleYear(year)}
+                      className="title__date"
+                    >
+                      {year}
+                    </div>
+                    <ul
+                      className={`months__list ${
+                        expandedYear === year ? "expand" : ""
+                      }`}
+                    >
+                      {expandedYear === year &&
+                        months.map((month, index) => (
+                          <li
+                            key={month}
+                            className="month__item"
+                            onClick={() => selectMonth(index)}
+                          >
+                            {month}
+                          </li>
+                        ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </div>
+          <Footer />
+        </>
+      )}
     </>
   );
 }
