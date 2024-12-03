@@ -1,5 +1,5 @@
 import HeaderPage from '@layouts/header-pages/header-page.jsx';
-import cover from '@assets/img/cover_example_news.png';
+// import cover from '@assets/img/cover_example_news.png';
 import Footer from '@layouts/footer/footer.jsx';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -11,6 +11,7 @@ export default function News() {
   }, []);
 
   const [months, setMonths] = useState([]);
+  const [newsData, setNewsData] = useState([]);
 
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
@@ -52,9 +53,19 @@ export default function News() {
     axios
       .get(`${urlApi}landing/g/news`)
       .then((response) => {
-        // Acceder a los meses y actualizar el estado
-        const months = response.data[0].section_one.months;
-        setMonths(months); // Actualiza el estado con los meses
+        const { news, months } = response.data[0].section_one;
+
+        // Convertir el objeto `news` en un array de objetos
+        const formattedNews = Object.entries(news).map(([key, value]) => ({
+          id: key,
+          title: value.title,
+          description: value.description,
+          date: value.date,
+          image: value.image,
+        }));
+
+        setNewsData(formattedNews); // Actualizar el estado de las noticias
+        setMonths(months); // Actualizar los meses
       })
       .catch((error) => {
         console.error(error);
@@ -67,86 +78,26 @@ export default function News() {
 
   // Fin de la conexión
 
-  const newsData = [
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "2024-01",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "2026-12",
-      image: cover,
-    },
-  ];
+  // const newsData = [
+  //   {
+  //     title: "Title text notice 1",
+  //     description: "Description text to the notice for after fill 1",
+  //     date: "2024-01",
+  //     image: cover,
+  //   },
+  //   {
+  //     title: "Title text notice 2",
+  //     description: "Description text to the notice for after fill 2",
+  //     date: "2024-02",
+  //     image: cover,
+  //   },
+  //   {
+  //     title: "Title text notice 1",
+  //     description: "Description text to the notice for after fill 1",
+  //     date: "2026-03",
+  //     image: cover,
+  //   },
+  // ];
 
   const formatNewsData = (data) => {
     return data.map((item) => ({
