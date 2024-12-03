@@ -1,15 +1,18 @@
 import HeaderPage from '@layouts/header-pages/header-page.jsx';
-import cover from '@assets/img/cover_example_news.png';
+// import cover from '@assets/img/cover_example_news.png';
 import Footer from '@layouts/footer/footer.jsx';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './news.css';
 
 export default function News() {
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [months, setMonths] = useState([]);
+  const [newsData, setNewsData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,94 +31,42 @@ export default function News() {
     setSelectedMonth(currentMonth);
   }, [currentYear, currentMonth]);
 
-  const months = [
-    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-  ];
+  // Inicio de la conexión
 
-  const newsData = [
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "2024-01",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 2",
-      description: "Description text to the notice for after fill 2",
-      date: "2024-11",
-      image: cover,
-    },
-    {
-      title: "Title text notice 1",
-      description: "Description text to the notice for after fill 1",
-      date: "2026-12",
-      image: cover,
-    },
-  ];
+  var urlApi = import.meta.env.VITE_API_URL;
+
+  function getNews() {
+    axios
+      .get(`${urlApi}landing/g/news`)
+      .then((response) => {
+        const { news, months } = response.data[0].section_one;
+
+        const formattedNews = Object.entries(news).map(([key, value]) => ({
+          id: key,
+          title: value.title,
+          description: value.description,
+          date: value.date,
+          image: value.image,
+        }));
+
+        setNewsData(formattedNews);
+        setMonths(months);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
+  }
+
+  useEffect(() => {
+    getNews();
+  }, []);
+
+  // Fin de la conexión
 
   const formatNewsData = (data) => {
-    return data.map(item => ({
+    return data.map((item) => ({
       ...item,
       date: item.date.slice(0, 7), // Mantener solo "AAAA-MM"
     }));
@@ -123,11 +74,13 @@ export default function News() {
 
   const filteredNewsData = formatNewsData(newsData);
 
-  const years = Array.from(new Set(filteredNewsData.map(item => parseInt(item.date.split('-')[0])))).sort();
+  const years = Array.from(
+    new Set(filteredNewsData.map((item) => parseInt(item.date.split("-")[0])))
+  ).sort();
 
   // Filtrar noticias según el año y el mes seleccionados
-  const filteredData = filteredNewsData.filter(item => {
-    const [year, month] = item.date.split('-');
+  const filteredData = filteredNewsData.filter((item) => {
+    const [year, month] = item.date.split("-");
     return (
       (!selectedYear || selectedYear === parseInt(year)) &&
       (!selectedMonth || selectedMonth === parseInt(month))
@@ -157,89 +110,85 @@ export default function News() {
     setCurrentPage(page);
   };
 
-    // Inicio de la conexión
-
-    var urlApi = import.meta.env.VITE_API_URL;
-
-    function getNews() {
-      axios.get(`${urlApi}landing/g/news`)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  
-    useEffect(() => {
-      getNews();
-    }, []);
-  
-  // Fin de la conexión
-
   return (
     <>
-      <HeaderPage />
-      <div className="container__news">
-        <main className="news">
-          <section className="section__news">
-            {filteredData.length > 0 ? (
-            currentData.map((item, index) => (
-              <article className="article__news" key={index}>
-                <div className="cntr-text__news">
-                  <h1 className="title__news">{item.title}</h1>
-                  <p className="text__news">{item.description}</p>
-                  <p className="date__news">{item.date}</p>
-                </div>
-                <div className="cntr-img__news">
-                  <img src={item.image} alt="img" className="img__news" />
-                </div>
-              </article>
-              ))
-            ) : (
-              <p className="no-news-message text-8xl">No hay noticias</p> // Mensaje si no hay datos
-            )}
-          </section>
+      {loading ? (
+        <div className="loading text-8xl">Cargando...</div>
+      ) : (
+        <>
+          <HeaderPage />
+          <div className="container__news">
+            <main className="news">
+              <section className="section__news">
+                {filteredData.length > 0 ? (
+                  currentData.map((item, index) => (
+                    <article className="article__news" key={index}>
+                      <div className="cntr-text__news">
+                        <h1 className="title__news">{item.title}</h1>
+                        <p className="text__news">{item.description}</p>
+                        <p className="date__news">{item.date}</p>
+                      </div>
+                      <div className="cntr-img__news">
+                        <img src={item.image} alt="img" className="img__news" />
+                      </div>
+                    </article>
+                  ))
+                ) : (
+                  <p className="no-news-message text-8xl">No hay noticias</p> // Mensaje si no hay datos
+                )}
+              </section>
 
-          {/* Paginación */}
-          {totalPages > 1 && (
-            <div className="pagination">
-              {Array.from({ length: totalPages }, (_, i) => (
-                <button
-                  key={i + 1}
-                  onClick={() => handlePageChange(i + 1)}
-                  className={`page-button ${currentPage === i + 1 ? 'active' : ''}`}
-                >
-                  {i + 1}
-                </button>
-              ))}
-            </div>
-          )}
-        </main>
-        <aside className="date">
-          <ul className="cntr__date">
-            {years.map((year) => (
-              <li key={year}>
-                <div onClick={() => toggleYear(year)} className="title__date">
-                  {year}
-                </div>
-                <ul className={`months__list ${expandedYear === year ? 'expand' : ''}`}>
-                  {expandedYear === year && months.map((month, index) => (
-                    <li
-                      key={month}
-                      className="month__item"
-                      onClick={() => selectMonth(index)}
+              {/* Paginación */}
+              {totalPages > 1 && (
+                <div className="pagination">
+                  {Array.from({ length: totalPages }, (_, i) => (
+                    <button
+                      key={i + 1}
+                      onClick={() => handlePageChange(i + 1)}
+                      className={`page-button ${
+                        currentPage === i + 1 ? "active" : ""
+                      }`}
                     >
-                      {month}
-                    </li>
+                      {i + 1}
+                    </button>
                   ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
-        </aside>
-      </div>
-      <Footer />
+                </div>
+              )}
+            </main>
+            <aside className="date">
+              <ul className="cntr__date">
+                {years.map((year) => (
+                  <li key={year}>
+                    <div
+                      onClick={() => toggleYear(year)}
+                      className="title__date"
+                    >
+                      {year}
+                    </div>
+                    <ul
+                      className={`months__list ${
+                        expandedYear === year ? "expand" : ""
+                      }`}
+                    >
+                      {expandedYear === year &&
+                        months.map((month, index) => (
+                          <li
+                            key={month}
+                            className="month__item"
+                            onClick={() => selectMonth(index)}
+                          >
+                            {month}
+                          </li>
+                        ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </div>
+          <Footer />
+        </>
+      )}
     </>
   );
 }
