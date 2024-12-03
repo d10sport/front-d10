@@ -41,7 +41,6 @@ export default function News() {
       .then((response) => {
         const { news, months } = response.data[0].section_one;
 
-        // Convertir el objeto `news` en un array de objetos
         const formattedNews = Object.entries(news).map(([key, value]) => ({
           id: key,
           title: value.title,
@@ -50,13 +49,13 @@ export default function News() {
           image: value.image,
         }));
 
-        setNewsData(formattedNews); // Actualizar las noticias
-        setMonths(months); // Actualizar los meses
-        setLoading(false); // Indicar que la carga ha terminado
+        setNewsData(formattedNews);
+        setMonths(months);
+        setLoading(false);
       })
       .catch((error) => {
         console.error(error);
-        setLoading(false); // Terminar la carga incluso si hay error
+        setLoading(false);
       });
   }
 
@@ -114,7 +113,7 @@ export default function News() {
   return (
     <>
       {loading ? (
-        <div className="loading">Cargando...</div> // Aquí puedes agregar un spinner o diseño atractivo
+        <div className="loading text-8xl">Cargando...</div>
       ) : (
         <>
           <HeaderPage />
