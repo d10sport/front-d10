@@ -113,7 +113,6 @@ export default function News() {
     <>
       <HeaderPage />
 
-      {/* Frames iniciales */}
       <SplineModel />
 
 
