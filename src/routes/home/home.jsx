@@ -152,7 +152,7 @@ export default function Home() {
           <p className="text__news__banner text-lg text-[#999999] select-none">
             {sectionFour.news.description}
           </p>
-          <Link to={'/news'} className="link__news__banner text-xl text-[#ffc702] hover:text-black hover:bg-[#ffc702]">Ver más</Link>
+          <Link to={sectionFour.news.link} className="link__news__banner text-xl text-[#ffc702] hover:text-black hover:bg-[#ffc702]">Ver más</Link>
         </div>
       </section>
 
