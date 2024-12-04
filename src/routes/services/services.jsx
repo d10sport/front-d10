@@ -4,6 +4,7 @@ import HeaderPage from '../../layouts/header-pages/header-page'
 import img1_services from '../../assets/img/img1_services.png'
 import img2_services from '../../assets/img/img2_services.png'
 import img3_services from '../../assets/img/img3_services.png'
+import SplineModel from '@components/spline/spline.jsx';
 import axios from 'axios';
 import './services.css'
 
@@ -64,6 +65,9 @@ export default function Services() {
   return (
     <>
       <HeaderPage />
+
+      <SplineModel />
+
       <div className="h-20 text-center mt-12">
         <h1 className="text_300 text-4xl font-extrabold">{sectionOne.title}</h1>
       </div>

@@ -1,5 +1,6 @@
 import HeaderPage from '@layouts/header-pages/header-page.jsx'
 // import logoTeams from '@assets/icons/logo_teams_general.png'
+import SplineModel from '@components/spline/spline.jsx';
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 import './about-us.css'
@@ -70,6 +71,9 @@ export default function AboutUs() {
   return (
     <>
       <HeaderPage />
+
+      <SplineModel />
+
       <section className="aboutus">
         <div className="cntr-txt__aboutus bg-black">
           <h1 className="title-1__aboutus text-8xl text-[#ffc702]">
