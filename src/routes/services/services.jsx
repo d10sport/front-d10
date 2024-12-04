@@ -77,11 +77,9 @@ export default function Services() {
             <aside className="relative w-1/2 bg-transparent h-full">
               <div className="absolute left-36 top-0 z-10 grid gap-4">
                 <span className="text-xl text_300">
-                  {/* Servicios de vestuario */}
                   {sectionTwo.title}
                 </span>
                 <h2 className="text-white text-3xl">
-                  {/* Indumentaria deportiva */}
                   {sectionTwo.subtitle}
                 </h2>
               </div>
@@ -89,16 +87,6 @@ export default function Services() {
                 <aside className="relative h-full w-full">
                   <div className="absolute top-0 left-0 flex p-4 justify-center flex-col h-full items-center">
                     <span className="relative text-pretty text-xl inset-0.5 text-white font-medium rounded-xl w-full z-40">
-                      {/* Nuestros productos ofrecen un diseño ergonómico que se
-                      ajuste perfectamente al cuerpo del futbolista, maximizando
-                      la comodidad y la movilidad. Ofreciendo opciones de
-                      personalización, como colores, materiales y tamaños, para
-                      que los equipos puedan adaptar los productos a sus
-                      preferencias individuales, utilizando materiales de
-                      vanguardia que ofrezcan durabilidad, resistencia y
-                      transpirabilidad, fundamentales para el desempeño óptimo
-                      durante los entrenamientos. */}
-
                       {sectionTwo.description}
                     </span>
                   </div>
@@ -137,11 +125,9 @@ export default function Services() {
             <aside className="relative h-full w-1/2 bg-transparent">
               <div className="absolute right-36 top-0 z-10 grid gap-4">
                 <span className="text-xl text_300 text-end">
-                  {/* Servicios de entrenamiento */}
                   {sectionThree.title}
                 </span>
                 <h2 className="text-white text-3xl">
-                  {/* Programas de entrenamiento exclusivos */}
                   {sectionThree.subtitle}
                 </h2>
               </div>
@@ -149,12 +135,6 @@ export default function Services() {
                 <aside className="relative h-full w-full">
                   <div className="absolute top-0 left-0 flex p-4 justify-center flex-col h-full items-center">
                     <span className="relative text-pretty text-xl inset-0.5 text-white font-medium rounded-xl w-full z-40">
-                      {/* Ofrecemos acceso a programas de entrenamiento exclusivos
-                      desarrollados en colaboración con clubes y entrenadores de
-                      futbol formativo y profesional para contribuir con el
-                      crecimiento de los entrenadores de los clubes asociados y
-                      con el objetivo de aportar un grano de arena en la
-                      formación deportiva de sus jugadores. */}
                       {sectionThree.description}
                     </span>
                   </div>
@@ -175,11 +155,9 @@ export default function Services() {
             <aside className="relative h-full w-1/2 bg-transparent">
               <div className="absolute left-20 top-0 z-10 grid gap-4">
                 <span className="text-xl text_300">
-                  {/* Servicios de capacitación */}
                   {sectionFour.title}
                 </span>
                 <h2 className="text-white text-3xl">
-                  {/* Scouting y capacitación */}
                   {sectionFour.subtitle}
                 </h2>
               </div>
@@ -187,15 +165,6 @@ export default function Services() {
                 <aside className="relative h-full w-full">
                   <div className="absolute top-0 left-0 flex p-4 justify-center flex-col h-full items-center">
                     <span className="relative text-pretty text-xl inset-0.5 text-white font-medium rounded-xl w-full z-40">
-                      {/* Ofrecemos un proceso de veedurías con scoutings
-                      profesionales, con la finalidad de buscar y descubrir
-                      jóvenes talentos que posean habilidades sobresalientes en
-                      el fútbol y que tengan el potencial de destacar en niveles
-                      superiores, analizando el rendimiento de jugadores
-                      actuales en busca de posibles fichajes para las categorías
-                      juveniles, ampliando la búsqueda más allá de las fronteras
-                      nacionales, identificando talentos en diferentes países y
-                      regiones. */}
                       {sectionFour.description}
                     </span>
                   </div>
