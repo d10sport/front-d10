@@ -16,8 +16,7 @@ export default function Contact() {
 
   // Inicio de la conexión
 
-  // var urlApi = import.meta.env.VITE_API_URL;
-  var urlApi = import.meta.env.VITE_API_URL_TEST;
+  var urlApi = import.meta.env.VITE_API_URL;
 
   function getNews() {
     axios
