@@ -45,7 +45,7 @@
   border-radius: 8px;
   border: 2px solid #000;
   background-color: rgba(255, 255, 255, 0);
-  transition: 2.s all ease;
+  transition: 2s all ease;
 
   animation: scroll-animation-login linear both;
   animation-timeline: scroll(root block);
@@ -58,7 +58,6 @@
     color: #fff;
   }
 }
-
 
 .login__nav:hover {
   cursor: pointer;
@@ -77,7 +76,6 @@
     background-color: #ffc702;
   }
 }
-
 
 .a-linear__nav {
   position: relative;
@@ -122,4 +120,20 @@
 .a-linear__nav:hover::after {
   transform: scaleX(1);
   transform-origin: left center;
+}
+
+@media (min-width: 1153px) {
+}
+
+@media (min-width: 769px) and (max-width: 1152px) {
+}
+
+@media (max-width: 768px) {
+  #nav_header {
+    padding: 0;
+  }
+
+  .list__nav {
+    gap: 0.5rem;
+  }
 }
