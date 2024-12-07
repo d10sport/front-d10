@@ -12,7 +12,6 @@
   z-index: 31;
 }
 
-
 .logo {
   max-width: 40px;
 }
@@ -42,7 +41,6 @@
   border: 2px solid #ffc702;
 }
 
-
 .a-linear__nav_page {
   position: relative;
   text-decoration: none;
@@ -66,4 +64,14 @@
 .a-linear__nav_page:hover::after {
   transform: scaleX(1);
   transform-origin: left center;
+}
+
+@media (min-width: 1153px) {
+}
+
+@media (min-width: 769px) and (max-width: 1152px) {
+}
+
+@media (max-width: 768px) {
+
 }
