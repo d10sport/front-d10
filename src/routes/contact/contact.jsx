@@ -8,15 +8,13 @@ import { useEffect, useState } from "react";
 import './contact.css'
 
 export default function Contact() {
+  const urlApi = import.meta.env.VITE_API_URL;
+
   const [sectionOne, setSectionOne] = useState({
     title: "",
     bg_photo: "",
     subtitle: "",
   });
-
-  // Inicio de la conexión
-
-  var urlApi = import.meta.env.VITE_API_URL;
 
   function getNews() {
     axios

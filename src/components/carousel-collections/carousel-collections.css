@@ -101,7 +101,7 @@
   height: auto;
 }
 
-.subtitulo {
+.subtitle {
   margin: 0;
   color: #ffc702;
   font-size: 1.5rem;
@@ -109,7 +109,7 @@
   cursor: pointer;
 }
 
-.subtitulo.active {
+.subtitle.active {
   margin: 0;
   color: #ffc702;
   font-size: 1.5rem;
