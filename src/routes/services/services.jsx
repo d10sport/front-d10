@@ -9,9 +9,7 @@ import axios from 'axios';
 import './services.css'
 
 export default function Services() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const urlApi = import.meta.env.VITE_API_URL;
 
   const [sectionOne, setSectionOne] = useState({
     title: "",
@@ -38,10 +36,6 @@ export default function Services() {
     description: "",
   });
 
-  // Inicio de la conexión
-
-  var urlApi = import.meta.env.VITE_API_URL;
-
   function getNews() {
     axios
       .get(`${urlApi}landing/g/services`)
@@ -55,6 +49,10 @@ export default function Services() {
         console.error(error);
       });
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     getNews();

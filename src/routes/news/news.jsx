@@ -7,9 +7,7 @@ import axios from 'axios';
 import './news.css';
 
 export default function News() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const urlApi = import.meta.env.VITE_API_URL;
 
   const [months, setMonths] = useState([]);
   const [newsData, setNewsData] = useState([]);
@@ -26,14 +24,16 @@ export default function News() {
   const [selectedYear, setSelectedYear] = useState(currentYear);
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
 
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     setSelectedYear(currentYear);
     setSelectedMonth(currentMonth);
   }, [currentYear, currentMonth]);
 
-  // Inicio de la conexión
-
-  var urlApi = import.meta.env.VITE_API_URL;
 
   function getNews() {
     axios
@@ -144,9 +144,8 @@ export default function News() {
                 <button
                   key={i + 1}
                   onClick={() => handlePageChange(i + 1)}
-                  className={`page-button ${
-                    currentPage === i + 1 ? "active" : ""
-                  }`}
+                  className={`page-button ${currentPage === i + 1 ? "active" : ""
+                    }`}
                 >
                   {i + 1}
                 </button>
@@ -162,9 +161,8 @@ export default function News() {
                   {year}
                 </div>
                 <ul
-                  className={`months__list ${
-                    expandedYear === year ? "expand" : ""
-                  }`}
+                  className={`months__list ${expandedYear === year ? "expand" : ""
+                    }`}
                 >
                   {expandedYear === year &&
                     months.map((month, index) => (
