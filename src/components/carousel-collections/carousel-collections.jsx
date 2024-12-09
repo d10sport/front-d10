@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import M from "materialize-css";
 import "./carousel-collections.css";
 
@@ -44,10 +45,10 @@ export default function CarouselCollections({ collections }) {
       <div className="container">
         <div ref={refCarousel} className="carousel">
           {items.map((item, index) => (
-            <div key={index} className="carousel-item">
-              <h2 className="subtitulo">Colección {item.title}</h2>
+            <Link key={index} className="carousel-item" to={item.link}>
+              <h2 className="subtitle">Colección {item.title}</h2>
               <img src={ item.photo != "" ? item.photo : item1 } alt={`Item ${item.title}`} />
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -19,8 +19,8 @@ import 'swiper/css';
 import './home.css';
 
 export default function Home() {
-  var urlApi = import.meta.env.VITE_API_URL;
-  var apiKey = import.meta.env.VITE_API_KEY;
+  const urlApi = import.meta.env.VITE_API_URL;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   const [sectionOne, setSectionOne] = useState({
     slogan: '',
@@ -37,7 +37,8 @@ export default function Home() {
   const [sectionFour, setSectioFour] = useState({
     collection: [{
       title: '',
-      photo: ''
+      photo: '',
+      link: ''
     }],
     news: {
       h1: '',
@@ -74,14 +75,12 @@ export default function Home() {
       }
     })
       .then((response) => {
-        debugger
         setSectionOne(response.data[0].section_one);
         setSectionTwo(response.data[0].section_two);
         setSectionThree(response.data[0].section_three);
         setSectioFour(response.data[0].section_four);
         setSectionFive(response.data[0].section_five);
         setSectionSix(response.data[0].section_six);
-        console.log(response.data[0]);
       })
       .catch((error) => {
         console.error(error);
@@ -152,7 +151,7 @@ export default function Home() {
           <p className="text__news__banner text-lg text-[#999999] select-none">
             {sectionFour.news.description}
           </p>
-          <Link to={'/news'} className="link__news__banner text-xl text-[#ffc702] hover:text-black hover:bg-[#ffc702]">Ver más</Link>
+          <Link to={sectionFour.news.link} className="link__news__banner text-xl text-[#ffc702] hover:text-black hover:bg-[#ffc702]">Ver más</Link>
         </div>
       </section>
 

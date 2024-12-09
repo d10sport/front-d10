@@ -1,15 +1,11 @@
-import HeaderPage from '@layouts/header-pages/header-page.jsx'
-// import logoTeams from '@assets/icons/logo_teams_general.png'
+import HeaderPage from '@layouts/header-pages/header-page.jsx';
+// import logoTeams from '@assets/icons/logo_teams_general.png';
 import SplineModel from '@components/spline/spline.jsx';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import './about-us.css'
+import './about-us.css';
 
 export default function AboutUs() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const [sectionOne, setSectionOne] = useState({
     title: "",
     description: "",
@@ -45,7 +41,7 @@ export default function AboutUs() {
     description: "",
   });
 
-  var urlApi = import.meta.env.VITE_API_URL;
+  const urlApi = import.meta.env.VITE_API_URL;
 
   function getNews() {
     axios
@@ -57,12 +53,15 @@ export default function AboutUs() {
         setSectioFour(response.data[0].section_four);
         setSectionFive(response.data[0].section_five);
         setSectionSix(response.data[0].section_six);
-        console.log(response.data[0]);
       })
       .catch((error) => {
         console.error(error);
       });
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     getNews();

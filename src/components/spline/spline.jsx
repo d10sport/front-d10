@@ -11,12 +11,12 @@ export default function SplineModel() {
 
   useEffect(() => {
     document.body.classList.add('overflow-hidden');
-    document.getElementById('nav_header').classList.add('hidden');
+    document.getElementById('nav_header')?.classList.add('hidden');
 
     setTimeout(() => {
       document.body.classList.remove('overflow-hidden');
-      document.getElementById('nav_header').classList.remove('hidden');
-      document.querySelector('.wpp').classList.remove('hidden');
+      document.getElementById('nav_header')?.classList.remove('hidden');
+      document.querySelector('.wpp')?.classList.remove('hidden');
       window.scrollTo(0, 0);
     }, 3500);
 

@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useEffect, useState } from 'react';
 
 export default function CarouselSponsors({ sponsors }) {
-  debugger
   const [items, setItems] = useState(sponsors);
 
   useEffect(() => {
