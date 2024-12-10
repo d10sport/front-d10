@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -20,13 +21,12 @@ export default function SectionCollections({ collections }) {
               block: "start",
             });
           }
-        }, 100);
+        }, 2500);
       }
     }
   }
 
   useEffect(() => {
-    debugger
     if (collections.length > 0) {
       setItems(collections);
       scrollToYear();
@@ -34,7 +34,6 @@ export default function SectionCollections({ collections }) {
   }, [collections]);
 
   useEffect(() => {
-    debugger
     scrollToYear();
   }, [])
 
