@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import logo from "@assets/img/logo_sin_fondo.png";
+import logo from "@assets/img/logo_sin_fondo.png";
 import "./side-panel.css";
 
 export default function SidePanel() {
@@ -16,7 +16,7 @@ export default function SidePanel() {
   return (
     <>
       <nav className="nav-panel">
-        <img alt="logo" className="img__nav-panel" />
+        <img src={logo} alt="logo" className="img__nav-panel" />
         <button onClick={togglePanel} className="btn__nav-panel">
           ☰
         </button>
@@ -29,7 +29,7 @@ export default function SidePanel() {
 
       <aside className={`panel ${isPanelOpen ? "active" : ""}`}>
         <div className="cntr-img__panel">
-          <img alt="Logo" className="img__panel" />
+          <img src={logo} alt="Logo" className="img__panel" />
         </div>
         <a className="link__panel text--active" href="#">
           Quienes somos
@@ -43,6 +43,8 @@ export default function SidePanel() {
         <a className="link__panel text--active" href="#">
           Iniciar sesión
         </a>
+
+        <footer className="footer__panel">@Test</footer>
       </aside>
     </>
   );
