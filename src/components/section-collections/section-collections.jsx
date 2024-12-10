@@ -26,6 +26,7 @@ export default function SectionCollections({ collections }) {
   }
 
   useEffect(() => {
+    debugger
     if (collections.length > 0) {
       setItems(collections);
       scrollToYear();
@@ -33,6 +34,7 @@ export default function SectionCollections({ collections }) {
   }, [collections]);
 
   useEffect(() => {
+    debugger
     scrollToYear();
   }, [])
 
