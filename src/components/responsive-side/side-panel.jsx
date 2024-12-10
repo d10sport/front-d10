@@ -28,23 +28,26 @@ export default function SidePanel() {
       ></div>
 
       <aside className={`panel ${isPanelOpen ? "active" : ""}`}>
-        <div className="cntr-img__panel">
-          <img src={logo} alt="Logo" className="img__panel" />
+        <div className="cntr-section1__panel">
+          <div className="cntr-img__panel">
+            <img src={logo} alt="Logo" className="img__panel" />
+          </div>
+          <a className="link__panel text--active text-2xl" href="#">
+            Quienes somos
+          </a>
+          <a className="link__panel text--active text-2xl" href="#">
+            Servicios
+          </a>
+          <a className="link__panel text--active text-2xl" href="#">
+            Contacto
+          </a>
+          <a className="link__panel text--active text-2xl" href="#">
+            Iniciar sesión
+          </a>
         </div>
-        <a className="link__panel text--active" href="#">
-          Quienes somos
-        </a>
-        <a className="link__panel text--active" href="#">
-          Servicios
-        </a>
-        <a className="link__panel text--active" href="#">
-          Contacto
-        </a>
-        <a className="link__panel text--active" href="#">
-          Iniciar sesión
-        </a>
-
-        <footer className="footer__panel">@Test</footer>
+        <div className="cntr-section2__panel">
+          <footer className="footer__panel">&#169; D10mas</footer>
+        </div>
       </aside>
     </>
   );
