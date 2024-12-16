@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { BackgroundHome, BackgroundAboutUsHome, BackgroundHomeD10Academy } from '@utils/imgs/imgs.jsx'
+import { ImageLoading, BackgroundAboutUsHome, BackgroundHomeD10Academy } from '@utils/imgs/imgs.jsx'
 import CarouselCollections from '@components/carousel-collections/carousel-collections';
 import CarouselSponsors from '@components/carrusel-sponsors/carousel-sponsors';
 import { Environment, OrbitControls } from '@react-three/drei';
@@ -108,7 +108,7 @@ export default function Home() {
       {/* <!-- Home Section --> */}
       <section className="home">
         <div className="img-container__home">
-          <BackgroundHome />
+          <img src={sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading } alt="Descripción de la imagen" className="img-fondo__home" />
           <div className="blur-overlay__home"></div>
         </div>
 
