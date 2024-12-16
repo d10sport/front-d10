@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
 import "./carousel-collections.css";
-
 import item1 from "../../assets/img/photo_carousel_item1.png";
 // import item2 from "../../assets/img/photo_carousel_item2.png";
 // import item3 from "../../assets/img/photo_carousel_item3.png";
