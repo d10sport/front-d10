@@ -1,10 +1,49 @@
-import { LogoHeader } from "@utils/icons/icons";
 import { Link } from "react-router-dom";
+import { ImageLoading } from '@utils/imgs/imgs.jsx'
 import SidePanel from "@components/responsive-side/side-panel.jsx";
 import { useEffect, useState } from "react";
+import axios from 'axios';
 import "./header.css";
 
+
 export default function Header() {
+
+  const urlApi = import.meta.env.VITE_API_URL;
+  const apiKey = import.meta.env.VITE_API_KEY;
+
+  const [sectionOne, setSectionOne] = useState({
+    logo: '',
+    bg_photo: ''
+  });
+
+  function getDateLayout() {
+      axios.get(`${urlApi}landing/g/layout`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': apiKey
+        }
+      })
+        .then((response) => {
+          setSectionOne(response.data[0].section_one);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  
+    useEffect(() => {
+      getDateLayout();
+    }, []);
+
+    const backgroundImage = sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading;
+
+    const navStyle = {
+      animation : `scroll-animation 3s linear both`,
+      animationTimeline: `scroll(root block)`,
+      animationRange: `0 292px`,
+      "--dynamic-bg": `url(${backgroundImage})`
+    }
+
   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -24,8 +63,11 @@ export default function Header() {
   var urlAcademy = `https://academia.${window.location.host}/`;
 
   return (
-    <nav id="nav_header" className="nav fixed">
-      <LogoHeader />
+    <nav id="nav_header" className="nav fixed" style={navStyle}>
+      <Link className='select-none' to={'/'} >
+        <img src={sectionOne.logo != "" ? sectionOne.logo : ImageLoading } alt="logo D10" className="logo" />
+      </Link>
+      
       {isMobileView ? (
         // Mostrar SidePanel en vistas móviles
         <SidePanel />

@@ -1,5 +1,3 @@
-import fondoHomeD10Academy from '@assets/img/fondo_home_d10_academy.png'
-import fondoHomeAboutUs from '@assets/img/fondo_home_about.png'
 import imageLoading from '@assets/img/logo_company_1.jpg'
 import item1 from '@assets/img/photo_carousel_item1.png'
 import item2 from '@assets/img/photo_carousel_item2.png'
@@ -15,18 +13,6 @@ import team5 from '@assets/icons/logo_team_ar.png'
 function ImageLoading() {
   return (
     <img className='relative object-cover w-full h-full' src={imageLoading} />
-  )
-}
-
-function BackgroundAboutUsHome() {
-  return (
-    <img src={fondoHomeAboutUs} alt="Descripción de la imagen" className="absolute w-full h-full -z-0" />
-  )
-}
-
-function BackgroundHomeD10Academy() {
-  return (
-    <img className='relative object-cover w-full h-full' src={fondoHomeD10Academy} />
   )
 }
 
@@ -94,8 +80,6 @@ function Team5() {
 
 export {
   ImageLoading,
-  BackgroundAboutUsHome,
-  BackgroundHomeD10Academy,
   Team1,
   Team2,
   Team3,
