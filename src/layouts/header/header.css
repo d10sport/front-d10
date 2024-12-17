@@ -21,7 +21,7 @@
 
 @keyframes scroll-animation {
   to {
-    background: url(../../assets/img/fondo_nav.png), #000;
+    background: var(--dynamic-bg), #000;
   }
 }
 

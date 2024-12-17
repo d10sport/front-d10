@@ -1,22 +1,22 @@
 import icon_wpp_color from '@assets/icons/icon_wpp_color.png'
 import icon_fb_color from '@assets/icons/icon_fb_color.png'
 import icon_ig_color from '@assets/icons/icon_ig_color.png'
-import logo from '@assets/icons/logo_company.png'
+// import logo from '@assets/icons/logo_company.png'
 import icon1 from '@assets/icons/icon_fb.png'
 import icon2 from '@assets/icons/icon_in.png'
 import icon4 from '@assets/icons/icon_yt.png'
 import icon3 from '@assets/icons/icon_x.png'
 import wpp from '@assets/icons/logo_wpp.png'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 
-function LogoHeader() {
-  return (
-    <Link className='select-none' to={'/'} >
-      <img src={logo} alt="logo D10" className="logo" />
-    </Link>
-  )
-}
+// function LogoHeader() {
+//   return (
+//     <Link className='select-none' to={'/'} >
+//       <img src={logo} alt="logo D10" className="logo" />
+//     </Link>
+//   )
+// }
 
 function Icon1() {
   return (
@@ -70,7 +70,7 @@ function IconWppColor() {
 
 
 export {
-  LogoHeader,
+  // LogoHeader,
   Icon1,
   Icon2,
   Icon3,
