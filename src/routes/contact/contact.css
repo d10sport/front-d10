@@ -5,7 +5,6 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-image: url(../../assets/img/fondo_home_d10_academy.png);
 }
 
 .card-form__contact {

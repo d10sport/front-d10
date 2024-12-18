@@ -3,6 +3,7 @@ import HeaderPage from '@layouts/header-pages/header-page.jsx';
 import SplineModel from '@components/spline/spline.jsx';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { ImageLoading } from '@utils/imgs/imgs.jsx'
 import './about-us.css';
 
 export default function AboutUs() {
@@ -89,7 +90,14 @@ export default function AboutUs() {
           </p>
         </div>
 
-        <div className="cntr-central__aboutus">
+        <div
+          className="cntr-central__aboutus"
+          style={{
+            backgroundImage: `url(${
+              sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ImageLoading
+            })`,
+          }}
+        >
           <div className="central-cntr__aboutus">
             <h2 className="title-2__aboutus text-6xl text-white">
               {sectionTwo.title1}
@@ -114,7 +122,14 @@ export default function AboutUs() {
           </p>
         </div>
 
-        <div className="cntr-img__aboutus img-bg-right__aboutus">
+        <div
+          className="cntr-img__aboutus"
+          style={{
+            backgroundImage: `url(${
+              sectionFour.bg_phot != "" ? sectionFour.bg_phot : ImageLoading
+            })`,
+          }}
+        >
           <div className="cntr-empty__aboutus"></div>
           <div className="cntr-side__aboutus">
             <h3 className="title-3__aboutus text-[#ffc702] text-4xl">
@@ -136,7 +151,14 @@ export default function AboutUs() {
           {sectionFive.icon}
         </div>
 
-        <div className="cntr-img__aboutus img-bg-left__aboutus">
+        <div
+          className="cntr-img__aboutus"
+          style={{
+            backgroundImage: `url(${
+              sectionSix.bg_phot != "" ? sectionSix.bg_phot : ImageLoading
+            })`,
+          }}
+        >
           <div className="cntr-side__aboutus">
             <h3 className="title-3__aboutus text-[#ffc702] text-4xl">
               {sectionSix.title}
