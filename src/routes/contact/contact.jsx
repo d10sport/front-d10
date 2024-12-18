@@ -4,6 +4,7 @@ import icon_ig_color from '@assets/icons/icon_ig_color.png';
 import HeaderPage from '@layouts/header-pages/header-page';
 import SplineModel from '@components/spline/spline.jsx';
 import axios from 'axios';
+import { ImageLoading } from '@utils/imgs/imgs.jsx'
 import { useEffect, useState } from "react";
 import './contact.css'
 
@@ -45,7 +46,7 @@ export default function Contact() {
 
       <SplineModel />
 
-      <section className="contact">
+      <section className="contact" style={{backgroundImage:`url(${sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading})`}}>
         <h1 className="title__contact text-8xl text-[#ffc702]">
           {sectionOne.title}
         </h1>

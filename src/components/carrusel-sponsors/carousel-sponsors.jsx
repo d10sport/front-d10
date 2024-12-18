@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import { Team1
-  // Team2, Team3, Team4, Team5
-} from '@utils/imgs/imgs.jsx'
+// import { Team1
+//   // Team2, Team3, Team4, Team5
+// } from '@utils/imgs/imgs.jsx'
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useEffect, useState } from 'react';
+import { ImageLoading } from '@utils/imgs/imgs.jsx'
 
 export default function CarouselSponsors({ sponsors }) {
   const [items, setItems] = useState(sponsors);
@@ -26,7 +27,8 @@ export default function CarouselSponsors({ sponsors }) {
     >
       {items.map((item, index) => (
         <SwiperSlide key={index}>
-          {item.icon != '' ? item.icon : <Team1/>}
+          {/* {item.icon != '' ? item.icon : <Team1/>} */}
+          {item.icon != '' ? item.icon : ImageLoading}
         </SwiperSlide>
       ))}
     </Swiper>

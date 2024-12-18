@@ -3,11 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
 import "./carousel-collections.css";
-import item1 from "../../assets/img/photo_carousel_item1.png";
-// import item2 from "../../assets/img/photo_carousel_item2.png";
-// import item3 from "../../assets/img/photo_carousel_item3.png";
-// import item4 from "../../assets/img/photo_carousel_item4.png";
-// import item5 from "../../assets/img/photo_carousel_item5.png";
+import { ImageLoading } from '@utils/imgs/imgs.jsx'
 
 export default function CarouselCollections({ collections }) {
   const [items, setItems] = useState(collections);
@@ -46,7 +42,7 @@ export default function CarouselCollections({ collections }) {
           {items.map((item, index) => (
             <Link key={index} className="carousel-item" to={item.link}>
               <h2 className="subtitle">Colección {item.title}</h2>
-              <img src={ item.photo != "" ? item.photo : item1 } alt={`Item ${item.title}`} />
+              <img src={ item.photo != "" ? item.photo : ImageLoading } alt={`Item ${item.title}`} />
             </Link>
           ))}
         </div>

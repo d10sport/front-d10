@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import fondoHomeD10Academy from '../../assets/img/fondo_home_d10_academy.png';
 import HeaderPage from '../../layouts/header-pages/header-page'
-import img1_services from '../../assets/img/img1_services.png'
-import img2_services from '../../assets/img/img2_services.png'
-import img3_services from '../../assets/img/img3_services.png'
 import SplineModel from '@components/spline/spline.jsx';
+import { ImageLoading } from '@utils/imgs/imgs.jsx'
 import axios from 'axios';
 import './services.css'
 
@@ -107,7 +105,7 @@ export default function Services() {
               <div className="absolute">
                 <img
                   className="rounded-3xl object-cover"
-                  src={img1_services}
+                  src={sectionTwo.photo != "" ? sectionTwo.photo : ImageLoading}
                   alt="img"
                 />
               </div>
@@ -121,7 +119,7 @@ export default function Services() {
               <div className="absolute right-0">
                 <img
                   className="rounded-3xl object-cover"
-                  src={img2_services}
+                  src={sectionThree.photo != "" ? sectionThree.photo : ImageLoading}
                   alt="img"
                 />
               </div>
@@ -185,7 +183,7 @@ export default function Services() {
               <div className="absolute w-full right-24">
                 <img
                   className="rounded-3xl w-full h-full object-cover"
-                  src={img3_services}
+                  src={sectionFour.photo != "" ? sectionFour.photo : ImageLoading}
                   alt="img"
                 />
               </div>
