@@ -94,7 +94,7 @@ export default function AboutUs() {
           className="cntr-central__aboutus"
           style={{
             backgroundImage: `url(${
-              sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ImageLoading
+              sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ImageLoading()
             })`,
           }}
         >
@@ -126,7 +126,7 @@ export default function AboutUs() {
           className="cntr-img__aboutus"
           style={{
             backgroundImage: `url(${
-              sectionFour.bg_phot != "" ? sectionFour.bg_phot : ImageLoading
+              sectionFour.bg_phot != "" ? sectionFour.bg_phot : ImageLoading()
             })`,
           }}
         >
@@ -155,7 +155,7 @@ export default function AboutUs() {
           className="cntr-img__aboutus"
           style={{
             backgroundImage: `url(${
-              sectionSix.bg_phot != "" ? sectionSix.bg_phot : ImageLoading
+              sectionSix.bg_phot != "" ? sectionSix.bg_phot : ImageLoading()
             })`,
           }}
         >

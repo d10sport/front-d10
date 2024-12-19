@@ -108,7 +108,7 @@ export default function Home() {
       {/* <!-- Home Section --> */}
       <section className="home">
         <div className="img-container__home">
-          <img src={sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading } alt="Descripción de la imagen" className="img-fondo__home" />
+          <img src={sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading() } alt="Descripción de la imagen" className="img-fondo__home" />
           <div className="blur-overlay__home"></div>
         </div>
 
@@ -122,7 +122,7 @@ export default function Home() {
 
       {/* <!-- About us Section --> */}
       <section className="about">
-        <img src={sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ImageLoading } alt="Descripción de la imagen" className="absolute w-full h-full -z-0" />
+        <img src={sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ImageLoading() } alt="Descripción de la imagen" className="absolute w-full h-full -z-0" />
         <div className='content__about'>
           <h1 className="text-4xl text-[#ffc702] select-none">{sectionTwo.title}</h1>
           <p className="text__about text-2xl text-white select-none">
@@ -137,7 +137,7 @@ export default function Home() {
       {/* <!-- Commercial Section --> */}
       <section className="commercial">
         {/* <VideoHome url={sectionThree.video} /> */}
-        <video src={ sectionThree.video != "" ? sectionThree.video : ImageLoading } className="video__commercial" autoPlay muted loop></video>
+        <video src={ sectionThree.video != "" ? sectionThree.video : ImageLoading() } className="video__commercial" autoPlay muted loop></video>
       </section>
 
       {/* <!-- Collection Section --> */}
@@ -162,7 +162,7 @@ export default function Home() {
 
           {/* Imagen fondo */}
           <div className='top-0 left-0 right-0 bottom-0 z-10 absolute'>
-            <img className='relative object-cover w-full h-full' src={sectionFive.bg_photo != "" ? sectionFive.bg_photo : ImageLoading} />
+            <img className='relative object-cover w-full h-full' src={sectionFive.bg_photo != "" ? sectionFive.bg_photo : ImageLoading()} />
           </div>
 
           <div className='w-full h-full grid place-content-center justify-center z-30'>
