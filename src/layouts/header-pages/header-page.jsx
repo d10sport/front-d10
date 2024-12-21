@@ -33,7 +33,7 @@ export default function HeaderPage() {
       getDateLayout();
     }, []);
 
-    const backgroundImage = sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading;
+    const backgroundImage = sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading();
 
     const navStyle = {
       "--dynamic-bg": `url(${backgroundImage})`
@@ -42,7 +42,7 @@ export default function HeaderPage() {
   return (
     <nav id="nav_header" className="nav_page" style={navStyle}>
       <Link className='select-none' to={'/'} >
-        <img src={sectionOne.logo != "" ? sectionOne.logo : ImageLoading } alt="logo D10" className="logo" />
+        <img src={sectionOne.logo != "" ? sectionOne.logo : ImageLoading() } alt="logo D10" className="logo" />
       </Link>
       <ul className="list__nav_page">
         <li className="items__nav">

@@ -24,7 +24,7 @@ export default function CarouselSponsors({ sponsors }) {
     >
       {items.map((item, index) => (
         <SwiperSlide key={index}>
-          <img src={ item.icon != "" ? item.icon : ImageLoading } alt={`Item Sponsor`} />
+          <img src={ item.icon != "" ? item.icon : ImageLoading() } alt={`Item Sponsor`} />
         </SwiperSlide>
       ))}
     </Swiper>

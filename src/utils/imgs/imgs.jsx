@@ -1,23 +1,37 @@
-import imageLoading from '@assets/img/logo_company_1.jpg'
-// import item1 from '@assets/img/photo_carousel_item1.png'
+/* eslint-disable react-hooks/rules-of-hooks */
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function ImageLoading() {
-  return (
-    <img className="relative object-cover w-full h-full" src={imageLoading} />
-  );
+
+  const urlApi = import.meta.env.VITE_API_URL;
+  const apiKey = import.meta.env.VITE_API_KEY;
+
+  const [sectionOne, setSectionOne] = useState({
+    img: ''
+  });
+  function LoadData() {
+
+    axios.get(`${urlApi}landing/g/error`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': apiKey
+      }
+    })
+      .then((response) => {
+
+        setSectionOne(response.data[0].section_one);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  useEffect(() => {
+    LoadData();
+  }, []);
+
+  return sectionOne.img;
 }
 
-// function Item1() {
-//   return (
-//     <img
-//       src={item1}
-//       alt="Modelo"
-//       className="model__coleccion disabled-model__colleccion big-padding__colleccion "
-//     />
-//   );
-// }
-
-export { 
-  // Item1, 
-  ImageLoading 
-};
+export { ImageLoading };
