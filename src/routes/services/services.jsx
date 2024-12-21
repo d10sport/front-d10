@@ -105,7 +105,7 @@ export default function Services() {
               <div className="absolute">
                 <img
                   className="rounded-3xl object-cover"
-                  src={sectionTwo.photo != "" ? sectionTwo.photo : ImageLoading}
+                  src={sectionTwo.photo != "" ? sectionTwo.photo : ImageLoading()}
                   alt="img"
                 />
               </div>
@@ -119,7 +119,7 @@ export default function Services() {
               <div className="absolute right-0">
                 <img
                   className="rounded-3xl object-cover"
-                  src={sectionThree.photo != "" ? sectionThree.photo : ImageLoading}
+                  src={sectionThree.photo != "" ? sectionThree.photo : ImageLoading()}
                   alt="img"
                 />
               </div>
@@ -183,7 +183,7 @@ export default function Services() {
               <div className="absolute w-full right-24">
                 <img
                   className="rounded-3xl w-full h-full object-cover"
-                  src={sectionFour.photo != "" ? sectionFour.photo : ImageLoading}
+                  src={sectionFour.photo != "" ? sectionFour.photo : ImageLoading()}
                   alt="img"
                 />
               </div>

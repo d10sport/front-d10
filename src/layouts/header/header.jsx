@@ -17,32 +17,28 @@ export default function Header() {
   });
 
   function getDateLayout() {
-      axios.get(`${urlApi}landing/g/layout`, {
-        headers: {
-          'Content-Type': 'application/json',
-          'api-key': apiKey
-        }
+    axios.get(`${urlApi}landing/g/layout`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': apiKey
+      }
+    })
+      .then((response) => {
+        setSectionOne(response.data[0].section_one);
       })
-        .then((response) => {
-          setSectionOne(response.data[0].section_one);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  
-    useEffect(() => {
-      getDateLayout();
-    }, []);
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
-    const backgroundImage = sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading;
+  const backgroundImage = sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading();
 
-    const navStyle = {
-      animation : `scroll-animation 3s linear both`,
-      animationTimeline: `scroll(root block)`,
-      animationRange: `0 292px`,
-      "--dynamic-bg": `url(${backgroundImage})`
-    }
+  const navStyle = {
+    animation: `scroll-animation 3s linear both`,
+    animationTimeline: `scroll(root block)`,
+    animationRange: `0 292px`,
+    "--dynamic-bg": `url(${backgroundImage})`
+  }
 
   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
 
@@ -50,6 +46,8 @@ export default function Header() {
     const handleResize = () => {
       setIsMobileView(window.innerWidth < 768);
     };
+
+    getDateLayout();
 
     // Agregar listener de evento
     window.addEventListener("resize", handleResize);
@@ -65,9 +63,9 @@ export default function Header() {
   return (
     <nav id="nav_header" className="nav fixed" style={navStyle}>
       <Link className='select-none' to={'/'} >
-        <img src={sectionOne.logo != "" ? sectionOne.logo : ImageLoading } alt="logo D10" className="logo" />
+        <img src={sectionOne.logo != "" ? sectionOne.logo : ImageLoading() } alt="logo D10" className="logo" />
       </Link>
-      
+
       {isMobileView ? (
         // Mostrar SidePanel en vistas móviles
         <SidePanel />

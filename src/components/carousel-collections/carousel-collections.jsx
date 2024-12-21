@@ -42,7 +42,7 @@ export default function CarouselCollections({ collections }) {
           {items.map((item, index) => (
             <Link key={index} className="carousel-item" to={item.link}>
               <h2 className="subtitle">Colección {item.title}</h2>
-              <img src={ item.photo != "" ? item.photo : ImageLoading } alt={`Item ${item.title}`} />
+              <img src={ item.photo != "" ? item.photo : ImageLoading() } alt={`Item ${item.title}`} />
             </Link>
           ))}
         </div>

@@ -46,7 +46,7 @@ export default function Contact() {
 
       <SplineModel />
 
-      <section className="contact" style={{backgroundImage:`url(${sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading})`}}>
+      <section className="contact" style={{backgroundImage:`url(${sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading()})`}}>
         <h1 className="title__contact text-8xl text-[#ffc702]">
           {sectionOne.title}
         </h1>
