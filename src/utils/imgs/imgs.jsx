@@ -19,7 +19,9 @@ function ImageLoading() {
       }
     })
       .then((response) => {
-
+        if (response.data?.length === 0 || response.data[0] == undefined) {
+          return;
+        }
         setSectionOne(response.data[0].section_one);
       })
       .catch((error) => {
