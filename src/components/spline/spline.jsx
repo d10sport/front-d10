@@ -5,26 +5,27 @@ import { useEffect, useState, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import './spline.css';
+import { use } from 'react';
 
 export default function SplineModel() {
   const [isFinished, setIsFinished] = useState(false);
   const [deviceType, setDeviceType] = useState('desktop');
 
-  useEffect(() => {
-    document.body.classList.add('overflow-hidden');
-    document.getElementById('nav_header')?.classList.add('hidden');
+  // useEffect(() => {
+  //   document.body.classList.add('overflow-hidden');
+  //   document.getElementById('nav_header')?.classList.add('hidden');
 
-    setTimeout(() => {
-      document.body.classList.remove('overflow-hidden');
-      document.getElementById('nav_header')?.classList.remove('hidden');
-      document.querySelector('.wpp')?.classList.remove('hidden');
-      window.scrollTo(0, 0);
-    }, 3500);
+  //   setTimeout(() => {
+  //     document.body.classList.remove('overflow-hidden');
+  //     document.getElementById('nav_header')?.classList.remove('hidden');
+  //     document.querySelector('.wpp')?.classList.remove('hidden');
+  //     window.scrollTo(0, 0);
+  //   }, 3500);
 
-    setTimeout(() => {
-      setIsFinished(true);
-    }, 3600);
-  }, []);
+  //   setTimeout(() => {
+  //     setIsFinished(true);
+  //   }, 3600);
+  // }, []);
 
   useEffect(() => {
     const handleResize = () => {
