@@ -1,5 +1,4 @@
 import HeaderPage from '@layouts/header-pages/header-page.jsx';
-// import logoTeams from '@assets/icons/logo_teams_general.png';
 import SplineModel from '@components/spline/spline.jsx';
 import { useEffect, useState, useContext } from 'react';
 import AppContext from '@context/app-context';
@@ -88,15 +87,6 @@ export default function AboutUs() {
           </p>
         </div>
 
-        {/* <div
-          className="cntr-central__aboutus"
-          style={{
-            backgroundImage: `url(${
-              sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ImageLogo()
-            })`,
-          }}
-        > */}
-
         <div
           className="cntr-central__aboutus"
           style={{
@@ -128,15 +118,6 @@ export default function AboutUs() {
           </p>
         </div>
 
-        {/* <div
-          className="cntr-img__aboutus"
-          style={{
-            backgroundImage: `url(${
-              sectionFour.bg_phot != "" ? sectionFour.bg_phot : ImageLogo()
-            })`,
-          }}
-        > */}
-
         <div
           className="cntr-img__aboutus"
           style={{
@@ -156,23 +137,8 @@ export default function AboutUs() {
         </div>
 
         <div className="sponsors__aboutus bg-black">
-          {/* <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
-          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
-          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
-          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
-          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" /> */}
-
-          {sectionFive.icon}
+          <img src={sectionFive.icon}alt="Image Sponsor" className="img__aboutus" />
         </div>
-
-        {/* <div
-          className="cntr-img__aboutus"
-          style={{
-            backgroundImage: `url(${
-              sectionSix.bg_phot != "" ? sectionSix.bg_phot : ImageLogo()
-            })`,
-          }}
-        > */}
 
         <div
           className="cntr-img__aboutus"

@@ -33,7 +33,8 @@ export default function Contact() {
       .catch((error) => {
         console.error(error);
       });
-    }
+  }
+
 
   useEffect(() => {
     getDataContact();

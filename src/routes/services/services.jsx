@@ -54,17 +54,12 @@ export default function Services() {
       .catch((error) => {
         console.error(error);
       });
-    }
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
     getServices();
   }, []);
-
-  // Fin de la conexión
 
   return (
     <>

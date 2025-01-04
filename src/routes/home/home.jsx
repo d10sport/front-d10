@@ -1,10 +1,9 @@
 import CarouselCollections from '@components/carousel-collections/carousel-collections';
 import CarouselSponsors from '@components/carrusel-sponsors/carousel-sponsors';
+import { Suspense, useContext, useEffect, useState } from 'react';
 import { Environment, OrbitControls } from '@react-three/drei';
 import ModelBalonGlass from '@utils/model3D/BalonGlass.jsx';
-import Maintenance from '@layouts/maintenance/maintenance';
 import SplineModel from '@components/spline/spline.jsx';
-import { Suspense, useContext, useEffect, useState } from 'react';
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
 import AppContext from '@context/app-context';
@@ -90,21 +89,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    async function fetchData() {
-      const conn = await context.getConnection();
-      if (!conn) {
-        context.setDataMaintenance({
-          active: true,
-          title: 'Error de conexión',
-          subtitle: 'No se pudo establecer conexión con el servidor',
-          description: 'Por favor, intente nuevamente',
-          bg_photo: ''
-        });
-        return;
-      }
-      getDateHome();
-    }
-    fetchData();
+    getDateHome();
   });
 
   return (
