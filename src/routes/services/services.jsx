@@ -12,6 +12,12 @@ export default function Services() {
   const urlApi = context.urlApi;
   const apiKey = context.apiKey;
 
+  const [dataHeader, setDataHeader] = useState({
+    logo: '',
+    bg_photo: '',
+    navStyle: {}
+  });
+
   const [sectionOne, setSectionOne] = useState({
     title: "",
   });
@@ -50,6 +56,22 @@ export default function Services() {
         setSectionTwo(response.data[0].section_two);
         setSectionThree(response.data[0].section_three);
         setSectioFour(response.data[0].section_four);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  function getDateLayout() {
+    axios.get(`${urlApi}landing/g/layout`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': apiKey
+      }
+    })
+      .then((response) => {
+        if (response.data?.length == 0 || response.data[0] == undefined) return;
+        setDataHeader(response.data[0].header);
       })
       .catch((error) => {
         console.error(error);

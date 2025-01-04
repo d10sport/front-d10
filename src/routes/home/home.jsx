@@ -88,6 +88,23 @@ export default function Home() {
       });
   }
 
+  async function getConnection() {
+    let conection = false;
+    await axios.get(`${urlApi}conect`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': apiKey
+      }
+    })
+      .then((response) => {
+        conection = response.data;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    return conection;
+  }
+
   useEffect(() => {
     getDateHome();
   });
@@ -99,7 +116,7 @@ export default function Home() {
 
       {/* Frames iniciales */}
       <SplineModel />
-
+  
       <div className="wpp hidden">
         <a href="https://wa.me/Numero" target='_blank'>
           <Wpp />

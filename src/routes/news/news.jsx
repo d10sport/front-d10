@@ -11,6 +11,12 @@ export default function News() {
   const urlApi = context.urlApi;
   const apiKey = context.apiKey;
 
+  const [dataHeader, setDataHeader] = useState({
+    logo: '',
+    bg_photo: '',
+    navStyle: {}
+  });
+
   const [months, setMonths] = useState([]);
   const [newsData, setNewsData] = useState([]);
 
