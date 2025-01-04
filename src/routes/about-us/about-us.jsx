@@ -1,18 +1,12 @@
 import HeaderPage from '@layouts/header-pages/header-page.jsx';
-// import logoTeams from '@assets/icons/logo_teams_general.png';
 import SplineModel from '@components/spline/spline.jsx';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import AppContext from '@context/app-context';
 import axios from 'axios';
-import { ImageLogo } from '@utils/imgs/imgs.jsx'
 import './about-us.css';
 
 export default function AboutUs() {
-  const [dataHeader, setDataHeader] = useState({
-    logo: '',
-    bg_photo: '',
-    navStyle: {}
-  });
-
+  const contex = useContext(AppContext);
   const [sectionOne, setSectionOne] = useState({
     title: "",
     description: "",
@@ -72,31 +66,14 @@ export default function AboutUs() {
       });
   }
 
-  function getDateLayout() {
-    axios.get(`${urlApi}landing/g/layout`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': apiKey
-      }
-    })
-      .then((response) => {
-        if (response.data?.length == 0 || response.data[0] == undefined) return;
-        setDataHeader(response.data[0].header);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
   useEffect(() => {
     window.scrollTo(0, 0);
-    getDateLayout();
     getDataAbout();
   }, []);
 
   return (
     <>
-      <HeaderPage dataHeader={dataHeader} />
+      <HeaderPage dataHeader={contex.dataHeader} />
 
       <SplineModel />
 
@@ -109,15 +86,6 @@ export default function AboutUs() {
             {sectionOne.description}
           </p>
         </div>
-
-        {/* <div
-          className="cntr-central__aboutus"
-          style={{
-            backgroundImage: `url(${
-              sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ImageLogo()
-            })`,
-          }}
-        > */}
 
         <div
           className="cntr-central__aboutus"
@@ -150,15 +118,6 @@ export default function AboutUs() {
           </p>
         </div>
 
-        {/* <div
-          className="cntr-img__aboutus"
-          style={{
-            backgroundImage: `url(${
-              sectionFour.bg_phot != "" ? sectionFour.bg_phot : ImageLogo()
-            })`,
-          }}
-        > */}
-
         <div
           className="cntr-img__aboutus"
           style={{
@@ -178,23 +137,8 @@ export default function AboutUs() {
         </div>
 
         <div className="sponsors__aboutus bg-black">
-          {/* <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
-          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
-          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
-          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" />
-          <img src={logoTeams} alt="Image Sponsor" className="img__aboutus" /> */}
-
-          {sectionFive.icon}
+          <img src={sectionFive.icon}alt="Image Sponsor" className="img__aboutus" />
         </div>
-
-        {/* <div
-          className="cntr-img__aboutus"
-          style={{
-            backgroundImage: `url(${
-              sectionSix.bg_phot != "" ? sectionSix.bg_phot : ImageLogo()
-            })`,
-          }}
-        > */}
 
         <div
           className="cntr-img__aboutus"
