@@ -1,48 +1,21 @@
-import { Link } from "react-router-dom";
-import { ImageLoading } from '@utils/imgs/imgs.jsx'
 import SidePanel from "@components/responsive-side/side-panel.jsx";
+import { ImageLogo } from '@utils/imgs/imgs.jsx'
 import { useEffect, useState } from "react";
-import axios from 'axios';
+import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import "./header.css";
 
+export default function Header({ dataHeader }) {
+  Header.propTypes = {
+    dataHeader: PropTypes.shape({
+      navStyle: PropTypes.object,
+      bg_photo: PropTypes.string,
+      logo: PropTypes.string,
+    }),
+  };
 
-export default function Header() {
-
-  const urlApi = import.meta.env.VITE_API_URL;
-  const apiKey = import.meta.env.VITE_API_KEY;
-
-  const [sectionOne, setSectionOne] = useState({
-    logo: '',
-    bg_photo: ''
-  });
-
-  function getDateLayout() {
-    axios.get(`${urlApi}landing/g/layout`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': apiKey
-      }
-    })
-      .then((response) => {
-        if (response.data?.length === 0 || response.data[0] == undefined) {
-          return;
-        }
-        setSectionOne(response.data[0].section_one);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  const backgroundImage = sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading();
-
-  const navStyle = {
-    animation: `scroll-animation 3s linear both`,
-    animationTimeline: `scroll(root block)`,
-    animationRange: `0 292px`,
-    "--dynamic-bg": `url(${backgroundImage})`
-  }
-
+  const [data, setData] = useState(dataHeader);
+  const [navStyle, setNavStyle] = useState(dataHeader.navStyle);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -50,23 +23,31 @@ export default function Header() {
       setIsMobileView(window.innerWidth < 768);
     };
 
-    getDateLayout();
+    setData(dataHeader);
+    setNavStyle({
+      ...dataHeader.navStyle,
+      "--dynamic-bg": `url(${dataHeader.bg_photo})`,
+    });
 
-    // Agregar listener de evento
     window.addEventListener("resize", handleResize);
 
-    // Limpiar listener en desmontaje
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [dataHeader, data]);
 
   var urlAcademy = `https://academia.${window.location.host}/`;
 
   return (
     <nav id="nav_header" className="nav fixed" style={navStyle}>
       <Link className='select-none' to={'/'} >
-        <img src={sectionOne.logo != "" ? sectionOne.logo : ImageLoading() } alt="logo D10" className="logo" />
+        {data.logo == "" ? (
+          <ImageLogo style={{ maxWidth: '40px' }} alt="Logo" />
+        ) :
+          (
+            <img src={data.logo} alt="logo D10" className="logo" />
+          )}
+        {/* <img src={data.logo != "" ? data.logo : ImageLogo()} alt="logo D10" className="logo" /> */}
       </Link>
 
       {isMobileView ? (

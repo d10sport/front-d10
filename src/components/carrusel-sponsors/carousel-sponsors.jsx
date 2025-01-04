@@ -1,11 +1,19 @@
-/* eslint-disable react/prop-types */
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useEffect, useState } from 'react';
-import { ImageLoading } from '@utils/imgs/imgs.jsx'
+import { ImageLogo } from '@utils/imgs/imgs.jsx'
+import PropTypes from 'prop-types';
 
 export default function CarouselSponsors({ sponsors }) {
   const [items, setItems] = useState(sponsors);
+
+  CarouselSponsors.propTypes = {
+    sponsors: PropTypes.arrayOf(
+      PropTypes.shape({
+        icon: PropTypes.string,
+      })
+    ).isRequired,
+  };
 
   useEffect(() => {
     setItems(sponsors);
@@ -24,7 +32,11 @@ export default function CarouselSponsors({ sponsors }) {
     >
       {items.map((item, index) => (
         <SwiperSlide key={index}>
-          <img src={ item.icon != "" ? item.icon : ImageLoading() } alt={`Item Sponsor`} />
+          {item.icon != "" ? (
+            <img src={item.icon} alt={`Item Sponsor`} />
+          ) : (
+            <ImageLogo alt={`Item Sponsor ${index}`} />
+          )}
         </SwiperSlide>
       ))}
     </Swiper>
