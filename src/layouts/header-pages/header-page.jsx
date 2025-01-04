@@ -1,48 +1,40 @@
-import { ImageLoading } from '@utils/imgs/imgs.jsx'
-import { Link } from "react-router-dom";
+import { ImageLogo } from '@utils/imgs/imgs.jsx'
 import { useEffect, useState } from "react";
-import axios from 'axios';
+import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import './header-page.css';
 
-export default function HeaderPage() {
+export default function HeaderPage({ dataHeader }) {
 
-    const urlApi = import.meta.env.VITE_API_URL;
-    const apiKey = import.meta.env.VITE_API_KEY;
-  
-    const [sectionOne, setSectionOne] = useState({
-      logo: '',
-      bg_photo: ''
+  HeaderPage.propTypes = {
+    dataHeader: PropTypes.shape({
+      bg_photo: PropTypes.string,
+      logo: PropTypes.string,
+      navStyle: PropTypes.object
+    }).isRequired
+  };
+
+  const [data, setData] = useState(dataHeader);
+  const [navStyle, setNavStyle] = useState(dataHeader.navStyle);
+
+  useEffect(() => {
+    setData(dataHeader);
+    setNavStyle({
+      ...dataHeader.navStyle,
+      "--dynamic-bg": `url(${dataHeader.bg_photo})`,
     });
-  
-    function getDateLayout() {
-        axios.get(`${urlApi}landing/g/layout`, {
-          headers: {
-            'Content-Type': 'application/json',
-            'api-key': apiKey
-          }
-        })
-          .then((response) => {
-            setSectionOne(response.data[0].section_one);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }
-    
-    useEffect(() => {
-      getDateLayout();
-    }, []);
-
-    const backgroundImage = sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading();
-
-    const navStyle = {
-      "--dynamic-bg": `url(${backgroundImage})`
-    }
+  }, [dataHeader, data]);
 
   return (
     <nav id="nav_header" className="nav_page" style={navStyle}>
       <Link className='select-none' to={'/'} >
-        <img src={sectionOne.logo != "" ? sectionOne.logo : ImageLoading() } alt="logo D10" className="logo" />
+        {data.logo != "" ? (
+          <img src={data.logo} alt="logo D10" className="logo" />
+        ) :
+          (
+            <ImageLogo style={{ width: 'auto' }} />
+          )}
+        {/* <img src={data.logo != "" ? data.logo : ImageLogo()} alt="logo D10" className="logo" /> */}
       </Link>
       <ul className="list__nav_page">
         <li className="items__nav">

@@ -10,6 +10,12 @@ export default function News() {
   const urlApi = import.meta.env.VITE_API_URL;
   const apiKey = import.meta.env.VITE_API_KEY;
 
+  const [dataHeader, setDataHeader] = useState({
+    logo: '',
+    bg_photo: '',
+    navStyle: {}
+  });
+
   const [months, setMonths] = useState([]);
   const [newsData, setNewsData] = useState([]);
 
@@ -62,8 +68,26 @@ export default function News() {
       });
   }
 
+
+  function getDateLayout() {
+    axios.get(`${urlApi}landing/g/layout`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': apiKey
+      }
+    })
+      .then((response) => {
+        if (response.data?.length == 0 || response.data[0] == undefined) return;
+        setDataHeader(response.data[0].header);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   useEffect(() => {
     getNews();
+    getDateLayout();
   }, []);
 
   // Fin de la conexión
@@ -115,7 +139,7 @@ export default function News() {
 
   return (
     <>
-      <HeaderPage />
+      <HeaderPage dataHeader={dataHeader} />
 
       <SplineModel />
 
@@ -147,9 +171,8 @@ export default function News() {
                 <button
                   key={i + 1}
                   onClick={() => handlePageChange(i + 1)}
-                  className={`page-button ${
-                    currentPage === i + 1 ? "active" : ""
-                  }`}
+                  className={`page-button ${currentPage === i + 1 ? "active" : ""
+                    }`}
                 >
                   {i + 1}
                 </button>
@@ -165,9 +188,8 @@ export default function News() {
                   {year}
                 </div>
                 <ul
-                  className={`months__list ${
-                    expandedYear === year ? "expand" : ""
-                  }`}
+                  className={`months__list ${expandedYear === year ? "expand" : ""
+                    }`}
                 >
                   {expandedYear === year &&
                     months.map((month, index) => (

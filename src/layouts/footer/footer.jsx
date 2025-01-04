@@ -2,7 +2,7 @@
 import { Icon1, Icon2, Icon3, Icon4} from '@utils/icons/icons.jsx'
 import './footer.css';
 
-export default function Footer() {
+export default function Footer({ dataFooter}) {
     return (
       <>
       {/* <!-- Footer Section --> */}

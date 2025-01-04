@@ -1,20 +1,30 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
+import { ImageLogo } from '@utils/imgs/imgs.jsx'
 import { Link } from "react-router-dom";
-import M from "materialize-css";
 import "./carousel-collections.css";
-import { ImageLoading } from '@utils/imgs/imgs.jsx'
+import PropTypes from 'prop-types';
+import M from "materialize-css";
 
 export default function CarouselCollections({ collections }) {
   const [items, setItems] = useState(collections);
   const refCarousel = useRef(null);
+
+  CarouselCollections.propTypes = {
+    collections: PropTypes.arrayOf(
+      PropTypes.shape({
+        link: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        photo: PropTypes.string,
+      })
+    ).isRequired,
+  };
 
   useEffect(() => {
     setItems(collections);
   }, [collections]);
 
   useEffect(() => {
-    if (items.length === 1|| refCarousel.current === null ) return;
+    if (items.length === 1 || refCarousel.current === null) return;
     const elementosCarousel = refCarousel;
     const instance = M.Carousel.init(elementosCarousel.current, {
       duration: 150,
@@ -42,7 +52,11 @@ export default function CarouselCollections({ collections }) {
           {items.map((item, index) => (
             <Link key={index} className="carousel-item" to={item.link}>
               <h2 className="subtitle">Colección {item.title}</h2>
-              <img src={ item.photo != "" ? item.photo : ImageLoading() } alt={`Item ${item.title}`} />
+              {item.photo != "" ? (
+                <img className="img_carrusel" src={item.photo} alt={`Item ${item.title}`} />
+              ) : (
+                <ImageLogo className="img_carrusel" alt={`Item ${item.title}`} />
+              )}
             </Link>
           ))}
         </div>

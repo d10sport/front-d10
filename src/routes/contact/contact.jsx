@@ -3,14 +3,19 @@ import icon_fb_color from '@assets/icons/icon_fb_color.png';
 import icon_ig_color from '@assets/icons/icon_ig_color.png';
 import HeaderPage from '@layouts/header-pages/header-page';
 import SplineModel from '@components/spline/spline.jsx';
-import axios from 'axios';
-import { ImageLoading } from '@utils/imgs/imgs.jsx'
 import { useEffect, useState } from "react";
+import axios from 'axios';
 import './contact.css'
 
 export default function Contact() {
   const urlApi = import.meta.env.VITE_API_URL;
   const apiKey = import.meta.env.VITE_API_KEY;
+
+  const [dataHeader, setDataHeader] = useState({
+    logo: '',
+    bg_photo: '',
+    navStyle: {}
+  });
 
   const [sectionOne, setSectionOne] = useState({
     title: "",
@@ -34,19 +39,36 @@ export default function Contact() {
       });
   }
 
+  function getDateLayout() {
+    axios.get(`${urlApi}landing/g/layout`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': apiKey
+      }
+    })
+      .then((response) => {
+        if (response.data?.length == 0 || response.data[0] == undefined) return;
+        setDataHeader(response.data[0].header);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   useEffect(() => {
     getNews();
+    getDateLayout();
   }, []);
 
   // Fin de la conexión
 
   return (
     <>
-      <HeaderPage />
+      <HeaderPage dataHeader={dataHeader} />
 
       <SplineModel />
 
-      <section className="contact" style={{backgroundImage:`url(${sectionOne.bg_photo != "" ? sectionOne.bg_photo : ImageLoading()})`}}>
+      <section className="contact" style={{ backgroundImage: `url(${sectionOne.bg_photo != "" ? sectionOne.bg_photo : ''})` }}>
         <h1 className="title__contact text-8xl text-[#ffc702]">
           {sectionOne.title}
         </h1>

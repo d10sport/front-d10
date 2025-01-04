@@ -26,20 +26,20 @@ export default function SectionCollections({ collections }) {
     }
   }
 
+  const onSelectItem = (id) => {
+    setSelectedId(id);
+  };
+
   useEffect(() => {
     if (collections.length > 0) {
       setItems(collections);
-      scrollToYear();
+      // scrollToYear();
     }
   }, [collections]);
 
   useEffect(() => {
-    scrollToYear();
+    // scrollToYear();
   }, [])
-
-  const onSelectItem = (id) => {
-    setSelectedId(id);
-  };
 
   return (
     <>

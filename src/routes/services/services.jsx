@@ -2,13 +2,19 @@ import { useEffect, useState } from 'react';
 import fondoHomeD10Academy from '../../assets/img/fondo_home_d10_academy.png';
 import HeaderPage from '../../layouts/header-pages/header-page'
 import SplineModel from '@components/spline/spline.jsx';
-import { ImageLoading } from '@utils/imgs/imgs.jsx'
+import { ImageLogo } from '@utils/imgs/imgs.jsx'
 import axios from 'axios';
 import './services.css'
 
 export default function Services() {
   const urlApi = import.meta.env.VITE_API_URL;
   const apiKey = import.meta.env.VITE_API_KEY;
+
+  const [dataHeader, setDataHeader] = useState({
+    logo: '',
+    bg_photo: '',
+    navStyle: {}
+  });
 
   const [sectionOne, setSectionOne] = useState({
     title: "",
@@ -35,7 +41,7 @@ export default function Services() {
     description: "",
   });
 
-  function getNews() {
+  function getServices() {
     axios
       .get(`${urlApi}landing/g/services`, {
         headers: {
@@ -54,19 +60,36 @@ export default function Services() {
       });
   }
 
+  function getDateLayout() {
+    axios.get(`${urlApi}landing/g/layout`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': apiKey
+      }
+    })
+      .then((response) => {
+        if (response.data?.length == 0 || response.data[0] == undefined) return;
+        setDataHeader(response.data[0].header);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
-    getNews();
+    getServices();
+    getDateLayout();
   }, []);
 
   // Fin de la conexión
 
   return (
     <>
-      <HeaderPage />
+      <HeaderPage dataHeader={dataHeader} />
 
       <SplineModel />
 
@@ -103,11 +126,16 @@ export default function Services() {
             </aside>
             <aside className="relative w-1/2 h-full right-30">
               <div className="absolute">
-                <img
+                {sectionTwo.photo != "" ? (
+                  <ImageLogo />
+                ) : (
+                  <img src={sectionTwo.photo} alt="img" className="rounded-3xl object-cover" />
+                )}
+                {/* <img
                   className="rounded-3xl object-cover"
-                  src={sectionTwo.photo != "" ? sectionTwo.photo : ImageLoading()}
+                  src={sectionTwo.photo != "" ? sectionTwo.photo : ImageLogo()}
                   alt="img"
-                />
+                /> */}
               </div>
             </aside>
           </div>
@@ -117,11 +145,16 @@ export default function Services() {
           <div className="flex justify-between w-full h-full">
             <aside className="relative w-1/2 h-full">
               <div className="absolute right-0">
-                <img
+                {sectionThree.photo != "" ? (
+                  <ImageLogo />
+                ) : (
+                  <img src={sectionThree.photo} alt="img" className="rounded-3xl object-cover" />
+                )}
+                {/* <img
                   className="rounded-3xl object-cover"
-                  src={sectionThree.photo != "" ? sectionThree.photo : ImageLoading()}
+                  src={sectionThree.photo != "" ? sectionThree.photo : ImageLogo()}
                   alt="img"
-                />
+                /> */}
               </div>
             </aside>
             <aside className="relative h-full w-1/2 bg-transparent">
@@ -181,11 +214,16 @@ export default function Services() {
             </aside>
             <aside className="relative w-1/2 h-full">
               <div className="absolute w-full right-24">
-                <img
+                {sectionFour.photo != "" ? (
+                  <ImageLogo />
+                ) : (
+                  <img src={sectionFour.photo} alt="img" className="rounded-3xl object-cover" />
+                )}
+                {/* <img
                   className="rounded-3xl w-full h-full object-cover"
-                  src={sectionFour.photo != "" ? sectionFour.photo : ImageLoading()}
+                  src={sectionFour.photo != "" ? sectionFour.photo : ImageLogo()}
                   alt="img"
-                />
+                /> */}
               </div>
             </aside>
           </div>
