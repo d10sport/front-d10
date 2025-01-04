@@ -1,5 +1,9 @@
 /* Todo lo que viene de Materialize */
 
+.img_carrusel {
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
 .carousel {
   overflow: hidden;
   position: relative;

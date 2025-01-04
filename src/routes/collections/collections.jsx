@@ -10,6 +10,13 @@ export default function Collections() {
   const urlApi = import.meta.env.VITE_API_URL;
   const apiKey = import.meta.env.VITE_API_KEY;
   const refCarousel = useRef(null);
+
+  const [dataHeader, setDataHeader] = useState({
+    logo: '',
+    bg_photo: '',
+    navStyle: {}
+  });
+
   const [collections, setCollections] = useState({
     title: "",
     subtitle: "",
@@ -19,7 +26,7 @@ export default function Collections() {
   });
   const items = [{ num: 1 }, { num: 2 }, { num: 3 }, { num: 4 }];
 
-  function getNews() {
+  function getCollections() {
     axios.get(`${urlApi}landing/g/collections`, {
       headers: {
         'Content-Type': 'application/json',
@@ -28,6 +35,22 @@ export default function Collections() {
     })
       .then((response) => {
         setCollections(response.data[0]);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  function getDateLayout() {
+    axios.get(`${urlApi}landing/g/layout`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': apiKey
+      }
+    })
+      .then((response) => {
+        if (response.data?.length == 0 || response.data[0] == undefined) return;
+        setDataHeader(response.data[0].header);
       })
       .catch((error) => {
         console.error(error);
@@ -48,14 +71,15 @@ export default function Collections() {
   }, []);
 
   useEffect(() => {
-    getNews();
+    getCollections();
+    getDateLayout();
   }, []);
 
   // Fin de la conexión
 
   return (
     <>
-      <HeaderPage />
+      <HeaderPage dataHeader={dataHeader} />
 
       <SplineModel />
 

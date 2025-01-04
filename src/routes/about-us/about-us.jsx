@@ -3,10 +3,16 @@ import HeaderPage from '@layouts/header-pages/header-page.jsx';
 import SplineModel from '@components/spline/spline.jsx';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { ImageLoading } from '@utils/imgs/imgs.jsx'
+import { ImageLogo } from '@utils/imgs/imgs.jsx'
 import './about-us.css';
 
 export default function AboutUs() {
+  const [dataHeader, setDataHeader] = useState({
+    logo: '',
+    bg_photo: '',
+    navStyle: {}
+  });
+
   const [sectionOne, setSectionOne] = useState({
     title: "",
     description: "",
@@ -45,7 +51,7 @@ export default function AboutUs() {
   const urlApi = import.meta.env.VITE_API_URL;
   const apiKey = import.meta.env.VITE_API_KEY;
 
-  function getNews() {
+  function getDataAbout() {
     axios
       .get(`${urlApi}landing/g/aboutus`, {
         headers: {
@@ -66,17 +72,31 @@ export default function AboutUs() {
       });
   }
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  function getDateLayout() {
+    axios.get(`${urlApi}landing/g/layout`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': apiKey
+      }
+    })
+      .then((response) => {
+        if (response.data?.length == 0 || response.data[0] == undefined) return;
+        setDataHeader(response.data[0].header);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   useEffect(() => {
-    getNews();
+    window.scrollTo(0, 0);
+    getDateLayout();
+    getDataAbout();
   }, []);
 
   return (
     <>
-      <HeaderPage />
+      <HeaderPage dataHeader={dataHeader} />
 
       <SplineModel />
 
@@ -90,12 +110,20 @@ export default function AboutUs() {
           </p>
         </div>
 
-        <div
+        {/* <div
           className="cntr-central__aboutus"
           style={{
             backgroundImage: `url(${
-              sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ImageLoading()
+              sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ImageLogo()
             })`,
+          }}
+        > */}
+
+        <div
+          className="cntr-central__aboutus"
+          style={{
+            backgroundImage: `url(${sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ''
+              })`,
           }}
         >
           <div className="central-cntr__aboutus">
@@ -122,12 +150,20 @@ export default function AboutUs() {
           </p>
         </div>
 
-        <div
+        {/* <div
           className="cntr-img__aboutus"
           style={{
             backgroundImage: `url(${
-              sectionFour.bg_phot != "" ? sectionFour.bg_phot : ImageLoading()
+              sectionFour.bg_phot != "" ? sectionFour.bg_phot : ImageLogo()
             })`,
+          }}
+        > */}
+
+        <div
+          className="cntr-img__aboutus"
+          style={{
+            backgroundImage: `url(${sectionFour.bg_phot != "" ? sectionFour.bg_phot : ''
+              })`,
           }}
         >
           <div className="cntr-empty__aboutus"></div>
@@ -151,12 +187,20 @@ export default function AboutUs() {
           {sectionFive.icon}
         </div>
 
-        <div
+        {/* <div
           className="cntr-img__aboutus"
           style={{
             backgroundImage: `url(${
-              sectionSix.bg_phot != "" ? sectionSix.bg_phot : ImageLoading()
+              sectionSix.bg_phot != "" ? sectionSix.bg_phot : ImageLogo()
             })`,
+          }}
+        > */}
+
+        <div
+          className="cntr-img__aboutus"
+          style={{
+            backgroundImage: `url(${sectionSix.bg_phot != "" ? sectionSix.bg_phot : ''
+              })`,
           }}
         >
           <div className="cntr-side__aboutus">
