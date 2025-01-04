@@ -6,7 +6,11 @@ import axios from 'axios';
 import './about-us.css';
 
 export default function AboutUs() {
+  debugger
   const contex = useContext(AppContext);
+  const urlApi = contex.urlApi;
+  const apiKey = contex.apiKey;
+
   const [sectionOne, setSectionOne] = useState({
     title: "",
     description: "",
@@ -42,9 +46,6 @@ export default function AboutUs() {
     description: "",
   });
 
-  const urlApi = import.meta.env.VITE_API_URL;
-  const apiKey = import.meta.env.VITE_API_KEY;
-
   function getDataAbout() {
     axios
       .get(`${urlApi}landing/g/aboutus`, {
@@ -54,6 +55,7 @@ export default function AboutUs() {
         },
       })
       .then((response) => {
+        if (response.data?.length == 0 || response.data[0] == undefined) return;
         setSectionOne(response.data[0].section_one);
         setSectionTwo(response.data[0].section_two);
         setSectionThree(response.data[0].section_three);

@@ -13,6 +13,12 @@ export default function Contact() {
   const urlApi = context.urlApi;
   const apiKey = context.apiKey;
 
+  const [dataHeader, setDataHeader] = useState({
+    logo: '',
+    bg_photo: '',
+    navStyle: {}
+  });
+
   const [sectionOne, setSectionOne] = useState({
     title: "",
     bg_photo: "",
@@ -34,7 +40,6 @@ export default function Contact() {
         console.error(error);
       });
   }
-
 
   useEffect(() => {
     getDataContact();
