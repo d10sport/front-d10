@@ -47,7 +47,6 @@ export default function Header({ dataHeader }) {
           (
             <img src={data.logo} alt="logo D10" className="logo" />
           )}
-        {/* <img src={data.logo != "" ? data.logo : ImageLogo()} alt="logo D10" className="logo" /> */}
       </Link>
 
       {isMobileView ? (
