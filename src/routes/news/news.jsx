@@ -1,20 +1,15 @@
 import HeaderPage from '@layouts/header-pages/header-page.jsx';
-// import cover from '@assets/img/cover_example_news.png';
-import Footer from '@layouts/footer/footer.jsx';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import SplineModel from '@components/spline/spline.jsx';
+import Footer from '@layouts/footer/footer.jsx';
+import AppContext from '@context/app-context';
 import axios from 'axios';
 import './news.css';
 
 export default function News() {
-  const urlApi = import.meta.env.VITE_API_URL;
-  const apiKey = import.meta.env.VITE_API_KEY;
-
-  const [dataHeader, setDataHeader] = useState({
-    logo: '',
-    bg_photo: '',
-    navStyle: {}
-  });
+  const context = useContext(AppContext);
+  const urlApi = context.urlApi;
+  const apiKey = context.apiKey;
 
   const [months, setMonths] = useState([]);
   const [newsData, setNewsData] = useState([]);
@@ -68,30 +63,6 @@ export default function News() {
       });
   }
 
-
-  function getDateLayout() {
-    axios.get(`${urlApi}landing/g/layout`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': apiKey
-      }
-    })
-      .then((response) => {
-        if (response.data?.length == 0 || response.data[0] == undefined) return;
-        setDataHeader(response.data[0].header);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  useEffect(() => {
-    getNews();
-    getDateLayout();
-  }, []);
-
-  // Fin de la conexión
-
   const formatNewsData = (data) => {
     return data.map((item) => ({
       ...item,
@@ -124,22 +95,27 @@ export default function News() {
   const toggleYear = (year) => {
     setExpandedYear(expandedYear === year ? null : year);
     setSelectedYear(year);
-    setSelectedMonth(null); // Reiniciar el mes para mostrar todas las noticias del año
-    setCurrentPage(1); // Reiniciar a la primera página
+    setSelectedMonth(null);
+    setCurrentPage(1);
   };
 
   const selectMonth = (monthIndex) => {
-    setSelectedMonth(monthIndex + 1); // Mes en formato numérico
-    setCurrentPage(1); // Reiniciar a la primera página
+    setSelectedMonth(monthIndex + 1);
+    setCurrentPage(1);
   };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
+  useEffect(() => {
+    getNews();
+  }, []);
+
+
   return (
     <>
-      <HeaderPage dataHeader={dataHeader} />
+      <HeaderPage dataHeader={context.dataHeader} />
 
       <SplineModel />
 

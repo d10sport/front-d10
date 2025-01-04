@@ -1,21 +1,17 @@
 import SectionCollections from "@components/section-collections/section-collections";
 import HeaderPage from "../../layouts/header-pages/header-page";
 import SplineModel from '@components/spline/spline.jsx';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
+import AppContext from "@context/app-context";
 import M from "materialize-css";
 import "./collections.css";
 import axios from 'axios';
 
 export default function Collections() {
-  const urlApi = import.meta.env.VITE_API_URL;
-  const apiKey = import.meta.env.VITE_API_KEY;
+  const context = useContext(AppContext);
+  const urlApi = context.urlApi;
+  const apiKey = context.apiKey;
   const refCarousel = useRef(null);
-
-  const [dataHeader, setDataHeader] = useState({
-    logo: '',
-    bg_photo: '',
-    navStyle: {}
-  });
 
   const [collections, setCollections] = useState({
     title: "",
@@ -41,22 +37,6 @@ export default function Collections() {
       });
   }
 
-  function getDateLayout() {
-    axios.get(`${urlApi}landing/g/layout`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': apiKey
-      }
-    })
-      .then((response) => {
-        if (response.data?.length == 0 || response.data[0] == undefined) return;
-        setDataHeader(response.data[0].header);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
   useEffect(() => {
     const elementosCarousel = refCarousel;
     M.Carousel.init(elementosCarousel.current, {
@@ -72,14 +52,11 @@ export default function Collections() {
 
   useEffect(() => {
     getCollections();
-    getDateLayout();
   }, []);
-
-  // Fin de la conexión
 
   return (
     <>
-      <HeaderPage dataHeader={dataHeader} />
+      <HeaderPage dataHeader={context.dataHeader} />
 
       <SplineModel />
 
