@@ -1,12 +1,12 @@
 import CarouselCollections from '@components/carousel-collections/carousel-collections';
 import CarouselSponsors from '@components/carrusel-sponsors/carousel-sponsors';
+import { Suspense, useContext, useEffect, useState } from 'react';
 import { Environment, OrbitControls } from '@react-three/drei';
 import ModelBalonGlass from '@utils/model3D/BalonGlass.jsx';
-import Maintenance from '@layouts/maintenance/maintenance';
 import SplineModel from '@components/spline/spline.jsx';
-import { Suspense, useEffect, useState } from 'react';
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
+import AppContext from '@context/app-context';
 import { Wpp } from '@utils/icons/icons.jsx';
 import { Canvas } from '@react-three/fiber';
 import { Loading } from '@utils/imgs/imgs';
@@ -18,27 +18,9 @@ import 'swiper/css';
 import './home.css';
 
 export default function Home() {
-  const urlApi = import.meta.env.VITE_API_URL;
-  const apiKey = import.meta.env.VITE_API_KEY;
-
-  const [dataHeader, setDataHeader] = useState({
-    logo: '',
-    bg_photo: '',
-    navStyle: {}
-  });
-
-  const [dataFooter, setDataFooter] = useState({
-    logo: '',
-    bg_photo: ''
-  });
-
-  const [dataMaintenance, setDataMaintenance] = useState({
-    active: false,
-    title: '',
-    subtitle: '',
-    description: '',
-    bg_photo: ''
-  });
+  const context = useContext(AppContext);
+  const urlApi = context.urlApi;
+  const apiKey = context.apiKey;
 
   const [sectionOne, setSectionOne] = useState({
     slogan: '',
@@ -85,24 +67,6 @@ export default function Home() {
     ]
   })
 
-  function getDateLayout() {
-    axios.get(`${urlApi}landing/g/layout`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': apiKey
-      }
-    })
-      .then((response) => {
-        if (response.data?.length == 0 || response.data[0] == undefined) return;
-        setDataMaintenance(response.data[0].maintenance);
-        setDataHeader(response.data[0].header);
-        setDataFooter(response.data[0].footer);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
   function getDateHome() {
     axios.get(`${urlApi}landing/g/home`, {
       headers: {
@@ -124,52 +88,17 @@ export default function Home() {
       });
   }
 
-  async function getConnection() {
-    let conection = false;
-    await axios.get(`${urlApi}conect`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': apiKey
-      }
-    })
-      .then((response) => {
-        conection = response.data;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    return conection;
-  }
-
   useEffect(() => {
-    async function fetchData() {
-      const conn = await getConnection();
-      if (!conn) {
-        setDataMaintenance({
-          active: true,
-          title: 'Error de conexión',
-          subtitle: 'No se pudo establecer conexión con el servidor',
-          description: 'Por favor, intente nuevamente',
-          bg_photo: ''
-        });
-        return;
-      }
-      getDateHome();
-      getDateLayout();
-    }
-    fetchData();
+    getDateHome();
   });
 
   return (
     <>
       {/* <!-- Header Section --> */}
-      <Header dataHeader={dataHeader} />
+      <Header dataHeader={context.dataHeader} />
 
       {/* Frames iniciales */}
       <SplineModel />
-
-      {/* Pantalla de mantenimiento */}
-      <Maintenance maintenance={dataMaintenance} />
 
       <div className="wpp hidden">
         <a href="https://wa.me/Numero" target='_blank'>
@@ -290,7 +219,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Footer dataFooter={dataFooter} />
+      <Footer dataFooter={context.dataFooter} />
     </>
   )
 }

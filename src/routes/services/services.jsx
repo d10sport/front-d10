@@ -1,20 +1,16 @@
-import { useEffect, useState } from 'react';
 import fondoHomeD10Academy from '../../assets/img/fondo_home_d10_academy.png';
 import HeaderPage from '../../layouts/header-pages/header-page'
 import SplineModel from '@components/spline/spline.jsx';
+import { useEffect, useState, useContext } from 'react';
 import { ImageLogo } from '@utils/imgs/imgs.jsx'
+import AppContext from '@context/app-context';
 import axios from 'axios';
 import './services.css'
 
 export default function Services() {
-  const urlApi = import.meta.env.VITE_API_URL;
-  const apiKey = import.meta.env.VITE_API_KEY;
-
-  const [dataHeader, setDataHeader] = useState({
-    logo: '',
-    bg_photo: '',
-    navStyle: {}
-  });
+  const context = useContext(AppContext);
+  const urlApi = context.urlApi;
+  const apiKey = context.apiKey;
 
   const [sectionOne, setSectionOne] = useState({
     title: "",
@@ -60,36 +56,14 @@ export default function Services() {
       });
   }
 
-  function getDateLayout() {
-    axios.get(`${urlApi}landing/g/layout`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': apiKey
-      }
-    })
-      .then((response) => {
-        if (response.data?.length == 0 || response.data[0] == undefined) return;
-        setDataHeader(response.data[0].header);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
     getServices();
-    getDateLayout();
   }, []);
-
-  // Fin de la conexión
 
   return (
     <>
-      <HeaderPage dataHeader={dataHeader} />
+      <HeaderPage dataHeader={context.dataHeader} />
 
       <SplineModel />
 
@@ -127,15 +101,10 @@ export default function Services() {
             <aside className="relative w-1/2 h-full right-30">
               <div className="absolute">
                 {sectionTwo.photo != "" ? (
-                  <ImageLogo />
-                ) : (
                   <img src={sectionTwo.photo} alt="img" className="rounded-3xl object-cover" />
+                ) : (
+                  <ImageLogo className="rounded-3xl object-cover" alt="img" />
                 )}
-                {/* <img
-                  className="rounded-3xl object-cover"
-                  src={sectionTwo.photo != "" ? sectionTwo.photo : ImageLogo()}
-                  alt="img"
-                /> */}
               </div>
             </aside>
           </div>
@@ -146,15 +115,10 @@ export default function Services() {
             <aside className="relative w-1/2 h-full">
               <div className="absolute right-0">
                 {sectionThree.photo != "" ? (
-                  <ImageLogo />
-                ) : (
                   <img src={sectionThree.photo} alt="img" className="rounded-3xl object-cover" />
+                ) : (
+                  <ImageLogo className="rounded-3xl object-cover" alt="img" />
                 )}
-                {/* <img
-                  className="rounded-3xl object-cover"
-                  src={sectionThree.photo != "" ? sectionThree.photo : ImageLogo()}
-                  alt="img"
-                /> */}
               </div>
             </aside>
             <aside className="relative h-full w-1/2 bg-transparent">
@@ -215,15 +179,10 @@ export default function Services() {
             <aside className="relative w-1/2 h-full">
               <div className="absolute w-full right-24">
                 {sectionFour.photo != "" ? (
-                  <ImageLogo />
-                ) : (
                   <img src={sectionFour.photo} alt="img" className="rounded-3xl object-cover" />
+                ) : (
+                  <ImageLogo className="rounded-3xl w-full h-full object-cover" alt="img" />
                 )}
-                {/* <img
-                  className="rounded-3xl w-full h-full object-cover"
-                  src={sectionFour.photo != "" ? sectionFour.photo : ImageLogo()}
-                  alt="img"
-                /> */}
               </div>
             </aside>
           </div>

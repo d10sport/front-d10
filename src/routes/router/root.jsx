@@ -9,10 +9,10 @@ import { AdminHome } from '@ui/admin/home/home.jsx'
 import { AdminNews } from '@ui/admin/news/news.jsx'
 import Contact from '@routes/contact/contact.jsx'
 import { Route, Routes } from "react-router-dom"
+import ErrorPage from '@routes/router/error.jsx'
 import SingIn from '@ui/sign-in/sing-in.jsx'
 import Home from '@routes/home/home.jsx'
 import News from '@routes/news/news.jsx'
-import ErrorPage from './error.jsx'
 
 export default function Router() {
   return (

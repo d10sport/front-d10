@@ -3,19 +3,15 @@ import icon_fb_color from '@assets/icons/icon_fb_color.png';
 import icon_ig_color from '@assets/icons/icon_ig_color.png';
 import HeaderPage from '@layouts/header-pages/header-page';
 import SplineModel from '@components/spline/spline.jsx';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import AppContext from '@context/app-context';
 import axios from 'axios';
 import './contact.css'
 
 export default function Contact() {
-  const urlApi = import.meta.env.VITE_API_URL;
-  const apiKey = import.meta.env.VITE_API_KEY;
-
-  const [dataHeader, setDataHeader] = useState({
-    logo: '',
-    bg_photo: '',
-    navStyle: {}
-  });
+  const context = useContext(AppContext);
+  const urlApi = context.urlApi;
+  const apiKey = context.apiKey;
 
   const [sectionOne, setSectionOne] = useState({
     title: "",
@@ -23,7 +19,7 @@ export default function Contact() {
     subtitle: "",
   });
 
-  function getNews() {
+  function getDataContact() {
     axios
       .get(`${urlApi}landing/g/contact`, {
         headers: {
@@ -39,32 +35,14 @@ export default function Contact() {
       });
   }
 
-  function getDateLayout() {
-    axios.get(`${urlApi}landing/g/layout`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': apiKey
-      }
-    })
-      .then((response) => {
-        if (response.data?.length == 0 || response.data[0] == undefined) return;
-        setDataHeader(response.data[0].header);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
 
   useEffect(() => {
-    getNews();
-    getDateLayout();
+    getDataContact();
   }, []);
-
-  // Fin de la conexión
 
   return (
     <>
-      <HeaderPage dataHeader={dataHeader} />
+      <HeaderPage dataHeader={context.dataHeader} />
 
       <SplineModel />
 
