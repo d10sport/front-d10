@@ -1,10 +1,20 @@
-/* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react'
-import logo from '@assets/img/logo_sin_fondo.png';
 import imageFondo from '@assets/img/fondo_home_d10_academy.png';
+import logo from '@assets/img/logo_sin_fondo.png';
+import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import './maintenance.css';
 
 export default function Maintenance({ maintenance }) {
+  Maintenance.propTypes = {
+    maintenance: PropTypes.shape({
+      active: PropTypes.bool,
+      description: PropTypes.string,
+      subtitle: PropTypes.string,
+      title: PropTypes.string,
+      bg_photo: PropTypes.string
+    })
+  }
+
   const [data, setData] = useState(maintenance)
 
   useEffect(() => {
