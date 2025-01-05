@@ -1,10 +1,20 @@
-/* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react'
-import logo from '@assets/img/logo_sin_fondo.png';
 import imageFondo from '@assets/img/fondo_home_d10_academy.png';
+import logo from '@assets/img/logo_sin_fondo.png';
+import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import './maintenance.css';
 
 export default function Maintenance({ maintenance }) {
+  Maintenance.propTypes = {
+    maintenance: PropTypes.shape({
+      active: PropTypes.bool,
+      description: PropTypes.string,
+      subtitle: PropTypes.string,
+      title: PropTypes.string,
+      bg_photo: PropTypes.string
+    })
+  }
+
   const [data, setData] = useState(maintenance)
 
   useEffect(() => {
@@ -25,9 +35,9 @@ export default function Maintenance({ maintenance }) {
       <div className='w-full h-full absolute top-0 left-0 bottom-0'>
         {data.bg_photo != "" ?
           (
-            <img className='h-full w-auto' src={data.bg_photo} alt="bgPhoto" />
+            <img className='h-full w-full' src={data.bg_photo} alt="bgPhoto" />
           ) : (
-            <img className='h-full w-auto' src={imageFondo} alt="bgPhoto" />
+            <img className='h-full w-full' src={imageFondo} alt="bgPhoto" />
           )}
       </div>
       <div className='w-full h-full absolute top-0 left-0 bottom-0 bg-transparent user-select-none'>
