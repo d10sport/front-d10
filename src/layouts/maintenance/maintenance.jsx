@@ -25,9 +25,9 @@ export default function Maintenance({ maintenance }) {
       <div className='w-full h-full absolute top-0 left-0 bottom-0'>
         {data.bg_photo != "" ?
           (
-            <img className='h-full w-auto' src={data.bg_photo} alt="bgPhoto" />
+            <img className='h-full w-full' src={data.bg_photo} alt="bgPhoto" />
           ) : (
-            <img className='h-full w-auto' src={imageFondo} alt="bgPhoto" />
+            <img className='h-full w-full' src={imageFondo} alt="bgPhoto" />
           )}
       </div>
       <div className='w-full h-full absolute top-0 left-0 bottom-0 bg-transparent user-select-none'>
