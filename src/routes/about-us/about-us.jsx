@@ -6,7 +6,6 @@ import axios from 'axios';
 import './about-us.css';
 
 export default function AboutUs() {
-  debugger
   const contex = useContext(AppContext);
   const urlApi = contex.urlApi;
   const apiKey = contex.apiKey;
