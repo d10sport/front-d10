@@ -10,7 +10,16 @@ const AppProvider = ({ children }) => {
   };
 
   const urlApi = import.meta.env.VITE_API_URL;
+  console.log("urlApi: ", urlApi)
   const apiKey = import.meta.env.VITE_API_KEY;
+  console.log("apiKey: ", apiKey)
+
+  const urlApiVecel = import.meta.env.VERCEL_API_URL;
+  console.log("urlApiVecel: ", urlApiVecel)
+
+  const apiKeyVecel = import.meta.env.VERCEL_API_KEY;
+  console.log("apiKeyVecel: ", apiKeyVecel)
+
 
   const [dataMaintenance, setDataMaintenance] = useState({
     active: false,
@@ -68,7 +77,7 @@ const AppProvider = ({ children }) => {
 
   async function fetchData() {
     const conn = await getConnection();
-    if (!conn || (conn.message == "Error connecting" && conn.status == 500 )) {
+    if (!conn || (conn.message == "Error connecting" && conn.status == 500)) {
       setDataMaintenance({
         active: true,
         title: 'D10 +',
