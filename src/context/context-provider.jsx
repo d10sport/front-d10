@@ -32,7 +32,6 @@ const AppProvider = ({ children }) => {
   });
 
   function getDateLayout() {
-    debugger
     axios.get(`${urlApi}landing/g/layout`, {
       headers: {
         'Content-Type': 'application/json',
@@ -69,12 +68,12 @@ const AppProvider = ({ children }) => {
 
   async function fetchData() {
     const conn = await getConnection();
-    if (!conn) {
+    if (!conn || (conn.message == "Error connecting"&& conn.status == 500 )) {
       setDataMaintenance({
         active: true,
-        title: 'Error de conexión',
-        subtitle: 'No se pudo establecer conexión con el servidor',
-        description: 'Por favor, intente nuevamente',
+        title: 'D10 +',
+        subtitle: 'Por favor, intente mas tarde',
+        description: 'Estamos trabajando para mejorar tu experiencia',
         bg_photo: ''
       });
       return;
