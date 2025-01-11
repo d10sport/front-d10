@@ -68,7 +68,6 @@ export default function Home() {
   })
 
   function getDateHome() {
-    debugger
     axios.get(`${urlApi}landing/g/home`, {
       headers: {
         'Content-Type': 'application/json',
@@ -91,7 +90,7 @@ export default function Home() {
 
   useEffect(() => {
     getDateHome();
-  },[]);
+  }, []);
 
   return (
     <>
