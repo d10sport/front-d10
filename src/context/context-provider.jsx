@@ -32,6 +32,7 @@ const AppProvider = ({ children }) => {
   });
 
   function getDateLayout() {
+    debugger
     axios.get(`${urlApi}landing/g/layout`, {
       headers: {
         'Content-Type': 'application/json',
