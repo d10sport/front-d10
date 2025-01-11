@@ -18,7 +18,7 @@ export default function Maintenance({ maintenance }) {
   const [data, setData] = useState(maintenance)
 
   useEffect(() => {
-    if(maintenance == undefined) return
+    if (maintenance == undefined) return
     if (maintenance?.description != "" && maintenance?.subtitle != "" && maintenance?.title != "") {
       if (maintenance.active) {
         document.title = "Mantenimiento"
@@ -45,11 +45,9 @@ export default function Maintenance({ maintenance }) {
           </div>
           <div className='w-full h-full absolute top-0 left-0 bottom-0 bg-transparent user-select-none'>
             <div className='w-full h-full sm:h-full relative flex flex-col justify-center gap-4 items-center text-center'>
-              {data.bg_photo != "" && (
-                <div className='absolute top-2 left-2 bg-transparent user-select-none'>
-                  <img className='h-20 sm:h-auto md:h-auto lg:h-auto w-auto' src={logo} alt="logo D10" />
-                </div>
-              )}
+              <div className='absolute top-2 left-2 bg-transparent user-select-none'>
+                <img className='h-20 sm:h-auto md:h-auto lg:h-auto w-auto' src={logo} alt="logo D10" />
+              </div>
               <h1 className='text-white text-9xl font-bold'>{data.title}</h1>
               <h1 className='text-white text-6xl'>{data.subtitle}</h1>
               <p className='text_300 text-2xl'>{data.description}</p>

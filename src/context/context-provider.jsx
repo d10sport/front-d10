@@ -68,11 +68,11 @@ const AppProvider = ({ children }) => {
 
   async function fetchData() {
     const conn = await getConnection();
-    if (!conn || (conn.message == "Error connecting"&& conn.status == 500 )) {
+    if (!conn || (conn.message == "Error connecting" && conn.status == 500 )) {
       setDataMaintenance({
         active: true,
         title: 'D10 +',
-        subtitle: 'Por favor, intente mas tarde',
+        subtitle: '!!Llegaremos pronto!!',
         description: 'Estamos trabajando para mejorar tu experiencia',
         bg_photo: ''
       });
