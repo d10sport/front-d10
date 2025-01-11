@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import './maintenance.css';
 
 export default function Maintenance({ maintenance }) {
+  debugger
   Maintenance.propTypes = {
     maintenance: PropTypes.shape({
       active: PropTypes.bool,
