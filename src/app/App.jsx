@@ -5,8 +5,8 @@ import './App.css'
 import { useContext, useEffect } from 'react'
 
 function App() {
+  // Connect API
   const context = useContext(AppContext)
-
   useEffect(() => {
     context.fetchData();
   }, [])
