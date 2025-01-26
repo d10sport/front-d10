@@ -21,7 +21,6 @@ function App() {
         (
           <Router />
         )}
-      <Maintenance maintenance={context.dataMaintenance} />
       <SplineModel />
     </>
   )
