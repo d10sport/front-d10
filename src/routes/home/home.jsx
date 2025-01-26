@@ -97,9 +97,6 @@ export default function Home() {
       {/* <!-- Header Section --> */}
       <Header dataHeader={context.dataHeader} />
 
-      {/* Frames iniciales */}
-      <SplineModel />
-
       <div className="wpp hidden">
         <a href="https://wa.me/Numero" target='_blank'>
           <Wpp />
