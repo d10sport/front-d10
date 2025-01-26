@@ -38,7 +38,7 @@ export default function SplineModel() {
       }
     };
 
-    handleResize(); // Detectar al cargar
+    handleResize();
     window.addEventListener('resize', handleResize);
 
     return () => {
