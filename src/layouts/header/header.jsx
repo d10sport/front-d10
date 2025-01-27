@@ -59,7 +59,7 @@ export default function Header({ dataHeader }) {
             <li className="items__nav">
               <Link
                 to={"/about-us"}
-                className="a-linear__nav text-sm text-[#000]"
+                className="a-linear__nav text-sm text-[#fff]"
               >
                 Quienes somos
               </Link>
@@ -67,7 +67,7 @@ export default function Header({ dataHeader }) {
             <li className="items__nav">
               <Link
                 to={"/services"}
-                className="a-linear__nav text-sm text-[#000]"
+                className="a-linear__nav text-sm text-[#fff]"
               >
                 Servicios
               </Link>
@@ -75,7 +75,7 @@ export default function Header({ dataHeader }) {
             <li className="items__nav">
               <Link
                 to={"/contact"}
-                className="a-linear__nav text-sm text-[#000]"
+                className="a-linear__nav text-sm text-[#fff]"
               >
                 Contactanos
               </Link>

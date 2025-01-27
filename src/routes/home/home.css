@@ -38,11 +38,6 @@
   justify-content: center;
 }
 
-.img-fondo__home {
-  width: 100%;
-  height: 100%;
-}
-
 .img-container__home {
   position: relative;
   width: 100%;
@@ -51,7 +46,7 @@
 
 .img-fondo__home {
   width: 100%;
-  height: 100%;
+  height: 230%;
   object-fit: cover;
 }
 
@@ -59,12 +54,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-}
-
-.img-fondo__home {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  overflow: hidden;
 }
 
 .blur-overlay__home {
@@ -74,12 +64,8 @@
   right: 0;
   bottom: 0;
   backdrop-filter: blur(5px);
-  /* Ajusta el valor para más o menos desenfoque */
   opacity: 1;
-  /* Comienza con opacidad completa */
   pointer-events: none;
-  /* Permite clics a través de este elemento */
-  /* Aplicar el efecto de opacidad */
   mask-image: linear-gradient(to right, black 50%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%);
 }
