@@ -1,13 +1,46 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import './section-collections.css'
 
 export default function SectionCollections({ collections }) {
-  const [items, setItems] = useState(collections);
-  const [selectedId, setSelectedId] = useState(null);
+  SectionCollections.propTypes = {
+    collections: PropTypes.arrayOf(
+      PropTypes.shape({
+        link: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        subtitle: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        photos: PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+            price: PropTypes.string.isRequired,
+          })
+        ).isRequired,
+      })
+    ).isRequired,
+  };
 
-  function scrollToYear(){
+  const [items, setItems] = useState(collections);
+  const [selectedItems, setSelectedItems] = useState({});
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  const onSelectItem = (collectionId, item) => {
+    setSelectedItems((prev) => ({
+      ...prev,
+      [collectionId]: item,
+    }));
+  };
+
+  const onCloseModal = (collectionId) => {
+    setSelectedItems((prev) => ({
+      ...prev,
+      [collectionId]: null,
+    }));
+  };
+
+  function scrollToYear() {
     if (collections.length > 0) {
       const hashParams = new URLSearchParams(window.location.hash.split('?')[1]);
       const year = hashParams.get("year");
@@ -26,56 +59,80 @@ export default function SectionCollections({ collections }) {
     }
   }
 
-  const onSelectItem = (id) => {
-    setSelectedId(id);
-  };
-
   useEffect(() => {
     if (collections.length > 0) {
       setItems(collections);
-      // scrollToYear();
+      scrollToYear();
     }
   }, [collections]);
 
   useEffect(() => {
-    // scrollToYear();
+    scrollToYear();
   }, [])
 
+
   return (
-    <>
-      {items.map((item, index) => (
-        <div key={index} id={item.link}>
+    <div className="mx-auto px-4 relative">
+      {items.map((collection, collectionIndex) => (
+        <div key={collectionIndex} id={collection.link}>
           <div className="w-full flex justify-between py-4">
-            <h2 className="text-4xl text_100">{item.title}</h2>
-            <button className="btn_yellow_active">Adquirir</button>
+            <h2 className="text-4xl text_100">{collection.title}</h2>
+            <div className="relative">
+              <button
+                className="btn_yellow_active"
+                disabled
+                onMouseOver={() => setShowTooltip(true)}
+                onMouseLeave={() => setShowTooltip(false)}
+              >
+                Adquirir
+              </button>
+              {showTooltip && (
+                <div className="absolute top-full mt-1 px-2 py-1 text-sm text-white bg-gray-600 rounded">
+                  Pronto disponible
+                </div>
+              )}
+            </div>
           </div>
           <div>
-            <h3 className="text_300">{item.subtitle}</h3>
-            <p className="text-xl text_400">
-              {item.description}
-            </p>
+            <h3 className="text_300">{collection.subtitle}</h3>
+            <p className="text-xl text_400">{collection.description}</p>
           </div>
+
           <div className="relative grid auto-rows-[150px] grid-cols-3 gap-6 my-8">
-            {item.photos.map((img, i) => (
+            {collection.photos.map((item, i) => (
               <motion.div
                 key={i}
-                layoutId={img.id}
-                className={`${i === 0 ? "col-span-1 row-span-2" : ""} ${i === 1 ? "col-span-2 row-span-2" : ""
-                  }
-                ${i === 2 ? "col-span-2 row-span-2" : ""} ${i === 3 ? "col-span-1 row-span-2" : ""
-                  }
-                bg_100 row-span-1 rounded-xl border-2 p-4 hover:cursor-pointer transition-all hover:scale-95 hover:shadow-lg`}
-                onClick={() => onSelectItem(img.id)}
+                layoutId={`${collectionIndex}-${item.id}`}
+                className={`relative ${i === 0 ? "col-span-1 row-span-2" : ""}
+                  ${i === 1 ? "col-span-2 row-span-2" : ""}
+                  ${i === 2 ? "col-span-2 row-span-2" : ""}
+                  ${i === 3 ? "col-span-1 row-span-2" : ""}
+                  row-span-1 rounded-xl border-2 p-4 hover:cursor-pointer
+                  transition-all hover:scale-95 hover:shadow-lg
+                  ${selectedItems[collectionIndex] &&
+                    selectedItems[collectionIndex].id !== item.id
+                    ? "opacity-0 pointer-events-none"
+                    : "opacity-100"
+                  }`}
+                onClick={() => onSelectItem(collectionIndex, item)}
               >
-                <motion.h5 className="text_300">{img.title}</motion.h5>
-                <motion.h2 className="text_100">{img.price}</motion.h2>
+                <div className="absolute top-0 left-0 w-full h-full z-10">
+                  <div className="blurred-background absolute bottom-4 left-4">
+                    <motion.h5 className="text_300 text-lg font-bold">{item.title}</motion.h5>
+                    <motion.h2 className="text-white text-xl font-semibold">{item.price}</motion.h2>
+                  </div>
+                </div>
+                <img
+                  className="absolute rounded-lg -z-20 inset-0 w-full h-full object-cover"
+                  src={item.photo}
+                />
               </motion.div>
             ))}
 
             <AnimatePresence>
-              {selectedId && (
+              {selectedItems[collectionIndex] && (
                 <motion.div
-                  layoutId={selectedId}
+                  layoutId={`${collectionIndex}-${selectedItems[collectionIndex].id}`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
@@ -83,27 +140,24 @@ export default function SectionCollections({ collections }) {
                   className="absolute inset-0 mx-auto my-auto w-3/4 max-w-md h-3/4 max-h-md
                   bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-center"
                 >
-                  {/* Botón de cierre en la esquina superior derecha */}
+                  {/* Botón de cierre */}
                   <motion.button
-                    onClick={() => setSelectedId(null)}
-                    className="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl font-bold"
+                    onClick={() => onCloseModal(collectionIndex)}
+                    className="absolute top-4 right-4 z-20 text-gray-500 hover:text-black text-4xl font-bold"
                   >
                     &times;
                   </motion.button>
-
-                  {/* Contenido expandido */}
-                  <motion.h5 className="text-gray-500 mb-2">
-                    {selectedId.subtitle}
-                  </motion.h5>
-                  <motion.h2 className="text-gray-900 mb-4">
-                    {selectedId.title}
-                  </motion.h2>
+                  <img
+                    className="absolute rounded-lg z-10 inset-0 w-full h-full object-cover"
+                    src={selectedItems[collectionIndex].photo}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
+
         </div>
       ))}
-    </>
-  )
+    </div>
+  );
 }

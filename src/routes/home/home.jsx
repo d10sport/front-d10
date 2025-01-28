@@ -1,9 +1,9 @@
 import CarouselCollections from '@components/carousel-collections/carousel-collections';
 import CarouselSponsors from '@components/carrusel-sponsors/carousel-sponsors';
-import { Suspense, useContext, useEffect, useState } from 'react';
+import { Suspense, useContext, useEffect, useState, useMemo } from 'react';
 import { Environment, OrbitControls } from '@react-three/drei';
 import ModelBalonGlass from '@utils/model3D/BalonGlass.jsx';
-import SplineModel from '@components/spline/spline.jsx';
+import SplineModel from '@components/spline/spline.jsx'
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
 import AppContext from '@context/app-context';
@@ -21,6 +21,8 @@ export default function Home() {
   const context = useContext(AppContext);
   const urlApi = context.urlApi;
   const apiKey = context.apiKey;
+
+  const [deviceType, setDeviceType] = useState('desktop');
 
   const [sectionOne, setSectionOne] = useState({
     slogan: '',
@@ -88,14 +90,43 @@ export default function Home() {
       });
   }
 
+  const modelProps = useMemo(() => {
+    switch (deviceType) {
+      case 'mobile':
+        return { position: [0, 0, -60], scale: 0.5 };
+      case 'tablet':
+        return { position: [0, 0, -60], scale: 0.7 };
+      default:
+        return { position: [0, 0, -1], scale: 0.1 };
+    }
+  }, [deviceType]);
+
   useEffect(() => {
     getDateHome();
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width <= 768) {
+        setDeviceType('mobile');
+      } else if (width > 768 && width <= 1024) {
+        setDeviceType('tablet');
+      } else {
+        setDeviceType('desktop');
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
     <>
-      {/* <!-- Header Section --> */}
       <Header dataHeader={context.dataHeader} />
+
+      <SplineModel />
 
       <div className="wpp hidden">
         <a href="https://wa.me/Numero" target='_blank'>
@@ -180,11 +211,11 @@ export default function Home() {
           <div className='w-full h-full grid place-content-center justify-center z-30'>
             {/* 3D Model */}
             <div className='section_model_3d absolute z-20 w-[60%] h-full'>
-              <Canvas className='w-fit h-full'>
+              <Canvas className="w-fit h-full">
                 <ambientLight />
                 <OrbitControls enableZoom={false} autoRotate={false} enableRotate={false} />
                 <Suspense fallback={null}>
-                  <ModelBalonGlass position={[0, 0, -1]} scale={0.1} />
+                  <ModelBalonGlass position={modelProps.position} scale={modelProps.scale} />
                 </Suspense>
                 <Environment preset="sunset" />
               </Canvas>
@@ -192,12 +223,12 @@ export default function Home() {
 
             {/* Texto */}
             <div className='select-none absolute top-1/3 mt-5 left-1/3  transform -translate-y-1/2 flex flex-col z-20 items-center justify-center'>
-              <h1 className='text-9xl font-black text-[#FFC702] mb-4 select-none'>{sectionFive.title_1}</h1>
+              <h1 className='text-6xl sm:text-8xl md:text-8xl lg:text-9xl font-black text-[#FFC702] mb-4 select-none'>{sectionFive.title_1}</h1>
             </div>
 
             {/* Texto */}
             <div className='select-none absolute top-1/2 left-2/3 mt-6 transform -translate-x-1/2 -translate-y-1/2 flex flex-col z-20 items-center justify-center'>
-              <h1 className='text-9xl font-black text-[#FFC702] mb-4 select-none'>{sectionFive.title_2}</h1>
+              <h1 className='text-6xl sm:text-8xl md:text-8xl lg:text-9xl font-black text-[#FFC702] mb-4 select-none'>{sectionFive.title_2}</h1>
             </div>
 
             {/* Ingresa ahora */}
