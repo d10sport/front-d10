@@ -1,6 +1,6 @@
 import HeaderPage from '@layouts/header-pages/header-page.jsx';
-import SplineModel from '@components/spline/spline.jsx';
 import { useEffect, useState, useContext } from 'react';
+import SplineModel from '@components/spline/spline.jsx'
 import AppContext from '@context/app-context';
 import axios from 'axios';
 import './about-us.css';
