@@ -1,8 +1,8 @@
 import HeaderPage from "../../layouts/header-pages/header-page";
-import SplineModel from "@components/spline/spline.jsx";
+import { useEffect, useState, useContext } from "react";
+import SplineModel from '@components/spline/spline.jsx'
 import { ImageLogo } from "@utils/imgs/imgs.jsx";
 import AppContext from "@context/app-context";
-import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "./services.css";
 
@@ -10,10 +10,6 @@ export default function Services() {
   const context = useContext(AppContext);
   const urlApi = context.urlApi;
   const apiKey = context.apiKey;
-
-  // const [sectionOne, setSectionOne] = useState({
-  //   title: "",
-  // });
 
   const [sectionTwo, setSectionTwo] = useState({
     photo: "",
@@ -45,7 +41,6 @@ export default function Services() {
         },
       })
       .then((response) => {
-        // setSectionOne(response.data[0].section_one);
         setSectionTwo(response.data[0].section_two);
         setSectionThree(response.data[0].section_three);
         setSectioFour(response.data[0].section_four);
@@ -65,10 +60,6 @@ export default function Services() {
       <HeaderPage dataHeader={context.dataHeader} />
 
       <SplineModel />
-
-      {/* <div className="col-title__services">
-        <h1 className="one-title__services">Services</h1>
-      </div> */}
 
       <section className="services">
         <div className="col-text__services">
