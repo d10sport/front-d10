@@ -1,6 +1,6 @@
 import HeaderPage from "../../layouts/header-pages/header-page";
 import { useEffect, useState, useContext } from "react";
-import SplineModel from '@components/spline/spline.jsx'
+import SplineModel from "@components/spline/spline.jsx";
 import { ImageLogo } from "@utils/imgs/imgs.jsx";
 import AppContext from "@context/app-context";
 import axios from "axios";
@@ -62,24 +62,12 @@ export default function Services() {
       <SplineModel />
 
       <section className="services">
-        <div className="col-text__services">
+        <div className="row-content__services">
           <div className="cntr-text__services">
             <h1 className="title__services"> {sectionTwo.title} </h1>
             <h2 className="subtitle__services"> {sectionTwo.subtitle} </h2>
             <p className="text__services"> {sectionTwo.description} </p>
           </div>
-          <div className="cntr-text__services cntr-text--bg">
-            <h1 className="title__services"> {sectionThree.title} </h1>
-            <h2 className="subtitle__services">{sectionThree.subtitle}</h2>
-            <p className="text__services">{sectionThree.description}</p>
-          </div>
-          <div className="cntr-text__services">
-            <h1 className="title__services"> {sectionFour.title} </h1>
-            <h2 className="subtitle__services"> {sectionFour.subtitle} </h2>
-            <p className="text__services">{sectionFour.description}</p>
-          </div>
-        </div>
-        <div className="col-img__services">
           <div className="cntr-img__services">
             {sectionTwo.photo != "" ? (
               <img src={sectionTwo.photo} alt="img" className="img__services" />
@@ -87,7 +75,14 @@ export default function Services() {
               <ImageLogo className="rounded-3xl object-cover" alt="img" />
             )}
           </div>
+        </div>
 
+        <div className="row-content__services">
+          <div className="cntr-text__services cntr-text--bg">
+            <h1 className="title__services"> {sectionThree.title} </h1>
+            <h2 className="subtitle__services">{sectionThree.subtitle}</h2>
+            <p className="text__services">{sectionThree.description}</p>
+          </div>
           <div className="cntr-img__services">
             {sectionThree.photo != "" ? (
               <img
@@ -99,7 +94,14 @@ export default function Services() {
               <ImageLogo className="rounded-3xl object-cover" alt="img" />
             )}
           </div>
+        </div>
 
+        <div className="row-content__services">
+          <div className="cntr-text__services">
+            <h1 className="title__services"> {sectionFour.title} </h1>
+            <h2 className="subtitle__services"> {sectionFour.subtitle} </h2>
+            <p className="text__services">{sectionFour.description}</p>
+          </div>
           <div className="cntr-img__services">
             {sectionFour.photo != "" ? (
               <img
