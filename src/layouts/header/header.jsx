@@ -1,8 +1,8 @@
 import SidePanel from "@components/responsive-side/side-panel.jsx";
-import { ImageLogo } from '@utils/imgs/imgs.jsx'
+import { ImageLogo } from "@utils/imgs/imgs.jsx";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import "./header.css";
 
 export default function Header({ dataHeader }) {
@@ -44,13 +44,12 @@ export default function Header({ dataHeader }) {
         <SidePanel />
       ) : (
         <>
-          <Link className='select-none' to={'/'} >
+          <Link className="select-none" to={"/"}>
             {data.logo == "" ? (
-              <ImageLogo style={{ maxWidth: '40px' }} alt="Logo" />
-            ) :
-              (
-                <img src={data.logo} alt="logo D10" className="logo" />
-              )}
+              <ImageLogo style={{ maxWidth: "40px" }} alt="Logo" />
+            ) : (
+              <img src={data.logo} alt="logo D10" className="logo" />
+            )}
           </Link>
           <ul className="list__nav">
             <li className="items__nav">

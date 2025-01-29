@@ -62,7 +62,7 @@ export default function Services() {
       <SplineModel />
 
       <section className="services principal_div">
-        <div className="row-content__services">
+        <div className="row-content__services" id="section-destination-vestry">
           <div className="cntr-text__services">
             <h1 className="title__services"> {sectionTwo.title} </h1>
             <h2 className="subtitle__services"> {sectionTwo.subtitle} </h2>
@@ -77,7 +77,7 @@ export default function Services() {
           </div>
         </div>
 
-        <div className="row-content__services">
+        <div className="row-content__services" id="section-destination-workout">
           <div className="cntr-text__services cntr-text--bg">
             <h1 className="title__services"> {sectionThree.title} </h1>
             <h2 className="subtitle__services">{sectionThree.subtitle}</h2>
@@ -96,7 +96,10 @@ export default function Services() {
           </div>
         </div>
 
-        <div className="row-content__services">
+        <div
+          className="row-content__services"
+          id="section-destination-training"
+        >
           <div className="cntr-text__services">
             <h1 className="title__services"> {sectionFour.title} </h1>
             <h2 className="subtitle__services"> {sectionFour.subtitle} </h2>

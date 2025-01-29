@@ -13,6 +13,11 @@
   height: 60%;
   border-radius: 2rem;
   justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(24, 24, 24, 1) 0%,
+    rgba(61, 61, 61, 1) 100%
+  );
 }
 
 .cntr-form__contact {
@@ -61,6 +66,7 @@
   height: 32px;
   border-radius: 6px;
   padding-left: 12px;
+  color: black;
   border: 1px solid grey;
 }
 
@@ -90,7 +96,7 @@
 
 .btn-input__contact:hover {
   cursor: pointer;
-  transition: 0.4s;
+  transition: 280ms;
 }
 
 .cntr-redes__contact {

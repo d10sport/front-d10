@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import './section-collections.css'
+import "./section-collections.css";
 
 export default function SectionCollections({ collections }) {
   SectionCollections.propTypes = {
@@ -42,7 +42,9 @@ export default function SectionCollections({ collections }) {
 
   function scrollToYear() {
     if (collections.length > 0) {
-      const hashParams = new URLSearchParams(window.location.hash.split('?')[1]);
+      const hashParams = new URLSearchParams(
+        window.location.hash.split("?")[1]
+      );
       const year = hashParams.get("year");
 
       if (year) {
@@ -68,8 +70,7 @@ export default function SectionCollections({ collections }) {
 
   useEffect(() => {
     scrollToYear();
-  }, [])
-
+  }, []);
 
   return (
     <div className="mx-auto px-4 relative">
@@ -113,8 +114,12 @@ export default function SectionCollections({ collections }) {
               >
                 <div className="absolute top-0 left-0 w-full h-full z-10">
                   <div className="blurred-background absolute bottom-4 left-4">
-                    <motion.h5 className="text_300 text-lg font-bold">{item.title}</motion.h5>
-                    <motion.h2 className="text-white text-xl font-semibold">{item.price}</motion.h2>
+                    <motion.h5 className="text_300 text-lg font-bold">
+                      {item.title}
+                    </motion.h5>
+                    <motion.h2 className="text-white text-xl font-semibold">
+                      {item.price}
+                    </motion.h2>
                   </div>
                 </div>
                 <img
@@ -123,7 +128,7 @@ export default function SectionCollections({ collections }) {
                 />
               </motion.div>
             ))}
-            {Object.values(selectedItems).some(item => item) && (
+            {Object.values(selectedItems).some((item) => item) && (
               <motion.div
                 className="fixed inset-0 bg-black opacity-0"
                 initial={{ opacity: 0 }}
@@ -158,7 +163,6 @@ export default function SectionCollections({ collections }) {
               )}
             </AnimatePresence>
           </div>
-
         </div>
       ))}
     </div>
