@@ -4,6 +4,7 @@ import Footer from "@layouts/footer/footer.jsx";
 import AppContext from "@context/app-context";
 import axios from "axios";
 import "./news.css";
+import SplineModel from "@components/spline/spline.jsx";
 
 export default function News() {
   const context = useContext(AppContext);
@@ -128,6 +129,8 @@ export default function News() {
   return (
     <>
       <HeaderPage dataHeader={context.dataHeader} />
+
+      <SplineModel />
 
       <div className="container__news principal_div">
         <main className="news">
