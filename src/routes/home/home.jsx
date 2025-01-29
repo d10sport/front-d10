@@ -192,7 +192,11 @@ export default function Home() {
       <section className="commercial" id="section-destination-commercial">
         {sectionThree.video != "" ? (
           <video autoPlay muted loop>
-            <source src={sectionThree.video} className="video__commercial" type="video/mp4" />
+            <source
+              src={sectionThree.video}
+              className="video__commercial"
+              type="video/mp4"
+            />
           </video>
         ) : (
           <Loading />
