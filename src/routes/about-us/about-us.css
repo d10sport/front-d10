@@ -2,7 +2,6 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  padding: 4rem 0 0 0;
 }
 
 .cntr-txt__aboutus {
@@ -48,14 +47,6 @@
   align-items: center;
   text-align: start;
 }
-
-/* .img-bg-left__aboutus {
-  background-image: url(../../assets/img/fondo_about_side_left.png);
-}
-
-.img-bg-right__aboutus {
-  background-image: url(../../assets/img/fondo_about_side_right.png);
-} */
 
 .cntr-side__aboutus {
   display: flex;

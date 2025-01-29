@@ -103,7 +103,7 @@ export default function SectionCollections({ collections }) {
               <motion.div
                 key={i}
                 layoutId={`${collectionIndex}-${item.id}`}
-                className={`relative opacity-15 ${i === 0 ? "col-span-1 row-span-2" : ""}
+                className={`relative ${i === 0 ? "col-span-1 row-span-2" : ""}
                   ${i === 1 ? "col-span-2 row-span-2" : ""}
                   ${i === 2 ? "col-span-2 row-span-2" : ""}
                   ${i === 3 ? "col-span-1 row-span-2" : ""}
@@ -126,13 +126,12 @@ export default function SectionCollections({ collections }) {
             {Object.values(selectedItems).some(item => item) && (
               <motion.div
                 className="fixed inset-0 bg-black opacity-0"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
               />
             )}
-
             <AnimatePresence>
               {selectedItems[collectionIndex] && (
                 <motion.div

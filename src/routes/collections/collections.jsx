@@ -1,10 +1,10 @@
+import CarouselResponsiveCollections from "@components/carousel-responsive-collections/carousel-responsive-collections";
 import SectionCollections from "@components/section-collections/section-collections";
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useContext, useMemo } from "react";
 import HeaderPage from "@layouts/header-pages/header-page";
 import SplineModel from '@components/spline/spline.jsx'
 import AppContext from "@context/app-context";
 import Footer from "@layouts/footer/footer";
-import M from "materialize-css";
 import "./collections.css";
 import axios from 'axios';
 
@@ -12,7 +12,8 @@ export default function Collections() {
   const context = useContext(AppContext);
   const urlApi = context.urlApi;
   const apiKey = context.apiKey;
-  const refCarousel = useRef(null);
+
+  const [deviceType, setDeviceType] = useState('desktop');
 
   const [collections, setCollections] = useState({
     title: "",
@@ -21,6 +22,17 @@ export default function Collections() {
       collections: []
     }
   });
+
+  const showCarrusel = useMemo(() => {
+    switch (deviceType) {
+      case 'mobile':
+        return { show: true };
+      case 'tablet':
+        return { show: true };
+      default:
+        return { show: false };
+    }
+  }, [deviceType]);
 
   function getCollections() {
     axios.get(`${urlApi}landing/g/collections`, {
@@ -38,20 +50,24 @@ export default function Collections() {
   }
 
   useEffect(() => {
-    const elementosCarousel = refCarousel;
-    M.Carousel.init(elementosCarousel.current, {
-      duration: 150,
-      dist: 0,
-      shift: 5,
-      padding: 5,
-      numVisible: 1,
-      indicators: false,
-      noWrap: false,
-    });
-  }, []);
-
-  useEffect(() => {
     getCollections();
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width <= 768) {
+        setDeviceType('mobile');
+      } else if (width > 768 && width <= 1024) {
+        setDeviceType('tablet');
+      } else {
+        setDeviceType('desktop');
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
@@ -60,14 +76,20 @@ export default function Collections() {
 
       <SplineModel />
 
-      <div className="collection__hidden inline-block w-full py-8 px-12 mb-8">
+      <div className="collection__hidden principal_div inline-block w-full py-8 px-12 mb-8">
         <div className="w-full">
           <h1 className="text_300 text-5xl font-extrabold text-center">
             {collections.section_one.title}
           </h1>
         </div>
         <div>
-          <SectionCollections collections={collections.section_one.collections} />
+          {showCarrusel.show ?
+            (
+              <CarouselResponsiveCollections collections={collections.section_one.collections} />
+            ) :
+            (
+              <SectionCollections collections={collections.section_one.collections} />
+            )}
         </div>
       </div>
 
