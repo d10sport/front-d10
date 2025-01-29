@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../../assets/img/fondo_home_d10_academy.png');
+  background-image: url("../../assets/img/fondo_home_d10_academy.png");
   opacity: 0;
   transition: opacity 1s ease;
   z-index: 5;
@@ -69,7 +69,6 @@
   opacity: 0.5;
 }
 
-
 /* Animación de entrada suave */
 .fade-in {
   opacity: 0;
@@ -94,27 +93,26 @@
   transition: opacity 1s ease, transform 0.5s ease;
 }
 
-
 /* Media Queries */
 
 /* Desktop */
 @media (min-width: 1024px) {
-  #section_spline.section>div.div_img {
+  #section_spline.section > div.div_img {
     left: 26%;
   }
 
-  div.div_title_logo>h1.title {
+  div.div_title_logo > h1.title {
     font-size: 130px;
   }
 }
 
 /* Tablet */
 @media (min-width: 1023px) {
-  #section_spline>div.div_img {
+  #section_spline > div.div_img {
     left: 28%;
   }
 
-  div>h1.title {
+  div > h1.title {
     font-size: 80px;
   }
 
@@ -134,13 +132,11 @@
   }
 }
 
-
 @media (min-width: 481px) {
   .title {
     font-size: 50px;
   }
 }
-
 
 @media (min-width: 320px) {
   .title {

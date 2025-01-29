@@ -2,32 +2,32 @@ import CarouselResponsiveCollections from "@components/carousel-responsive-colle
 import SectionCollections from "@components/section-collections/section-collections";
 import { useState, useEffect, useContext, useMemo } from "react";
 import HeaderPage from "@layouts/header-pages/header-page";
-import SplineModel from '@components/spline/spline.jsx'
+import SplineModel from "@components/spline/spline.jsx";
 import AppContext from "@context/app-context";
 import Footer from "@layouts/footer/footer";
 import "./collections.css";
-import axios from 'axios';
+import axios from "axios";
 
 export default function Collections() {
   const context = useContext(AppContext);
   const urlApi = context.urlApi;
   const apiKey = context.apiKey;
 
-  const [deviceType, setDeviceType] = useState('desktop');
+  const [deviceType, setDeviceType] = useState("desktop");
 
   const [collections, setCollections] = useState({
     title: "",
     subtitle: "",
     section_one: {
-      collections: []
-    }
+      collections: [],
+    },
   });
 
   const showCarrusel = useMemo(() => {
     switch (deviceType) {
-      case 'mobile':
+      case "mobile":
         return { show: true };
-      case 'tablet':
+      case "tablet":
         return { show: true };
       default:
         return { show: false };
@@ -35,12 +35,13 @@ export default function Collections() {
   }, [deviceType]);
 
   function getCollections() {
-    axios.get(`${urlApi}landing/g/collections`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': apiKey
-      }
-    })
+    axios
+      .get(`${urlApi}landing/g/collections`, {
+        headers: {
+          "Content-Type": "application/json",
+          "api-key": apiKey,
+        },
+      })
       .then((response) => {
         setCollections(response.data[0]);
       })
@@ -54,19 +55,19 @@ export default function Collections() {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width <= 768) {
-        setDeviceType('mobile');
+        setDeviceType("mobile");
       } else if (width > 768 && width <= 1024) {
-        setDeviceType('tablet');
+        setDeviceType("tablet");
       } else {
-        setDeviceType('desktop');
+        setDeviceType("desktop");
       }
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -83,13 +84,15 @@ export default function Collections() {
           </h1>
         </div>
         <div>
-          {showCarrusel.show ?
-            (
-              <CarouselResponsiveCollections collections={collections.section_one.collections} />
-            ) :
-            (
-              <SectionCollections collections={collections.section_one.collections} />
-            )}
+          {showCarrusel.show ? (
+            <CarouselResponsiveCollections
+              collections={collections.section_one.collections}
+            />
+          ) : (
+            <SectionCollections
+              collections={collections.section_one.collections}
+            />
+          )}
         </div>
       </div>
 

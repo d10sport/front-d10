@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { ImageLogo } from '@utils/imgs/imgs.jsx'
+import { ImageLogo } from "@utils/imgs/imgs.jsx";
 import { Link } from "react-router-dom";
 import "./carousel-collections.css";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import M from "materialize-css";
 
 export default function CarouselCollections({ collections }) {
@@ -53,9 +53,16 @@ export default function CarouselCollections({ collections }) {
             <Link key={index} className="carousel-item" to={item.link}>
               <h2 className="subtitle">{item.title}</h2>
               {item.photo != "" ? (
-                <img className="img_carrusel" src={item.photo} alt={`Item ${item.title}`} />
+                <img
+                  className="img_carrusel"
+                  src={item.photo}
+                  alt={`Item ${item.title}`}
+                />
               ) : (
-                <ImageLogo className="img_carrusel" alt={`Item ${item.title}`} />
+                <ImageLogo
+                  className="img_carrusel"
+                  alt={`Item ${item.title}`}
+                />
               )}
             </Link>
           ))}

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./carousel-responsive-collections.css";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import M from "materialize-css";
 
 export default function CarouselResponsiveCollections({ collections }) {
@@ -75,15 +75,21 @@ export default function CarouselResponsiveCollections({ collections }) {
       <section className="collection">
         <div className="container">
           <div ref={refCarousel} className="carousel">
-            {items.map((item, index) => (
+            {items.map((item, index) =>
               item?.photos.map((img) => (
                 <div key={index} className="carousel-item py-8">
                   <h5 className="text_300 text-lg font-bold">{img.title}</h5>
-                  <span className="text-white text-xl font-semibold">{img.price}</span>
-                  <img src={img.photo} className="h-full" alt={`Item ${item.title}`} />
+                  <span className="text-white text-xl font-semibold">
+                    {img.price}
+                  </span>
+                  <img
+                    src={img.photo}
+                    className="h-full"
+                    alt={`Item ${item.title}`}
+                  />
                 </div>
               ))
-            ))}
+            )}
           </div>
         </div>
       </section>

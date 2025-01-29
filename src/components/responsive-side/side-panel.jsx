@@ -1,5 +1,5 @@
 import logo from "@assets/img/logo_sin_fondo.png";
-import { ImageLogo } from '@utils/imgs/imgs.jsx'
+import { ImageLogo } from "@utils/imgs/imgs.jsx";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./side-panel.css";
@@ -18,8 +18,8 @@ export default function SidePanel() {
   return (
     <>
       <nav className="nav-panel">
-        <Link className='select-none' to={'/'} >
-          <ImageLogo style={{ maxWidth: '80px' }} alt="Logo" />
+        <Link className="select-none" to={"/"}>
+          <ImageLogo style={{ maxWidth: "80px" }} alt="Logo" />
         </Link>
         <button onClick={togglePanel} className="btn__nav-panel">
           ☰
@@ -36,13 +36,13 @@ export default function SidePanel() {
           <div className="cntr-img__panel">
             <img src={logo} alt="Logo" className="img__panel" />
           </div>
-          <Link to={'/about-us'} className="link__panel text--active text-2xl">
+          <Link to={"/about-us"} className="link__panel text--active text-2xl">
             Quienes somos
           </Link>
-          <Link to={'/services'} className="link__panel text--active text-2xl">
+          <Link to={"/services"} className="link__panel text--active text-2xl">
             Servicios
           </Link>
-          <Link to={'/contact'} className="link__panel text--active text-2xl">
+          <Link to={"/contact"} className="link__panel text--active text-2xl">
             Contacto
           </Link>
         </div>
