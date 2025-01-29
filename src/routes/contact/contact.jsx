@@ -1,6 +1,4 @@
 import icon_wpp_color from '@assets/icons/icon_wpp_color.png';
-import icon_fb_color from '@assets/icons/icon_fb_color.png';
-import icon_ig_color from '@assets/icons/icon_ig_color.png';
 import HeaderPage from '@layouts/header-pages/header-page';
 import { useEffect, useState, useContext } from "react";
 import SplineModel from '@components/spline/spline.jsx'
@@ -97,16 +95,6 @@ export default function Contact() {
                 <img
                   src={icon_wpp_color}
                   alt="WhatsApp"
-                  className="img-redes__contact"
-                />
-                <img
-                  src={icon_ig_color}
-                  alt="Instagram"
-                  className="img-redes__contact"
-                />
-                <img
-                  src={icon_fb_color}
-                  alt="Facebook"
                   className="img-redes__contact"
                 />
               </div>

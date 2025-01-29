@@ -7,7 +7,6 @@ import SplineModel from '@components/spline/spline.jsx'
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
 import AppContext from '@context/app-context';
-import { Wpp } from '@utils/icons/icons.jsx';
 import { Canvas } from '@react-three/fiber';
 import { Loading } from '@utils/imgs/imgs';
 import { Link } from "react-router-dom";
@@ -128,12 +127,6 @@ export default function Home() {
 
       <SplineModel />
 
-      <div className="wpp hidden">
-        <a href="https://wa.me/Numero" target='_blank'>
-          <Wpp />
-        </a>
-      </div>
-
       {/* <!-- Home Section --> */}
       <section className="home">
         <div className="img-container__home">
@@ -148,8 +141,8 @@ export default function Home() {
         <div className="container__home">
           <h1 className="title__home text-black text-8xl select-none">{sectionOne.company}</h1>
           <h1 className="title__home text-6xl select-none">{sectionOne.slogan}</h1>
-          <h1 className="title__home text-6xl select-none">tu pasión,</h1>
-          <h1 className="title__home text-6xl select-none">entrena tu talento</h1>
+          <h5 className="title__home text-6xl select-none">tu pasión,</h5>
+          <h5 className="title__home text-6xl select-none">entrena tu talento</h5>
         </div>
       </section>
 
@@ -186,7 +179,7 @@ export default function Home() {
       {/* News Section */}
       <section className="news__banner bg-black">
         <div className="container__news__banner">
-          <h1 className="title__news__banner text-2xl text-[#ffc702] select-none">Seccion de Noticias</h1>
+          <h1 className="title__news__banner text-2xl text-[#ffc702] select-none">Noticias</h1>
           <h2 className="subtitle__news__banner text-2xl text-white select-none">{sectionFour.news.title}</h2>
           <p className="text__news__banner text-lg text-[#999999] select-none">
             {sectionFour.news.description}

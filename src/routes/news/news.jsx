@@ -34,36 +34,6 @@ export default function News() {
     setSelectedMonth(currentMonth);
   }, [currentYear, currentMonth]);
 
-  // function getNews() {
-  //   axios
-  //     .get(`${urlApi}landing/g/news`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "api-key": apiKey,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       const { news, months } = response.data[0].section_one;
-
-  //       // Convertir el objeto `news` en un array de objetos
-  //       const formattedNews = Object.entries(news).map(([key, value]) => ({
-  //         id: key,
-  //         title: value.title,
-  //         description: value.description,
-  //         date: value.date,
-  //         image: value.image,
-  //       }));
-
-  //       setNewsData(formattedNews); // Actualizar el estado de las noticias
-  //       setMonths(months); // Actualizar los meses
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
-
-  // --------------------------------------------------------
-
   useEffect(() => {
     const getNews = async () => {
       try {
@@ -110,7 +80,6 @@ export default function News() {
     getNews();
   }, [urlApi, apiKey]);
 
-  // --------------------------------------------------------
 
   const formatNewsData = (data) => {
     return data.map((item) => ({
@@ -157,15 +126,11 @@ export default function News() {
     setCurrentPage(page);
   };
 
-  // useEffect(() => {
-  //   getNews();
-  // }, []);
-
   return (
     <>
       <HeaderPage dataHeader={context.dataHeader} />
 
-      <div className="container__news">
+      <div className="container__news principal_div">
         <main className="news">
           <section className="section__news">
             {filteredData.length > 0 ? (

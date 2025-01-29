@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Icon1, Icon2, Icon3, Icon4 } from '@utils/icons/icons.jsx'
 import PropTypes from 'prop-types'
 import './footer.css';
 
@@ -19,10 +18,7 @@ export default function Footer({ dataFooter }) {
                 </div>
                 <div className="ctnr-redes__footer">
                     <div className="redes__footer">
-                        <Icon1 />
-                        <Icon2 />
-                        <Icon3 />
-                        <Icon4 />
+                     
                     </div>
                 </div>
             </footer>
@@ -41,8 +37,8 @@ export default function Footer({ dataFooter }) {
                 <div className="services__footer">
                     <ul className="list__footer">
                         <p className="text-list__footer text-[#999999]">Home</p>
-                        <li className="item-list__footer">Hero Section</li>
-                        <li className="item-list__footer">Features</li>
+                        <li className="item-list__footer">First Section</li>
+                        <li className="item-list__footer">About us</li>
                         <li className="item-list__footer">Properties</li>
                         <li className="item-list__footer">Testimonials</li>
                         <li className="item-list__footer">FAQ's</li>

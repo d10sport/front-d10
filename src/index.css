@@ -36,6 +36,13 @@ body {
   height: 100%;
 }
 
+
+/* General */
+
+.principal_div {
+  padding: 5rem 0 0 0;
+}
+
 .text_100 {
   color: var(--text-100);
 }
@@ -109,6 +116,20 @@ body {
   opacity: 0.5;
   transform: scale(1.1);
   background-color: #FFC702;
+}
+
+.wpp {
+  position: fixed;
+  width: 4rem;
+  height: 4rem;
+  z-index: 40;
+  bottom: 2%;
+  right: 2%;
+}
+
+.img__wpp {
+  width: 100%;
+  height: 100%;
 }
 
 

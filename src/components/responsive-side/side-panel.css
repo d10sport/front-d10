@@ -6,13 +6,8 @@
   justify-content: space-between;
   padding: 0px 20px;
   align-items: center;
-  background-color: #161616;
   color: white;
   z-index: 2;
-}
-
-.img__nav-panel {
-  max-width: 80px;
 }
 
 .btn__nav-panel {

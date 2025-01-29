@@ -24,7 +24,6 @@
   height: 48rem;
   justify-content: center;
   align-items: center;
-  /* background-image: url(../../assets/img/fondo_about_central.png); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -48,14 +47,6 @@
   align-items: center;
   text-align: start;
 }
-
-/* .img-bg-left__aboutus {
-  background-image: url(../../assets/img/fondo_about_side_left.png);
-}
-
-.img-bg-right__aboutus {
-  background-image: url(../../assets/img/fondo_about_side_right.png);
-} */
 
 .cntr-side__aboutus {
   display: flex;
