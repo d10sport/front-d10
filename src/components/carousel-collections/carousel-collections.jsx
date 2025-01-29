@@ -51,7 +51,7 @@ export default function CarouselCollections({ collections }) {
         <div ref={refCarousel} className="carousel">
           {items.map((item, index) => (
             <Link key={index} className="carousel-item" to={item.link}>
-              <h2 className="subtitle">Colección {item.title}</h2>
+              <h2 className="subtitle">{item.title}</h2>
               {item.photo != "" ? (
                 <img className="img_carrusel" src={item.photo} alt={`Item ${item.title}`} />
               ) : (

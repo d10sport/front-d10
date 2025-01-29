@@ -1,10 +1,9 @@
-import HeaderPage from '@layouts/header-pages/header-page.jsx';
-import { useState, useEffect, useContext } from 'react';
-import SplineModel from '@components/spline/spline.jsx';
-import Footer from '@layouts/footer/footer.jsx';
-import AppContext from '@context/app-context';
-import axios from 'axios';
-import './news.css';
+import HeaderPage from "@layouts/header-pages/header-page.jsx";
+import { useState, useEffect, useContext } from "react";
+import Footer from "@layouts/footer/footer.jsx";
+import AppContext from "@context/app-context";
+import axios from "axios";
+import "./news.css";
 
 export default function News() {
   const context = useContext(AppContext);
@@ -35,15 +34,46 @@ export default function News() {
     setSelectedMonth(currentMonth);
   }, [currentYear, currentMonth]);
 
-  function getNews() {
-    axios
-      .get(`${urlApi}landing/g/news`, {
-        headers: {
-          "Content-Type": "application/json",
-          "api-key": apiKey,
-        },
-      })
-      .then((response) => {
+  // function getNews() {
+  //   axios
+  //     .get(`${urlApi}landing/g/news`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "api-key": apiKey,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       const { news, months } = response.data[0].section_one;
+
+  //       // Convertir el objeto `news` en un array de objetos
+  //       const formattedNews = Object.entries(news).map(([key, value]) => ({
+  //         id: key,
+  //         title: value.title,
+  //         description: value.description,
+  //         date: value.date,
+  //         image: value.image,
+  //       }));
+
+  //       setNewsData(formattedNews); // Actualizar el estado de las noticias
+  //       setMonths(months); // Actualizar los meses
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
+
+  // --------------------------------------------------------
+
+  useEffect(() => {
+    const getNews = async () => {
+      try {
+        const response = await axios.get(`${urlApi}landing/g/news`, {
+          headers: {
+            "Content-Type": "application/json",
+            "api-key": apiKey,
+          },
+        });
+
         const { news, months } = response.data[0].section_one;
 
         // Convertir el objeto `news` en un array de objetos
@@ -55,13 +85,32 @@ export default function News() {
           image: value.image,
         }));
 
-        setNewsData(formattedNews); // Actualizar el estado de las noticias
-        setMonths(months); // Actualizar los meses
-      })
-      .catch((error) => {
+        // Formatear las noticias
+        const formattedNewsData = formattedNews.map((item) => ({
+          ...item,
+          date: item.date.slice(0, 7), // Mantener solo "AAAA-MM"
+        }));
+
+        // Obtener el mes y año más recientes en el formato "AAAA-MM"
+        const mostRecentNews = formattedNewsData.sort(
+          (a, b) => new Date(b.date) - new Date(a.date)
+        )[0];
+        const [recentYear, recentMonth] = mostRecentNews.date.split("-");
+
+        // Actualizar estados
+        setNewsData(formattedNewsData); // Actualizar noticias formateadas
+        setMonths(months); // Actualizar meses disponibles
+        setSelectedYear(parseInt(recentYear)); // Establecer año más reciente
+        setSelectedMonth(parseInt(recentMonth)); // Establecer mes más reciente
+      } catch (error) {
         console.error(error);
-      });
-  }
+      }
+    };
+
+    getNews();
+  }, [urlApi, apiKey]);
+
+  // --------------------------------------------------------
 
   const formatNewsData = (data) => {
     return data.map((item) => ({
@@ -108,16 +157,13 @@ export default function News() {
     setCurrentPage(page);
   };
 
-  useEffect(() => {
-    getNews();
-  }, []);
-
+  // useEffect(() => {
+  //   getNews();
+  // }, []);
 
   return (
     <>
       <HeaderPage dataHeader={context.dataHeader} />
-
-      <SplineModel />
 
       <div className="container__news">
         <main className="news">
@@ -147,8 +193,9 @@ export default function News() {
                 <button
                   key={i + 1}
                   onClick={() => handlePageChange(i + 1)}
-                  className={`page-button ${currentPage === i + 1 ? "active" : ""
-                    }`}
+                  className={`page-button ${
+                    currentPage === i + 1 ? "active" : ""
+                  }`}
                 >
                   {i + 1}
                 </button>
@@ -164,8 +211,9 @@ export default function News() {
                   {year}
                 </div>
                 <ul
-                  className={`months__list ${expandedYear === year ? "expand" : ""
-                    }`}
+                  className={`months__list ${
+                    expandedYear === year ? "expand" : ""
+                  }`}
                 >
                   {expandedYear === year &&
                     months.map((month, index) => (
