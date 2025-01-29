@@ -52,7 +52,7 @@ export default function Footer({ dataFooter }) {
                   handleClickIdRedirect("section-destination-home")
                 }
               >
-                Primera Sección
+                Inicio
               </button>
             </li>
             <li className="item-list__footer">
@@ -61,7 +61,7 @@ export default function Footer({ dataFooter }) {
                   handleClickIdRedirect("section-destination-about")
                 }
               >
-                Acerca de
+                Nosotros
               </button>
             </li>
             <li className="item-list__footer">
@@ -97,7 +97,7 @@ export default function Footer({ dataFooter }) {
                   handleClickIdRedirect("section-destination-academy")
                 }
               >
-                D10+ Academy
+                Academia
               </button>
             </li>
             <li className="item-list__footer">
@@ -106,14 +106,12 @@ export default function Footer({ dataFooter }) {
                   handleClickIdRedirect("section-destination-sponsors")
                 }
               >
-                Partners
+                Socios
               </button>
             </li>
           </ul>
           <ul className="list__footer">
-            <p className="text-list__footer text-[#999999]">
-              Acerca de Nosotros
-            </p>
+            <p className="text-list__footer text-[#999999]">Nosotros</p>
             <li className="item-list__footer">
               <button
                 onClick={() =>
@@ -161,7 +159,7 @@ export default function Footer({ dataFooter }) {
             </li>
           </ul>
           <ul className="list__footer">
-            <p className="text-list__footer text-[#999999]">Services</p>
+            <p className="text-list__footer text-[#999999]">Servicios</p>
             <li className="item-list__footer">
               <button
                 onClick={() =>
@@ -191,14 +189,14 @@ export default function Footer({ dataFooter }) {
             </li>
           </ul>
           <ul className="list__footer">
-            <p className=" text-[#999999]">Contact</p>
+            <p className=" text-[#999999]">Contacto</p>
             <li className="item-list__footer">
               <button
                 onClick={() =>
                   handleClickIdRedirect("section-destination-contact-form")
                 }
               >
-                Formulario de Contacto
+                Contacto
               </button>
             </li>
             <li className="item-list__footer">
@@ -207,7 +205,7 @@ export default function Footer({ dataFooter }) {
                   handleClickIdRedirect("section-destination-networks")
                 }
               >
-                Nuestras redes
+                Redes
               </button>
             </li>
           </ul>
