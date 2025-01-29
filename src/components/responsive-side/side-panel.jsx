@@ -1,5 +1,7 @@
-import { useState } from "react";
 import logo from "@assets/img/logo_sin_fondo.png";
+import { ImageLogo } from '@utils/imgs/imgs.jsx'
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./side-panel.css";
 
 export default function SidePanel() {
@@ -16,7 +18,9 @@ export default function SidePanel() {
   return (
     <>
       <nav className="nav-panel">
-        <img src={logo} alt="logo" className="img__nav-panel" />
+        <Link className='select-none' to={'/'} >
+          <ImageLogo style={{ maxWidth: '80px' }} alt="Logo" />
+        </Link>
         <button onClick={togglePanel} className="btn__nav-panel">
           ☰
         </button>
@@ -32,18 +36,15 @@ export default function SidePanel() {
           <div className="cntr-img__panel">
             <img src={logo} alt="Logo" className="img__panel" />
           </div>
-          <a className="link__panel text--active text-2xl" href="#">
+          <Link to={'/about-us'} className="link__panel text--active text-2xl">
             Quienes somos
-          </a>
-          <a className="link__panel text--active text-2xl" href="#">
+          </Link>
+          <Link to={'/services'} className="link__panel text--active text-2xl">
             Servicios
-          </a>
-          <a className="link__panel text--active text-2xl" href="#">
+          </Link>
+          <Link to={'/contact'} className="link__panel text--active text-2xl">
             Contacto
-          </a>
-          <a className="link__panel text--active text-2xl" href="#">
-            Iniciar sesión
-          </a>
+          </Link>
         </div>
         <div className="cntr-section2__panel">
           <footer className="footer__panel">&#169; D10mas</footer>

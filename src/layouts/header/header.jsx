@@ -40,21 +40,18 @@ export default function Header({ dataHeader }) {
 
   return (
     <nav id="nav_header" className="nav fixed" style={navStyle}>
-      <Link className='select-none' to={'/'} >
-        {data.logo == "" ? (
-          <ImageLogo style={{ maxWidth: '40px' }} alt="Logo" />
-        ) :
-          (
-            <img src={data.logo} alt="logo D10" className="logo" />
-          )}
-      </Link>
-
       {isMobileView ? (
-        // Mostrar SidePanel en vistas móviles
         <SidePanel />
       ) : (
-        // Mostrar navegación normal en pantallas grandes
         <>
+          <Link className='select-none' to={'/'} >
+            {data.logo == "" ? (
+              <ImageLogo style={{ maxWidth: '40px' }} alt="Logo" />
+            ) :
+              (
+                <img src={data.logo} alt="logo D10" className="logo" />
+              )}
+          </Link>
           <ul className="list__nav">
             <li className="items__nav">
               <Link

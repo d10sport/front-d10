@@ -1,6 +1,7 @@
 import HeaderPage from '@layouts/header-pages/header-page.jsx';
 import { useEffect, useState, useContext } from 'react';
 import SplineModel from '@components/spline/spline.jsx'
+import { IconFdcCol } from '../../utils/icons/icons';
 import AppContext from '@context/app-context';
 import axios from 'axios';
 import './about-us.css';
@@ -30,20 +31,25 @@ export default function AboutUs() {
 
   const [sectionFour, setSectioFour] = useState({
     title: "",
-    bg_phot: "",
+    bg_photo: "",
     description: "",
   });
 
-  const [sectionFive, setSectionFive] = useState({
-    icon: "",
-    count_repeat: "",
-  });
+  const [sectionFive, setSectionFive] = useState([]);
 
   const [sectionSix, setSectionSix] = useState({
     title: "",
-    bg_phot: "",
+    bg_photo: "",
     description: "",
   });
+
+  function loadIcon(icon, count){
+    let icons = []
+    for (let index = 0; count > icons.length; index++) {
+      icons.push({ icon: icon})
+    }
+    setSectionFive(icons);
+  }
 
   function getDataAbout() {
     axios
@@ -59,8 +65,10 @@ export default function AboutUs() {
         setSectionTwo(response.data[0].section_two);
         setSectionThree(response.data[0].section_three);
         setSectioFour(response.data[0].section_four);
-        setSectionFive(response.data[0].section_five);
         setSectionSix(response.data[0].section_six);
+        if(response.data[0]?.section_five?.count_repeat > 0 && response.data[0]?.section_five?.icon != ""){
+          loadIcon(response.data[0]?.section_five?.icon, response.data[0]?.section_five?.count_repeat)
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -78,7 +86,7 @@ export default function AboutUs() {
 
       <SplineModel />
 
-      <section className="aboutus">
+      <section className="aboutus principal_div">
         <div className="cntr-txt__aboutus bg-black">
           <h1 className="title-1__aboutus text-8xl text-[#ffc702]">
             {sectionOne.title}
@@ -111,7 +119,7 @@ export default function AboutUs() {
         </div>
 
         <div className="cntr-txt__aboutus bg-black">
-          <h3 className="title-3__aboutus text-[#ffc702] text-6xl">
+          <h3 className="title-3__aboutus text-[#ffc702] text-6xl py-4">
             {sectionThree.title}
           </h3>
           <p className="text__aboutus padding-cntr-txt__space text-white text-2xl">
@@ -122,13 +130,13 @@ export default function AboutUs() {
         <div
           className="cntr-img__aboutus"
           style={{
-            backgroundImage: `url(${sectionFour.bg_phot != "" ? sectionFour.bg_phot : ''
+            backgroundImage: `url(${sectionFour.bg_photo != "" ? sectionFour.bg_photo : ''
               })`,
           }}
         >
           <div className="cntr-empty__aboutus"></div>
           <div className="cntr-side__aboutus">
-            <h3 className="title-3__aboutus text-[#ffc702] text-4xl">
+            <h3 className="title-3__aboutus text-[#ffc702] text-4xl py-4">
               {sectionFour.title}
             </h3>
             <p className="text__aboutus text-white text-2xl">
@@ -138,18 +146,35 @@ export default function AboutUs() {
         </div>
 
         <div className="sponsors__aboutus bg-black">
-          <img src={sectionFive.icon}alt="Image Sponsor" className="img__aboutus" />
+          {sectionFive.length > 0 ?
+            (
+              (
+                sectionFive.map((item) => (
+                  <img key={item.icon} src={item.icon} alt="Image Sponsor" className="img__aboutus" />
+                ))
+              )
+            ) :
+            (
+              <>
+                <IconFdcCol />
+                <IconFdcCol />
+                <IconFdcCol />
+                <IconFdcCol />
+                <IconFdcCol />
+                <IconFdcCol />
+              </>
+            )}
         </div>
 
         <div
           className="cntr-img__aboutus"
           style={{
-            backgroundImage: `url(${sectionSix.bg_phot != "" ? sectionSix.bg_phot : ''
+            backgroundImage: `url(${sectionSix.bg_photo != "" ? sectionSix.bg_photo : ''
               })`,
           }}
         >
           <div className="cntr-side__aboutus">
-            <h3 className="title-3__aboutus text-[#ffc702] text-4xl">
+            <h3 className="title-3__aboutus text-[#ffc702] text-4xl py-4">
               {sectionSix.title}
             </h3>
             <p className="text__aboutus text-white text-2xl">

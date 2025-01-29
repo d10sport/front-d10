@@ -61,7 +61,7 @@ export default function Services() {
 
       <SplineModel />
 
-      <section className="services">
+      <section className="services principal_div">
         <div className="row-content__services">
           <div className="cntr-text__services">
             <h1 className="title__services"> {sectionTwo.title} </h1>
