@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import video from '@assets/video/ford_commercial.mp4';
+import video from "@assets/video/ford_commercial.mp4";
 
-function VideoHome({url}) {
+function VideoHome({ url }) {
   return (
     <video
       src={url != "" ? url : video}
@@ -10,7 +10,7 @@ function VideoHome({url}) {
       muted
       loop
     ></video>
-  )
+  );
 }
 
-export { VideoHome }
+export { VideoHome };

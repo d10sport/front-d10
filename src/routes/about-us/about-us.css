@@ -103,15 +103,15 @@
 }
 
 @media (max-width: 768px) {
-  .title-1__aboutus{
+  .title-1__aboutus {
     font-size: 4rem !important;
   }
 
-  .title-2__aboutus{
+  .title-2__aboutus {
     font-size: 2.5rem !important;
   }
 
-  .title-3__aboutus{
+  .title-3__aboutus {
     font-size: 2rem !important;
   }
 
