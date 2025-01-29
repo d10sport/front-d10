@@ -103,17 +103,12 @@ export default function SectionCollections({ collections }) {
               <motion.div
                 key={i}
                 layoutId={`${collectionIndex}-${item.id}`}
-                className={`relative ${i === 0 ? "col-span-1 row-span-2" : ""}
+                className={`relative opacity-15 ${i === 0 ? "col-span-1 row-span-2" : ""}
                   ${i === 1 ? "col-span-2 row-span-2" : ""}
                   ${i === 2 ? "col-span-2 row-span-2" : ""}
                   ${i === 3 ? "col-span-1 row-span-2" : ""}
                   row-span-1 rounded-xl border-2 p-4 hover:cursor-pointer
-                  transition-all hover:scale-95 hover:shadow-lg
-                  ${selectedItems[collectionIndex] &&
-                    selectedItems[collectionIndex].id !== item.id
-                    ? "opacity-0 pointer-events-none"
-                    : "opacity-100"
-                  }`}
+                  transition-all hover:scale-95 hover:shadow-lg`}
                 onClick={() => onSelectItem(collectionIndex, item)}
               >
                 <div className="absolute top-0 left-0 w-full h-full z-10">
@@ -128,14 +123,23 @@ export default function SectionCollections({ collections }) {
                 />
               </motion.div>
             ))}
+            {Object.values(selectedItems).some(item => item) && (
+              <motion.div
+                className="fixed inset-0 bg-black opacity-0"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.3 }}
+              />
+            )}
 
             <AnimatePresence>
               {selectedItems[collectionIndex] && (
                 <motion.div
                   layoutId={`${collectionIndex}-${selectedItems[collectionIndex].id}`}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
+                  initial={{ scale: 0.8 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0.8 }}
                   transition={{ duration: 0.3 }}
                   className="absolute inset-0 mx-auto my-auto w-3/4 max-w-md h-3/4 max-h-md
                   bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-center"

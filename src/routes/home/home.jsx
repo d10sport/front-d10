@@ -148,8 +148,8 @@ export default function Home() {
         <div className="container__home">
           <h1 className="title__home text-black text-8xl select-none">{sectionOne.company}</h1>
           <h1 className="title__home text-6xl select-none">{sectionOne.slogan}</h1>
-          <h1 className="title__home text-6xl select-none">tu pasión,</h1>
-          <h1 className="title__home text-6xl select-none">entrena tu talento</h1>
+          <h5 className="title__home text-6xl select-none">tu pasión,</h5>
+          <h5 className="title__home text-6xl select-none">entrena tu talento</h5>
         </div>
       </section>
 
