@@ -1,18 +1,17 @@
 import SidePanel from "@components/responsive-side/side-panel.jsx";
-import { ImageLogo } from '@utils/imgs/imgs.jsx'
+import { ImageLogo } from "@utils/imgs/imgs.jsx";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
-import './header-page.css';
+import PropTypes from "prop-types";
+import "./header-page.css";
 
 export default function HeaderPage({ dataHeader }) {
-
   HeaderPage.propTypes = {
     dataHeader: PropTypes.shape({
       bg_photo: PropTypes.string,
       logo: PropTypes.string,
-      navStyle: PropTypes.object
-    }).isRequired
+      navStyle: PropTypes.object,
+    }).isRequired,
   };
 
   const [data, setData] = useState(dataHeader);
@@ -43,35 +42,40 @@ export default function HeaderPage({ dataHeader }) {
         <SidePanel />
       ) : (
         <>
-          <Link className='select-none' to={'/'} >
+          <Link className="select-none" to={"/"}>
             {data.logo == "" ? (
-              <ImageLogo style={{ maxWidth: '40px' }} alt="Logo" />
-            ) :
-              (
-                <img src={data.logo} alt="logo D10" className="logo" />
-              )}
+              <ImageLogo style={{ maxWidth: "40px" }} alt="Logo" />
+            ) : (
+              <img src={data.logo} alt="logo D10" className="logo" />
+            )}
           </Link>
           <ul className="list__nav_page">
             <li className="items__nav">
-              <Link to={'/about-us'} className="a-linear__nav_page text-sm text-[#fff]">
+              <Link
+                to={"/about-us"}
+                className="a-linear__nav_page text-sm text-[#fff]"
+              >
                 Quienes somos
               </Link>
             </li>
             <li className="items__nav">
-              <Link to={'/services'} className="a-linear__nav_page text-sm">
+              <Link to={"/services"} className="a-linear__nav_page text-sm">
                 Servicios
               </Link>
             </li>
             <li className="items__nav">
-              <Link to={'/contact'} className="a-linear__nav_page text-sm">
+              <Link to={"/contact"} className="a-linear__nav_page text-sm">
                 Contactanos
               </Link>
             </li>
           </ul>
-          <button className="login__nav_page text-sm text-white hover:text-[#000] hover:bg-[#ffc702]"><a target="_blank" href="https://academia.d10mas.com">D10+</a></button>
+          <button className="login__nav_page text-sm text-white hover:text-[#000] hover:bg-[#ffc702]">
+            <a target="_blank" href="https://academia.d10mas.com">
+              D10+
+            </a>
+          </button>
         </>
       )}
     </nav>
-
   );
 }

@@ -80,7 +80,6 @@ export default function News() {
     getNews();
   }, [urlApi, apiKey]);
 
-
   const formatNewsData = (data) => {
     return data.map((item) => ({
       ...item,
