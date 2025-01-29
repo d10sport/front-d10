@@ -106,6 +106,10 @@
     height: 100%;
   }
 
+  .title__footer {
+    padding-left: 12px;
+  }
+
   .input__footer {
     margin-top: 12px;
     padding: 8px;
