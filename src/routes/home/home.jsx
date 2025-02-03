@@ -53,9 +53,9 @@ export default function Home() {
     },
   });
 
-  const [sectionThree, setSectionThree] = useState({
-    video: "",
-  });
+  // const [sectionThree, setSectionThree] = useState({
+  //   video: "",
+  // });
 
   const [sectionFive, setSectionFive] = useState({
     title_1: "",
@@ -82,7 +82,7 @@ export default function Home() {
         if (response.data?.length == 0 || response.data[0] == undefined) return;
         setSectionOne(response.data[0].section_one);
         setSectionTwo(response.data[0].section_two);
-        setSectionThree(response.data[0].section_three);
+        // setSectionThree(response.data[0].section_three);
         setSectioFour(response.data[0].section_four);
         setSectionFive(response.data[0].section_five);
         setSectionSix(response.data[0].section_six);
@@ -128,7 +128,7 @@ export default function Home() {
   // ---------------- Media Proxy ----------------
   // ---------------------------------------------
 
-  const [imageBlobs, setImageBlobs] = useState({});
+  const [mediaBlobs, setMediaBlobs] = useState({});
 
   useEffect(() => {
     getMediaHome();
@@ -145,32 +145,40 @@ export default function Home() {
 
       if (!response.data) return;
 
-      const imageUrls = response.data;
-      const blobUrls = {};
+      const mediaUrls = response.data;
+      const keys = Object.keys(mediaUrls);
 
-      // Convertir cada imagen a blob usando el backend
-      for (const key in imageUrls) {
-        if (imageUrls[key]) {
-          const blobResponse = await axios.get(
-            `${urlApi}landing/proxy/image?url=${encodeURIComponent(
-              imageUrls[key]
-            )}`,
-            {
-              headers: {
-                "Content-Type": "application/json",
-                "api-key": apiKey,
-              },
-              responseType: "blob",
-            }
-          );
+      // Hacer todas las peticiones en paralelo con Promise.all()
+      const requests = keys.map(async (key) => {
+        if (!mediaUrls[key]) return null;
 
-          blobUrls[key] = URL.createObjectURL(blobResponse.data);
-        }
-      }
+        const blobResponse = await axios.get(
+          `${urlApi}landing/proxy/media?url=${encodeURIComponent(
+            mediaUrls[key]
+          )}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "api-key": apiKey,
+            },
+            responseType: "blob",
+          }
+        );
 
-      setImageBlobs(blobUrls);
+        return { key, blobUrl: URL.createObjectURL(blobResponse.data) };
+      });
+
+      const results = await Promise.all(requests);
+
+      // Convertir los resultados en un objeto
+      const blobUrls = results.reduce((acc, item) => {
+        if (item) acc[item.key] = item.blobUrl;
+        return acc;
+      }, {});
+
+      setMediaBlobs(blobUrls);
     } catch (error) {
-      console.error("Error al obtener las imágenes:", error);
+      console.error("Error al obtener los archivos multimedia:", error);
     }
   }
 
@@ -185,11 +193,12 @@ export default function Home() {
       {/* <!-- Home Section --> */}
       <section className="home" id="section-destination-home">
         <div className="img-container__home">
-          {imageBlobs.section_one_bg != "" ? (
+          {mediaBlobs.section_one_bg != "" ? (
             <img
-              src={imageBlobs.section_one_bg}
+              src={mediaBlobs.section_one_bg}
               alt="Imagen desde el backend"
               className="img-fondo__home"
+              loading="lazy"
             />
           ) : (
             <Loading />
@@ -216,11 +225,12 @@ export default function Home() {
       {/* <!-- About us Section --> */}
 
       <section className="about" id="section-destination-about">
-        {imageBlobs.section_two_bg != "" ? (
+        {mediaBlobs.section_two_bg != "" ? (
           <img
-            src={imageBlobs.section_two_bg}
+            src={mediaBlobs.section_two_bg}
             alt="Descripción de la imagen"
             className="absolute w-full h-full -z-0"
+            loading="lazy"
           />
         ) : (
           <Loading />
@@ -243,9 +253,9 @@ export default function Home() {
 
       {/* <!-- Commercial Section --> */}
       <section className="commercial" id="section-destination-commercial">
-        {sectionThree.video != "" ? (
+        {mediaBlobs.section_three_video != "" ? (
           <video className="video__commercial" autoPlay muted loop>
-            <source src={sectionThree.video} type="video/mp4" />
+            <source src={mediaBlobs.section_three_video} type="video/mp4" loading="lazy"/>
           </video>
         ) : (
           <Loading />
@@ -286,10 +296,11 @@ export default function Home() {
         >
           {/* Imagen fondo */}
           <div className="top-0 left-0 right-0 bottom-0 z-10 absolute">
-            {imageBlobs.section_five_bg != "" ? (
+            {mediaBlobs.section_five_bg != "" ? (
               <img
                 className="relative object-cover w-full h-full"
-                src={imageBlobs.section_five_bg}
+                src={mediaBlobs.section_five_bg}
+                loading="lazy"
               />
             ) : (
               <Loading />
