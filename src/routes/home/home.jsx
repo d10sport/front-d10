@@ -128,57 +128,53 @@ export default function Home() {
   // ---------------- Media Proxy ----------------
   // ---------------------------------------------
 
-  const [mediaData, setMediaData] = useState({});
+  const [imageBlobs, setImageBlobs] = useState({});
 
   useEffect(() => {
     getMediaHome();
   }, []);
 
-  function getMediaHome() {
-    axios
-      .get(`${urlApi}landing/proxy/home`, {
+  async function getMediaHome() {
+    try {
+      const response = await axios.get(`${urlApi}landing/proxy/home`, {
         headers: {
           "Content-Type": "application/json",
           "api-key": apiKey,
         },
-      })
-      .then((response) => {
-        if (!response.data) return;
-
-        setMediaData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error al obtener las imágenes y videos:", error);
       });
+
+      if (!response.data) return;
+
+      const imageUrls = response.data;
+      const blobUrls = {};
+
+      // Convertir cada imagen a blob usando el backend
+      for (const key in imageUrls) {
+        if (imageUrls[key]) {
+          const blobResponse = await axios.get(
+            `${urlApi}landing/proxy/image?url=${encodeURIComponent(
+              imageUrls[key]
+            )}`,
+            {
+              headers: {
+                "Content-Type": "application/json",
+                "api-key": apiKey,
+              },
+              responseType: "blob",
+            }
+          );
+
+          blobUrls[key] = URL.createObjectURL(blobResponse.data);
+        }
+      }
+
+      setImageBlobs(blobUrls);
+    } catch (error) {
+      console.error("Error al obtener las imágenes:", error);
+    }
   }
 
-  // const [imageSrc, setImageSrc] = useState("");
-
-  // useEffect(() => {
-  //   getImageHome();
-  // }, []);
-
-  // function getImageHome() {
-  //   axios
-  //     .get(`${urlApi}landing/proxy/home`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "api-key": apiKey,
-  //       },
-  //       responseType: "blob",
-  //     })
-  //     .then((response) => {
-  //       if (!response.data) return;
-
-  //       const imageUrl = URL.createObjectURL(response.data);
-  //       setImageSrc(imageUrl);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error al obtener la imagen:", error);
-  //     });
-  // }
-
-  // Img Proxy
+  // Media Proxy
 
   return (
     <>
@@ -189,9 +185,9 @@ export default function Home() {
       {/* <!-- Home Section --> */}
       <section className="home" id="section-destination-home">
         <div className="img-container__home">
-          {mediaData.section_one_bg != "" ? (
+          {imageBlobs.section_one_bg != "" ? (
             <img
-              src={mediaData.section_one_bg}
+              src={imageBlobs.section_one_bg}
               alt="Imagen desde el backend"
               className="img-fondo__home"
             />
@@ -219,11 +215,10 @@ export default function Home() {
 
       {/* <!-- About us Section --> */}
 
-      {/* Referencia */}
       <section className="about" id="section-destination-about">
-        {sectionOne.bg_photo != "" ? (
+        {imageBlobs.section_two_bg != "" ? (
           <img
-            src={sectionTwo.bg_photo}
+            src={imageBlobs.section_two_bg}
             alt="Descripción de la imagen"
             className="absolute w-full h-full -z-0"
           />
@@ -291,10 +286,10 @@ export default function Home() {
         >
           {/* Imagen fondo */}
           <div className="top-0 left-0 right-0 bottom-0 z-10 absolute">
-            {sectionFive.bg_photo != "" ? (
+            {imageBlobs.section_five_bg != "" ? (
               <img
                 className="relative object-cover w-full h-full"
-                src={sectionFive.bg_photo}
+                src={imageBlobs.section_five_bg}
               />
             ) : (
               <Loading />
