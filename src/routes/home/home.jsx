@@ -124,6 +124,62 @@ export default function Home() {
     };
   }, []);
 
+  // ---------------------------------------------
+  // ---------------- Media Proxy ----------------
+  // ---------------------------------------------
+
+  const [mediaData, setMediaData] = useState({});
+
+  useEffect(() => {
+    getMediaHome();
+  }, []);
+
+  function getMediaHome() {
+    axios
+      .get(`${urlApi}landing/proxy/home`, {
+        headers: {
+          "Content-Type": "application/json",
+          "api-key": apiKey,
+        },
+      })
+      .then((response) => {
+        if (!response.data) return;
+
+        setMediaData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error al obtener las imágenes y videos:", error);
+      });
+  }
+
+  // const [imageSrc, setImageSrc] = useState("");
+
+  // useEffect(() => {
+  //   getImageHome();
+  // }, []);
+
+  // function getImageHome() {
+  //   axios
+  //     .get(`${urlApi}landing/proxy/home`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "api-key": apiKey,
+  //       },
+  //       responseType: "blob",
+  //     })
+  //     .then((response) => {
+  //       if (!response.data) return;
+
+  //       const imageUrl = URL.createObjectURL(response.data);
+  //       setImageSrc(imageUrl);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error al obtener la imagen:", error);
+  //     });
+  // }
+
+  // Img Proxy
+
   return (
     <>
       <Header dataHeader={context.dataHeader} />
@@ -133,10 +189,10 @@ export default function Home() {
       {/* <!-- Home Section --> */}
       <section className="home" id="section-destination-home">
         <div className="img-container__home">
-          {sectionOne.bg_photo != "" ? (
+          {mediaData.section_one_bg != "" ? (
             <img
-              src={sectionOne.bg_photo}
-              alt="Descripción de la imagen"
+              src={mediaData.section_one_bg}
+              alt="Imagen desde el backend"
               className="img-fondo__home"
             />
           ) : (
@@ -162,6 +218,8 @@ export default function Home() {
       </section>
 
       {/* <!-- About us Section --> */}
+
+      {/* Referencia */}
       <section className="about" id="section-destination-about">
         {sectionOne.bg_photo != "" ? (
           <img
