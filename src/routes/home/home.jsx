@@ -3,6 +3,7 @@ import CarouselSponsors from "@components/carrusel-sponsors/carousel-sponsors";
 import { Suspense, useContext, useEffect, useState, useMemo } from "react";
 import { Environment, OrbitControls } from "@react-three/drei";
 import ModelBalonGlass from "@utils/model3D/BalonGlass.jsx";
+import getTokenDecoded from "../../token/token-data.js";
 import SplineModel from "@components/spline/spline.jsx";
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
@@ -53,9 +54,9 @@ export default function Home() {
     },
   });
 
-  // const [sectionThree, setSectionThree] = useState({
-  //   video: "",
-  // });
+  const [sectionThree, setSectionThree] = useState({
+    video: "",
+  });
 
   const [sectionFive, setSectionFive] = useState({
     title_1: "",
@@ -78,14 +79,19 @@ export default function Home() {
           "api-key": apiKey,
         },
       })
-      .then((response) => {
-        if (response.data?.length == 0 || response.data[0] == undefined) return;
-        setSectionOne(response.data[0].section_one);
-        setSectionTwo(response.data[0].section_two);
-        // setSectionThree(response.data[0].section_three);
-        setSectioFour(response.data[0].section_four);
-        setSectionFive(response.data[0].section_five);
-        setSectionSix(response.data[0].section_six);
+      .then(async (response) => {
+        if (!response.data.success) return;
+
+        const decrypted = await getTokenDecoded(response.data.data);
+
+        if (decrypted) {
+          setSectionOne(decrypted.data[0].section_one);
+          setSectionTwo(decrypted.data[0].section_two);
+          setSectionThree(decrypted.data[0].section_three);
+          setSectioFour(decrypted.data[0].section_four);
+          setSectionFive(decrypted.data[0].section_five);
+          setSectionSix(decrypted.data[0].section_six);
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -124,66 +130,6 @@ export default function Home() {
     };
   }, []);
 
-  // ---------------------------------------------
-  // ---------------- Media Proxy ----------------
-  // ---------------------------------------------
-
-  const [mediaBlobs, setMediaBlobs] = useState({});
-
-  useEffect(() => {
-    getMediaHome();
-  }, []);
-
-  async function getMediaHome() {
-    try {
-      const response = await axios.get(`${urlApi}landing/proxy/home`, {
-        headers: {
-          "Content-Type": "application/json",
-          "api-key": apiKey,
-        },
-      });
-
-      if (!response.data) return;
-
-      const mediaUrls = response.data;
-      const keys = Object.keys(mediaUrls);
-
-      // Hacer todas las peticiones en paralelo con Promise.all()
-      const requests = keys.map(async (key) => {
-        if (!mediaUrls[key]) return null;
-
-        const blobResponse = await axios.get(
-          `${urlApi}landing/proxy/media?url=${encodeURIComponent(
-            mediaUrls[key]
-          )}`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              "api-key": apiKey,
-            },
-            responseType: "blob",
-          }
-        );
-
-        return { key, blobUrl: URL.createObjectURL(blobResponse.data) };
-      });
-
-      const results = await Promise.all(requests);
-
-      // Convertir los resultados en un objeto
-      const blobUrls = results.reduce((acc, item) => {
-        if (item) acc[item.key] = item.blobUrl;
-        return acc;
-      }, {});
-
-      setMediaBlobs(blobUrls);
-    } catch (error) {
-      console.error("Error al obtener los archivos multimedia:", error);
-    }
-  }
-
-  // Media Proxy
-
   return (
     <>
       <Header dataHeader={context.dataHeader} />
@@ -193,12 +139,12 @@ export default function Home() {
       {/* <!-- Home Section --> */}
       <section className="home" id="section-destination-home">
         <div className="img-container__home">
-          {mediaBlobs.section_one_bg != "" ? (
+          {sectionOne.bg_photo != "" ? (
             <img
-              src={mediaBlobs.section_one_bg}
+              src={sectionOne.bg_photo}
               alt="Imagen desde el backend"
               className="img-fondo__home"
-              loading="lazy"
+              onError={(e) => console.log("Error cargando imagen sección 1", e)}
             />
           ) : (
             <Loading />
@@ -225,12 +171,11 @@ export default function Home() {
       {/* <!-- About us Section --> */}
 
       <section className="about" id="section-destination-about">
-        {mediaBlobs.section_two_bg != "" ? (
+        {sectionTwo.bg_photo != "" ? (
           <img
-            src={mediaBlobs.section_two_bg}
+            src={sectionTwo.bg_photo}
             alt="Descripción de la imagen"
             className="absolute w-full h-full -z-0"
-            loading="lazy"
           />
         ) : (
           <Loading />
@@ -253,9 +198,9 @@ export default function Home() {
 
       {/* <!-- Commercial Section --> */}
       <section className="commercial" id="section-destination-commercial">
-        {mediaBlobs.section_three_video != "" ? (
+        {sectionThree.video != "" ? (
           <video className="video__commercial" autoPlay muted loop>
-            <source src={mediaBlobs.section_three_video} type="video/mp4" loading="lazy"/>
+            <source src={sectionThree.video} type="video/mp4" />
           </video>
         ) : (
           <Loading />
@@ -296,11 +241,10 @@ export default function Home() {
         >
           {/* Imagen fondo */}
           <div className="top-0 left-0 right-0 bottom-0 z-10 absolute">
-            {mediaBlobs.section_five_bg != "" ? (
+            {sectionFive.bg_photo != "" ? (
               <img
                 className="relative object-cover w-full h-full"
-                src={mediaBlobs.section_five_bg}
-                loading="lazy"
+                src={sectionFive.bg_photo}
               />
             ) : (
               <Loading />
