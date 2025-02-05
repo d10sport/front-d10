@@ -3,6 +3,7 @@ import CarouselSponsors from "@components/carrusel-sponsors/carousel-sponsors";
 import { Suspense, useContext, useEffect, useState, useMemo } from "react";
 import { Environment, OrbitControls } from "@react-three/drei";
 import ModelBalonGlass from "@utils/model3D/BalonGlass.jsx";
+import getTokenDecoded from "../../token/token-data.js";
 import SplineModel from "@components/spline/spline.jsx";
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
@@ -78,14 +79,19 @@ export default function Home() {
           "api-key": apiKey,
         },
       })
-      .then((response) => {
-        if (response.data?.length == 0 || response.data[0] == undefined) return;
-        setSectionOne(response.data[0].section_one);
-        setSectionTwo(response.data[0].section_two);
-        setSectionThree(response.data[0].section_three);
-        setSectioFour(response.data[0].section_four);
-        setSectionFive(response.data[0].section_five);
-        setSectionSix(response.data[0].section_six);
+      .then(async (response) => {
+        if (!response.data.success) return;
+
+        const decrypted = await getTokenDecoded(response.data.data);
+
+        if (decrypted) {
+          setSectionOne(decrypted.data[0].section_one);
+          setSectionTwo(decrypted.data[0].section_two);
+          setSectionThree(decrypted.data[0].section_three);
+          setSectioFour(decrypted.data[0].section_four);
+          setSectionFive(decrypted.data[0].section_five);
+          setSectionSix(decrypted.data[0].section_six);
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -136,8 +142,9 @@ export default function Home() {
           {sectionOne.bg_photo != "" ? (
             <img
               src={sectionOne.bg_photo}
-              alt="Descripción de la imagen"
+              alt="Imagen desde el backend"
               className="img-fondo__home"
+              onError={(e) => console.log("Error cargando imagen sección 1", e)}
             />
           ) : (
             <Loading />
@@ -162,8 +169,9 @@ export default function Home() {
       </section>
 
       {/* <!-- About us Section --> */}
+
       <section className="about" id="section-destination-about">
-        {sectionOne.bg_photo != "" ? (
+        {sectionTwo.bg_photo != "" ? (
           <img
             src={sectionTwo.bg_photo}
             alt="Descripción de la imagen"
