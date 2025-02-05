@@ -5,6 +5,6 @@ export default async function getTokenDecoded(token) {
         return false;
     }
     const decoded = await jwtDecode(token);
-  
+
     return decoded;
 }
