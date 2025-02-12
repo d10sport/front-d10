@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import ErrorPage from "@routes/router/error.jsx";
 import Home from "@routes/home/home.jsx";
 import News from "@routes/news/news.jsx";
+import Gallery from "@routes/gallery/gallery.jsx";
 
 export default function Router() {
   return (
@@ -16,6 +17,7 @@ export default function Router() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/collections" element={<Collections />} />
       <Route path="/news" element={<News />} />
+      <Route path="/gallery" element={<Gallery />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );

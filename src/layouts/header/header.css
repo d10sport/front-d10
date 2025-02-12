@@ -72,8 +72,8 @@
 @keyframes scroll-animation-login-hover {
   to {
     color: #000;
-    border: 2px solid #ffc702;
-    background-color: #ffc702;
+    border: 2px solid white;
+    background-color: white;
   }
 }
 
