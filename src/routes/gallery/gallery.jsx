@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import SplineModel from "@components/spline/spline.jsx";
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
@@ -6,50 +6,79 @@ import AppContext from "@context/app-context";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css";
+import axios from "axios";
 import "./gallery.css";
-import ImageRmLogo from "./example-img.png";
+// import ImageRmLogo from "./example-img.png";
 
 export default function Gallery() {
   const context = useContext(AppContext);
+  const urlApi = context.urlApi;
+  const apiKey = context.apiKey;
 
-  const lista = [
-    {
-      img: ImageRmLogo,
-    },
-    {
-      img: ImageRmLogo,
-    },
-    {
-      img: ImageRmLogo,
-    },
-    {
-      img: ImageRmLogo,
-    },
-    {
-      img: ImageRmLogo,
-    },
-    {
-      img: ImageRmLogo,
-    },
-    {
-      img: ImageRmLogo,
-    },
-    {
-      img: ImageRmLogo,
-    },
-    {
-      img: ImageRmLogo,
-    },
-    {
-      img: ImageRmLogo,
-    },
-    {
-      img: ImageRmLogo,
-    },
-    {
-      img: ImageRmLogo,
-    },
-  ];
+  // const lista = [
+  //   {
+  //     img: ImageRmLogo,
+  //   },
+  //   {
+  //     img: ImageRmLogo,
+  //   },
+  //   {
+  //     img: ImageRmLogo,
+  //   },
+  //   {
+  //     img: ImageRmLogo,
+  //   },
+  //   {
+  //     img: ImageRmLogo,
+  //   },
+  //   {
+  //     img: ImageRmLogo,
+  //   },
+  //   {
+  //     img: ImageRmLogo,
+  //   },
+  //   {
+  //     img: ImageRmLogo,
+  //   },
+  //   {
+  //     img: ImageRmLogo,
+  //   },
+  //   {
+  //     img: ImageRmLogo,
+  //   },
+  //   {
+  //     img: ImageRmLogo,
+  //   },
+  //   {
+  //     img: ImageRmLogo,
+  //   },
+  // ];
+
+  const [sectionOne, setSectionOne] = useState({
+    gallery: "",
+  });
+
+  function getDataGallery() {
+    axios
+      .get(`${urlApi}landing/g/gallery`, {
+        headers: {
+          "Content-Type": "application/json",
+          "api-key": apiKey,
+        },
+      })
+      .then((response) => {
+        if (response.data?.length == 0 || response.data[0] == undefined) return;
+        setSectionOne(response.data[0].section_one);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    getDataGallery();
+  }, []);
 
   return (
     <>
@@ -59,12 +88,12 @@ export default function Gallery() {
 
       <section className="gallery">
         <ul className="list__gallery">
-          {lista.length > 0 ? (
-            lista.map((item, index) => (
+          {sectionOne.length > 0 ? (
+            sectionOne.map((item, index) => (
               <li key={index} className="item__gallery">
                 <img
                   className="img__gallery"
-                  src={item.img}
+                  src={item.gallery}
                   alt={`Img ${index + 1}`}
                 />
               </li>
