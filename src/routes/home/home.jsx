@@ -109,6 +109,17 @@ export default function Home() {
     }
   }, [deviceType]);
 
+  const changeImage = useMemo(() => {
+    switch (deviceType) {
+      case "mobile":
+        return { show: true };
+      case "tablet":
+        return { show: true };
+      default:
+        return { show: false };
+    }
+  }, [deviceType]);
+
   useEffect(() => {
     getDateHome();
     const handleResize = () => {
@@ -140,15 +151,29 @@ export default function Home() {
       <section className="home" id="section-destination-home">
         <div className="img-container__home">
           {sectionOne.bg_photo != "" ? (
-            <img
-              src={sectionOne.bg_photo}
-              alt="Imagen desde el backend"
-              className="img-fondo__home"
-              onError={(e) => console.log("Error cargando imagen sección 1", e)}
-            />
+            changeImage.show ? (
+              <img
+                src={sectionOne.bg_photo}
+                alt="Imagen desde el backend"
+                className="img-fondo__home"
+                onError={(e) =>
+                  console.log("Error cargando imagen sección 1", e)
+                }
+              />
+            ) : (
+              <img
+                src={sectionOne.bg_photo}
+                alt="Imagen desde el backend"
+                className="img-fondo__home"
+                onError={(e) =>
+                  console.log("Error cargando imagen sección 1", e)
+                }
+              />
+            )
           ) : (
             <Loading />
           )}
+
           <div className="blur-overlay__home"></div>
         </div>
 
@@ -165,6 +190,13 @@ export default function Home() {
           <h5 className="title__home text-6xl select-none">
             {sectionOne.slogan_three}
           </h5>
+          <Link
+            to={"/gallery"}
+            // className="btn__home text-xl text-[black] hover:text-white hover:bg-[black]"
+            className="btn__home text-xl"
+          >
+            Nuestra Galería
+          </Link>
         </div>
       </section>
 
@@ -189,7 +221,7 @@ export default function Home() {
           </p>
           <Link
             to={"/about-us"}
-            className="btn__about text-xl text-[#ffc702] hover:text-black hover:bg-[#ffc702]"
+            className="btn__about text-xl text-[white] hover:text-black hover:bg-[white]"
           >
             Saber más
           </Link>
@@ -226,7 +258,7 @@ export default function Home() {
           </p>
           <Link
             to={sectionFour.news.link}
-            className="link__news__banner text-xl text-[#ffc702] hover:text-black hover:bg-[#ffc702]"
+            className="link__news__banner text-xl text-[white] hover:text-black hover:bg-[white]"
           >
             Ver más
           </Link>
@@ -272,15 +304,15 @@ export default function Home() {
             </div>
 
             {/* Texto */}
-            <div className="select-none absolute top-1/3 mt-5 left-1/3  transform -translate-y-1/2 flex flex-col z-20 items-center justify-center">
-              <h1 className="text-6xl sm:text-8xl md:text-8xl lg:text-9xl font-black text-[#FFC702] mb-4 select-none">
+            <div className="select-none absolute top-1/3 mt-5 left-1/2 ml-8 transform -translate-y-1/2 flex flex-col z-20 items-center justify-center">
+              <h1 className="title__academy text-6xl sm:text-8xl md:text-8xl lg:text-9xl font-black text-[white] mb-4 select-none">
                 {sectionFive.title_1}
               </h1>
             </div>
 
             {/* Texto */}
             <div className="select-none absolute top-1/2 left-2/3 mt-6 transform -translate-x-1/2 -translate-y-1/2 flex flex-col z-20 items-center justify-center">
-              <h1 className="text-6xl sm:text-8xl md:text-8xl lg:text-9xl font-black text-[#FFC702] mb-4 select-none">
+              <h1 className="title__academy text-6xl sm:text-8xl md:text-8xl lg:text-9xl font-black text-[white] mb-4 select-none">
                 {sectionFive.title_2}
               </h1>
             </div>
@@ -290,7 +322,7 @@ export default function Home() {
               <a
                 href={sectionFive.link}
                 target="_blank"
-                className="text-[#FFC702] underline text-4xl font-bold select-none"
+                className="text-[white] underline text-4xl font-bold select-none"
               >
                 {sectionFive.text_link}
               </a>
