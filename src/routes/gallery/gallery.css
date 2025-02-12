@@ -1,0 +1,36 @@
+.gallery {
+  width: 100%;
+  height: fit-content;
+}
+
+.list__gallery {
+  display: grid;
+  width: 100%;
+  height: auto;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(24, 24, 24, 1) 0%,
+    rgba(61, 61, 61, 1) 100%
+  );
+  padding: 5rem 0px 20px 0px;
+}
+
+.item__gallery {
+  display: flex;
+  width: 250px;
+  height: 250px;
+  justify-self: center;
+  align-self: center;
+  background-color: black;
+  list-style: none;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.img__gallery {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
