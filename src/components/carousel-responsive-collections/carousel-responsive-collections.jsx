@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import M from "materialize-css";
 
 export default function CarouselResponsiveCollections({ collections }) {
-  const [showTooltip, setShowTooltip] = useState(false);
   const [items, setItems] = useState(collections);
   const refCarousel = useRef(null);
 
@@ -50,24 +49,9 @@ export default function CarouselResponsiveCollections({ collections }) {
         <>
           <div className="w-full flex justify-between py-4">
             <h2 className="text-4xl text_100">{items[0]?.title}</h2>
-            <div className="relative">
-              <button
-                className="btn_yellow_active"
-                disabled
-                onMouseOver={() => setShowTooltip(true)}
-                onMouseLeave={() => setShowTooltip(false)}
-              >
-                Adquirir
-              </button>
-              {showTooltip && (
-                <div className="absolute top-full mt-1 px-2 py-1 text-sm text-white bg-gray-600 rounded">
-                  Pronto disponible
-                </div>
-              )}
-            </div>
           </div>
           <div>
-            <h3 className="text_300">{items[0]?.subtitle}</h3>
+            <h3 className="title__collections text-[white]">{items[0]?.subtitle}</h3>
             <p className="text-xl text_400">{items[0]?.description}</p>
           </div>
         </>
@@ -78,10 +62,7 @@ export default function CarouselResponsiveCollections({ collections }) {
             {items.map((item, index) =>
               item?.photos.map((img) => (
                 <div key={index} className="carousel-item py-8">
-                  <h5 className="text_300 text-lg font-bold">{img.title}</h5>
-                  <span className="text-white text-xl font-semibold">
-                    {img.price}
-                  </span>
+                  <h5 className="text-[white] text-lg font-bold">{img.title}</h5>
                   <img
                     src={img.photo}
                     className="h-full"

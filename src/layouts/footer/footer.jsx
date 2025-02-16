@@ -109,6 +109,15 @@ export default function Footer({ dataFooter }) {
                 Socios
               </button>
             </li>
+            <li className="item-list__footer">
+              <button
+                onClick={() =>
+                  handleClickIdRedirect("section-destination-galeria")
+                }
+              >
+                Galería
+              </button>
+            </li>
           </ul>
           <ul className="list__footer">
             <p className="text-list__footer text-[#999999]">Nosotros</p>

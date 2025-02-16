@@ -69,7 +69,7 @@ export default function Contact() {
           })`,
         }}
       >
-        <h1 className="title__contact text-8xl text-[#ffc702]">
+        <h1 className="title__contact text-8xl text-[white]">
           {sectionOne.title}
         </h1>
         <div className="card-form__contact">
@@ -118,7 +118,7 @@ export default function Contact() {
               </div>
               <div className="cntr-btn__contact">
                 <button
-                  className="btn-input__contact text-xl text-[#ffc702] hover:text-black bg-transparent hover:bg-[#ffc702]"
+                  className="btn-input__contact text-xl text-[white] hover:text-black bg-transparent hover:bg-[white]"
                   onClick={() => handleMailSendContact()}
                 >
                   Enviar

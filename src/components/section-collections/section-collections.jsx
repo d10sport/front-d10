@@ -24,7 +24,6 @@ export default function SectionCollections({ collections }) {
 
   const [items, setItems] = useState(collections);
   const [selectedItems, setSelectedItems] = useState({});
-  const [showTooltip, setShowTooltip] = useState(false);
 
   const onSelectItem = (collectionId, item) => {
     setSelectedItems((prev) => ({
@@ -78,24 +77,9 @@ export default function SectionCollections({ collections }) {
         <div key={collectionIndex} id={collection.link}>
           <div className="w-full flex justify-between py-4">
             <h2 className="text-4xl text_100">{collection.title}</h2>
-            <div className="relative">
-              <button
-                className="btn_yellow_active"
-                disabled
-                onMouseOver={() => setShowTooltip(true)}
-                onMouseLeave={() => setShowTooltip(false)}
-              >
-                Adquirir
-              </button>
-              {showTooltip && (
-                <div className="absolute top-full mt-1 px-2 py-1 text-sm text-white bg-gray-600 rounded">
-                  Pronto disponible
-                </div>
-              )}
-            </div>
           </div>
           <div>
-            <h3 className="text_300">{collection.subtitle}</h3>
+            <h3 className="title__collections">{collection.subtitle}</h3>
             <p className="text-xl text_400">{collection.description}</p>
           </div>
 
@@ -114,12 +98,9 @@ export default function SectionCollections({ collections }) {
               >
                 <div className="absolute top-0 left-0 w-full h-full z-10">
                   <div className="blurred-background absolute bottom-4 left-4">
-                    <motion.h5 className="text_300 text-lg font-bold">
+                    <motion.h5 className="text-[white] text-lg font-bold">
                       {item.title}
                     </motion.h5>
-                    <motion.h2 className="text-white text-xl font-semibold">
-                      {item.price}
-                    </motion.h2>
                   </div>
                 </div>
                 <img

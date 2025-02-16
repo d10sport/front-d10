@@ -79,7 +79,7 @@ export default function Collections() {
 
       <div className="collection__hidden principal_div inline-block w-full py-8 px-12 mb-8">
         <div className="w-full">
-          <h1 className="text_300 text-5xl font-extrabold text-center">
+          <h1 className="title__collections text-5xl font-extrabold text-center">
             {collections.section_one.title}
           </h1>
         </div>

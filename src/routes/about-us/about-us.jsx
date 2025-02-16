@@ -97,10 +97,10 @@ export default function AboutUs() {
           className="cntr-txt__aboutus bg-black"
           id="section-destination-meet"
         >
-          <h1 className="title-1__aboutus text-8xl text-[#ffc702]">
+          <h1 className="title-1__aboutus text-8xl">
             {sectionOne.title}
           </h1>
-          <p className="text__aboutus padding-cntr-txt__space text-2xl text-white">
+          <p className="text__aboutus padding-cntr-txt__space text-2xl text-[#d1d5dc]">
             {sectionOne.description}
           </p>
         </div>
@@ -120,10 +120,10 @@ export default function AboutUs() {
               <br />
               {sectionTwo.title2}
             </h2>
-            <h3 className="title-3__aboutus text-5xl text-[#ffc702]">
+            <h3 className="title-3__aboutus text-5xl">
               {sectionTwo.subtitle}
             </h3>
-            <p className="text__aboutus text-white text-2xl">
+            <p className="text__aboutus text-[white] text-2xl">
               {sectionTwo.description}
             </p>
           </div>
@@ -133,10 +133,10 @@ export default function AboutUs() {
           className="cntr-txt__aboutus bg-black"
           id="section-destination-objectives"
         >
-          <h3 className="title-3__aboutus text-[#ffc702] text-6xl py-4">
+          <h3 className="title-3__aboutus text-6xl py-4">
             {sectionThree.title}
           </h3>
-          <p className="text__aboutus padding-cntr-txt__space text-white text-2xl">
+          <p className="text__aboutus padding-cntr-txt__space text-[#d1d5dc] text-2xl">
             {sectionThree.description}
           </p>
         </div>
@@ -151,10 +151,10 @@ export default function AboutUs() {
         >
           <div className="cntr-empty__aboutus"></div>
           <div className="cntr-side__aboutus" id="section-destination-mission">
-            <h3 className="title-3__aboutus text-[#ffc702] text-4xl py-4">
+            <h3 className="title-3__aboutus text-4xl py-4">
               {sectionFour.title}
             </h3>
-            <p className="text__aboutus text-white text-2xl">
+            <p className="text__aboutus text-[#d1d5dc] text-2xl">
               {sectionFour.description}
             </p>
           </div>
@@ -191,10 +191,10 @@ export default function AboutUs() {
           }}
         >
           <div className="cntr-side__aboutus" id="section-destination-vision">
-            <h3 className="title-3__aboutus text-[#ffc702] text-4xl py-4">
+            <h3 className="title-3__aboutus text-4xl py-4">
               {sectionSix.title}
             </h3>
-            <p className="text__aboutus text-white text-2xl">
+            <p className="text__aboutus text-[#d1d5dc] text-2xl">
               {sectionSix.description}
             </p>
           </div>

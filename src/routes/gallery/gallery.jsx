@@ -86,7 +86,7 @@ export default function Gallery() {
 
       <SplineModel />
 
-      <section className="gallery">
+      <section className="gallery" id="section-destination-galeria">
         <ul className="list__gallery">
           {sectionOne.length > 0 ? (
             sectionOne.map((item, index) => (
