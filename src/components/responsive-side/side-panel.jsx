@@ -45,6 +45,15 @@ export default function SidePanel() {
           <Link to={"/contact"} className="link__panel text--active text-2xl">
             Contacto
           </Link>
+          <Link to={"/collections"} className="link__panel text--active text-2xl">
+            Colecciones
+          </Link>
+          <Link to={"/news"} className="link__panel text--active text-2xl">
+            Noticias
+          </Link>
+          <Link to={"/gallery"} className="link__panel text--active text-2xl">
+            Galería
+          </Link>
         </div>
         <div className="cntr-section2__panel">
           <footer className="footer__panel">&#169; D10mas</footer>

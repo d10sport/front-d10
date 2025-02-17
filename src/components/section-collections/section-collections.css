@@ -4,3 +4,9 @@
   border-radius: 8px;
   padding: 0.5rem;
 }
+
+.title__collections{
+  color: white;
+  font-weight: bold;
+  text-shadow: 2px 4px 6px rgba(228, 228, 228, 0.5);
+}
