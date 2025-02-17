@@ -30,6 +30,7 @@ export default function Home() {
     slogan_three: "",
     company: "",
     bg_photo: "",
+    bg_photo_res: "",
   });
 
   const [sectionTwo, setSectionTwo] = useState({
@@ -64,6 +65,7 @@ export default function Home() {
     text_link: "",
     link: "",
     bg_photo: "",
+    logo: "",
   });
 
   const [sectionSix, setSectionSix] = useState({
@@ -153,9 +155,9 @@ export default function Home() {
           {sectionOne.bg_photo != "" ? (
             changeImage.show ? (
               <img
-                src={sectionOne.bg_photo}
+                src={sectionOne.bg_photo_res}
                 alt="Imagen desde el backend"
-                className="img-fondo__home"
+                className="img-fondo__home--res"
                 onError={(e) =>
                   console.log("Error cargando imagen sección 1", e)
                 }
@@ -213,10 +215,10 @@ export default function Home() {
           <Loading />
         )}
         <div className="content__about">
-          <h1 className="text-4xl text-[#ffc702] select-none">
+          <h1 className="title__about text-4xl text-[white] select-none">
             {sectionTwo.title}
           </h1>
-          <p className="text__about text-2xl text-white select-none">
+          <p className="text__about text-2xl text-[#d1d5dc] select-none">
             {sectionTwo.description}
           </p>
           <Link
@@ -247,7 +249,7 @@ export default function Home() {
       {/* News Section */}
       <section className="news__banner bg-black" id="section-destination-news">
         <div className="container__news__banner">
-          <h1 className="title__news__banner text-2xl text-[#ffc702] select-none">
+          <h1 className="title__news__banner text-2xl select-none">
             Noticias
           </h1>
           <h2 className="subtitle__news__banner text-2xl text-white select-none">
@@ -305,9 +307,10 @@ export default function Home() {
 
             {/* Texto */}
             <div className="select-none absolute top-1/3 mt-5 left-1/2 ml-8 transform -translate-y-1/2 flex flex-col z-20 items-center justify-center">
-              <h1 className="title__academy text-6xl sm:text-8xl md:text-8xl lg:text-9xl font-black text-[white] mb-4 select-none">
+              {/* <h1 className="title__academy text-6xl sm:text-8xl md:text-8xl lg:text-9xl font-black text-[white] mb-4 select-none bg-[red]">
                 {sectionFive.title_1}
-              </h1>
+              </h1> */}
+              <img src={sectionFive.logo} className="d10_img__academy" alt="Img D10+" />
             </div>
 
             {/* Texto */}

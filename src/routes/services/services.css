@@ -29,17 +29,19 @@
 
 .title__services {
   font-size: 16px;
-  color: #ffc702;
+  color: white;
 }
 
 .subtitle__services {
   font-size: 32px;
   color: white;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(228, 228, 228, 0.5);
 }
 
 .text__services {
   font-size: 18px;
-  color: whitesmoke;
+  color: #d1d5dc;
 }
 
 .cntr-img__services {
