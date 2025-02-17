@@ -17,9 +17,6 @@ import "swiper/css/navigation";
 import "swiper/css";
 import "./home.css";
 
-// import imgd10 from "./d10plus.jpg";
-import imgd10_2 from "./d10plus2.png";
-
 export default function Home() {
   const context = useContext(AppContext);
   const urlApi = context.urlApi;
@@ -68,6 +65,7 @@ export default function Home() {
     text_link: "",
     link: "",
     bg_photo: "",
+    logo: "",
   });
 
   const [sectionSix, setSectionSix] = useState({
@@ -312,7 +310,7 @@ export default function Home() {
               {/* <h1 className="title__academy text-6xl sm:text-8xl md:text-8xl lg:text-9xl font-black text-[white] mb-4 select-none bg-[red]">
                 {sectionFive.title_1}
               </h1> */}
-              <img src={imgd10_2} className="d10_img__academy" alt="Img D10+" />
+              <img src={sectionFive.logo} className="d10_img__academy" alt="Img D10+" />
             </div>
 
             {/* Texto */}
