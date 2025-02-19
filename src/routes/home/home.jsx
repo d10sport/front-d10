@@ -194,7 +194,6 @@ export default function Home() {
           </h5>
           <Link
             to={"/gallery"}
-            // className="btn__home text-xl text-[black] hover:text-white hover:bg-[black]"
             className="btn__home text-xl"
           >
             Nuestra Galería
