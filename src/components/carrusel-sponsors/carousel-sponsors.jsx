@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState, useMemo } from "react";
 import { ImageLogo } from "@utils/imgs/imgs.jsx";
 import PropTypes from "prop-types";
+import "./carousel-sponsors.css";
 
 export default function CarouselSponsors({ sponsors }) {
   const [items, setItems] = useState(sponsors);
@@ -55,7 +56,7 @@ export default function CarouselSponsors({ sponsors }) {
     <>
       {showCarrusel.show ? (
         <Swiper
-          className="w-full flex py-8 my-4 justify-center items-center"
+          className="w-full flex py-8 my-6 justify-center items-center"
           modules={[Pagination, Autoplay]}
           spaceBetween={20}
           autoplay={{
@@ -66,7 +67,7 @@ export default function CarouselSponsors({ sponsors }) {
           pagination={{ clickable: true }}
         >
           {items.map((item, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className="slide" >
               {item.icon != "" ? (
                 <img src={item.icon} alt={`Item Sponsor`} className="w-1/2" />
               ) : (
@@ -77,7 +78,7 @@ export default function CarouselSponsors({ sponsors }) {
         </Swiper>
       ) : (
         <Swiper
-          className="w-full flex py-8 my-4 justify-center items-center"
+          className="w-full flex py-8 my-6 justify-center items-center"
           modules={[Pagination, Autoplay]}
           spaceBetween={20}
           autoplay={{
