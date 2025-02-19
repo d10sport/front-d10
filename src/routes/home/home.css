@@ -327,4 +327,8 @@
   .carousel .indicators .indicator-item {
     width: 40px;
   }
+
+  .commercial {
+    height: fit-content;
+  }
 }
