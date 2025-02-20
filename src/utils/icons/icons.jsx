@@ -1,5 +1,9 @@
 import icon_wpp_color from "@assets/icons/icon_wpp_color.png";
 import icon_fdc_col from "@assets/icons/logo_fc_col.png";
+
+import icon_d10_mas from "@assets/icons/d10mas.png";
+import icon_d10 from "@assets/icons/logo_company.png";
+
 import wpp from "@assets/icons/logo_wpp.png";
 
 function IconInstagram() {
@@ -40,8 +44,32 @@ function IconFdcCol() {
   );
 }
 
+function IconD10Mas() {
+  return (
+    <img
+      width={70}
+      height={70}
+      src={icon_d10_mas}
+      alt="icon"
+      className="img__footer"
+    />
+  );
+}
+
+function IconD10() {
+  return (
+    <img
+      width={70}
+      height={70}
+      src={icon_d10}
+      alt="icon"
+      className="img__footer"
+    />
+  );
+}
+
 function IconWppColor() {
   return <img src={icon_wpp_color} alt="WhatsApp Logo" className="img__wpp" />;
 }
 
-export { IconFdcCol, IconInstagram, IconWhatsApp, IconWppColor };
+export { IconFdcCol, IconInstagram, IconWhatsApp, IconWppColor, IconD10Mas, IconD10 };
