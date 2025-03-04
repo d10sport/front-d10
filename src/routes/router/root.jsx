@@ -7,6 +7,7 @@ import ErrorPage from "@routes/router/error.jsx";
 import Home from "@routes/home/home.jsx";
 import News from "@routes/news/news.jsx";
 import Gallery from "@routes/gallery/gallery.jsx";
+import Admin from "@routes/admin/admin.jsx";
 
 export default function Router() {
   return (
@@ -18,6 +19,7 @@ export default function Router() {
       <Route path="/collections" element={<Collections />} />
       <Route path="/news" element={<News />} />
       <Route path="/gallery" element={<Gallery />} />
+      <Route path="/admin" element={<Admin />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
