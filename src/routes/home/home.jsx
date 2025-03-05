@@ -249,7 +249,7 @@ export default function Home() {
       <section className="news__banner bg-black" id="section-destination-news">
         <div className="container__news__banner">
           <h1 className="title__news__banner text-2xl select-none">
-            Noticias
+          {sectionFour.news.h1}
           </h1>
           <h2 className="subtitle__news__banner text-2xl text-white select-none">
             {sectionFour.news.title}
