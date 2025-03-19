@@ -187,6 +187,12 @@
   object-fit: cover;
 }
 
+.video__spline {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Seccion Noticias */
 
 .title__news__banner {
