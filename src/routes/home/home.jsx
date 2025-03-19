@@ -1,6 +1,8 @@
 import CarouselCollections from "@components/carousel-collections/carousel-collections";
+import videoSplineAcademyResponsive from "@assets/video/spline_mode_academy_responsive.mp4";
 import CarouselSponsors from "@components/carrusel-sponsors/carousel-sponsors";
 import { Suspense, useContext, useEffect, useState, useMemo } from "react";
+import videoSplineAcademy from "@assets/video/spline_mode_academy.mp4";
 import { Environment, OrbitControls } from "@react-three/drei";
 import ModelBalonGlass from "@utils/model3D/BalonGlass.jsx";
 import getTokenDecoded from "../../token/token-data.js";
@@ -11,9 +13,9 @@ import AppContext from "@context/app-context";
 import { Canvas } from "@react-three/fiber";
 import { Loading } from "@utils/imgs/imgs";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import axios from "axios";
 import "swiper/css";
 import "./home.css";
 
@@ -249,7 +251,7 @@ export default function Home() {
       <section className="news__banner bg-black" id="section-destination-news">
         <div className="container__news__banner">
           <h1 className="title__news__banner text-2xl select-none">
-          {sectionFour.news.h1}
+            {sectionFour.news.h1}
           </h1>
           <h2 className="subtitle__news__banner text-2xl text-white select-none">
             {sectionFour.news.title}
@@ -284,9 +286,31 @@ export default function Home() {
             )}
           </div>
 
-          <div className="w-full h-full grid place-content-center justify-center z-30">
+          <div className="w-full h-full relative  justify-center z-30">
+            {/* Video 3D Model */}
+            {deviceType == "desktop" && (
+              <div  className="absolute left-0 top-0 right-0 bottom-0">
+                <video className="video__spline" autoPlay muted loop>
+                  <source src={videoSplineAcademy} className="w-full h-full" type="video/mp4" />
+                </video>
+              </div>
+            )}
+            {deviceType == "tablet" && (
+              <div  className="absolute left-0 top-0 right-0 bottom-0">
+                <video className="video__spline" autoPlay muted loop>
+                  <source src={videoSplineAcademy} className="w-full h-full" type="video/mp4" />
+                </video>
+              </div>
+            )}
+            {deviceType == "mobile" && (
+              <div  className="absolute left-0 top-0 right-0 bottom-0">
+                <video className="video__spline" autoPlay muted loop>
+                  <source src={videoSplineAcademyResponsive} className="w-full h-full m-2" type="video/mp4" />
+                </video>
+              </div>
+            )}
             {/* 3D Model */}
-            <div className="section_model_3d absolute z-20 w-[60%] h-full">
+            {/* <div className="section_model_3d absolute z-20 w-[60%] h-full">
               <Canvas className="w-fit h-full">
                 <ambientLight />
                 <OrbitControls
@@ -302,13 +326,10 @@ export default function Home() {
                 </Suspense>
                 <Environment preset="sunset" />
               </Canvas>
-            </div>
+            </div> */}
 
             {/* Texto */}
             <div className="select-none absolute top-1/3 mt-5 left-1/2 ml-8 transform -translate-y-1/2 flex flex-col z-20 items-center justify-center">
-              {/* <h1 className="title__academy text-6xl sm:text-8xl md:text-8xl lg:text-9xl font-black text-[white] mb-4 select-none bg-[red]">
-                {sectionFive.title_1}
-              </h1> */}
               <img src={sectionFive.logo} className="d10_img__academy" alt="Img D10+" />
             </div>
 
