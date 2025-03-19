@@ -82,21 +82,21 @@ export default function SplineModel() {
         <>
           {deviceType == "desktop" && (
             <div id="model_glass" className="full-screen active animate-jump-in">
-              <video className="video__commercial" autoPlay muted loop>
+              <video className="video__spline" autoPlay muted loop>
                 <source src={videoSpline} className="w-full h-full" type="video/mp4" />
               </video>
             </div>
           )}
           {deviceType == "tablet" && (
             <div id="model_glass" className="full-screen active animate-jump-in">
-              <video className="video__commercial" autoPlay muted loop>
+              <video className="video__spline" autoPlay muted loop>
                 <source src={videoSpline} className="w-full h-full" type="video/mp4" />
               </video>
             </div>
           )}
           {deviceType == "mobile" && (
             <div id="model_glass" className="full-screen active animate-jump-in">
-              <video className="video__commercial" autoPlay muted loop>
+              <video className="video__spline" autoPlay muted loop>
                 <source src={videoSplineResponsive} className="w-full h-full" type="video/mp4" />
               </video>
             </div>
