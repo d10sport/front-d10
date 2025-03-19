@@ -286,7 +286,7 @@ export default function Home() {
             )}
           </div>
 
-          <div className="w-full h-full relative  justify-center z-30">
+          <div className="w-full h-full relative justify-center z-30">
             {/* Video 3D Model */}
             {deviceType == "desktop" && (
               <div  className="absolute left-0 top-0 right-0 bottom-0">
@@ -329,8 +329,8 @@ export default function Home() {
             </div> */}
 
             {/* Texto */}
-            <div className="select-none absolute top-1/3 mt-5 left-1/2 ml-8 transform -translate-y-1/2 flex flex-col z-20 items-center justify-center">
-              <img src={sectionFive.logo} className="d10_img__academy" alt="Img D10+" />
+            <div className="select-none absolute top-1/4 left-1/4 mt-5 right-10 ml-8 transform -translate-y-1/2 flex flex-col z-20 items-center justify-center">
+              <img src={sectionFive.title_1} className=" flex justify-center size-48 d10_img__academy" alt="Img D10+" />
             </div>
 
             {/* Texto */}
