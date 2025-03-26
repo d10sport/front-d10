@@ -1,7 +1,9 @@
+import videoSplineResponsive from "@assets/video/spline_model_video_responsive.mp4";
+import videoSpline from "@assets/video/spline_model_video.mp4";
 import { Environment, OrbitControls } from "@react-three/drei";
 import ModelBalonGlass from "@utils/model3D/BalonGlass.jsx";
-import logo from "@assets/img/logo_sin_fondo.png";
 import { useEffect, useState, useMemo } from "react";
+import logo from "@assets/img/logo_sin_fondo.png";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import "./spline.css";
@@ -46,23 +48,22 @@ export default function SplineModel() {
     };
   }, []);
 
-  const modelProps = useMemo(() => {
-    switch (deviceType) {
-      case "mobile":
-        return { position: [0, 0, -60], scale: 0.6 };
-      case "tablet":
-        return { position: [0, 0, -60], scale: 0.8 };
-      default:
-        return { position: [0, 0, -60], scale: 1.2 };
-    }
-  }, [deviceType]);
+  // const modelProps = useMemo(() => {
+  //   switch (deviceType) {
+  //     case "mobile":
+  //       return { position: [0, 0, -60], scale: 0.6 };
+  //     case "tablet":
+  //       return { position: [0, 0, -60], scale: 0.8 };
+  //     default:
+  //       return { position: [0, 0, -60], scale: 1.2 };
+  //   }
+  // }, [deviceType]);
 
   return (
     <section
       id="section_spline"
-      className={`section h-screen w-full select-none relative z-50 ${
-        isFinished ? "hidden" : ""
-      }`}
+      className={`section h-screen w-full select-none relative z-50 ${isFinished ? "hidden" : ""
+        }`}
     >
       {/* Título en el centro */}
       <div className="div_img fade-in">
@@ -78,23 +79,46 @@ export default function SplineModel() {
 
       {/* Balon Glass Model 3D */}
       {!isFinished && (
-        <div id="model_glass" className="full-screen active animate-jump-in">
-          <Canvas className="w-full h-[105%;] canvas">
-            <ambientLight />
-            <OrbitControls
-              enableZoom={false}
-              autoRotate={false}
-              enableRotate={false}
-            />
-            <Suspense fallback={null}>
-              <ModelBalonGlass
-                position={modelProps.position}
-                scale={modelProps.scale}
-              />
-            </Suspense>
-            <Environment preset="sunset" />
-          </Canvas>
-        </div>
+        <>
+          {deviceType == "desktop" && (
+            <div id="model_glass" className="full-screen active animate-jump-in">
+              <video className="video__spline" autoPlay muted loop>
+                <source src={videoSpline} className="w-full h-full" type="video/mp4" />
+              </video>
+            </div>
+          )}
+          {deviceType == "tablet" && (
+            <div id="model_glass" className="full-screen active animate-jump-in">
+              <video className="video__spline" autoPlay muted loop>
+                <source src={videoSpline} className="w-full h-full" type="video/mp4" />
+              </video>
+            </div>
+          )}
+          {deviceType == "mobile" && (
+            <div id="model_glass" className="full-screen active animate-jump-in">
+              <video className="video__spline" autoPlay muted loop>
+                <source src={videoSplineResponsive} className="w-full h-full" type="video/mp4" />
+              </video>
+            </div>
+          )}
+        </>
+        // <div id="model_glass" className="full-screen active animate-jump-in">
+        //   <Canvas className="w-full h-[105%;] canvas">
+        //     <ambientLight />
+        //     <OrbitControls
+        //       enableZoom={false}
+        //       autoRotate={false}
+        //       enableRotate={false}
+        //     />
+        //     <Suspense fallback={null}>
+        //       <ModelBalonGlass
+        //         position={modelProps.position}
+        //         scale={modelProps.scale}
+        //       />
+        //     </Suspense>
+        //     <Environment preset="sunset" />
+        //   </Canvas>
+        // </div>
       )}
     </section>
   );
