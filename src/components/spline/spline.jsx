@@ -1,11 +1,7 @@
 import videoSplineResponsive from "@assets/video/spline_model_video_responsive.mp4";
 import videoSpline from "@assets/video/spline_model_video.mp4";
-import { Environment, OrbitControls } from "@react-three/drei";
-import ModelBalonGlass from "@utils/model3D/BalonGlass.jsx";
-import { useEffect, useState, useMemo } from "react";
 import logo from "@assets/img/logo_sin_fondo.png";
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { useEffect, useState} from "react";
 import "./spline.css";
 
 export default function SplineModel() {
@@ -47,17 +43,6 @@ export default function SplineModel() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  // const modelProps = useMemo(() => {
-  //   switch (deviceType) {
-  //     case "mobile":
-  //       return { position: [0, 0, -60], scale: 0.6 };
-  //     case "tablet":
-  //       return { position: [0, 0, -60], scale: 0.8 };
-  //     default:
-  //       return { position: [0, 0, -60], scale: 1.2 };
-  //   }
-  // }, [deviceType]);
 
   return (
     <section
@@ -102,23 +87,6 @@ export default function SplineModel() {
             </div>
           )}
         </>
-        // <div id="model_glass" className="full-screen active animate-jump-in">
-        //   <Canvas className="w-full h-[105%;] canvas">
-        //     <ambientLight />
-        //     <OrbitControls
-        //       enableZoom={false}
-        //       autoRotate={false}
-        //       enableRotate={false}
-        //     />
-        //     <Suspense fallback={null}>
-        //       <ModelBalonGlass
-        //         position={modelProps.position}
-        //         scale={modelProps.scale}
-        //       />
-        //     </Suspense>
-        //     <Environment preset="sunset" />
-        //   </Canvas>
-        // </div>
       )}
     </section>
   );
