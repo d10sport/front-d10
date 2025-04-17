@@ -3,6 +3,7 @@ import HeaderPage from "@layouts/header-pages/header-page";
 import { useEffect, useState, useContext } from "react";
 import SplineModel from "@components/spline/spline.jsx";
 import AppContext from "@context/app-context";
+import { toast } from "sonner";
 import axios from "axios";
 import "./contact.css";
 
@@ -12,7 +13,7 @@ export default function Contact() {
   const apiKey = context.apiKey;
 
   const [Name, setName] = useState();
-  const [Subject, setSubject] = useState();
+  const [Email, setEmail] = useState();
   const [Message, setMessage] = useState();
 
   const [sectionOne, setSectionOne] = useState({
@@ -37,23 +38,46 @@ export default function Contact() {
       });
   }
 
+  function postEmailContact() {
+    toast.promise(
+      axios
+        .post(
+          `${urlApi}landing/i/mail-contact`,
+          {
+            name: Name,
+            email: Email,
+            message: Message,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "api-key": apiKey,
+            },
+          }
+        )
+        .then((response) => {
+          if (response.data.success) {
+            setName("");
+            setEmail("");
+            setMessage("");
+            return "Correo enviado con éxito";
+          } else {
+            throw new Error(
+              "Error al enviar el correo: " + response.data.message
+            );
+          }
+        }),
+      {
+        loading: "Enviando correo...",
+        success: (msg) => msg,
+        error: (err) => err.message || "Error en el envió de correo",
+      }
+    );
+  }
+
   useEffect(() => {
     getDataContact();
   }, []);
-
-  function handleMailSendContact() {
-    let cleaningName = Name.replace(/ /g, "%20");
-    let cleaningSubject = Subject.replace(/ /g, "%20");
-    let cleaningMessage = Message.replace(/ /g, "%20");
-
-    let url = `mailto:davidurrego@d10mas.com?subject=${cleaningName}%20/%20${cleaningSubject}?body=${cleaningMessage}`;
-
-    const a = document.createElement("a");
-
-    a.href = url;
-    a.target = "_blank";
-    a.click();
-  }
 
   return (
     <>
@@ -94,13 +118,13 @@ export default function Contact() {
                   />
                 </div>
                 <div className="info__contact">
-                  <label className="label__contact text-white">Asunto</label>
+                  <label className="label__contact text-white">Email</label>
                   <input
                     type="email"
-                    placeholder="Asunto"
+                    placeholder="Email"
                     className="input__contact"
-                    value={Subject}
-                    onChange={(e) => setSubject(e.target.value)}
+                    value={Email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
@@ -119,7 +143,7 @@ export default function Contact() {
               <div className="cntr-btn__contact">
                 <button
                   className="btn-input__contact text-xl text-[white] hover:text-black bg-transparent hover:bg-[white]"
-                  onClick={() => handleMailSendContact()}
+                  onClick={() => postEmailContact()}
                 >
                   Enviar
                 </button>
@@ -133,11 +157,16 @@ export default function Contact() {
                 Escríbenos por otros medios
               </p>
               <div className="redes__contact">
-                <img
-                  src={icon_wpp_color}
-                  alt="WhatsApp"
-                  className="img-redes__contact"
-                />
+                <a
+                  href="https://wa.me/573118345217/?text=Hola..."
+                  target="_blank"
+                >
+                  <img
+                    src={icon_wpp_color}
+                    alt="WhatsApp"
+                    className="img-redes__contact"
+                  />
+                </a>
               </div>
             </div>
           </div>

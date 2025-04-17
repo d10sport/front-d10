@@ -1,9 +1,10 @@
 import Maintenance from "@layouts/maintenance/maintenance";
 import { IconWhatsApp } from "@utils/icons/icons.jsx";
 import AppContext from "@context/app-context";
-import AppRouter from "@routes/router/root";
-import "./App.css";
 import { useContext, useEffect } from "react";
+import AppRouter from "@routes/router/root";
+import { Toaster } from "sonner";
+import "./App.css";
 
 function App() {
   const context = useContext(AppContext);
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <>
+      <Toaster richColors />
       {context.dataMaintenance.active ? (
         <Maintenance maintenance={context.dataMaintenance} />
       ) : (
