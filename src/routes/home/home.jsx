@@ -1,16 +1,13 @@
 import CarouselCollections from "@components/carousel-collections/carousel-collections";
 import videoSplineAcademyResponsive from "@assets/video/spline_mode_academy_responsive.mp4";
 import CarouselSponsors from "@components/carrusel-sponsors/carousel-sponsors";
-import { Suspense, useContext, useEffect, useState, useMemo } from "react";
+import { useContext, useEffect, useState, useMemo } from "react";
 import videoSplineAcademy from "@assets/video/spline_mode_academy.mp4";
-import { Environment, OrbitControls } from "@react-three/drei";
-import ModelBalonGlass from "@utils/model3D/BalonGlass.jsx";
 import getTokenDecoded from "../../token/token-data.js";
 import SplineModel from "@components/spline/spline.jsx";
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
 import AppContext from "@context/app-context";
-import { Canvas } from "@react-three/fiber";
 import { Loading } from "@utils/imgs/imgs";
 import { Link } from "react-router-dom";
 import "swiper/css/pagination";
@@ -102,17 +99,6 @@ export default function Home() {
       });
   }
 
-  const modelProps = useMemo(() => {
-    switch (deviceType) {
-      case "mobile":
-        return { position: [0, 0, -60], scale: 0.5 };
-      case "tablet":
-        return { position: [0, 0, -60], scale: 0.7 };
-      default:
-        return { position: [0, 0, -1], scale: 0.1 };
-    }
-  }, [deviceType]);
-
   const changeImage = useMemo(() => {
     switch (deviceType) {
       case "mobile":
@@ -194,10 +180,7 @@ export default function Home() {
           <h5 className="title__home text-6xl select-none">
             {sectionOne.slogan_three}
           </h5>
-          <Link
-            to={"/gallery"}
-            className="btn__home text-xl"
-          >
+          <Link to={"/gallery"} className="btn__home text-xl">
             Nuestra Galería
           </Link>
         </div>
@@ -289,48 +272,46 @@ export default function Home() {
           <div className="w-full h-full relative justify-center z-30">
             {/* Video 3D Model */}
             {deviceType == "desktop" && (
-              <div  className="absolute left-0 top-0 right-0 bottom-0">
+              <div className="absolute left-0 top-0 right-0 bottom-0">
                 <video className="video__spline" autoPlay muted loop>
-                  <source src={videoSplineAcademy} className="w-full h-full" type="video/mp4" />
+                  <source
+                    src={videoSplineAcademy}
+                    className="w-full h-full"
+                    type="video/mp4"
+                  />
                 </video>
               </div>
             )}
             {deviceType == "tablet" && (
-              <div  className="absolute left-0 top-0 right-0 bottom-0">
+              <div className="absolute left-0 top-0 right-0 bottom-0">
                 <video className="video__spline" autoPlay muted loop>
-                  <source src={videoSplineAcademy} className="w-full h-full" type="video/mp4" />
+                  <source
+                    src={videoSplineAcademy}
+                    className="w-full h-full"
+                    type="video/mp4"
+                  />
                 </video>
               </div>
             )}
             {deviceType == "mobile" && (
-              <div  className="absolute left-0 top-0 right-0 bottom-0">
+              <div className="absolute left-0 top-0 right-0 bottom-0">
                 <video className="video__spline" autoPlay muted loop>
-                  <source src={videoSplineAcademyResponsive} className="w-full h-full m-2" type="video/mp4" />
+                  <source
+                    src={videoSplineAcademyResponsive}
+                    className="w-full h-full m-2"
+                    type="video/mp4"
+                  />
                 </video>
               </div>
             )}
-            {/* 3D Model */}
-            {/* <div className="section_model_3d absolute z-20 w-[60%] h-full">
-              <Canvas className="w-fit h-full">
-                <ambientLight />
-                <OrbitControls
-                  enableZoom={false}
-                  autoRotate={false}
-                  enableRotate={false}
-                />
-                <Suspense fallback={null}>
-                  <ModelBalonGlass
-                    position={modelProps.position}
-                    scale={modelProps.scale}
-                  />
-                </Suspense>
-                <Environment preset="sunset" />
-              </Canvas>
-            </div> */}
 
             {/* Texto */}
             <div className="select-none absolute top-1/4 left-1/4 mt-5 right-10 ml-8 transform -translate-y-1/2 flex flex-col z-20 items-center justify-center">
-              <img src={sectionFive.title_1} className=" flex justify-center size-48 d10_img__academy" alt="Img D10+" />
+              <img
+                src={sectionFive.title_1}
+                className=" flex justify-center size-48 d10_img__academy"
+                alt="Img D10+"
+              />
             </div>
 
             {/* Texto */}
