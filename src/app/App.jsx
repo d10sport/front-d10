@@ -18,7 +18,6 @@ function App() {
       ) : (
         <AppRouter />
       )}
-      {/* Icono WhatsApp */}
       <div className="wpp hidden">
         <a href="https://wa.me/573118345217/?text=Hola..." target="_blank">
           <IconWhatsApp />
