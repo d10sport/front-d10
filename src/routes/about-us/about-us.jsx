@@ -4,15 +4,12 @@ import SplineModel from "@components/spline/spline.jsx";
 import { IconD10Mas, IconD10 } from "../../utils/icons/icons";
 import AppContext from "@context/app-context";
 import axios from "axios";
-import ImgBgOne from "./option_one_football.jpg";
-import ImgBgTwo from "./option_two_football.jpg";
-import ImgBgThree from "./ejemplo_img.png";
 import "./about-us.css";
 
 export default function AboutUs() {
-  const contex = useContext(AppContext);
-  const urlApi = contex.urlApi;
-  const apiKey = contex.apiKey;
+  const context = useContext(AppContext);
+  const urlApi = context.urlApi;
+  const apiKey = context.apiKey;
 
   const [sectionOne, setSectionOne] = useState({
     title: "",
@@ -32,7 +29,7 @@ export default function AboutUs() {
     description: "",
   });
 
-  const [sectionFour, setSectioFour] = useState({
+  const [sectionFour, setSectionFour] = useState({
     title: "",
     bg_photo: "",
     description: "",
@@ -67,7 +64,7 @@ export default function AboutUs() {
         setSectionOne(response.data[0].section_one);
         setSectionTwo(response.data[0].section_two);
         setSectionThree(response.data[0].section_three);
-        setSectioFour(response.data[0].section_four);
+        setSectionFour(response.data[0].section_four);
         setSectionSix(response.data[0].section_six);
         if (
           response.data[0]?.section_five?.count_repeat > 0 &&
@@ -91,7 +88,7 @@ export default function AboutUs() {
 
   return (
     <>
-      <HeaderPage dataHeader={contex.dataHeader} />
+      <HeaderPage dataHeader={context.dataHeader} />
 
       <SplineModel />
 
@@ -108,14 +105,13 @@ export default function AboutUs() {
 
         <div
           className="cntr-central__aboutus"
-          // style={{
-          //   backgroundImage: `url(${
-          //     sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ""
-          //   })`,
-          // }}
+          style={{
+            backgroundImage: `url(${
+              sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ""
+            })`,
+          }}
           id="section-destination-founder"
         >
-          <img src={ImgBgThree} alt="Img" className="big-img__aboutus" />
           <div className="central-cntr__aboutus">
             <h2 className="title-2__aboutus text-6xl text-white">
               {sectionTwo.title1}
@@ -143,13 +139,12 @@ export default function AboutUs() {
 
         <div
           className="cntr-img__aboutus"
-          // style={{
-          //   backgroundImage: `url(${
-          //     sectionFour.bg_photo != "" ? sectionFour.bg_photo : ""
-          //   })`,
-          // }}
+          style={{
+            backgroundImage: `url(${
+              sectionFour.bg_photo != "" ? sectionFour.bg_photo : ""
+            })`,
+          }}
         >
-          <img src={ImgBgOne} alt="Img" className="big-img__aboutus" />
           <div className="cntr-empty__aboutus"></div>
           <div className="cntr-side__aboutus" id="section-destination-mission">
             <h3 className="title-3__aboutus text-4xl py-4">
@@ -185,13 +180,12 @@ export default function AboutUs() {
 
         <div
           className="cntr-img__aboutus"
-          // style={{
-          //   backgroundImage: `url(${
-          //     sectionSix.bg_photo != "" ? sectionSix.bg_photo : ""
-          //   })`,
-          // }}
+          style={{
+            backgroundImage: `url(${
+              sectionSix.bg_photo != "" ? sectionSix.bg_photo : ""
+            })`,
+          }}
         >
-          <img src={ImgBgTwo} alt="Img" className="big-img__aboutus" />
           <div className="cntr-side__aboutus" id="section-destination-vision">
             <h3 className="title-3__aboutus text-4xl py-4">
               {sectionSix.title}
