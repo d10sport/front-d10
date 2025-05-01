@@ -72,4 +72,11 @@ function IconWppColor() {
   return <img src={icon_wpp_color} alt="WhatsApp Logo" className="img__wpp" />;
 }
 
-export { IconFdcCol, IconInstagram, IconWhatsApp, IconWppColor, IconD10Mas, IconD10 };
+export {
+  IconFdcCol,
+  IconInstagram,
+  IconWhatsApp,
+  IconWppColor,
+  IconD10Mas,
+  IconD10,
+};
