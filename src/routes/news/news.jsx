@@ -18,11 +18,9 @@ export default function News() {
   const [currentPage, setCurrentPage] = useState(1);
   const [expandedYear, setExpandedYear] = useState(null);
 
-  // Obtener año y mes actuales
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth() + 1;
 
-  // Estado inicial basado en la fecha actual
   const [selectedYear, setSelectedYear] = useState(currentYear);
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
 
@@ -47,7 +45,6 @@ export default function News() {
 
         const { news, months } = response.data[0].section_one;
 
-        // Convertir el objeto `news` en un array de objetos
         const formattedNews = Object.entries(news).map(([key, value]) => ({
           id: key,
           title: value.title,
@@ -56,23 +53,20 @@ export default function News() {
           image: value.image,
         }));
 
-        // Formatear las noticias
         const formattedNewsData = formattedNews.map((item) => ({
           ...item,
-          date: item.date.slice(0, 7), // Mantener solo "AAAA-MM"
+          date: item.date.slice(0, 7),
         }));
 
-        // Obtener el mes y año más recientes en el formato "AAAA-MM"
         const mostRecentNews = formattedNewsData.sort(
           (a, b) => new Date(b.date) - new Date(a.date)
         )[0];
         const [recentYear, recentMonth] = mostRecentNews.date.split("-");
 
-        // Actualizar estados
-        setNewsData(formattedNewsData); // Actualizar noticias formateadas
-        setMonths(months); // Actualizar meses disponibles
-        setSelectedYear(parseInt(recentYear)); // Establecer año más reciente
-        setSelectedMonth(parseInt(recentMonth)); // Establecer mes más reciente
+        setNewsData(formattedNewsData);
+        setMonths(months);
+        setSelectedYear(parseInt(recentYear));
+        setSelectedMonth(parseInt(recentMonth));
       } catch (error) {
         console.error(error);
       }
@@ -84,7 +78,7 @@ export default function News() {
   const formatNewsData = (data) => {
     return data.map((item) => ({
       ...item,
-      date: item.date.slice(0, 7), // Mantener solo "AAAA-MM"
+      date: item.date.slice(0, 7),
     }));
   };
 
@@ -94,7 +88,6 @@ export default function News() {
     new Set(filteredNewsData.map((item) => parseInt(item.date.split("-")[0])))
   ).sort();
 
-  // Filtrar noticias según el año y el mes seleccionados
   const filteredData = filteredNewsData.filter((item) => {
     const [year, month] = item.date.split("-");
     return (
@@ -149,11 +142,10 @@ export default function News() {
                 </article>
               ))
             ) : (
-              <p className="no-news-message text-8xl">No hay noticias</p> // Mensaje si no hay datos
+              <p className="no-news-message text-8xl">No hay noticias</p>
             )}
           </section>
 
-          {/* Paginación */}
           {totalPages > 1 && (
             <div className="pagination">
               {Array.from({ length: totalPages }, (_, i) => (

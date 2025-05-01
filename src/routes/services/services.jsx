@@ -25,7 +25,7 @@ export default function Services() {
     description: "",
   });
 
-  const [sectionFour, setSectioFour] = useState({
+  const [sectionFour, setSectionFour] = useState({
     photo: "",
     title: "",
     subtitle: "",
@@ -43,7 +43,7 @@ export default function Services() {
       .then((response) => {
         setSectionTwo(response.data[0].section_two);
         setSectionThree(response.data[0].section_three);
-        setSectioFour(response.data[0].section_four);
+        setSectionFour(response.data[0].section_four);
       })
       .catch((error) => {
         console.error(error);

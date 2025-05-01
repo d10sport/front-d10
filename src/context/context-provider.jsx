@@ -69,7 +69,10 @@ const AppProvider = ({ children }) => {
 
   async function fetchData() {
     const conn = await getConnection();
-    if (!conn || (conn.message == "Error obteniendo los datos" && conn.status == 500)) {
+    if (
+      !conn ||
+      (conn.message == "Error obteniendo los datos" && conn.status == 500)
+    ) {
       setDataMaintenance({
         active: true,
         title: "D10 +",
