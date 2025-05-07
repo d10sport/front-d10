@@ -74,7 +74,7 @@ export default function SplineModel() {
         />
       </div>
       <div className="div_title_logo fade-in">
-        <h1 className="title">D10</h1>
+        <h1 className="title text-black">D10</h1>
       </div>
 
       {/* Balon Glass Model 3D */}
