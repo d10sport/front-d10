@@ -1,13 +1,16 @@
-import CarouselCollections from "@components/carousel-collections/carousel-collections";
 import videoSplineAcademyResponsive from "@assets/video/spline_mode_academy_responsive.mp4";
+import CarouselCollections from "@components/carousel-collections/carousel-collections";
 import CarouselSponsors from "@components/carrusel-sponsors/carousel-sponsors";
-import { useContext, useEffect, useState, useMemo } from "react";
+import { Suspense, useContext, useEffect, useState, useMemo } from "react";
 import videoSplineAcademy from "@assets/video/spline_mode_academy.mp4";
-import getTokenDecoded from "../../token/token-data.js";
+import { Environment, OrbitControls } from "@react-three/drei";
+import ModelBalonGlass from "@utils/model3D/BalonGlass.jsx";
 import SplineModel from "@components/spline/spline.jsx";
+import getTokenDecoded from "../../token/token-data.js";
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
 import AppContext from "@context/app-context";
+import { Canvas } from "@react-three/fiber";
 import { Loading } from "@utils/imgs/imgs";
 import { Link } from "react-router-dom";
 import "swiper/css/pagination";
@@ -98,6 +101,17 @@ export default function Home() {
         console.error(error);
       });
   }
+
+  const modelProps = useMemo(() => {
+    switch (deviceType) {
+      case "mobile":
+        return { position: [0, 0, -60], scale: 0.5 };
+      case "tablet":
+        return { position: [0, 0, -60], scale: 0.7 };
+      default:
+        return { position: [0, 0, -1], scale: 0.1 };
+    }
+  }, [deviceType]);
 
   const changeImage = useMemo(() => {
     switch (deviceType) {
@@ -270,8 +284,26 @@ export default function Home() {
           </div>
 
           <div className="w-full h-full relative justify-center z-30">
+            {/* 3D Model */}
+            <div className="section_model_3d absolute z-20 w-[60%] h-full">
+              <Canvas className="w-fit h-full">
+                <ambientLight />
+                <OrbitControls
+                  enableZoom={false}
+                  autoRotate={false}
+                  enableRotate={false}
+                />
+                <Suspense fallback={null}>
+                  <ModelBalonGlass
+                    position={modelProps.position}
+                    scale={modelProps.scale}
+                  />
+                </Suspense>
+                <Environment preset="sunset" />
+              </Canvas>
+            </div>
             {/* Video 3D Model */}
-            {deviceType == "desktop" && (
+            {/* {deviceType == "desktop" && (
               <div className="absolute left-0 top-0 right-0 bottom-0">
                 <video className="video__spline" autoPlay muted loop>
                   <source
@@ -303,7 +335,7 @@ export default function Home() {
                   />
                 </video>
               </div>
-            )}
+            )} */}
 
             {/* Texto */}
             <div className="select-none absolute top-1/4 left-1/4 mt-5 right-10 ml-8 transform -translate-y-1/2 flex flex-col z-20 items-center justify-center">

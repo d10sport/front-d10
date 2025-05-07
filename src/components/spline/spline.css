@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../../assets/img/fondo_home_d10_academy.png");
+  background-image: url("../../assets/img/fondo_home_d10_academy.webp");
   opacity: 0;
   transition: opacity 1s ease;
   z-index: 5;
