@@ -37,7 +37,7 @@ export default function HeaderPage({ dataHeader }) {
   }, [dataHeader, data]);
 
   return (
-    <nav id="nav_header" className="nav_page nav fixed" style={navStyle}>
+    <nav id="nav_header" className="nav_page nav z-50 fixed" style={navStyle}>
       {isMobileView ? (
         <SidePanel />
       ) : (

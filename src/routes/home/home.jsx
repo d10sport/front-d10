@@ -1,8 +1,6 @@
-import videoSplineAcademyResponsive from "@assets/video/spline_mode_academy_responsive.mp4";
 import CarouselCollections from "@components/carousel-collections/carousel-collections";
 import CarouselSponsors from "@components/carrusel-sponsors/carousel-sponsors";
 import { Suspense, useContext, useEffect, useState, useMemo } from "react";
-import videoSplineAcademy from "@assets/video/spline_mode_academy.mp4";
 import { Environment, OrbitControls } from "@react-three/drei";
 import ModelBalonGlass from "@utils/model3D/BalonGlass.jsx";
 import SplineModel from "@components/spline/spline.jsx";
