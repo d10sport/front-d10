@@ -1,5 +1,3 @@
-import videoSplineResponsive from "@assets/video/spline_model_video_responsive.mp4";
-import videoSpline from "@assets/video/spline_model_video.mp4";
 import { Environment, OrbitControls } from "@react-three/drei";
 import ModelBalonGlass from "@utils/model3D/BalonGlass.jsx";
 import { useEffect, useState, useMemo } from "react";
@@ -62,63 +60,32 @@ export default function SplineModel() {
   return (
     <section
       id="section_spline"
-      className={`section h-screen w-full select-none relative z-50 ${isFinished ? "hidden" : ""
-        }`}
+      className={`section h-screen w-full select-none relative z-50 ${isFinished ? "hidden" : ""}`}
     >
-      {/* Título en el centro */}
-      <div className="div_img fade-in">
+      {/* Contenido fijo y centrado con logo a la izquierda, texto a la derecha */}
+      <div className="fixed inset-0 z-20 flex items-center justify-center fade-in pointer-events-none">
         <img
-          className="w-28 sm:w-40 md:w-60 lg:w-full"
+          className="w-28 sm:w-40 md:w-60 lg:w-72 object-contain"
           src={logo}
           alt="logo D10"
         />
-      </div>
-      <div className="div_title_logo fade-in">
-        <h1 className="title">D10</h1>
+        <h1 className="text-white font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+          D10
+        </h1>
       </div>
 
-      {/* Balon Glass Model 3D */}
+      {/* Modelo 3D */}
       {!isFinished && (
-        <>
-          {/* {deviceType == "desktop" && (
-            <div id="model_glass" className="full-screen active animate-jump-in">
-              <video className="video__spline" autoPlay muted loop>
-                <source src={videoSpline} className="w-full h-full" type="video/mp4" />
-              </video>
-            </div>
-          )}
-          {deviceType == "tablet" && (
-            <div id="model_glass" className="full-screen active animate-jump-in">
-              <video className="video__spline" autoPlay muted loop>
-                <source src={videoSpline} className="w-full h-full" type="video/mp4" />
-              </video>
-            </div>
-          )}
-          {deviceType == "mobile" && (
-            <div id="model_glass" className="full-screen active animate-jump-in">
-              <video className="video__spline" autoPlay muted loop>
-                <source src={videoSplineResponsive} className="w-full h-full" type="video/mp4" />
-              </video>
-            </div>
-          )} */}
-          <div id="model_glass" className="full-screen active animate-jump-in">
-            <Canvas className="w-full h-[105%;] canvas">
-              <ambientLight />
-              <OrbitControls
-                enableZoom={false}
-                autoRotate={false}
-                enableRotate={false}
-              />
-              <Suspense fallback={null}>
-                <ModelBalonGlass
-                  position={modelProps.position}
-                  scale={modelProps.scale}
-                />
-              </Suspense>
-              <Environment preset="sunset" />
-            </Canvas>
-          </div>
-        </>
+        <div id="model_glass" className="full-screen active animate-jump-in">
+          <Canvas className="w-full h-full canvas">
+            <ambientLight />
+            <OrbitControls enableZoom={false} autoRotate={false} enableRotate={false} />
+            <Suspense fallback={null}>
+              <ModelBalonGlass position={modelProps.position} scale={modelProps.scale} />
+            </Suspense>
+            <Environment preset="sunset" />
+          </Canvas>
+        </div>
       )}
     </section>
   );
