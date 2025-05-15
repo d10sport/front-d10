@@ -93,7 +93,7 @@ export default function AboutUs() {
       <SplineModel />
 
       <section className="aboutus principal_div">
-        <div
+        {/* <div
           className="cntr-txt__aboutus bg-black"
           id="section-destination-meet"
         >
@@ -101,7 +101,7 @@ export default function AboutUs() {
           <p className="text__aboutus padding-cntr-txt__space text-2xl text-[#d1d5dc]">
             {sectionOne.description}
           </p>
-        </div>
+        </div> */}
 
         <div
           className="cntr-central__aboutus"

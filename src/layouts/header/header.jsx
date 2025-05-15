@@ -39,7 +39,7 @@ export default function Header({ dataHeader }) {
   var urlAcademy = `https://academia.${window.location.host}/`;
 
   return (
-    <nav id="nav_header" className="nav fixed" style={navStyle}>
+    <nav id="nav_header" className="nav fixed z-50" style={navStyle}>
       {isMobileView ? (
         <SidePanel />
       ) : (

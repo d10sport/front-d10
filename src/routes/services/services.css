@@ -8,8 +8,8 @@
 .row-content__services {
   display: flex;
   width: 100%;
-  height: 34%;
-  justify-content: space-around;
+  height: 100%;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -17,10 +17,12 @@
   display: flex;
   width: 50%;
   height: 100%;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 1.5rem;
   flex-direction: column;
   background-color: black;
   padding: 40px 160px 40px 80px;
+  border-radius: 25px;
 }
 
 .cntr-text--bg {
@@ -47,15 +49,16 @@
 .cntr-img__services {
   display: flex;
   width: 50%;
-  height: 100%;
+  height: 80%;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  border-radius: 25px;
 }
 
 .img__services {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   top: 0;
   left: 0;
