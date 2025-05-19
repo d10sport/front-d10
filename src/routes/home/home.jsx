@@ -240,7 +240,6 @@ export default function Home() {
           >
             <source src={sectionThree.video} type="video/mp4" />
           </video>
-
         ) : (
           <Loading />
         )}
@@ -348,7 +347,7 @@ export default function Home() {
             <div className="select-none absolute top-1/4 left-1/4 mt-5 right-10 ml-8 transform -translate-y-1/2 flex flex-col z-20 items-center justify-center">
               <img
                 src={sectionFive.title_1}
-                className=" flex justify-center size-48 lg:size-64 d10_img__academy"
+                className="w-48 lg:w-64 h-48 lg:h-64 object-contain d10_img__academy"
                 alt="Img D10+"
               />
             </div>
