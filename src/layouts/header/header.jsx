@@ -55,7 +55,7 @@ export default function Header({ dataHeader }) {
             <li className="items__nav">
               <Link
                 to={"/about-us"}
-                className="a-linear__nav text-sm text-[#fff]"
+                className="a-linear__nav text-sm text-black"
               >
                 Quienes somos
               </Link>
@@ -63,7 +63,7 @@ export default function Header({ dataHeader }) {
             <li className="items__nav">
               <Link
                 to={"/services"}
-                className="a-linear__nav text-sm text-[#fff]"
+                className="a-linear__nav text-sm text-black"
               >
                 Servicios
               </Link>
@@ -71,7 +71,7 @@ export default function Header({ dataHeader }) {
             <li className="items__nav">
               <Link
                 to={"/contact"}
-                className="a-linear__nav text-sm text-[#fff]"
+                className="a-linear__nav text-sm text-black"
               >
                 Contactanos
               </Link>
@@ -80,7 +80,7 @@ export default function Header({ dataHeader }) {
           <a
             target="_blank"
             href={urlAcademy}
-            className="login__nav text-sm text-[#fff] hover:text-white text-center bg-[#000]"
+            className="login__nav text-sm text-white hover:text-white text-center bg-[#000]"
           >
             D10+
           </a>
