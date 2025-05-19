@@ -64,7 +64,7 @@ export default function Services() {
       <section className="services principal_div">
         <div className="row-content__services" id="section-destination-vestry">
           <div className="cntr-text__services">
-            <h1 className="title__services"> {sectionTwo.title} </h1>
+            {/* <h1 className="title__services"> {sectionTwo.title} </h1> */}
             <h2 className="subtitle__services"> {sectionTwo.subtitle} </h2>
             <p className="text__services"> {sectionTwo.description} </p>
           </div>

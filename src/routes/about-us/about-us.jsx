@@ -103,12 +103,30 @@ export default function AboutUs() {
           </p>
         </div> */}
 
+        {/* Panel */}
+        <div className="block md:hidden flex flex-col items-center text-center p-4 space-y-4">
+          <div>
+            <h2 className="text-4xl font-bold text-white">
+              {sectionTwo.title1} <br /> {sectionTwo.title2}
+            </h2>
+            <h3 className="text-3xl text-white mt-2">{sectionTwo.subtitle}</h3>
+            <p className="text-lg text-white mt-2">{sectionTwo.description}</p>
+          </div>
+
+          {sectionTwo.bg_photo && (
+            <img
+              src={sectionTwo.bg_photo}
+              alt="Fondo"
+              className="w-full h-auto rounded-lg shadow-md max-h-80 object-cover"
+            />
+          )}
+        </div>
+
+        {/* Objetivos */}
         <div
-          className="cntr-central__aboutus"
+          className="cntr-central__aboutus hidden md:block"
           style={{
-            backgroundImage: `url(${
-              sectionTwo.bg_photo != "" ? sectionTwo.bg_photo : ""
-            })`,
+            backgroundImage: `url(${sectionTwo.bg_photo !== "" ? sectionTwo.bg_photo : ""})`,
           }}
           id="section-destination-founder"
         >
@@ -119,7 +137,7 @@ export default function AboutUs() {
               {sectionTwo.title2}
             </h2>
             <h3 className="title-3__aboutus text-5xl">{sectionTwo.subtitle}</h3>
-            <p className="text__aboutus text-[white] text-2xl">
+            <p className="text__aboutus text-white text-2xl">
               {sectionTwo.description}
             </p>
           </div>
@@ -137,25 +155,44 @@ export default function AboutUs() {
           </p>
         </div>
 
+        {/* Mision */}
         <div
-          className="cntr-img__aboutus"
+          className="cntr-img__aboutus hidden md:flex"
           style={{
-            backgroundImage: `url(${
-              sectionFour.bg_photo != "" ? sectionFour.bg_photo : ""
-            })`,
+            backgroundImage: `url(${sectionFour.bg_photo !== "" ? sectionFour.bg_photo : ""})`,
           }}
         >
           <div className="cntr-empty__aboutus"></div>
           <div className="cntr-side__aboutus" id="section-destination-mission">
-            <h3 className="title-3__aboutus text-4xl py-4">
+            <h3 className="title-3__aboutus text-white text-4xl py-4">
               {sectionFour.title}
             </h3>
-            <p className="text__aboutus text-[#d1d5dc] text-2xl">
+            <p className="text__aboutus text-white font-semibold text-2xl">
               {sectionFour.description}
             </p>
           </div>
         </div>
 
+        <div className="block md:hidden flex flex-col items-center px-4 py-6 space-y-3 bg-black">
+          {/* Texto */}
+          <div className="max-w-[90%]">
+            <h3 className="title-3__aboutus text-4xl py-4">
+              {sectionFour.title}
+            </h3>
+            <p className="text__aboutus text-[#d1d5dc] text-2xl">{sectionFour.description}</p>
+          </div>
+
+          {/* Imagen */}
+          {sectionFour.bg_photo && (
+            <img
+              src={sectionFour.bg_photo}
+              alt="Fondo"
+              className="w-11/12 max-h-48 object-cover rounded-md shadow max-h-80 object-cover"
+            />
+          )}
+        </div>
+
+        {/* Franja */}
         <div className="sponsors__aboutus bg-black">
           {sectionFive.length > 0 ? (
             sectionFive.map((item) => (
@@ -181,9 +218,8 @@ export default function AboutUs() {
         <div
           className="cntr-img__aboutus"
           style={{
-            backgroundImage: `url(${
-              sectionSix.bg_photo != "" ? sectionSix.bg_photo : ""
-            })`,
+            backgroundImage: `url(${sectionSix.bg_photo != "" ? sectionSix.bg_photo : ""
+              })`,
           }}
         >
           <div className="cntr-side__aboutus" id="section-destination-vision">
