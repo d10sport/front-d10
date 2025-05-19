@@ -326,7 +326,7 @@
 
 @media (max-width: 768px) {
   .blur-overlay__home {
-    -webkit-mask-image: linear-gradient(to top, black 25%, transparent 100%)
+    -webkit-mask-image: linear-gradient(to top, black 5%, transparent 100%)
   }
 
   .container__home {
