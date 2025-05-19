@@ -103,11 +103,9 @@
 
 .background--gradient {
   background: rgb(24, 24, 24);
-  background: linear-gradient(
-    135deg,
-    rgba(24, 24, 24, 1) 0%,
-    rgba(61, 61, 61, 1) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(24, 24, 24, 1) 0%,
+      rgba(61, 61, 61, 1) 100%);
 }
 
 @media (min-width: 1153px) {
@@ -155,12 +153,8 @@
     padding: 0px 40px;
   }
 
-  /*  */
-
   .cntr-central__aboutus {
     height: fit-content;
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url(../../assets/img/fondo_about_central.png); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -172,8 +166,6 @@
     padding: 40px;
   }
 
-  /*  */
-
   .cntr-txt__aboutus {
     height: fit-content;
   }
@@ -181,12 +173,6 @@
   .padding-cntr-txt__space {
     padding: 20px;
   }
-
-  .title-3__aboutus {
-    padding: 20px;
-  }
-
-  /*  */
 
   .cntr-img__aboutus {
     height: fit-content;

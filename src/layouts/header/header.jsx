@@ -46,7 +46,7 @@ export default function Header({ dataHeader }) {
         <>
           <Link className="select-none" to={"/"}>
             {data.logo == "" ? (
-              <ImageLogo style={{ maxWidth: "40px" }} alt="Logo" />
+              <ImageLogo style={{ maxWidth: "70px" }} alt="Logo" />
             ) : (
               <img src={data.logo} alt="logo D10" className="logo" />
             )}
