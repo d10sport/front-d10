@@ -69,7 +69,7 @@ export default function SplineModel() {
           src={logo}
           alt="logo D10"
         />
-        <h1 className="text-white font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+        <h1 className="text-black font-bold text-5xl sm:text-6xl md:text-7xl lg:text-9xl title">
           D10
         </h1>
       </div>

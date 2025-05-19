@@ -183,13 +183,13 @@ export default function Home() {
           <h1 className="title__home text-black text-8xl select-none">
             {sectionOne.company}
           </h1>
-          <h1 className="title__home text-6xl select-none">
+          <h1 className="title__home  text-3xl lg:text-6xl select-none">
             {sectionOne.slogan}
           </h1>
-          <h5 className="title__home text-6xl select-none">
+          <h5 className="title__home  text-3xl lg:text-6xl select-none">
             {sectionOne.slogan_two}
           </h5>
-          <h5 className="title__home text-6xl select-none">
+          <h5 className="title__home  text-3xl lg:text-6xl select-none">
             {sectionOne.slogan_three}
           </h5>
           <Link to={"/gallery"} className="btn__home text-xl">
@@ -348,7 +348,7 @@ export default function Home() {
             <div className="select-none absolute top-1/4 left-1/4 mt-5 right-10 ml-8 transform -translate-y-1/2 flex flex-col z-20 items-center justify-center">
               <img
                 src={sectionFive.title_1}
-                className=" flex justify-center size-48 d10_img__academy"
+                className=" flex justify-center size-48 lg:size-64 d10_img__academy"
                 alt="Img D10+"
               />
             </div>
