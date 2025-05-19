@@ -214,7 +214,7 @@ export default function Home() {
           <h1 className="title__about text-4xl text-[white] select-none">
             {sectionTwo.title}
           </h1>
-          <p className="text__about text-2xl text-[#d1d5dc] select-none">
+          <p className="text__about text-xl lg:text-2xl text-[#d1d5dc] select-none">
             {sectionTwo.description}
           </p>
           <Link
