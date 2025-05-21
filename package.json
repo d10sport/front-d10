@@ -11,12 +11,13 @@
   },
   "dependencies": {
     "@materializecss/materialize": "^2.1.1",
-    "@react-three/drei": "^9.115.0",
-    "@react-three/fiber": "^8.17.10",
+    "@radix-ui/react-slot": "^1.2.3",
     "@splinetool/react-spline": "^4.0.0",
     "@splinetool/runtime": "^1.9.35",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.8",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "d10sport": "file:",
     "framer-motion": "^11.11.11",
     "jwt-decode": "^4.0.0",
@@ -28,9 +29,10 @@
     "react-router-dom": "^6.27.0",
     "sonner": "^1.7.4",
     "swiper": "^11.1.14",
+    "tailwind-merge": "^3.3.0",
     "tailwindcss": "^3.4.14",
-    "tailwindcss-animated": "^1.1.2",
-    "three": "^0.169.0"
+    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-animated": "^1.1.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",

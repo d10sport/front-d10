@@ -1,7 +1,6 @@
 import { MessageCircle, Instagram } from "lucide-react";
 import Header from "@layouts/header/header.jsx";
 import { useEffect, useState, useContext } from "react";
-import SplineModel from "@components/spline/spline.jsx";
 import Footer from "@layouts/footer/footer.jsx";
 import AppContext from "@context/app-context";
 import { Link } from "react-router-dom";
@@ -96,8 +95,6 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Header dataHeader={context.dataHeader} />
-
-      <SplineModel />
 
       <section className="py-32">
         <div className="container mx-auto px-4">
