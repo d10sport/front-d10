@@ -77,6 +77,13 @@ export default function Home() {
     icons: [{ icon: "" }],
   });
 
+  const [sectionSeven, setSectionSeven] = useState({
+    date_col: "",
+    image: "",
+    title: "",
+    description: "",
+  });
+
   function getDateHome() {
     axios
       .get(`${urlApi}landing/g/home`, {
@@ -104,6 +111,22 @@ export default function Home() {
       });
   }
 
+  function getLastDataNews() {
+    axios
+      .get(`${urlApi}landing/g/last-news`, {
+        headers: {
+          "Content-Type": "application/json",
+          "api-key": apiKey,
+        },
+      })
+      .then((response) => {
+        setSectionSeven(response.data[0]);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   const changeImage = useMemo(() => {
     switch (deviceType) {
       case "mobile":
@@ -117,6 +140,7 @@ export default function Home() {
 
   useEffect(() => {
     getDateHome();
+    getLastDataNews();
     const handleResize = () => {
       const width = window.innerWidth;
       if (width <= 768) {
@@ -143,7 +167,75 @@ export default function Home() {
       <SplineModel />
 
       {/* <!-- Home Section --> */}
-      <section className="home" id="section-destination-home">
+
+      {/*
+    slogan
+    slogan_two
+    slogan_three
+    company
+    bg_photo
+    bg_photo_res
+    */}
+
+      <section
+        id="home"
+        className="relative flex h-screen items-center justify-center"
+      >
+        <div className="absolute inset-0 z-0">
+          <div className="img-container__home">
+            {sectionOne.bg_photo != "" ? (
+              changeImage.show ? (
+                <img
+                  src={sectionOne.bg_photo_res}
+                  alt="Imagen desde el backend"
+                  className="img-fondo__home--res"
+                  onError={(e) =>
+                    console.log("Error cargando imagen sección 1", e)
+                  }
+                />
+              ) : (
+                <img
+                  src={sectionOne.bg_photo}
+                  alt="Imagen desde el backend"
+                  className="img-fondo__home"
+                  onError={(e) =>
+                    console.log("Error cargando imagen sección 1", e)
+                  }
+                />
+              )
+            ) : (
+              <Loading />
+            )}
+          </div>
+
+          <div className="absolute inset-0 bg-gradient-to-t from-[#18181b] to-transparent z-10"></div>
+        </div>
+
+        <div className="container relative z-10 px-4 text-start">
+          <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tighter md:text-7xl">
+            <span
+              style={{
+                webkitTextStroke: "3px white",
+                fontSize: "100px",
+                color: "black",
+              }}
+            >
+              {sectionOne.company} <br />
+            </span>
+            {sectionOne.slogan} <br />
+            {sectionOne.slogan_two} <br />
+            {sectionOne.slogan_three}
+          </h1>
+          <a
+            href="#/gallery"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-11 rounded-md px-8 mt-8 bg-white text-black hover:bg-gray-200"
+          >
+            Descubre más
+          </a>
+        </div>
+      </section>
+
+      {/* <section className="home" id="section-destination-home">
         <div className="img-container__home">
           {sectionOne.bg_photo != "" ? (
             changeImage.show ? (
@@ -189,7 +281,7 @@ export default function Home() {
             Nuestra Galería
           </Link>
         </div>
-      </section>
+      </section> */}
 
       {/* <!-- About us Section --> */}
       <section id="section-destination-about" className="bg-zinc-900 py-24">
@@ -302,173 +394,100 @@ export default function Home() {
 
             {/* Bloque de código opcional */}
 
-            {/* <div className="relative">
-              <div className="absolute -left-10 -top-10 h-20 w-20 rounded-full border border-zinc-800"></div>
-              <div className="absolute -bottom-10 -right-10 h-20 w-20 rounded-full border border-zinc-800"></div>
-              <div
-                className="relative space-y-6 rounded-lg border border-zinc-800 bg-black/50 p-8 backdrop-blur-sm"
-                style={{ opacity: 1 }}
-              >
-                <div
-                  className="group flex cursor-pointer items-center space-x-4 rounded-md p-3 transition-colors hover:bg-white/5"
-                  style={{ opacity: 1, transform: "none" }}
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-white/70 transition-colors group-hover:bg-white/10 group-hover:text-white">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-circle-alert h-5 w-5"
-                    >
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="12" x2="12" y1="8" y2="12"></line>
-                      <line x1="12" x2="12.01" y1="16" y2="16"></line>
-                    </svg>
+            <div
+              className="relative overflow-hidden rounded-lg border border-zinc-800 bg-black/50 backdrop-blur-sm"
+              style={{ opacity: 1 }}
+            >
+              <div className="absolute -right-12 top-5 z-10 rotate-45 bg-white px-12 py-1 text-xs font-bold uppercase tracking-wider text-black">
+                Reciente
+              </div>
+              <div className="relative h-48 w-full overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
+                <div className="h-full w-full" style={{ transform: "none" }}>
+                  <div className="relative h-full w-full bg-zinc-800">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <img
+                        alt="Latest news"
+                        loading="lazy"
+                        decoding="async"
+                        data-nimg="fill"
+                        className="object-cover"
+                        src={sectionSeven.image}
+                        style={{
+                          position: "absolute",
+                          height: "100%",
+                          width: "100%",
+                          inset: 0,
+                          color: "transparent",
+                        }}
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-white">
-                      Company Updates
-                    </h3>
-                    <p className="text-sm text-gray-400">
-                      Latest updates and articles
-                    </p>
-                  </div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-arrow-right ml-auto h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100"
-                  >
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </div>
-
-                <div
-                  className="group flex cursor-pointer items-center space-x-4 rounded-md p-3 transition-colors hover:bg-white/5"
-                  style={{ opacity: 1, transform: "none" }}
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-white/70 transition-colors group-hover:bg-white/10 group-hover:text-white">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-trending-up h-5 w-5"
-                    >
-                      <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-                      <polyline points="16 7 22 7 22 13"></polyline>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-white">
-                      Industry Trends
-                    </h3>
-                    <p className="text-sm text-gray-400">
-                      Latest updates and articles
-                    </p>
-                  </div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-arrow-right ml-auto h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100"
-                  >
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </div>
-
-                <div
-                  className="group flex cursor-pointer items-center space-x-4 rounded-md p-3 transition-colors hover:bg-white/5"
-                  style={{ opacity: 1, transform: "none" }}
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-white/70 transition-colors group-hover:bg-white/10 group-hover:text-white">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-newspaper h-5 w-5"
-                    >
-                      <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path>
-                      <path d="M18 14h-8"></path>
-                      <path d="M15 18h-5"></path>
-                      <path d="M10 6h8v4h-8V6Z"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-white">
-                      Press Releases
-                    </h3>
-                    <p className="text-sm text-gray-400">
-                      Latest updates and articles
-                    </p>
-                  </div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-arrow-right ml-auto h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100"
-                  >
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </div>
-
-                <div className="mt-6 flex items-center justify-between border-t border-zinc-800 pt-6">
-                  <div className="flex -space-x-2">
-                    {["A", "B", "C"].map((letter) => (
-                      <div
-                        key={letter}
-                        className="relative h-8 w-8 overflow-hidden rounded-full border-2 border-black bg-zinc-800"
-                      >
-                        <div className="absolute inset-0 flex items-center justify-center text-xs font-medium text-white">
-                          {letter}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <span className="text-sm text-gray-400">
-                    12 new articles this week
-                  </span>
                 </div>
               </div>
-            </div> */}
+              <div className="p-6">
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="inline-flex items-center rounded-full bg-zinc-800 px-2.5 py-0.5 text-xs font-medium text-gray-300">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-circle-alert mr-1 h-3 w-3 text-white/70"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" x2="12" y1="8" y2="12" />
+                      <line x1="12" x2="12.01" y1="16" y2="16" />
+                    </svg>
+                    Actualización de la empresa
+                  </span>
+                  <time className="text-sm text-gray-400">
+                    {sectionSeven.date_col}
+                  </time>
+                </div>
+                <h3
+                  className="mb-2 text-xl font-bold leading-tight"
+                  style={{ opacity: 1, transform: "none" }}
+                >
+                  {sectionSeven.title}
+                </h3>
+                <p
+                  className="mb-4 text-sm text-gray-300 line-clamp-3"
+                  style={{ opacity: 1, transform: "none" }}
+                >
+                  {sectionSeven.description}
+                </p>
+                <div style={{ opacity: 1, transform: "none" }}>
+                  <a
+                    href="#/news"
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 underline-offset-4 h-10 group p-0 text-sm font-medium text-white hover:no-underline"
+                  >
+                    {/* Leer el artículo completo */}
+                    Leer mas artículos
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-arrow-right ml-1 h-3 w-3 transition-transform group-hover:translate-x-1"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
 
             {/* Fin de bloque de código opcional */}
           </div>
