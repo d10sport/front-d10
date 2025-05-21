@@ -2,7 +2,6 @@ import CarouselResponsiveCollections from "@components/carousel-responsive-colle
 import SectionCollections from "@components/section-collections/section-collections";
 import { useState, useEffect, useContext, useMemo } from "react";
 import Header from "@layouts/header/header.jsx";
-import SplineModel from "@components/spline/spline.jsx";
 import AppContext from "@context/app-context";
 import Footer from "@layouts/footer/footer";
 import "./collections.css";
@@ -74,8 +73,6 @@ export default function Collections() {
   return (
     <>
       <Header dataHeader={context.dataHeader} />
-
-      <SplineModel />
 
       <div className="collection__hidden principal_div inline-block w-full py-8 px-12 mb-8">
         <div className="w-full">

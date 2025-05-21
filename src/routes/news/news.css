@@ -2,12 +2,7 @@
   display: flex;
   width: 100%;
   height: fit-content;
-  background: rgb(24, 24, 24);
-  background: linear-gradient(
-    135deg,
-    rgba(24, 24, 24, 1) 0%,
-    rgba(61, 61, 61, 1) 100%
-  );
+  background: black;  
 }
 
 .news {

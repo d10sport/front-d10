@@ -1,8 +1,7 @@
+import { IconD10Mas, IconD10 } from "../../utils/icons/icons";
+import { useEffect, useState, useContext } from "react";
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
-import { useEffect, useState, useContext } from "react";
-import SplineModel from "@components/spline/spline.jsx";
-import { IconD10Mas, IconD10 } from "../../utils/icons/icons";
 import AppContext from "@context/app-context";
 import axios from "axios";
 
@@ -89,8 +88,6 @@ export default function AboutUs() {
   return (
     <>
       <Header dataHeader={context.dataHeader} />
-
-      <SplineModel />
 
       <section className="min-h-screen bg-black text-white">
         {/* Fundador */}

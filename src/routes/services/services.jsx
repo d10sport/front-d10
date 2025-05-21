@@ -1,7 +1,6 @@
-import Header from "@layouts/header/header.jsx";
 import { useEffect, useState, useContext } from "react";
-import SplineModel from "@components/spline/spline.jsx";
 import { ImageLogo } from "@utils/imgs/imgs.jsx";
+import Header from "@layouts/header/header.jsx";
 import AppContext from "@context/app-context";
 import axios from "axios";
 import "./services.css";
@@ -59,8 +58,6 @@ export default function Services() {
     <>
       <Header dataHeader={context.dataHeader} />
 
-      <SplineModel />
-
       <section className="services principal_div">
         <div className="row-content__services" id="section-destination-vestry">
           <div className="cntr-text__services">
@@ -79,7 +76,7 @@ export default function Services() {
 
         <div className="row-content__services" id="section-destination-workout">
           <div className="cntr-text__services cntr-text--bg">
-            <h1 className="title__services"> {sectionThree.title} </h1>
+            {/* <h1 className="title__services"> {sectionThree.title} </h1> */}
             <h2 className="subtitle__services">{sectionThree.subtitle}</h2>
             <p className="text__services">{sectionThree.description}</p>
           </div>
@@ -101,7 +98,7 @@ export default function Services() {
           id="section-destination-training"
         >
           <div className="cntr-text__services">
-            <h1 className="title__services"> {sectionFour.title} </h1>
+            {/* <h1 className="title__services"> {sectionFour.title} </h1> */}
             <h2 className="subtitle__services"> {sectionFour.subtitle} </h2>
             <p className="text__services">{sectionFour.description}</p>
           </div>

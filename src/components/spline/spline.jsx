@@ -1,9 +1,6 @@
-import { Environment, OrbitControls } from "@react-three/drei";
-import ModelBalonGlass from "@utils/model3D/BalonGlass.jsx";
 import { useEffect, useState, useMemo } from "react";
+import Video from "@assets/video/video.webm";
 import logo from "@assets/img/logo_sin_fondo.png";
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
 import "./spline.css";
 
 export default function SplineModel() {
@@ -19,11 +16,11 @@ export default function SplineModel() {
       document.getElementById("nav_header")?.classList.remove("hidden");
       document.querySelector(".wpp")?.classList.remove("hidden");
       window.scrollTo(0, 0);
-    }, 3500);
+    }, 4500);
 
     setTimeout(() => {
       setIsFinished(true);
-    }, 3600);
+    }, 4600);
   }, []);
 
   useEffect(() => {
@@ -77,14 +74,19 @@ export default function SplineModel() {
       {/* Modelo 3D */}
       {!isFinished && (
         <div id="model_glass" className="full-screen active animate-jump-in">
-          <Canvas className="w-full h-full canvas">
-            <ambientLight />
-            <OrbitControls enableZoom={false} autoRotate={false} enableRotate={false} />
-            <Suspense fallback={null}>
-              <ModelBalonGlass position={modelProps.position} scale={modelProps.scale} />
-            </Suspense>
-            <Environment preset="sunset" />
-          </Canvas>
+          <div className="w-full h-full canvas">
+            <video
+              className="video__start"
+              autoPlay
+              muted
+              loop
+              playsInline
+              disablePictureInPicture
+              controls={false}
+            >
+              <source src={Video} type="video/webm" />
+            </video>
+          </div>
         </div>
       )}
     </section>
