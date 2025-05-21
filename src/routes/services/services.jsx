@@ -1,4 +1,4 @@
-import HeaderPage from "../../layouts/header-pages/header-page";
+import Header from "@layouts/header/header.jsx";
 import { useEffect, useState, useContext } from "react";
 import SplineModel from "@components/spline/spline.jsx";
 import { ImageLogo } from "@utils/imgs/imgs.jsx";
@@ -57,7 +57,7 @@ export default function Services() {
 
   return (
     <>
-      <HeaderPage dataHeader={context.dataHeader} />
+      <Header dataHeader={context.dataHeader} />
 
       <SplineModel />
 

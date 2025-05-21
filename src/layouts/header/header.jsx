@@ -1,91 +1,149 @@
-import SidePanel from "@components/responsive-side/side-panel.jsx";
 import { ImageLogo } from "@utils/imgs/imgs.jsx";
-import { useEffect, useState } from "react";
+import { ChevronDown, X } from "lucide-react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import "./header.css";
 
 export default function Header({ dataHeader }) {
   Header.propTypes = {
     dataHeader: PropTypes.shape({
-      navStyle: PropTypes.object,
-      bg_photo: PropTypes.string,
       logo: PropTypes.string,
     }),
   };
 
   const [data, setData] = useState(dataHeader);
-  const [navStyle, setNavStyle] = useState(dataHeader.navStyle);
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobileView(window.innerWidth < 768);
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
     };
 
-    setData(dataHeader);
-    setNavStyle({
-      ...dataHeader.navStyle,
-      "--dynamic-bg": `url(${dataHeader.bg_photo})`,
-    });
-
-    window.addEventListener("resize", handleResize);
-
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
     };
+  }, [scrolled]);
+
+  useEffect(() => {
+    setData(dataHeader);
   }, [dataHeader, data]);
 
   var urlAcademy = `https://academia.${window.location.host}/`;
 
   return (
-    <nav id="nav_header" className="nav fixed z-50" style={navStyle}>
-      {isMobileView ? (
-        <SidePanel />
-      ) : (
-        <>
-          <Link className="select-none" to={"/"}>
+    <>
+      <nav className="fixed top-4 left-0 right-0 z-50 mx-auto w-[95%] max-w-7xl">
+        <div
+          className={`mx-auto flex h-16 items-center justify-between rounded-full px-6 shadow-lg backdrop-blur-sm transition-all duration-300 ${
+            scrolled ? "bg-black/40" : "bg-black/80"
+          }`}
+        >
+          <Link className="select-none text-xl font-bold" to={"/"}>
             {data.logo == "" ? (
               <ImageLogo style={{ maxWidth: "70px" }} alt="Logo" />
             ) : (
               <img src={data.logo} alt="logo D10" className="logo" />
             )}
           </Link>
-          <ul className="list__nav">
-            <li className="items__nav">
-              <Link
-                to={"/about-us"}
-                className="a-linear__nav text-sm text-black"
-              >
-                Quienes somos
-              </Link>
-            </li>
-            <li className="items__nav">
-              <Link
-                to={"/services"}
-                className="a-linear__nav text-sm text-black"
-              >
-                Servicios
-              </Link>
-            </li>
-            <li className="items__nav">
-              <Link
-                to={"/contact"}
-                className="a-linear__nav text-sm text-black"
-              >
-                Contactanos
-              </Link>
-            </li>
-          </ul>
-          <a
-            target="_blank"
-            href={urlAcademy}
-            className="login__nav text-sm text-white hover:text-white text-center bg-[#000]"
+          <div className="hidden space-x-8 md:flex">
+            <Link
+              to={"/about-us"}
+              className="text-sm uppercase tracking-wider hover:text-gray-300"
+            >
+              Nosotros
+            </Link>
+            <Link
+              to={"/services"}
+              className="text-sm uppercase tracking-wider hover:text-gray-300"
+            >
+              Servicios
+            </Link>
+            <Link
+              to={"/contact"}
+              className="text-sm uppercase tracking-wider hover:text-gray-300"
+            >
+              Contacto
+            </Link>
+            <Link
+              to={"/gallery"}
+              className="text-sm uppercase tracking-wider hover:text-gray-300"
+            >
+              Galería
+            </Link>
+            <a
+              target="_blank"
+              href={urlAcademy}
+              className="text-sm uppercase tracking-wider hover:text-gray-300"
+            >
+              Academia +
+            </a>
+          </div>
+
+          <button
+            // className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10 md:hidden"
+            className="md:hidden border border-gray-300 bg-white text-black hover:bg-gray-100 rounded-full h-10 w-10 flex items-center justify-center"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            D10+
-          </a>
-        </>
+            <span className="sr-only">
+              {isMenuOpen ? "Close menu" : "Open menu"}
+            </span>
+            {isMenuOpen ? (
+              <X className="h-4 w-4" />
+            ) : (
+              <ChevronDown className="h-4 w-4" />
+            )}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-40 flex flex-col bg-black pt-16 md:hidden">
+          <div className="flex flex-col space-y-4 p-4">
+            <Link
+              to={"/about-us"}
+              className="border-b border-zinc-800 py-3 text-lg font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Quienes somos
+            </Link>
+            <Link
+              to={"/services"}
+              className="border-b border-zinc-800 py-3 text-lg font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Servicios
+            </Link>
+            <Link
+              to={"/contact"}
+              className="border-b border-zinc-800 py-3 text-lg font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contacto
+            </Link>
+            <Link
+              to={"/gallery"}
+              className="border-b border-zinc-800 py-3 text-lg font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Galería
+            </Link>
+            <a
+              target="_blank"
+              href={urlAcademy}
+              className="border-b border-zinc-800 py-3 text-lg font-medium"
+            >
+              D10+
+              {/* Academia + */}
+            </a>
+          </div>
+        </div>
       )}
-    </nav>
+    </>
   );
 }
