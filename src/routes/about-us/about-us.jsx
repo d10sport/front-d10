@@ -1,20 +1,20 @@
-import HeaderPage from "@layouts/header-pages/header-page.jsx";
+import Header from "@layouts/header/header.jsx";
+import Footer from "@layouts/footer/footer.jsx";
 import { useEffect, useState, useContext } from "react";
 import SplineModel from "@components/spline/spline.jsx";
 import { IconD10Mas, IconD10 } from "../../utils/icons/icons";
 import AppContext from "@context/app-context";
 import axios from "axios";
-import "./about-us.css";
 
 export default function AboutUs() {
   const context = useContext(AppContext);
   const urlApi = context.urlApi;
   const apiKey = context.apiKey;
 
-  const [sectionOne, setSectionOne] = useState({
-    title: "",
-    description: "",
-  });
+  // const [sectionOne, setSectionOne] = useState({
+  //   title: "",
+  //   description: "",
+  // });
 
   const [sectionTwo, setSectionTwo] = useState({
     title1: "",
@@ -61,7 +61,7 @@ export default function AboutUs() {
       })
       .then((response) => {
         if (response.data?.length == 0 || response.data[0] == undefined) return;
-        setSectionOne(response.data[0].section_one);
+        // setSectionOne(response.data[0].section_one);
         setSectionTwo(response.data[0].section_two);
         setSectionThree(response.data[0].section_three);
         setSectionFour(response.data[0].section_four);
@@ -88,112 +88,156 @@ export default function AboutUs() {
 
   return (
     <>
-      <HeaderPage dataHeader={context.dataHeader} />
+      <Header dataHeader={context.dataHeader} />
 
       <SplineModel />
 
-      <section className="aboutus principal_div">
-        {/* <div
-          className="cntr-txt__aboutus bg-black"
-          id="section-destination-meet"
-        >
-          <h1 className="title-1__aboutus text-8xl">{sectionOne.title}</h1>
-          <p className="text__aboutus padding-cntr-txt__space text-2xl text-[#d1d5dc]">
-            {sectionOne.description}
-          </p>
-        </div> */}
+      <section className="min-h-screen bg-black text-white">
+        {/* Fundador */}
 
-        {/* Panel */}
-        <div className="block md:hidden flex flex-col items-center text-center p-4 space-y-4">
-          <div>
-            <h2 className="text-4xl font-bold text-white">
-              {sectionTwo.title1} <br /> {sectionTwo.title2}
-            </h2>
-            <h3 className="text-3xl text-white mt-2">{sectionTwo.subtitle}</h3>
-            <p className="text-lg text-white mt-2">{sectionTwo.description}</p>
-          </div>
-
-          {sectionTwo.bg_photo && (
-            <img
-              src={sectionTwo.bg_photo}
-              alt="Fondo"
-              className="w-full h-auto rounded-lg shadow-md max-h-80 object-cover"
-            />
-          )}
-        </div>
-
-        {/* Objetivos */}
-        <div
-          className="cntr-central__aboutus hidden md:block"
-          style={{
-            backgroundImage: `url(${sectionTwo.bg_photo !== "" ? sectionTwo.bg_photo : ""})`,
-          }}
+        <section
+          className="relative min-h-[70vh] w-full"
           id="section-destination-founder"
         >
-          <div className="central-cntr__aboutus">
-            <h2 className="title-2__aboutus text-6xl text-white">
-              {sectionTwo.title1}
-              <br />
-              {sectionTwo.title2}
-            </h2>
-            <h3 className="title-3__aboutus text-5xl">{sectionTwo.subtitle}</h3>
-            <p className="text__aboutus text-white text-2xl">
-              {sectionTwo.description}
-            </p>
+          <div className="absolute inset-0 z-0">
+            <img
+              alt="Founder background"
+              decoding="async"
+              data-nimg="fill"
+              className="object-cover brightness-50"
+              src={sectionTwo.bg_photo}
+              style={{
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                inset: 0,
+                color: "transparent",
+              }}
+            />
           </div>
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent z-10"></div>
+          <div className="container relative z-20 mx-auto grid h-full grid-cols-1 md:grid-cols-2 px-4 py-24">
+            <div className="flex flex-col items-start justify-center text-left">
+              <div className="relative">
+                <div className="absolute -left-6 top-1/2 h-12 w-1 bg-white transform -translate-y-1/2"></div>
+                <h2 className="mb-2 text-lg font-medium uppercase tracking-widest text-gray-300">
+                  {sectionTwo.title1}
+                </h2>
+                <h1 className="mb-2 text-5xl font-bold tracking-tight md:text-6xl">
+                  {sectionTwo.title2}
+                </h1>
+                <div className="mb-6 h-px w-24 bg-white/30"></div>
+                <h2 className="mb-8 text-3xl font-medium text-gray-300">
+                  {sectionTwo.subtitle}
+                </h2>
+              </div>
+              <div className="max-w-xl">
+                <p className="text-lg leading-relaxed text-gray-200">
+                  {sectionTwo.description}
+                </p>
+                {/* <p className="text-lg leading-relaxed text-gray-200">
+                  Fundada en [año], nuestra empresa ha estado a la vanguardia de la innovación en [sector]. Con pasión por la excelencia y un compromiso con la calidad, nuestro fundador estableció una empresa que ha crecido desde una pequeña startup hasta convertirse en un líder del sector.
+                </p>
+                <p className="mt-4 text-lg leading-relaxed text-gray-200">
+                  Nuestra trayectoria se ha caracterizado por la mejora continua, el crecimiento estratégico y una dedicación inquebrantable al éxito de nuestros clientes.
+                </p> */}
+              </div>
+            </div>
+            <div className="hidden md:flex items-center justify-center relative">
+              <div className="absolute right-0 bottom-0 h-4/5 w-4/5 border-r-2 border-b-2 border-white/20"></div>
+              <div className="absolute right-8 bottom-8 h-4/5 w-4/5 border-r-2 border-b-2 border-white/10"></div>
+            </div>
+          </div>
+        </section>
 
-        <div
-          className="cntr-txt__aboutus background--gradient"
+        {/* Objetivos */}
+
+        <section
+          className="bg-zinc-900 py-24"
           id="section-destination-objectives"
         >
-          <h3 className="title-3__aboutus text-6xl py-4">
-            {sectionThree.title}
-          </h3>
-          <p className="text__aboutus padding-cntr-txt__space text-[#d1d5dc] text-2xl">
-            {sectionThree.description}
-          </p>
-        </div>
-
-        {/* Mision */}
-        <div
-          className="cntr-img__aboutus hidden md:flex"
-          style={{
-            backgroundImage: `url(${sectionFour.bg_photo !== "" ? sectionFour.bg_photo : ""})`,
-          }}
-        >
-          <div className="cntr-empty__aboutus"></div>
-          <div className="cntr-side__aboutus" id="section-destination-mission">
-            <h3 className="title-3__aboutus text-white text-4xl py-4">
-              {sectionFour.title}
-            </h3>
-            <p className="text__aboutus text-white font-semibold text-2xl">
-              {sectionFour.description}
-            </p>
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="mb-10 text-4xl font-bold">{sectionThree.title}</h2>
+              <div className="space-y-6 text-left">
+                <p className="text-lg text-gray-300">
+                  {sectionThree.description}
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div className="block md:hidden flex flex-col items-center px-4 py-6 space-y-3 bg-black">
-          {/* Texto */}
-          <div className="max-w-[90%]">
-            <h3 className="title-3__aboutus text-4xl py-4">
-              {sectionFour.title}
-            </h3>
-            <p className="text__aboutus text-[#d1d5dc] text-2xl">{sectionFour.description}</p>
-          </div>
-
-          {/* Imagen */}
-          {sectionFour.bg_photo && (
+        {/* Misión */}
+        <section className="relative py-24" id="section-destination-mission">
+          <div className="absolute inset-0 z-0">
             <img
+              alt="Mission background"
+              loading="lazy"
+              decoding="async"
+              className="object-cover brightness-40"
               src={sectionFour.bg_photo}
-              alt="Fondo"
-              className="w-11/12 max-h-48 object-cover rounded-md shadow max-h-80 object-cover"
+              style={{
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                inset: 0,
+                color: "transparent",
+              }}
             />
-          )}
-        </div>
+          </div>
+          <div className="absolute inset-0 bg-black/70 z-10"></div>
+          <div className="container relative z-20 mx-auto px-4">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="mb-8 text-4xl font-bold">{sectionFour.title}</h2>
+              <p className="text-xl leading-relaxed text-gray-200">
+                {sectionFour.description}
+              </p>
+            </div>
+          </div>
+        </section>
 
         {/* Franja */}
-        <div className="sponsors__aboutus bg-black">
+        <section className="bg-zinc-900 py-16">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
+              {sectionFive.length > 0 ? (
+                sectionFive.map((item, index) => (
+                  <div
+                    key={index}
+                    className="relative h-12 w-24 md:h-16 md:w-32 grayscale transition-all duration-300 hover:grayscale-0"
+                  >
+                    <img
+                      alt={item.alt || "Image Sponsor"}
+                      loading="lazy"
+                      decoding="async"
+                      className="object-contain"
+                      src={item.icon}
+                      style={{
+                        position: "absolute",
+                        height: "100%",
+                        width: "100%",
+                        inset: 0,
+                        color: "transparent",
+                      }}
+                    />
+                  </div>
+                ))
+              ) : (
+                <>
+                  <IconD10 />
+                  <IconD10Mas />
+                  <IconD10 />
+                  <IconD10Mas />
+                  <IconD10 />
+                  <IconD10Mas />
+                </>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* <div className="sponsors__aboutus bg-black">
           {sectionFive.length > 0 ? (
             sectionFive.map((item) => (
               <img
@@ -213,26 +257,40 @@ export default function AboutUs() {
               <IconD10Mas />
             </>
           )}
-        </div>
+        </div> */}
 
-        <div
-          className="cntr-img__aboutus"
-          style={{
-            backgroundImage: `url(${sectionSix.bg_photo != "" ? sectionSix.bg_photo : ""
-              })`,
-          }}
-        >
-          <div className="cntr-side__aboutus" id="section-destination-vision">
-            <h3 className="title-3__aboutus text-4xl py-4">
-              {sectionSix.title}
-            </h3>
-            <p className="text__aboutus text-[#d1d5dc] text-2xl">
-              {sectionSix.description}
-            </p>
+        {/* Vision */}
+
+        <section className="relative py-24" id="section-destination-vision">
+          <div className="absolute inset-0 z-0">
+            <img
+              alt="Vision background"
+              loading="lazy"
+              decoding="async"
+              className="object-cover brightness-40"
+              src={sectionSix.bg_photo}
+              style={{
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                inset: 0,
+                color: "transparent",
+              }}
+            />
           </div>
-          <div className="cntr-empty__aboutus"></div>
-        </div>
+          <div className="absolute inset-0 bg-black/70 z-10"></div>
+          <div className="container relative z-20 mx-auto px-4">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="mb-8 text-4xl font-bold">{sectionSix.title}</h2>
+              <p className="text-xl leading-relaxed text-gray-200">
+                {sectionSix.description}
+              </p>
+            </div>
+          </div>
+        </section>
       </section>
+
+      <Footer />
     </>
   );
 }
