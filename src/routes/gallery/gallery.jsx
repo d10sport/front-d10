@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import SplineModel from "@components/spline/spline.jsx";
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
 import AppContext from "@context/app-context";
@@ -83,8 +82,6 @@ export default function Gallery() {
   return (
     <>
       <Header dataHeader={context.dataHeader} />
-
-      <SplineModel />
 
       <section className="gallery" id="section-destination-galeria">
         <h1 className="title__gallery">Galería</h1>

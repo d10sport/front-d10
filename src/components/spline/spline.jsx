@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import Video from "@assets/video/video.mp4";
+import Video from "@assets/video/video.webm";
 import logo from "@assets/img/logo_sin_fondo.png";
 import "./spline.css";
 
@@ -7,21 +7,21 @@ export default function SplineModel() {
   const [isFinished, setIsFinished] = useState(false);
   const [deviceType, setDeviceType] = useState("desktop");
 
-  // useEffect(() => {
-  //   document.body.classList.add("overflow-hidden");
-  //   document.getElementById("nav_header")?.classList.add("hidden");
+  useEffect(() => {
+    document.body.classList.add("overflow-hidden");
+    document.getElementById("nav_header")?.classList.add("hidden");
 
-  //   setTimeout(() => {
-  //     document.body.classList.remove("overflow-hidden");
-  //     document.getElementById("nav_header")?.classList.remove("hidden");
-  //     document.querySelector(".wpp")?.classList.remove("hidden");
-  //     window.scrollTo(0, 0);
-  //   }, 13500);
+    setTimeout(() => {
+      document.body.classList.remove("overflow-hidden");
+      document.getElementById("nav_header")?.classList.remove("hidden");
+      document.querySelector(".wpp")?.classList.remove("hidden");
+      window.scrollTo(0, 0);
+    }, 4500);
 
-  //   setTimeout(() => {
-  //     setIsFinished(true);
-  //   }, 13600);
-  // }, []);
+    setTimeout(() => {
+      setIsFinished(true);
+    }, 4600);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -60,7 +60,7 @@ export default function SplineModel() {
       className={`section h-screen w-full select-none relative z-50 ${isFinished ? "hidden" : ""}`}
     >
       {/* Contenido fijo y centrado con logo a la izquierda, texto a la derecha */}
-      {/* <div className="fixed inset-0 z-20 flex items-center justify-center fade-in pointer-events-none">
+      <div className="fixed inset-0 z-20 flex items-center justify-center fade-in pointer-events-none">
         <img
           className="w-28 sm:w-40 md:w-60 lg:w-72 object-contain"
           src={logo}
@@ -69,7 +69,7 @@ export default function SplineModel() {
         <h1 className="text-black font-bold text-7xl lg:text-9xl title">
           D10
         </h1>
-      </div> */}
+      </div>
 
       {/* Modelo 3D */}
       {!isFinished && (
@@ -78,12 +78,13 @@ export default function SplineModel() {
             <video
               className="video__start"
               autoPlay
+              muted
               loop
               playsInline
               disablePictureInPicture
               controls={false}
             >
-              <source src={Video} type="video/mp4" />
+              <source src={Video} type="video/webm" />
             </video>
           </div>
         </div>
