@@ -1,4 +1,4 @@
-import HeaderPage from "@layouts/header-pages/header-page.jsx";
+import Header from "@layouts/header/header.jsx";
 import { useState, useEffect, useContext } from "react";
 import Footer from "@layouts/footer/footer.jsx";
 import AppContext from "@context/app-context";
@@ -121,7 +121,7 @@ export default function News() {
 
   return (
     <>
-      <HeaderPage dataHeader={context.dataHeader} />
+      <Header dataHeader={context.dataHeader} />
 
       <SplineModel />
 
