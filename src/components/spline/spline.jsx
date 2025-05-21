@@ -1,11 +1,10 @@
-import { useEffect, useState, useMemo } from "react";
-import Video from "@assets/video/video.webm";
 import logo from "@assets/img/logo_sin_fondo.png";
+import Video from "@assets/video/video.webm";
+import { useEffect, useState } from "react";
 import "./spline.css";
 
 export default function SplineModel() {
   const [isFinished, setIsFinished] = useState(false);
-  const [deviceType, setDeviceType] = useState("desktop");
 
   useEffect(() => {
     document.body.classList.add("overflow-hidden");
@@ -23,37 +22,6 @@ export default function SplineModel() {
     }, 4600);
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width <= 768) {
-        setDeviceType("mobile");
-      } else if (width > 768 && width <= 1024) {
-        setDeviceType("tablet");
-      } else {
-        setDeviceType("desktop");
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const modelProps = useMemo(() => {
-    switch (deviceType) {
-      case "mobile":
-        return { position: [0, 0, -60], scale: 0.6 };
-      case "tablet":
-        return { position: [0, 0, -60], scale: 0.8 };
-      default:
-        return { position: [0, 0, -60], scale: 1.2 };
-    }
-  }, [deviceType]);
-
   return (
     <section
       id="section_spline"
@@ -62,7 +30,7 @@ export default function SplineModel() {
       {/* Contenido fijo y centrado con logo a la izquierda, texto a la derecha */}
       <div className="fixed inset-0 z-20 flex items-center justify-center fade-in pointer-events-none">
         <img
-          className="w-28 sm:w-40 md:w-60 lg:w-72 object-contain"
+          className="w-32 sm:w-48 md:w-72 lg:w-80 object-contain"
           src={logo}
           alt="logo D10"
         />
@@ -71,7 +39,7 @@ export default function SplineModel() {
         </h1>
       </div>
 
-      {/* Modelo 3D */}
+      {/* Video */}
       {!isFinished && (
         <div id="model_glass" className="full-screen active animate-jump-in">
           <div className="w-full h-full canvas">

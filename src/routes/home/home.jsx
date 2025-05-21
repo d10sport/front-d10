@@ -22,6 +22,7 @@ export default function Home() {
   const apiKey = context.apiKey;
 
   const [deviceType, setDeviceType] = useState("desktop");
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
 
   const [sectionOne, setSectionOne] = useState({
     slogan: "",
@@ -113,14 +114,14 @@ export default function Home() {
 
   function getLastDataNews() {
     axios
-      .get(`${urlApi}landing/g/last-news`, {
+      .get(`${urlApi}landing/g/last/news`, {
         headers: {
           "Content-Type": "application/json",
           "api-key": apiKey,
         },
       })
       .then((response) => {
-        setSectionSeven(response.data[0]);
+        setSectionSeven(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -160,23 +161,24 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const hasVisited = localStorage.getItem("firstVisit");
+
+    if (!hasVisited) {
+      setIsFirstVisit(true);
+      localStorage.setItem("firstVisit", "true");
+    }
+  }, []);
+
   return (
     <>
       <Header dataHeader={context.dataHeader} />
 
-      <SplineModel />
+      {isFirstVisit && (
+        <SplineModel />
+      )}
 
       {/* <!-- Home Section --> */}
-
-      {/*
-    slogan
-    slogan_two
-    slogan_three
-    company
-    bg_photo
-    bg_photo_res
-    */}
-
       <section
         id="home"
         className="relative flex h-screen items-center justify-center"
@@ -235,54 +237,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <section className="home" id="section-destination-home">
-        <div className="img-container__home">
-          {sectionOne.bg_photo != "" ? (
-            changeImage.show ? (
-              <img
-                src={sectionOne.bg_photo_res}
-                alt="Imagen desde el backend"
-                className="img-fondo__home--res"
-                onError={(e) =>
-                  console.log("Error cargando imagen sección 1", e)
-                }
-              />
-            ) : (
-              <img
-                src={sectionOne.bg_photo}
-                alt="Imagen desde el backend"
-                className="img-fondo__home"
-                onError={(e) =>
-                  console.log("Error cargando imagen sección 1", e)
-                }
-              />
-            )
-          ) : (
-            <Loading />
-          )}
-
-          <div className="blur-overlay__home"></div>
-        </div>
-
-        <div className="container__home">
-          <h1 className="title__home text-black text-8xl select-none">
-            {sectionOne.company}
-          </h1>
-          <h1 className="title__home  text-3xl lg:text-6xl select-none">
-            {sectionOne.slogan}
-          </h1>
-          <h5 className="title__home  text-3xl lg:text-6xl select-none">
-            {sectionOne.slogan_two}
-          </h5>
-          <h5 className="title__home  text-3xl lg:text-6xl select-none">
-            {sectionOne.slogan_three}
-          </h5>
-          <Link to={"/gallery"} className="btn__home text-xl">
-            Nuestra Galería
-          </Link>
-        </div>
-      </section> */}
-
       {/* <!-- About us Section --> */}
       <section id="section-destination-about" className="bg-zinc-900 py-24">
         <div className="container mx-auto px-4">
@@ -319,7 +273,6 @@ export default function Home() {
       </section>
 
       {/* <!-- Commercial Section --> */}
-
       <section id="section-destination-commercial" className="bg-black py-24">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
@@ -355,7 +308,6 @@ export default function Home() {
       </div>
 
       {/* News Section */}
-
       <section
         id="section-destination-news"
         className="relative overflow-hidden bg-gradient-to-br from-black via-zinc-900 to-black py-24"
@@ -392,7 +344,7 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Bloque de código opcional */}
+            {/* Bloque de primer noticia */}
 
             <div
               className="relative overflow-hidden rounded-lg border border-zinc-800 bg-black/50 backdrop-blur-sm"
@@ -470,7 +422,6 @@ export default function Home() {
                     {/* Leer el artículo completo */}
                     Leer mas artículos
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
@@ -489,13 +440,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Fin de bloque de código opcional */}
           </div>
         </div>
       </section>
 
       {/* <!-- D10+ Academy Section --> */}
-
       <section id="section-destination-academy" className="bg-black py-24">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center space-y-8 md:flex-row md:space-x-12 md:space-y-0">
@@ -547,13 +496,36 @@ export default function Home() {
 
       {/* Sponsors Section */}
       <section className="sponsors" id="section-destination-sponsors">
-        <h1 className="title__sponsors text-4xl text-white select-none">
+        <h1 className="text-center text-lg text-white mb-10 tracking-widest uppercase">
           {sectionSix.tile}
         </h1>
-        <div className="container__sponsors">
-          <CarouselSponsors sponsors={sectionSix.icons} />
+        <div className="grid grid-cols-4 md:grid-cols-6 w-full px-20">
+          {sectionSix.icons.map((src, index) => {
+            const totalCols = 6; // usa 4 si estás en móvil
+            const isLastInRow = (index + 1) % totalCols === 0;
+            const isFirstRow = index < totalCols;
+
+            return (
+              <div
+                key={index}
+                className={`flex items-center justify-center h-24 ${!isLastInRow ? "border-r border-white/10" : ""
+                  } ${isFirstRow ? "border-b border-white/10" : ""}`}
+              >
+                <img
+                  src={src.icon}
+                  alt={`Logo ${index}`}
+                  className="h-14 filter grayscale opacity-90 object-contain"
+                />
+              </div>
+            );
+          })}
         </div>
       </section>
+
+      {/* <div className="container__sponsors">
+          <CarouselSponsors sponsors={sectionSix.icons} />
+        </div> */}
+      {/* </div> */}
 
       <Footer dataFooter={context.dataFooter} />
     </>

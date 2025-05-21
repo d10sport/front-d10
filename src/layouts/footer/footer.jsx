@@ -26,16 +26,16 @@ export default function Footer() {
     <>
       {/* <!-- Footer Section --> */}
 
-      <section className="border-t border-zinc-800 bg-black py-6">
+      <section className="border-t border-zinc-800 bg-black py-4 grid justify-center items-center">
         <div className="container mx-auto px-4 text-center text-sm text-gray-400">
           <p>© 2025 D10. All rights reserved.</p>
-          <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 underline-offset-4 hover:underline h-10 px-4 py-2 mt-2 text-xs text-gray-500 hover:text-white">
+          <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 underline-offset-4 hover:underline px-4 text-xs text-gray-500 hover:text-white">
             Terms & Conditions
           </button>
         </div>
       </section>
 
-      <footer className="bg-zinc-950 py-12">
+      <footer className="bg-zinc-950 py-12 border-t border-zinc-800">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-between space-y-6 md:flex-row md:space-y-0">
             <div>

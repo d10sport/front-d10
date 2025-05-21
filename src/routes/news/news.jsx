@@ -195,7 +195,7 @@ export default function News() {
         {/* Date Filter */}
         <div className="container py-4 border-b border-zinc-800">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <h2 className="text-lg font-medium">Filter News by Date</h2>
+            <h2 className="text-lg font-medium">Nuestras noticias</h2>
             <div className="flex flex-wrap items-center gap-3">
               <div className="flex items-center gap-2">
                 <label htmlFor="month-select" className="text-sm text-zinc-400">
@@ -263,7 +263,7 @@ export default function News() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                       <div className="absolute bottom-0 p-6">
-                        <Badge className="mb-2 bg-red-600 hover:bg-red-700 rounded-full">Breaking</Badge>
+                        <Badge className="mb-2 bg-red-600 hover:bg-red-700 rounded-full">Nuevo</Badge>
                         <h1 className="mb-2 text-2xl font-bold sm:text-3xl md:text-4xl">
                           {item.title}
                         </h1>
@@ -276,7 +276,7 @@ export default function News() {
                             <span className="text-sm text-zinc-400">2 hours ago -  {item.date}</span>
                           </div>
                           <Button variant="secondary" className="rounded-full">
-                            Read More
+                            Leer más
                           </Button>
                         </div>
                       </div>
@@ -289,7 +289,7 @@ export default function News() {
 
               <div className="space-y-6">
                 <div>
-                  <h2 className="mb-4 text-2xl font-bold">Top Stories</h2>
+                  <h2 className="mb-4 text-2xl font-bold">Principales Noticias</h2>
                   <div className="space-y-4">
                     {filteredData.length > 0 ? (
                       currentData.map((item, index) =>
@@ -331,34 +331,33 @@ export default function News() {
           {/* Categories Section */}
           <section className="mb-12">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold">Browse by Category</h2>
+              <h2 className="text-2xl font-bold">Explorar por categoría</h2>
               <Button variant="link" className="gap-1 text-zinc-400 hover:text-white">
-                View All <ChevronRight className="h-4 w-4" />
+                Ver todo <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-              {["Politics", "Technology", "Business", "Science", "Health", "Entertainment"].map((category) => (
+              {["Lanzamientos", "Producto", "Empresa", "Deporte", "Entretenimiento"].map((category) => (
                 <Card
                   key={category}
-                  className="bg-zinc-800 border-zinc-700 rounded-xl hover:bg-zinc-700 transition-colors"
+                  className="bg-zinc-800 cursor-pointer hover:scale-110 border-zinc-700 rounded-xl hover:bg-zinc-700 transition-colors"
                 >
                   <CardContent className="p-6 flex flex-col items-center text-center">
-                    <div className="mb-4 rounded-full bg-zinc-700 p-3">
+                    <div className="mb-4 rounded-full bg-white p-3">
                       <TrendingUp className="h-6 w-6" />
                     </div>
-                    <h3 className="font-medium">{category}</h3>
+                    <h3 className="font-medium text-white">{category}</h3>
                   </CardContent>
                 </Card>
               ))}
             </div>
           </section>
 
-          {/* Latest News Section */}
           <section className="mb-12">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold">Latest News</h2>
+              <h2 className="text-2xl font-bold">Ultima noticias</h2>
               <Button variant="link" className="gap-1 text-zinc-400 hover:text-white">
-                View All <ChevronRight className="h-4 w-4" />
+                Ver todo <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -383,7 +382,7 @@ export default function News() {
                         {item.description}
                       </h3>
                       <p className="mb-4 text-sm text-zinc-400">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                        {item.description}
                       </p>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center text-sm text-zinc-400">
@@ -391,7 +390,7 @@ export default function News() {
                           {["2 hours ago", "4 hours ago", "6 hours ago", "8 hours ago", "10 hours ago", "12 hours ago"][index]}
                         </div>
                         <Button variant="ghost" size="sm" className="rounded-full">
-                          Read More
+                          Leer más
                         </Button>
                       </div>
                     </CardContent>
