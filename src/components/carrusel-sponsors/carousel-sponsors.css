@@ -1,10 +1,5 @@
 .swiper-slide {
   user-select: none;
   mask-image: linear-gradient(to center, black 80%, transparent 100%);
-  background: radial-gradient(
-    circle,
-    white -20%,
-    rgba(0, 0, 0, 0) 55%
-  );
   height: 130% !important;
 }

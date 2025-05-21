@@ -1,7 +1,7 @@
 import CarouselResponsiveCollections from "@components/carousel-responsive-collections/carousel-responsive-collections";
 import SectionCollections from "@components/section-collections/section-collections";
 import { useState, useEffect, useContext, useMemo } from "react";
-import HeaderPage from "@layouts/header-pages/header-page";
+import Header from "@layouts/header/header.jsx";
 import SplineModel from "@components/spline/spline.jsx";
 import AppContext from "@context/app-context";
 import Footer from "@layouts/footer/footer";
@@ -73,7 +73,7 @@ export default function Collections() {
 
   return (
     <>
-      <HeaderPage dataHeader={context.dataHeader} />
+      <Header dataHeader={context.dataHeader} />
 
       <SplineModel />
 

@@ -67,9 +67,13 @@ export default function CarouselSponsors({ sponsors }) {
           pagination={{ clickable: true }}
         >
           {items.map((item, index) => (
-            <SwiperSlide key={index} className="slide" >
+            <SwiperSlide key={index} className="slide">
               {item.icon != "" ? (
-                <img src={item.icon} alt={`Item Sponsor`} className="w-1/2" />
+                <img
+                  src={item.icon}
+                  alt={`Item Sponsor`}
+                  className="img__sponsors"
+                />
               ) : (
                 <ImageLogo alt={`Item Sponsor ${index}`} />
               )}
@@ -91,7 +95,11 @@ export default function CarouselSponsors({ sponsors }) {
           {items.map((item, index) => (
             <SwiperSlide key={index}>
               {item.icon != "" ? (
-                <img src={item.icon} alt={`Item Sponsor`} className="w-1/2" />
+                <img
+                  src={item.icon}
+                  alt={`Item Sponsor`}
+                  className="img__sponsors"
+                />
               ) : (
                 <ImageLogo alt={`Item Sponsor ${index}`} />
               )}
