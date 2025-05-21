@@ -79,7 +79,7 @@ export default function Services() {
 
         <div className="row-content__services" id="section-destination-workout">
           <div className="cntr-text__services cntr-text--bg">
-            <h1 className="title__services"> {sectionThree.title} </h1>
+            {/* <h1 className="title__services"> {sectionThree.title} </h1> */}
             <h2 className="subtitle__services">{sectionThree.subtitle}</h2>
             <p className="text__services">{sectionThree.description}</p>
           </div>
@@ -101,7 +101,7 @@ export default function Services() {
           id="section-destination-training"
         >
           <div className="cntr-text__services">
-            <h1 className="title__services"> {sectionFour.title} </h1>
+            {/* <h1 className="title__services"> {sectionFour.title} </h1> */}
             <h2 className="subtitle__services"> {sectionFour.subtitle} </h2>
             <p className="text__services">{sectionFour.description}</p>
           </div>

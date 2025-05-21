@@ -1,14 +1,11 @@
 import CarouselCollections from "@components/carousel-collections/carousel-collections";
 import CarouselSponsors from "@components/carrusel-sponsors/carousel-sponsors";
-import { Suspense, useContext, useEffect, useState, useMemo } from "react";
-import { Environment, OrbitControls } from "@react-three/drei";
-import ModelBalonGlass from "@utils/model3D/BalonGlass.jsx";
+import { useContext, useEffect, useState, useMemo } from "react";
 import SplineModel from "@components/spline/spline.jsx";
 import getTokenDecoded from "../../token/token-data.js";
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
 import AppContext from "@context/app-context";
-import { Canvas } from "@react-three/fiber";
 import { Loading } from "@utils/imgs/imgs";
 import { Link } from "react-router-dom";
 import "swiper/css/pagination";
@@ -290,24 +287,6 @@ export default function Home() {
           </div>
 
           <div className="w-full h-full relative justify-center z-30">
-            {/* 3D Model */}
-            <div className="section_model_3d absolute z-20 w-[60%] h-full">
-              <Canvas className="w-fit h-full">
-                <ambientLight />
-                <OrbitControls
-                  enableZoom={false}
-                  autoRotate={false}
-                  enableRotate={false}
-                />
-                <Suspense fallback={null}>
-                  <ModelBalonGlass
-                    position={modelProps.position}
-                    scale={modelProps.scale}
-                  />
-                </Suspense>
-                <Environment preset="sunset" />
-              </Canvas>
-            </div>
             {/* Video 3D Model */}
             {/* {deviceType == "desktop" && (
               <div className="absolute left-0 top-0 right-0 bottom-0">
