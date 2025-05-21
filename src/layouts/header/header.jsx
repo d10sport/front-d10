@@ -45,9 +45,13 @@ export default function Header({ dataHeader }) {
         >
           <Link className="select-none text-xl font-bold" to={"/"}>
             {data.logo == "" ? (
-              <ImageLogo style={{ maxWidth: "70px" }} alt="Logo" />
+              <ImageLogo style={{ maxWidth: "50px" }} alt="Logo" />
             ) : (
-              <img src={data.logo} alt="logo D10" className="logo" />
+              <img
+                src={data.logo}
+                alt="logo D10"
+                className="logo max-w-[50px]"
+              />
             )}
           </Link>
           <div className="hidden space-x-8 md:flex">
