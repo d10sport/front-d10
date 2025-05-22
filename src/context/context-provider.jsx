@@ -11,6 +11,8 @@ const AppProvider = ({ children }) => {
   const urlApi = import.meta.env.VITE_API_URL;
   const apiKey = import.meta.env.VITE_API_KEY;
 
+  const [loading, setLoading] = useState(false);
+
   const [dataMaintenance, setDataMaintenance] = useState({
     active: false,
     title: "",
@@ -31,6 +33,7 @@ const AppProvider = ({ children }) => {
   });
 
   function getDateLayout() {
+    setLoading(true);
     axios
       .get(`${urlApi}landing/g/layout`, {
         headers: {
@@ -40,12 +43,20 @@ const AppProvider = ({ children }) => {
       })
       .then((response) => {
         if (response.data?.length == 0 || response.data[0] == undefined) return;
-        setDataMaintenance(response.data[0].maintenance);
         setDataHeader(response.data[0].header);
         setDataFooter(response.data[0].footer);
+        setLoading(false);
       })
       .catch((error) => {
+        setDataMaintenance({
+          active: true,
+          title: "D10 +",
+          subtitle: "!!Llegaremos pronto!!",
+          description: "Estamos trabajando para mejorar tu experiencia",
+          bg_photo: "",
+        });
         console.error(error);
+        setLoading(false);
       });
   }
 
@@ -84,6 +95,28 @@ const AppProvider = ({ children }) => {
     }
   }
 
+  function getDataPage(callback) {
+    debugger
+    window.scrollTo(0, 0);
+    setLoading(true);
+    callback.then((response) => {
+      setTimeout(() => {
+        if (response) {
+          setLoading(false);
+        } else {
+          setLoading(false);
+          setDataMaintenance({
+            active: true,
+            title: "D10 +",
+            subtitle: "!!Llegaremos pronto!!",
+            description: "Estamos trabajando para mejorar tu experiencia",
+            bg_photo: "",
+          });
+        }
+      }, 1000);
+    })
+  }
+
   useEffect(() => {
     getDateLayout();
   }, []);
@@ -100,6 +133,9 @@ const AppProvider = ({ children }) => {
         setDataHeader,
         setDataFooter,
         fetchData,
+        loading,
+        setLoading,
+        getDataPage
       }}
     >
       {children}

@@ -39,7 +39,7 @@ export default function Header({ dataHeader }) {
     <>
       <nav className="fixed top-4 left-0 right-0 z-50 mx-auto w-[95%] max-w-7xl">
         <div
-          className={`mx-auto flex h-16 items-center justify-between rounded-full px-6 shadow-lg backdrop-blur-sm transition-all duration-300 ${scrolled ? "bg-black/40" : "bg-black/80"
+          className={`mx-auto flex h-16 items-center justify-between rounded-full px-6 shadow-lg backdrop-blur-sm transition-all duration-300 ${scrolled ? "bg-black/40 border-white border-[0.5px]" : "bg-black/80"
             }`}
         >
           <Link className="select-none text-xl font-bold" to={"/"}>
