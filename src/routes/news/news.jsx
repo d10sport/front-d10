@@ -261,7 +261,7 @@ export default function News() {
               <div className="space-y-6">
                 <div>
                   <h2 className="mb-4 text-2xl font-bold">
-                    Principales Noticias
+                    Noticias Principales
                   </h2>
                   <div className="space-y-4">
                     {filteredData.length > 1 ? (
