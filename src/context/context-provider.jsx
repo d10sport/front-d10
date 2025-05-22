@@ -96,7 +96,6 @@ const AppProvider = ({ children }) => {
   }
 
   function getDataPage(callback) {
-    debugger
     window.scrollTo(0, 0);
     setLoading(true);
     callback.then((response) => {
