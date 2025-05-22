@@ -50,8 +50,8 @@ export default function AboutUs() {
     setSectionFive(icons);
   }
 
-  function getDataAbout() {
-    axios
+  async function getDataAbout() {
+    await axios
       .get(`${urlApi}landing/g/aboutus`, {
         headers: {
           "Content-Type": "application/json",
@@ -78,11 +78,11 @@ export default function AboutUs() {
       .catch((error) => {
         console.error(error);
       });
+    return true;
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    getDataAbout();
+    context.getDataPage(getDataAbout());
   }, []);
 
   return (
