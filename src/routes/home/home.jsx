@@ -77,10 +77,10 @@ export default function Home() {
   });
 
   const [sectionSeven, setSectionSeven] = useState({
-    date_col: "",
-    image: "",
     title: "",
     description: "",
+    image: "",
+    date: "",
   });
 
   function getDateHome() {
@@ -110,16 +110,16 @@ export default function Home() {
       });
   }
 
-  function getLastDataNews() {
+  function getLastDataReNews() {
     axios
-      .get(`${urlApi}landing/g/last/news`, {
+      .get(`${urlApi}landing/g/last-re-news`, {
         headers: {
           "Content-Type": "application/json",
           "api-key": apiKey,
         },
       })
       .then((response) => {
-        setSectionSeven(response.data);
+        setSectionSeven(response.data[0]);
       })
       .catch((error) => {
         console.error(error);
@@ -139,7 +139,7 @@ export default function Home() {
 
   useEffect(() => {
     getDateHome();
-    getLastDataNews();
+    getLastDataReNews();
     const handleResize = () => {
       const width = window.innerWidth;
       if (width <= 768) {
@@ -169,14 +169,13 @@ export default function Home() {
   }, []);
 
   return (
-    <> {
-      !loading && (
+    <>
+      {" "}
+      {!loading && (
         <>
           <Header dataHeader={context.dataHeader} />
 
-          {isFirstVisit && (
-            <SplineModel />
-          )}
+          {isFirstVisit && <SplineModel />}
 
           {/* <!-- Home Section --> */}
           <section
@@ -185,8 +184,8 @@ export default function Home() {
           >
             <div className="absolute inset-0 z-0">
               <div className="img-container__home">
-                {sectionOne.bg_photo !== "" && (
-                  changeImage.show ? (
+                {sectionOne.bg_photo !== "" &&
+                  (changeImage.show ? (
                     <img
                       src={sectionOne.bg_photo_res}
                       alt="Imagen desde el backend"
@@ -204,8 +203,7 @@ export default function Home() {
                         console.log("Error cargando imagen sección 1", e)
                       }
                     />
-                  )
-                )}
+                  ))}
               </div>
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#18181b] to-transparent z-10"></div>
@@ -273,7 +271,10 @@ export default function Home() {
           </section>
 
           {/* <!-- Commercial Section --> */}
-          <section id="section-destination-commercial" className="bg-black py-24">
+          <section
+            id="section-destination-commercial"
+            className="bg-black py-24"
+          >
             <div className="container mx-auto px-4">
               <div className="mx-auto max-w-4xl">
                 <div className="relative aspect-video overflow-hidden rounded-lg bg-zinc-800">
@@ -294,7 +295,9 @@ export default function Home() {
                 </div>
                 <div className="mt-6 text-center">
                   <h2 className="text-2xl font-bold">{sectionThree.title}</h2>
-                  <p className="mt-2 text-gray-400">{sectionThree.description}</p>
+                  <p className="mt-2 text-gray-400">
+                    {sectionThree.description}
+                  </p>
                 </div>
               </div>
             </div>
@@ -353,7 +356,10 @@ export default function Home() {
                   </div>
                   <div className="relative h-48 w-full overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
-                    <div className="h-full w-full" style={{ transform: "none" }}>
+                    <div
+                      className="h-full w-full"
+                      style={{ transform: "none" }}
+                    >
                       <div className="relative h-full w-full bg-zinc-800">
                         <div className="absolute inset-0 flex items-center justify-center">
                           <img
@@ -437,7 +443,6 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </section>
@@ -463,7 +468,9 @@ export default function Home() {
                   />
                 </div>
                 <div className="max-w-xl text-center md:text-left">
-                  <h2 className="mb-4 text-4xl font-bold">{sectionFive.title_2}</h2>
+                  <h2 className="mb-4 text-4xl font-bold">
+                    {sectionFive.title_2}
+                  </h2>
                   <p className="mb-6 text-gray-300">{sectionFive.title_3}</p>
                   <a
                     href={sectionFive.link}
@@ -513,20 +520,56 @@ export default function Home() {
                     className={`flex items-center justify-center h-24
 
                   // Desktop
-                ${!isLastInRow && !isLastItem && totalCols == 6 ? "border-r border-white/10" : ""}
-                ${!isFirstRow && totalCols == 6 ? "border-t border-white/10" : ""}
-                ${isFirstRow && totalCols == 6 ? "border-b border-b-white/10 border-t-2 border-t-transparent" : ""}
-                ${isLastItem && totalCols == 6 ? "border-r border-b-white/10" : ""}
+                ${
+                  !isLastInRow && !isLastItem && totalCols == 6
+                    ? "border-r border-white/10"
+                    : ""
+                }
+                ${
+                  !isFirstRow && totalCols == 6
+                    ? "border-t border-white/10"
+                    : ""
+                }
+                ${
+                  isFirstRow && totalCols == 6
+                    ? "border-b border-b-white/10 border-t-2 border-t-transparent"
+                    : ""
+                }
+                ${
+                  isLastItem && totalCols == 6
+                    ? "border-r border-b-white/10"
+                    : ""
+                }
 
                 // Mobile
-                ${!isLastInRow && !isLastItem && totalCols == 2 ? "border-r border-white/10" : ""}
-                ${!isFirstRow && totalCols == 2 ? "border-t border-white/10" : ""}
-                ${isFirstRow && totalCols == 2 ? "border-b border-b-white/10 border-t-2 border-t-transparent" : ""}
-                ${isLastItem && totalCols == 2 ? "border-r border-t border-b-white/10" : ""}
-                ${isAfterLastItem && totalCols == 2 ? "border-b border-white/10" : ""}
+                ${
+                  !isLastInRow && !isLastItem && totalCols == 2
+                    ? "border-r border-white/10"
+                    : ""
+                }
+                ${
+                  !isFirstRow && totalCols == 2
+                    ? "border-t border-white/10"
+                    : ""
+                }
+                ${
+                  isFirstRow && totalCols == 2
+                    ? "border-b border-b-white/10 border-t-2 border-t-transparent"
+                    : ""
+                }
+                ${
+                  isLastItem && totalCols == 2
+                    ? "border-r border-t border-b-white/10"
+                    : ""
+                }
+                ${
+                  isAfterLastItem && totalCols == 2
+                    ? "border-b border-white/10"
+                    : ""
+                }
               `}
                   >
-                    < img
+                    <img
                       src={src.icon}
                       alt={`Logo ${index}`}
                       className="h-14 filter grayscale opacity-90 object-contain"
@@ -540,6 +583,5 @@ export default function Home() {
         </>
       )}
     </>
-
   );
 }
