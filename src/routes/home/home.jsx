@@ -62,13 +62,10 @@ export default function Home() {
   });
 
   const [sectionFive, setSectionFive] = useState({
-    title_1: "",
-    title_2: "",
-    title_3: "",
-    text_link: "",
     link: "",
-    bg_photo: "",
     logo: "",
+    title: "",
+    description: "",
   });
 
   const [sectionSix, setSectionSix] = useState({
@@ -457,7 +454,7 @@ export default function Home() {
                     loading="lazy"
                     decoding="async"
                     className="object-contain"
-                    src={sectionFive.title_1}
+                    src={sectionFive.logo}
                     style={{
                       position: "absolute",
                       height: "100%",
@@ -469,15 +466,17 @@ export default function Home() {
                 </div>
                 <div className="max-w-xl text-center md:text-left">
                   <h2 className="mb-4 text-4xl font-bold">
-                    {sectionFive.title_2}
+                    {sectionFive.title}
                   </h2>
-                  <p className="mb-6 text-gray-300">{sectionFive.title_3}</p>
+                  <p className="mb-6 text-gray-300">
+                    {sectionFive.description}
+                  </p>
                   <a
                     href={sectionFive.link}
                     target="_blank"
                     className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground h-10 px-4 py-2 group border border-white bg-transparent hover:bg-white hover:text-black"
                   >
-                    {sectionFive.text_link}
+                    Ingrese ahora
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
