@@ -81,8 +81,12 @@ export default function AboutUs() {
     return true;
   }
 
+  // useEffect(() => {
+  //   context.getDataPage(getDataAbout());
+  // }, []);
+
   useEffect(() => {
-    context.getDataPage(getDataAbout());
+    getDataAbout();
   }, []);
 
   return (
