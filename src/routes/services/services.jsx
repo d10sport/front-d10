@@ -9,6 +9,11 @@ export default function Services() {
   const urlApi = context.urlApi;
   const apiKey = context.apiKey;
 
+  const [sectionOne, setSectionOne] = useState({
+    title: "",
+    description: "",
+  });
+
   const [sectionTwo, setSectionTwo] = useState({
     photo: "",
     title: "",
@@ -39,6 +44,7 @@ export default function Services() {
         },
       })
       .then((response) => {
+        setSectionOne(response.data[0].section_one);
         setSectionTwo(response.data[0].section_two);
         setSectionThree(response.data[0].section_three);
         setSectionFour(response.data[0].section_four);
@@ -75,19 +81,10 @@ export default function Services() {
             }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-              Nuestros Servicios
+              {sectionOne.title}
             </h2>
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-              Ofrecemos un ecosistema integral de soluciones diseñadas para
-              potenciar el desarrollo deportivo de clubes y jugadores. Desde
-              programas educativos especializados en fútbol formativo y
-              profesional, hasta equipamiento deportivo de alta tecnología
-              adaptado a la identidad de cada equipo. Además, brindamos un
-              servicio exclusivo de scouting y orientación para identificar y
-              proyectar talentos, fortaleciendo el vínculo entre clubes
-              formadores y oportunidades profesionales. Todo esto con un enfoque
-              estratégico, práctico y personalizado que impulsa el crecimiento
-              sostenible de cada proyecto deportivo.
+              {sectionOne.description}
             </p>
           </div>
         </div>
