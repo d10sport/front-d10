@@ -35,7 +35,7 @@ export default function ContactPage() {
     subtitle: "",
   });
 
-  function getDataContact() {
+  async function getDataContact() {
     axios
       .get(`${urlApi}landing/g/contact`, {
         headers: {
@@ -88,8 +88,13 @@ export default function ContactPage() {
     );
   }
 
+  async function loadContact() {
+    await getDataContact();
+    return true;
+  }
+
   useEffect(() => {
-    getDataContact();
+    context.getDataPage(loadContact());
   }, []);
 
   return (

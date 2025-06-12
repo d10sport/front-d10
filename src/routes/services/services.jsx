@@ -35,8 +35,8 @@ export default function Services() {
     description: "",
   });
 
-  function getServices() {
-    axios
+  async function getServices() {
+   await axios
       .get(`${urlApi}landing/g/services`, {
         headers: {
           "Content-Type": "application/json",
@@ -54,10 +54,16 @@ export default function Services() {
       });
   }
 
-  useEffect(() => {
+  async function loadServices() {
     window.scrollTo(0, 0);
-    getServices();
+    await getServices();
+    return true;
+  }
+
+  useEffect(() => {
+    context.getDataPage(loadServices());
   }, []);
+
 
   return (
     <>
