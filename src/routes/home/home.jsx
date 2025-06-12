@@ -15,7 +15,7 @@ import "./home.css";
 
 export default function Home() {
   const context = useContext(AppContext);
-  // const loading = context.loading;
+  const loading = context.loading;
   const urlApi = context.urlApi;
   const apiKey = context.apiKey;
 
@@ -80,7 +80,7 @@ export default function Home() {
     date: "",
   });
 
-  function getDateHome() {
+  async function getDateHome() {
     axios
       .get(`${urlApi}landing/g/home`, {
         headers: {
@@ -107,7 +107,7 @@ export default function Home() {
       });
   }
 
-  function getLastDataReNews() {
+  async function getLastDataReNews() {
     axios
       .get(`${urlApi}landing/g/last-re-news`, {
         headers: {
@@ -134,9 +134,9 @@ export default function Home() {
     }
   }, [deviceType]);
 
-  useEffect(() => {
-    getDateHome();
-    getLastDataReNews();
+  async function loadHome() {
+    await getDateHome();
+    await getLastDataReNews();
     const handleResize = () => {
       const width = window.innerWidth;
       if (width <= 768) {
@@ -151,10 +151,14 @@ export default function Home() {
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+    setTimeout(() => {
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }, [1000]);
+
+    return true;
+  };
 
   useEffect(() => {
     const hasVisited = localStorage.getItem("firstVisit");
@@ -165,11 +169,14 @@ export default function Home() {
     }
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    context.getDataPage(loadHome());
+  }, []);
+
+
   return (
     <>
-      {/* {" "} */}
-      {/* {!loading && (
-        <> */}
       <Header dataHeader={context.dataHeader} />
       {isFirstVisit && <SplineModel />}
       {/* <!-- Home Section --> */}
@@ -205,7 +212,7 @@ export default function Home() {
         </div>
 
         {sectionOne.bg_photo !== "" && (
-          <div className="container relative z-10 px-4 text-start">
+          <div className="container relative z-10 lg:px-14 px-4 text-start">
             <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tighter md:text-7xl">
               <span
                 style={{
@@ -499,53 +506,44 @@ export default function Home() {
                 className={`flex items-center justify-center h-24
 
                   // Desktop
-                ${
-                  !isLastInRow && !isLastItem && totalCols == 6
+                ${!isLastInRow && !isLastItem && totalCols == 6
                     ? "border-r border-white/10"
                     : ""
-                }
-                ${
-                  !isFirstRow && totalCols == 6
+                  }
+                ${!isFirstRow && totalCols == 6
                     ? "border-t border-white/10"
                     : ""
-                }
-                ${
-                  isFirstRow && totalCols == 6
+                  }
+                ${isFirstRow && totalCols == 6
                     ? "border-b border-b-white/10 border-t-2 border-t-transparent"
                     : ""
-                }
-                ${
-                  isLastItem && totalCols == 6
+                  }
+                ${isLastItem && totalCols == 6
                     ? "border-r border-b-white/10"
                     : ""
-                }
+                  }
 
                 // Mobile
-                ${
-                  !isLastInRow && !isLastItem && totalCols == 2
+                ${!isLastInRow && !isLastItem && totalCols == 2
                     ? "border-r border-white/10"
                     : ""
-                }
-                ${
-                  !isFirstRow && totalCols == 2
+                  }
+                ${!isFirstRow && totalCols == 2
                     ? "border-t border-white/10"
                     : ""
-                }
-                ${
-                  isFirstRow && totalCols == 2
+                  }
+                ${isFirstRow && totalCols == 2
                     ? "border-b border-b-white/10 border-t-2 border-t-transparent"
                     : ""
-                }
-                ${
-                  isLastItem && totalCols == 2
+                  }
+                ${isLastItem && totalCols == 2
                     ? "border-r border-t border-b-white/10"
                     : ""
-                }
-                ${
-                  isAfterLastItem && totalCols == 2
+                  }
+                ${isAfterLastItem && totalCols == 2
                     ? "border-b border-white/10"
                     : ""
-                }
+                  }
               `}
               >
                 <img
@@ -559,8 +557,6 @@ export default function Home() {
         </div>
       </section>
       <Footer dataFooter={context.dataFooter} />
-      {/* </>
-      )} */}
     </>
   );
 }

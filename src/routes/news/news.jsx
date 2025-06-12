@@ -1,8 +1,8 @@
 import { Card, CardContent } from "../../components/ui/card";
-import { Clock, TrendingUp, ChevronRight } from "lucide-react";
 import { useState, useEffect, useContext } from "react";
 import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
+import { Clock, TrendingUp } from "lucide-react";
 import Header from "@layouts/header/header.jsx";
 import Footer from "@layouts/footer/footer.jsx";
 import AppContext from "@context/app-context";
@@ -19,7 +19,6 @@ export default function News() {
 
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
-  const [expandedYear, setExpandedYear] = useState(null);
 
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth() + 1;
@@ -55,52 +54,49 @@ export default function News() {
     setSelectedMonth(currentMonth);
   }, [currentYear, currentMonth]);
 
-  useEffect(() => {
-    const getNews = async () => {
-      try {
-        const response = await axios.get(`${urlApi}landing/g/re-news`, {
-          headers: {
-            "Content-Type": "application/json",
-            "api-key": apiKey,
-          },
-        });
 
-        const rawNews = response.data;
+  async function getDataNews() {
+    try {
+      const response = await axios.get(`${urlApi}landing/g/re-news`, {
+        headers: {
+          "Content-Type": "application/json",
+          "api-key": apiKey,
+        },
+      });
 
-        const formattedNews = rawNews.map((item) => ({
-          id: item.id,
-          title: item.title,
-          description: item.description,
-          image: item.image,
-          date: item.date.slice(0, 10), // YYYY-MM-DD
-          category: item.category,
-        }));
+      const rawNews = response.data;
 
-        const mostRecentNews = formattedNews.sort(
-          (a, b) => new Date(b.date) - new Date(a.date)
-        )[0];
+      const formattedNews = rawNews.map((item) => ({
+        id: item.id,
+        title: item.title,
+        description: item.description,
+        image: item.image,
+        date: item.date.slice(0, 10), // YYYY-MM-DD
+        category: item.category,
+      }));
 
-        const [recentYear, recentMonth] = mostRecentNews.date.split("-");
+      const mostRecentNews = formattedNews.sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      )[0];
 
-        setMostRecentYear(parseInt(recentYear));
-        setMostRecentMonth(parseInt(recentMonth));
+      const [recentYear, recentMonth] = mostRecentNews.date.split("-");
 
-        setNewsData(formattedNews);
-        setSelectedYear(parseInt(recentYear));
-        setSelectedMonth(parseInt(recentMonth));
+      setMostRecentYear(parseInt(recentYear));
+      setMostRecentMonth(parseInt(recentMonth));
 
-        const uniqueCategories = Array.from(
-          new Set(formattedNews.map((n) => n.category))
-        );
+      setNewsData(formattedNews);
+      setSelectedYear(parseInt(recentYear));
+      setSelectedMonth(parseInt(recentMonth));
 
-        setCategories(uniqueCategories);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+      const uniqueCategories = Array.from(
+        new Set(formattedNews.map((n) => n.category))
+      );
 
-    getNews();
-  }, [urlApi, apiKey]);
+      setCategories(uniqueCategories);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   const years = Array.from(
     new Set(newsData.map((item) => parseInt(item.date.split("-")[0])))
@@ -115,33 +111,20 @@ export default function News() {
     );
   });
 
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-
   const currentData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  const toggleYear = (year) => {
-    setExpandedYear(expandedYear === year ? null : year);
-    setSelectedYear(year);
-    setSelectedMonth(null);
-    setCurrentPage(1);
-  };
+  async function loadNews() {
+    await getDataNews();
+    return true;
+  }
 
-  const selectMonth = (monthIndex) => {
-    setSelectedMonth(monthIndex + 1);
-    setCurrentPage(1);
-  };
+  useEffect(() => {
+    context.getDataPage(loadNews());
+  }, [urlApi, apiKey]);
 
-  const selectCategory = (category) => {
-    setSelectedCategory(category);
-    setCurrentPage(1);
-  };
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
 
   return (
     <>
@@ -351,45 +334,45 @@ export default function News() {
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filteredData.length > 0
                 ? currentData.map((item, index) => (
-                    <Card
-                      key={index}
-                      className="bg-zinc-800 border-zinc-700 rounded-xl overflow-hidden"
-                    >
-                      <div className="relative">
-                        <img
-                          src={item.image}
-                          alt={`Article ${index + 1}`}
-                          width={400}
-                          height={200}
-                          className="aspect-[2/1] w-full object-cover"
-                        />
-                        <Badge className="absolute top-4 left-4 bg-zinc-700 text-zinc-200 hover:bg-zinc-600 rounded-full">
-                          {item.title}
-                        </Badge>
-                      </div>
-                      <CardContent className="p-4">
-                        <h3 className="mb-2 text-lg font-medium text-white">
-                          {item.title}
-                        </h3>
-                        <p className="mb-4 text-sm text-zinc-400">
-                          {item.description}
-                        </p>
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center text-sm text-zinc-400">
-                            <Clock className="mr-1 h-3 w-3" />
-                            {currentData[0].date}
-                          </div>
-                          {/* <Button
+                  <Card
+                    key={index}
+                    className="bg-zinc-800 border-zinc-700 rounded-xl overflow-hidden"
+                  >
+                    <div className="relative">
+                      <img
+                        src={item.image}
+                        alt={`Article ${index + 1}`}
+                        width={400}
+                        height={200}
+                        className="aspect-[2/1] w-full object-cover"
+                      />
+                      <Badge className="absolute top-4 left-4 bg-zinc-700 text-zinc-200 hover:bg-zinc-600 rounded-full">
+                        {item.title}
+                      </Badge>
+                    </div>
+                    <CardContent className="p-4">
+                      <h3 className="mb-2 text-lg font-medium text-white">
+                        {item.title}
+                      </h3>
+                      <p className="mb-4 text-sm text-zinc-400">
+                        {item.description}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-sm text-zinc-400">
+                          <Clock className="mr-1 h-3 w-3" />
+                          {currentData[0].date}
+                        </div>
+                        {/* <Button
                             variant="ghost"
                             size="sm"
                             className="rounded-full"
                           >
                             Leer más
                           </Button> */}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))
                 : null}
             </div>
             {/* <div className="flex justify-center gap-2 mt-8">

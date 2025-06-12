@@ -33,7 +33,7 @@ export default function Gallery() {
 
   const [loopItems, setLoopItems] = useState([]);
 
-  function getDataGallery() {
+  async function getDataGallery() {
     axios
       .get(`${urlApi}landing/g/gallery`, {
         headers: {
@@ -84,6 +84,15 @@ export default function Gallery() {
     animationFrame = requestAnimationFrame(scroll);
 
     return () => cancelAnimationFrame(animationFrame);
+  }, []);
+
+  async function loadGallery() {
+    await getDataGallery();
+    return true;
+  }
+
+  useEffect(() => {
+    context.getDataPage(loadGallery());
   }, []);
 
   return (

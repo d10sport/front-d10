@@ -78,16 +78,16 @@ export default function AboutUs() {
       .catch((error) => {
         console.error(error);
       });
-    return true;
   }
 
-  // useEffect(() => {
-  //   context.getDataPage(getDataAbout());
-  // }, []);
-
+  async function loadAboutUs() {
+    await getDataAbout();
+    return true;
+  }
   useEffect(() => {
-    getDataAbout();
+    context.getDataPage(loadAboutUs());
   }, []);
+
 
   return (
     <>
@@ -117,7 +117,7 @@ export default function AboutUs() {
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent z-10"></div>
-          <div className="container relative z-20 mx-auto grid h-full grid-cols-1 md:grid-cols-2 px-4 py-24">
+          <div className="container relative z-20 mx-auto grid h-full grid-cols-1 md:grid-cols-2 lg:px-24 px-4 pt-28 pb-20">
             <div className="flex flex-col items-start justify-center text-left">
               <div className="relative">
                 <div className="absolute -left-6 top-1/2 h-12 w-1 bg-white transform -translate-y-1/2"></div>
