@@ -33,7 +33,7 @@ export default function Collections() {
     }
   }, [deviceType]);
 
-  function getCollections() {
+  async function getCollections() {
     axios
       .get(`${urlApi}landing/g/collections`, {
         headers: {
@@ -49,8 +49,8 @@ export default function Collections() {
       });
   }
 
-  useEffect(() => {
-    getCollections();
+  async function getDataCollections() {
+    await getCollections();
     const handleResize = () => {
       const width = window.innerWidth;
       if (width <= 768) {
@@ -68,14 +68,24 @@ export default function Collections() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+  }
+
+  async function loadCollections() {
+    await getDataCollections();
+    return true;
+  }
+
+  useEffect(() => {
+    context.getDataPage(loadCollections());
   }, []);
+
 
   return (
     <>
       <Header dataHeader={context.dataHeader} />
 
-      <div className="collection__hidden principal_div inline-block w-full py-8 px-12 mb-8">
-        <div className="w-full">
+      <div className="collection__hidden inline-block w-full py-24 px-12 mb-8">
+        <div className="w-full mb-6">
           <h1 className="title__collections text-5xl font-extrabold text-center">
             {collections.section_one.title}
           </h1>

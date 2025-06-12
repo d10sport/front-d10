@@ -1,6 +1,7 @@
+import { useState, useEffect, useContext } from "react";
 import { ImageLogo } from "@utils/imgs/imgs.jsx";
 import { ChevronDown, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import AppContext from "@context/app-context";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -11,9 +12,14 @@ export default function Header({ dataHeader }) {
     }),
   };
 
+  const context = useContext(AppContext);
   const [data, setData] = useState(dataHeader);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const setLoadingPages = () => {
+    context.setLoading(true);
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,25 +60,25 @@ export default function Header({ dataHeader }) {
             )}
           </Link>
           <div className="hidden space-x-8 md:flex">
-            <Link
+            <Link onClick={() => setLoadingPages()}
               to={"/about-us"}
               className="text-sm uppercase tracking-wider hover:text-gray-300"
             >
               Nosotros
             </Link>
-            <Link
+            <Link onClick={() => setLoadingPages()}
               to={"/services"}
               className="text-sm uppercase tracking-wider hover:text-gray-300"
             >
               Servicios
             </Link>
-            <Link
+            <Link onClick={() => setLoadingPages()}
               to={"/gallery"}
               className="text-sm uppercase tracking-wider hover:text-gray-300"
             >
               Galería
             </Link>
-            <Link
+            <Link onClick={() => setLoadingPages()}
               to={"/contact"}
               className="text-sm uppercase tracking-wider hover:text-gray-300"
             >
