@@ -3,9 +3,6 @@ FROM node:18 AS build
 WORKDIR /app
 
 # Definir variables de entorno para Vite
-ARG VITE_API_URL
-ARG VITE_API_KEY
-
 ENV VITE_API_URL=$VITE_API_URL
 ENV VITE_API_KEY=$VITE_API_KEY
 
