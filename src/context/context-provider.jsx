@@ -21,8 +21,6 @@ const AppProvider = ({ children }) => {
     apiKey = window.__ENV__?.API_KEY;
   }
 
-  alert(`API URL: ${urlApi}, API KEY: ${apiKey}`);
-
   const [loading, setLoading] = useState(false);
 
   const [dataMaintenance, setDataMaintenance] = useState({
