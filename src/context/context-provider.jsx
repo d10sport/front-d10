@@ -8,21 +8,8 @@ const AppProvider = ({ children }) => {
     children: PropTypes.node.isRequired,
   };
 
-  let urlApi;
-  let apiKey;
-
-  // if (import.meta.env.DEV) {
-  // Local con Vite
-  console.log("import.meta: ", import.meta)
-  console.log("import.meta.env: ", import.meta.env)
-  console.log("VITE_API_URL: ", import.meta.env.VITE_API_URL)
-  urlApi = import.meta.env.VITE_API_URL;
-  apiKey = import.meta.env.VITE_API_KEY;
-  // } else {
-  // Producción: variables inyectadas en runtime
-  //   urlApi = window.__ENV__?.API_URL;
-  //   apiKey = window.__ENV__?.API_KEY;
-  // }
+  const urlApi = import.meta.env.VITE_API_URL;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   const [loading, setLoading] = useState(false);
 
