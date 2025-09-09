@@ -2,9 +2,13 @@
 FROM node:18 AS build
 WORKDIR /app
 
-# Definir variables de entorno para Vite
-ENV VITE_API_URL=$VITE_API_URL
-ENV VITE_API_KEY=$VITE_API_KEY
+# Recibir variables desde Dokploy
+ARG VITE_API_URL
+ARG VITE_API_KEY
+
+# Exponerlas como ENV para Vite
+ENV VITE_API_URL=${VITE_API_URL}
+ENV VITE_API_KEY=${VITE_API_KEY}
 
 # Copiar package.json
 COPY package*.json ./
