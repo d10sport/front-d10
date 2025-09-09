@@ -13,6 +13,9 @@ const AppProvider = ({ children }) => {
 
   // if (import.meta.env.DEV) {
   // Local con Vite
+  console.log("import.meta: ", import.meta)
+  console.log("import.meta.env: ", import.meta.env)
+  console.log("VITE_API_URL: ", import.meta.env.VITE_API_URL)
   urlApi = import.meta.env.VITE_API_URL;
   apiKey = import.meta.env.VITE_API_KEY;
   // } else {
